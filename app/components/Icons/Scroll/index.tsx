@@ -1,7 +1,7 @@
 import type React from 'react'
 
 interface Props {
-  className?: React.ReactNode
+  className?: string
   width?: number
   height?: number
 }

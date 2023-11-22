@@ -4,7 +4,7 @@ import Crate from '~/components/Crate'
 import Title from '~/components/Title'
 
 interface EventProps {
-  children: React.ReactNode
+  children?: React.ReactNode
   otherClass?: string
   position?: 'first' | 'middle' | 'last'
   title?: string

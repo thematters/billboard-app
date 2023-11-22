@@ -24,8 +24,8 @@ const Content = ({ children, title, isActive }: ContentProps) => {
 
 interface CrateProps {
   children?: React.ReactNode
-  active: 'advertiser' | 'owner'
-  click: (string) => void
+  active: string
+  click: (value: string) => void
 }
 
 const Crate = ({ children, active, click }: CrateProps) => {

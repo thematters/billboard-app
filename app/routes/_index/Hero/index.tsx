@@ -55,7 +55,7 @@ const Hero = () => {
             providing services from content discovery to inbox hosting.
           </section>
           <section className="mt-12 lg:mt-0 flex-center lg:flex-start">
-            <LinkButton to="/showcase" otherClass="w-[272px]">
+            <LinkButton color="dim" to="/showcase" otherClass="w-[272px]">
               Showcase
             </LinkButton>
           </section>

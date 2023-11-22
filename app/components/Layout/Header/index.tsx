@@ -10,7 +10,7 @@ import IconRedirectLink from '~/components/Icons/RedirectLink'
 
 interface Props {
   isActive: boolean
-  setActive: (boolean) => void
+  setActive: (value: boolean) => void
 }
 
 const Header = ({ isActive, setActive }: Props) => {

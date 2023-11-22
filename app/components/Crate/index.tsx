@@ -1,7 +1,7 @@
 import type React from 'react'
 
 interface Props {
-  children: React.ReactNode
+  children?: React.ReactNode
   color: 'dim' | 'light'
   outerClass?: string
   outerStyles?: React.CSSProperties

@@ -7,11 +7,11 @@ import illustration from '../../../assets/illustration-bg.png'
 
 const Illustration = () => {
   const [height, setHeight] = useState(0)
-  const imgRef = useRef(null)
+  const imgRef = useRef<HTMLImageElement>(null)
 
   useEffect(() => {
     const handler = _.debounce(() => {
-      setHeight(imgRef.current.offsetHeight + 1)
+      setHeight((imgRef?.current?.offsetHeight || 0) + 1)
     }, 100)
 
     handler()

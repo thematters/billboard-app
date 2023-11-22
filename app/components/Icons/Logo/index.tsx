@@ -1,7 +1,7 @@
 interface Props {
   className?: string
-  width: number
-  height: number
+  width?: number
+  height?: number
 }
 
 const Logo = ({ className, width, height }: Props) => (

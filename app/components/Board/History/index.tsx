@@ -3,9 +3,17 @@ import { NavLink } from '@remix-run/react'
 import IconRedirectLink from '~/components/Icons/RedirectLink'
 import IconScroll from '~/components/Icons/Scroll'
 
+interface Transaction {
+  price: number
+  from: string
+  to: string
+  date: string
+  hash: string
+}
+
 interface HistoryProps {
   outerClass?: string
-  txs: Array<{ string: any }>
+  txs: Array<Transaction>
 }
 
 const History = ({ outerClass, txs }: HistoryProps) => {

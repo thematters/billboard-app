@@ -2,8 +2,8 @@ interface Props {
   className?: string
   width?: number
   height?: number
-  active: 'advertiser' | 'owner'
-  click: (string) => void
+  active: string
+  click: (value: string) => void
 }
 
 const Roles = ({ className, width, height, active, click }: Props) => {
