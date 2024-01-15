@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import { useEffect, useState } from 'react'
 
-import { BREAKPOINTS } from '~/common'
+import { BREAKPOINTS } from '~/common/constants'
 import Crate from '~/components/Crate'
 import LinkButton from '~/components/Buttons/LinkButton'
 import ImgBoardCardOne from '~/components/Images/BoardCardOne'
@@ -16,7 +16,7 @@ const Hero = () => {
   }, [])
 
   const middle = 'hero bg-center bg-no-repeat bg-cover'
-  const inner = 'px-4 pt-20 pb-32 lg:px-12 lg:pt-44 lg:pb-36 lg:pb-52 xl:pb-80'
+  const inner = 'px-4 pt-20 pb-32 lg:px-12 lg:pt-44 lg:pb-36 lg:pb-52'
 
   const cardBasis = [
     'w-[200px] h-[160px] md:w-[231px] md:h-[185px] lg:w-[376px] lg:h-[300px] z-1',
@@ -26,14 +26,14 @@ const Hero = () => {
   const cardOne = [
     cardBasis,
     '-translate-x-1/4 translate-y-4',
-    'lg:-translate-x-1/2 lg:translate-y-4 xl:translate-y-20',
+    'lg:-translate-x-1/2 lg:translate-y-4',
     isAnimated ? 'rotate-12' : '',
   ].join(' ')
 
   const cardTwo = [
     cardBasis,
     'translate-x-1/4 translate-y-4',
-    'lg:translate-x-0 lg:translate-y-12 xl:translate-y-28',
+    'lg:translate-x-0 lg:translate-y-12',
     isAnimated ? '-rotate-12' : '',
   ].join(' ')
 
@@ -49,7 +49,7 @@ const Hero = () => {
       {/* Hero content */}
       <section className="mt-14 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-10">
         {/* Description*/}
-        <section className="lg:pl-24 xl:pr-10 grid grid-cols-1">
+        <section className="lg:pl-24 grid grid-cols-1">
           <section className="text-14 md:text-20">
             A decentralized social network can now have a market of providers
             providing services from content discovery to inbox hosting.

@@ -4,12 +4,20 @@ import IconBid from '~/components/Icons/Bid'
 interface Props {
   outerClass?: string
   name: string
-  bidPrice: number
+  price: number
+  maticRate: number
   taxRate: number
   next: string
 }
 
-const Auction = ({ outerClass, name, bidPrice, taxRate, next }: Props) => {
+const Auction = ({
+  outerClass,
+  name,
+  price,
+  maticRate,
+  taxRate,
+  next,
+}: Props) => {
   const outer = [
     'p-4 w-full bg-dim-black border-all-green rounded-[20px]',
     outerClass,
@@ -28,17 +36,17 @@ const Auction = ({ outerClass, name, bidPrice, taxRate, next }: Props) => {
     'before:border-dashed before:border-l before:border-green',
   ].join(' ')
 
+  const usdPrice = (price * maticRate).toFixed(2)
+
   return (
     <section className={outer}>
       <p className="text-white font-semibold md:text-28 md:font-bold">{name}</p>
       <hr className={hr} />
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-y-4 lg:gap-y-0">
         <section>
-          <p className="tetx-14 text-green lg:text-base">
-            Last Higest Bid Price
-          </p>
-          <p className="text-28 md:text-36">{bidPrice} MATIC</p>
-          <p className="text-12 text-green">≈ $150,000 USD</p>
+          <p className="tetx-14 text-green lg:text-base">Last Auction Price</p>
+          <p className="text-28 md:text-36">{price} MATIC</p>
+          <p className="text-12 text-green">≈ {usdPrice} USD</p>
         </section>
         <section className="flex-center sm:flex-center-start lg:flex-center-end">
           <BaseButton color="light" otherClass={btn}>
@@ -54,7 +62,7 @@ const Auction = ({ outerClass, name, bidPrice, taxRate, next }: Props) => {
           <p className="font-semibold">{taxRate}</p>
         </section>
         <section className={`relative ${divider}`}>
-          <p className="text-12 text-green">Bidding Ends in</p>
+          <p className="text-12 text-green">Auction Ends in</p>
           <p className="font-semibold">{next}</p>
         </section>
       </section>

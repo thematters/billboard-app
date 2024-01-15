@@ -43,7 +43,7 @@ const Footer = () => {
 
   const outer = [
     'relative',
-    'px-4 sm:px-8 lg:px-24 xl:px-40 py-10 lg:py-14',
+    'px-4 sm:px-8 lg:px-24 py-10 lg:py-14',
     'border-t border-green',
     'grid grid-cols-2 lg:grid-cols-3 md:gap-x-20',
   ].join(' ')

@@ -2,6 +2,7 @@ import type React from 'react'
 
 import { NavLink } from '@remix-run/react'
 
+import { makeShrinkedContent } from '~/common/utils'
 import IconCopy from '~/components/Icons/Copy'
 import IconExclamation from '~/components/Icons/Exclamation'
 import IconRedirectLink from '~/components/Icons/RedirectLink'
@@ -11,9 +12,16 @@ interface Props {
   location: string
   tokenId: string
   tokenURI: string
+  polygonURL: string
 }
 
-const Detail = ({ contract, location, tokenId, tokenURI }: Props) => {
+const Detail = ({
+  contract,
+  location,
+  tokenId,
+  tokenURI,
+  polygonURL,
+}: Props) => {
   const head = [
     'p-4 bg-green flex-center-start',
     'border-all-green rounded-t-[20px]',
@@ -24,6 +32,8 @@ const Detail = ({ contract, location, tokenId, tokenURI }: Props) => {
     'p-4 bg-dim-black border-x-green border-b-green',
     'flex-center-between text-14',
   ].join(' ')
+
+  const shrinkedContract = makeShrinkedContent(contract)
 
   return (
     <section className="w-full">
@@ -36,8 +46,12 @@ const Detail = ({ contract, location, tokenId, tokenURI }: Props) => {
       {/* Rows */}
       <section className={row}>
         <span>Board Location</span>
-        <NavLink className="flex-center-end" to="">
-          {location}
+        <NavLink
+          className="flex-center-end hover:text-light-green"
+          to={location}
+          target="_blank"
+        >
+          Discover
           <IconRedirectLink className="ml-1" width={16} height={16} />
         </NavLink>
       </section>
@@ -54,21 +68,17 @@ const Detail = ({ contract, location, tokenId, tokenURI }: Props) => {
 
       <section className={row}>
         <span>Chain</span>
-        <span>Ethereum</span>
-      </section>
-
-      <section className={row}>
-        <span>Content URI</span>
-        <NavLink className="flex-center-end" to="">
-          {tokenURI}
-          <IconCopy className="ml-1" width={20} height={20} />
-        </NavLink>
+        <span>Polygon</span>
       </section>
 
       <section className={`${row} rounded-b-[20px]`}>
         <span>Contract Link</span>
-        <NavLink className="flex-center-end" to="">
-          {contract}
+        <NavLink
+          className="flex-center-end hover:text-light-green"
+          to={`${polygonURL}address/${contract}`}
+          target="_blank"
+        >
+          {shrinkedContract}
           <IconRedirectLink className="ml-1" width={16} height={16} />
         </NavLink>
       </section>

@@ -3,27 +3,28 @@ import { NavLink } from '@remix-run/react'
 import IconRedirectLink from '~/components/Icons/RedirectLink'
 import IconScroll from '~/components/Icons/Scroll'
 
-interface Transaction {
+interface HistoryItem {
+  auctionId: number
   price: number
   from: string
   to: string
   date: string
-  hash: string
+  hash?: string
 }
 
 interface HistoryProps {
   outerClass?: string
-  txs: Array<Transaction>
+  items: Array<HistoryItem>
 }
 
-const History = ({ outerClass, txs }: HistoryProps) => {
+const History = ({ outerClass, items }: HistoryProps) => {
   const head = [
     'p-4 bg-green flex-center-start',
     'border-all-green rounded-t-[20px]',
     'text-black font-semibold',
   ].join(' ')
 
-  const rowBasis = ['p-4 grid grid-cols-5 gap-x-4'].join(' ')
+  const rowBasis = ['p-4 grid grid-cols-4 gap-x-4'].join(' ')
 
   const rowFixed = [rowBasis, 'border-x-green bg-black'].join(' ')
 
@@ -59,25 +60,29 @@ const History = ({ outerClass, txs }: HistoryProps) => {
         <section className={`${cell} ${divider}`}>From</section>
         <section className={`${cell} ${divider}`}>To</section>
         <section className={`${cell} ${divider}`}>Date</section>
+        {/*
         <section className={`${cell} ${divider} md:flex-center-between`}>
           TxHash
         </section>
+        */}
       </section>
 
       {/* Rows */}
       <section className={rows}>
-        {txs.map((tx, i) => (
-          <section key={`${tx.hash}${i}`} className={row}>
-            <section className={cell}>{tx.price}</section>
-            <section className={`${cell} ${divider}`}>{tx.from}</section>
-            <section className={`${cell} ${divider}`}>{tx.to}</section>
-            <section className={`${cell} ${divider}`}>{tx.date}</section>
+        {items.map((item, i) => (
+          <section key={item.auctionId} className={row}>
+            <section className={cell}>{item.price}</section>
+            <section className={`${cell} ${divider}`}>{item.from}</section>
+            <section className={`${cell} ${divider}`}>{item.to}</section>
+            <section className={`${cell} ${divider}`}>{item.date}</section>
+            {/*
             <section className={`${cell} ${divider} md:flex-center-between`}>
               <NavLink className="w-full md:flex-center-between" to="/">
-                {tx.hash}
+                {item.hash}
                 <IconRedirectLink width={16} height={16} />
               </NavLink>
             </section>
+            */}
           </section>
         ))}
       </section>

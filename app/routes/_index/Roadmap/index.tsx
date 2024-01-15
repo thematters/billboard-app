@@ -38,9 +38,7 @@ const Event = ({
     'after:left-0 after:top-[3px]',
     // lg
     'lg:after:top-0',
-    isChecked
-      ? "after:bg-black after:bg-[url('app/assets/check.png')]"
-      : 'after:bg-beige',
+    isChecked ? 'after:bg-black after:check' : 'after:bg-beige',
   ].join(' ')
 
   const event = [

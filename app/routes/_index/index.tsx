@@ -1,8 +1,8 @@
 import Action from './Action'
 import Hero from './Hero'
-import Illustration from './Illustration'
 import News from './News'
 import Roadmap from './Roadmap'
+import Sketch from './Sketch'
 import What from './What'
 import Work from './Work'
 
@@ -14,7 +14,7 @@ const Index = () => {
       <News />
       <Work />
       <Roadmap />
-      <Illustration />
+      <Sketch />
       <Action />
     </>
   )

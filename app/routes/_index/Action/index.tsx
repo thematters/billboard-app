@@ -1,3 +1,4 @@
+import { MAIL_TO } from '~/common/constants'
 import LinkButton from '~/components/Buttons/LinkButton'
 import Crate from '~/components/Crate'
 import IconDown from '~/components/Icons/Down'
@@ -10,7 +11,7 @@ const Action = () => {
         <IconDown className="w-[17px] h-[58px] lg:w-[28px] lg:h-[97px] " />
       </section>
       <Title otherClass="mt-6 lg:mt-10 text-center text-light-green">
-        Now, <br /> create your <br className="block sm:hidden" /> first Ad
+        NOW, <br /> CREATE YOUR <br className="block sm:hidden" /> FIRST AD
       </Title>
       <section className="mt-4 lg:px-20 text-14 lg:text-18">
         Social media platforms have become heavily reliant on the online
@@ -19,11 +20,7 @@ const Action = () => {
         social media companies.
       </section>
       <section className="mt-6 mb-14 lg:mt-16 lg:mb-24 flex-center">
-        <LinkButton
-          color="dim"
-          otherClass="w-[272px] h-[59px]"
-          to="mailto:hi@matters.town"
-        >
+        <LinkButton color="dim" otherClass="w-[272px] h-[59px]" to={MAIL_TO}>
           Contact Us
         </LinkButton>
       </section>

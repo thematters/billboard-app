@@ -3,9 +3,10 @@ import { useEffect, useState, useRef } from 'react'
 
 import Crate from '~/components/Crate'
 
-import illustration from '../../../assets/illustration-bg.png'
+import png from '~/assets/sketch.png'
+import webp from '~/assets/sketch.webp'
 
-const Illustration = () => {
+const Sketch = () => {
   const [height, setHeight] = useState(0)
   const imgRef = useRef<HTMLImageElement>(null)
 
@@ -28,13 +29,16 @@ const Illustration = () => {
       innerStyles={{ height }}
       hasDots
     >
-      <img
-        ref={imgRef}
-        className="absolute w-screen top-0 left-0"
-        src={illustration}
-      />
+      <picture>
+        <source type="image/webp" srcSet={webp} />
+        <img
+          ref={imgRef}
+          className="absolute w-screen top-0 left-0"
+          src={png}
+        />
+      </picture>
     </Crate>
   )
 }
 
-export default Illustration
+export default Sketch

@@ -7,7 +7,6 @@ export default {
       sm: "540px",
       md: "768px",
       lg: "1104px",
-      xl: "1280px",
     },
     colors: {
       black: "#333333",
@@ -36,4 +35,3 @@ export default {
   },
   plugins: [require("tailwind-hamburgers")],
 } satisfies Config
-

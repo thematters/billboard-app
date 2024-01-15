@@ -16,7 +16,7 @@
 
 @layer components {
   .outer {
-    @apply px-4 lg:px-8 xl:px-12;
+    @apply px-4 lg:px-8;
   }
 
   .inner {
@@ -48,7 +48,14 @@
   }
 
   .hero {
-    background: linear-gradient(rgba(33, 33, 33, 0.5), rgba(33, 33, 33, 0.5)), url(app/assets/hero-bg.png);
+    background:
+      linear-gradient(rgba(33, 33, 33, 0.5), rgba(33, 33, 33, 0.5)),
+      url(app/assets/hero.webp),
+      url(app/assets/hero.png);
+  }
+
+  .check {
+    background-image: url(app/assets/check.webp), url(app/assets/check.png);
   }
 }
 

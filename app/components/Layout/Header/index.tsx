@@ -2,7 +2,7 @@ import { NavLink } from '@remix-run/react'
 import _ from 'lodash'
 import { useEffect, useState } from 'react'
 
-import { BREAKPOINTS } from '~/common'
+import { BREAKPOINTS } from '~/common/constants'
 import LinkButton from '~/components/Buttons/LinkButton'
 import IconHamburger from '~/components/Icons/Hamburger'
 import IconLogo from '~/components/Icons/Logo'
