@@ -10,26 +10,23 @@ export default {
     },
     colors: {
       black: "#333333",
+      gray: "#b3b3b3",
       green: "#80AB01",
       white: '#ffffff',
     },
     extend: {
-      borderRadius: {
-        "btn": '4rem',
+      fontFamily: {
+        cyber: ["Saved By Zero", "Space Grotesk", "sans-serif"],
+        space: ["Space Grotesk", "sans-serif"],
       },
       colors: {
-        "beige": "#EDE8D6",
-        "gradient-green": "#2F3E07",
-        "dim-black": "#212121",
-        "light-grey": "#DDDDDD",
-        "light-green": "#C3F432",
-      },
-      fontFamily: {
-        "cyber": ["Saved By Zero", "Space Grotesk", "sans-serif"],
-        "space": ["Space Grotesk", "sans-serif"],
+        beige: "#ede8d6",
+        dim: "#212121",
+        grass: "#c3f432",
+        steam: "#dddddd",
       },
       minWidth: {
-        "device": "375px",
+        main: "375px",
       },
     },
   },

@@ -1,49 +1,41 @@
 import type React from 'react'
 
-interface Props {
+import clsx from 'clsx'
+
+type BaseProps = {
   children?: React.ReactNode
-  color: 'dim' | 'light'
-  outerClass?: string
-  outerStyles?: React.CSSProperties
-  middleClass?: string
-  middleStyles?: React.CSSProperties
-  innerClass?: string
-  innerStyles?: React.CSSProperties
-  hasDots?: boolean
+  customCss?: string
+}
+
+type CrateProps = BaseProps & {
+  hasTopBorder?: boolean
+  hasBottomBorder?: boolean
 }
 
 const Crate = ({
   children,
-  color,
-  outerClass,
-  outerStyles,
-  middleClass,
-  middleStyles,
-  innerClass,
-  innerStyles,
-  hasDots,
-}: Props) => {
-  const isDim = color === 'dim'
-  const outer = ['outer', isDim ? '' : 'bg-beige text-black', outerClass].join(
-    ' '
+  customCss,
+  hasTopBorder,
+  hasBottomBorder,
+}: CrateProps) => {
+  const css = clsx(
+    'px-4 lg:px-8',
+    hasTopBorder && 'b-t-grass',
+    hasBottomBorder && 'b-b-grass',
+    customCss
   )
-
-  const inner = [
-    'inner',
-    isDim ? 'border-x-green' : '',
-    hasDots ? 'dots' : '',
-    innerClass,
-  ].join(' ')
-
-  return (
-    <section className={outer} style={outerStyles}>
-      <section className={middleClass} style={middleStyles}>
-        <section className={inner} style={innerStyles}>
-          {children}
-        </section>
-      </section>
-    </section>
-  )
+  return <section className={css}>{children}</section>
 }
+
+type CrateInnerProps = BaseProps & {
+  hasXBorder?: boolean
+}
+
+const Inner = ({ children, customCss, hasXBorder }: CrateInnerProps) => {
+  const css = clsx('px-4 lg:px-12', hasXBorder && 'b-x-grass', customCss)
+  return <section className={css}>{children}</section>
+}
+
+Crate.Inner = Inner
 
 export default Crate

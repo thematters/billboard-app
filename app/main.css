@@ -4,129 +4,84 @@
 
 @layer base {
   html {
-    font-family: 'Space Grotesk', sans-serif;
     overscroll-behavior-y: none;
-    @apply w-full min-w-device bg-dim-black text-beige overflow-x-hidden;
+    @apply font-space;
+    @apply w-full;
+    @apply overflow-x-hidden;
+    @apply bg-dim text-beige;
   }
 
   header, main, footer {
-    @apply min-w-device;
+    @apply min-w-main;
   }
 }
 
 @layer components {
-  .outer {
-    @apply px-4 lg:px-8;
-  }
 
-  .inner {
-    @apply px-4 lg:px-12;
-  }
-
-  .btn-basis {
-    @apply border border-solid;
-    @apply px-6 py-4 rounded-btn text-lg;
-    @apply transition-all ease-in-out transform duration-500;
-  }
-
-  .btn-dim {
-    @apply bg-gradient-to-r from-gradient-green to-black to-30%;
-    @apply hover:from-black hover:via-gradient-green hover:to-black hover:to-100%;
-    @apply border-green hover:border-light-green;
-    @apply text-white hover:text-light-green;
-  }
-
-  .btn-light {
-    @apply bg-light-green hover:bg-green;
-    @apply border-light-green hover:border-green;
-    @apply text-black font-semibold;
-  }
-  
-  .dots {
-    background-image: radial-gradient(rgba(204, 204, 204, 0.1) 1px, transparent 0.5px);
-    background-size: calc(4 * 1px) calc(4 * 1px);
-  }
-
-  .hero {
-    background:
-      linear-gradient(rgba(33, 33, 33, 0.5), rgba(33, 33, 33, 0.5)),
-      url(app/assets/hero.webp),
-      url(app/assets/hero.png);
-  }
-
-  .check {
-    background-image: url(app/assets/check.webp), url(app/assets/check.png);
-  }
 }
 
 @layer utilities {
-  .flex-center {
+
+  /** flex **/
+  .f-center {
     @apply flex items-center justify-center;
   }
 
-  .flex-center-end {
+  .f-center-end {
     @apply flex items-center justify-end;
   }
 
-  .flex-center-start {
+  .f-center-start {
     @apply flex items-center justify-start;
   }
 
-  .flex-center-between {
+  .f-center-between {
     @apply flex items-center justify-between;
   }
 
-  .flex-start {
-    @apply flex items-start justify-start;
+  /** border **/
+  .b-x-grass {
+    @apply border-x border-grass;
   }
 
-  .border-x-green {
-    @apply border-solid border-x border-green;
+  .b-t-grass {
+    @apply border-t border-grass;
   }
 
-  .border-y-green {
-    @apply border-solid border-y border-green;
+  .b-b-grass {
+    @apply border-b border-grass;
   }
 
-  .border-b-green {
-    @apply border-solid border-b border-green;
+  /** font **/
+  .t-76 {
+    @apply text-[76px] leading-[90px];
   }
 
-  .border-all-green {
-    @apply border-solid border border-green; 
+  .t-36 {
+    @apply text-[36px] leading-[54px];
   }
 
-  .text-76 {
-    font-size: 76px;
-    @apply leading-[90px];
+  .t-28 {
+    @apply text-[28px] leading-[42px];
   }
 
-  .text-36 {
-    @apply text-4xl leading-[54px];
+  .t-20 {
+    @apply text-[20px] leading-[30px];
   }
 
-  .text-28 {
-    font-size: 28px;
-    @apply leading-[42px];
+  .t-18 {
+    @apply text-[18px] leading-[27px]; 
   }
 
-  .text-24 {
-    @apply text-2xl leading-[32px];
+  .t-16 {
+    @apply text-[16px] leading-[24px]; 
   }
 
-  .text-20 {
-    @apply text-xl leading-[30px];
+  .t-14 {
+    @apply text-[14px] leading-[22px]; 
   }
 
-  .text-18 {
-    @apply text-lg leading-[27px];
-  }
-
-  .text-14 {
-    @apply text-sm leading-[22px];
-  }
-
-  .text-12 {
-    @apply text-xs leading-[18px];
+  .t-12 {
+    @apply text-[12px] leading-[18px]; 
   }
 }

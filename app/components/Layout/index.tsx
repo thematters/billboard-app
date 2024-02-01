@@ -1,28 +1,22 @@
 import type React from 'react'
 
-import { useLocation } from '@remix-run/react'
-import { useEffect, useState } from 'react'
-
-import Menu from '~/components/Menu'
+import clsx from 'clsx'
 
 import Footer from './Footer'
 import Header from './Header'
 import Main from './Main'
 
-const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [isActive, setActive] = useState<boolean>(false)
-  const location = useLocation()
+type Props = {
+  children: React.ReactNode
+}
 
-  useEffect(() => {
-    setActive(false)
-  }, [location])
-
+const Layout = ({ children }: Props) => {
+  const css = clsx('relative', 'z-0')
   return (
-    <section className="relative z-0">
-      <Header isActive={isActive} setActive={setActive} />
+    <section className={css}>
+      <Header />
       <Main>{children}</Main>
       <Footer />
-      <Menu isActive={isActive} />
     </section>
   )
 }
