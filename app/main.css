@@ -18,10 +18,69 @@
 
 @layer components {
 
+  .max-limit {
+    @apply lg:mx-auto;
+    @apply lg:max-w-main;
+  }
+
+  /** button **/
+  .btn-base {
+    @apply px-8 py-2;
+    @apply f-center-between;
+    @apply rounded-[60px];
+    @apply font-semibold;
+    @apply transition-all ease-in-out duration-500;
+  }
+
+  .btn-grass {
+    @apply bg-grass hover:bg-lemon;
+    @apply border border-grass hover:border-lemon;
+    @apply text-black;
+  }
+
+  .btn-dim {
+    @apply bg-gradient-to-r from-olive to-black to-30%;
+    @apply hover:from-black hover:via-olive hover:to-black hover:to-100%;
+    @apply border border-green hover:border-grass;
+    @apply text-white hover:text-grass;
+  }
+
+  .menu {
+    @apply bg-dim;
+    @apply w-screen;
+    @apply fixed top-[57px] z-10 overflow-hidden;
+    @apply transition-opacity duration-300;
+  }
+
+  .menu-active {
+    @apply h-[calc(100vh-57px)] opacity-100;
+  }
+
+  .menu-inactive {
+    @apply h-0 opacity-0;
+  }
+
+  .slogan {
+    @apply t-24 md:t-36 lg:t-76;
+    @apply text-grass font-cyber;
+  }
+
+  .slash {
+    background-image: url(app/assets/slash.svg);
+    @apply mx-8 h-[24px];
+    @apply flex grow;
+    @apply hidden lg:flex;
+  }
+
+  .section-title {
+    @apply mb-10;
+    @apply t-24 lg:t-36;
+    @apply text-grass text-center;
+    @apply font-cyber;
+  }
 }
 
 @layer utilities {
-
   /** flex **/
   .f-center {
     @apply flex items-center justify-center;
@@ -39,13 +98,37 @@
     @apply flex items-center justify-between;
   }
 
+  .f-col-center {
+    @apply flex flex-col justify-center;
+  }
+
+  .f-col-between {
+    @apply flex flex-col justify-between;
+  }
+
   /** border **/
+  .b-x-green {
+    @apply border-x border-green;
+  }
+
   .b-x-grass {
     @apply border-x border-grass;
   }
 
+  .b-y-green {
+    @apply border-y border-green;
+  }
+
+  .b-t-green {
+    @apply border-t border-green;
+  }
+
   .b-t-grass {
     @apply border-t border-grass;
+  }
+
+  .b-b-green {
+    @apply border-b border-green;
   }
 
   .b-b-grass {
@@ -63,6 +146,10 @@
 
   .t-28 {
     @apply text-[28px] leading-[42px];
+  }
+
+  .t-24 {
+    @apply text-[24px] leading-[32px];
   }
 
   .t-20 {
@@ -83,5 +170,16 @@
 
   .t-12 {
     @apply text-[12px] leading-[18px]; 
+  }
+
+  /** transition **/
+  .trans-300 {
+    @apply transition duration-300;
+  }
+
+  /** dotted background **/
+  .dots {
+    background-image: radial-gradient(rgba(204, 204, 204, 0.1) 1px, transparent 0.5px);
+    background-size: calc(4 * 1px) calc(4 * 1px);
   }
 }

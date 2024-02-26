@@ -23,7 +23,12 @@ export default {
         beige: "#ede8d6",
         dim: "#212121",
         grass: "#c3f432",
+        lemon: "#b1e41d",
+        olive: "#2f3e07",
         steam: "#dddddd",
+      },
+      maxWidth: {
+        main: "1104px",
       },
       minWidth: {
         main: "375px",

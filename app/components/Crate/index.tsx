@@ -1,13 +1,8 @@
-import type React from 'react'
+import type { ComponentProps } from '~/types'
 
 import clsx from 'clsx'
 
-type BaseProps = {
-  children?: React.ReactNode
-  customCss?: string
-}
-
-type CrateProps = BaseProps & {
+type CrateProps = ComponentProps & {
   hasTopBorder?: boolean
   hasBottomBorder?: boolean
 }
@@ -20,19 +15,42 @@ const Crate = ({
 }: CrateProps) => {
   const css = clsx(
     'px-4 lg:px-8',
-    hasTopBorder && 'b-t-grass',
-    hasBottomBorder && 'b-b-grass',
+    {
+      'b-t-green': hasTopBorder,
+      'b-b-green': hasBottomBorder,
+    },
     customCss
   )
   return <section className={css}>{children}</section>
 }
 
-type CrateInnerProps = BaseProps & {
+type InnerProps = ComponentProps & {
+  hasDots?: boolean
   hasXBorder?: boolean
+  hasXSpacing?: boolean
+  hasYBorder?: boolean
+  hasTopBorder?: boolean
 }
 
-const Inner = ({ children, customCss, hasXBorder }: CrateInnerProps) => {
-  const css = clsx('px-4 lg:px-12', hasXBorder && 'b-x-grass', customCss)
+const Inner = ({
+  children,
+  customCss,
+  hasDots,
+  hasXBorder,
+  hasXSpacing = true,
+  hasYBorder,
+  hasTopBorder,
+}: InnerProps) => {
+  const css = clsx(
+    {
+      'px-4 lg:px-12': hasXSpacing,
+      'b-x-green': hasXBorder,
+      'b-y-green': hasYBorder,
+      'b-t-green': hasTopBorder,
+      dots: hasDots,
+    },
+    customCss
+  )
   return <section className={css}>{children}</section>
 }
 
