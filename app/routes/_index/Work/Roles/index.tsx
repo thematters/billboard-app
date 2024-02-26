@@ -29,16 +29,16 @@ const Roles = () => {
     'md:h-full md:w-full',
     'max-h-[476px] max-w-[584px]',
     'f-center',
-    'mx-auto'
+    'm-auto'
   )
 
   return (
     <section className={css}>
       {/* Roles Illustration */}
-      <SvgRoles customCss={svgCss} width="100%" height="100%" />
+      <SvgRoles customCss={svgCss} width="100%" height="100%" click={click} />
 
       {/* Explanation */}
-      <Slide current={role} items={names} click={click}>
+      <Slide customCss="m-auto" current={role} items={names} click={click}>
         <Slide.Content title="Advertiser" isActive={role === names[0]}>
           Advertisers can reach targeted audiences by using billboard space in
           specific communities, apps, or profiles. They can trade ad space

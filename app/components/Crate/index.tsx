@@ -3,6 +3,7 @@ import type { ComponentProps } from '~/types'
 import clsx from 'clsx'
 
 type CrateProps = ComponentProps & {
+  hasXSpacing?: boolean
   hasTopBorder?: boolean
   hasBottomBorder?: boolean
 }
@@ -10,12 +11,13 @@ type CrateProps = ComponentProps & {
 const Crate = ({
   children,
   customCss,
+  hasXSpacing = true,
   hasTopBorder,
   hasBottomBorder,
 }: CrateProps) => {
   const css = clsx(
-    'px-4 lg:px-8',
     {
+      'px-4 lg:px-8': hasXSpacing,
       'b-t-green': hasTopBorder,
       'b-b-green': hasBottomBorder,
     },

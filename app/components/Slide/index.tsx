@@ -17,10 +17,12 @@ const Slide = ({ children, customCss, current, items, click }: SlideProps) => {
 
   const css = clsx(
     'p-6',
+    'h-fit',
     'f-col-between',
     'bg-black',
     'border border-green',
-    'rounded-3xl'
+    'rounded-3xl',
+    customCss
   )
 
   const btnsCss = clsx(

@@ -17,7 +17,6 @@
 }
 
 @layer components {
-
   .max-limit {
     @apply lg:mx-auto;
     @apply lg:max-w-main;
@@ -77,6 +76,10 @@
     @apply t-24 lg:t-36;
     @apply text-grass text-center;
     @apply font-cyber;
+  }
+
+  .check {
+    background-image: url(app/assets/check.svg);
   }
 }
 
