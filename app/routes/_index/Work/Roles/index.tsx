@@ -28,7 +28,6 @@ const Roles = () => {
     'h-[253px] w-[311px]',
     'md:h-full md:w-full',
     'max-h-[476px] max-w-[584px]',
-    'f-center',
     'm-auto'
   )
 

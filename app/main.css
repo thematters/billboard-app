@@ -81,6 +81,10 @@
   .check {
     background-image: url(app/assets/check.svg);
   }
+
+  .sketch {
+    background-image: url(app/assets/sketch.webp), url(app/assets/sketch.png);
+  }
 }
 
 @layer utilities {
