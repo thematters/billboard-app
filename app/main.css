@@ -113,6 +113,10 @@
     @apply flex flex-col justify-between;
   }
 
+  .f-start {
+    @apply flex items-start;
+  }
+
   /** border **/
   .b-x-green {
     @apply border-x border-green;
@@ -177,6 +181,19 @@
 
   .t-12 {
     @apply text-[12px] leading-[18px]; 
+  }
+
+  /** Visibility **/
+  .md-shown {
+    @apply hidden md:block;
+  }
+
+  .lg-shown {
+    @apply hidden lg:block;
+  }
+
+  .lg-hidden {
+    @apply block lg:hidden;
   }
 
   /** transition **/

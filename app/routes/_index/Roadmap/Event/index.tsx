@@ -2,7 +2,7 @@ import type { ComponentProps } from '~/types'
 
 import clsx from 'clsx'
 
-type EventProps = ComponentProps & {
+type Props = ComponentProps & {
   isThick?: boolean
   isChecked?: boolean
   hasChecker?: boolean
@@ -14,7 +14,7 @@ const Event = ({
   isThick,
   isChecked,
   hasChecker,
-}: EventProps) => {
+}: Props) => {
   const lineCss = clsx(
     "before:absolute before:bg-beige before:content-['']",
     // sm ~ md

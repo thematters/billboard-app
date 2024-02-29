@@ -2,11 +2,11 @@ import type { SVGProps } from '~/types'
 
 import { memo } from 'react'
 
-type RolesProps = SVGProps & {
+type Props = SVGProps & {
   click: (value: string | null) => void
 }
 
-const Roles = ({ customCss, width = 584, height = 476, click }: RolesProps) => (
+const Roles = ({ customCss, width = 584, height = 476, click }: Props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
