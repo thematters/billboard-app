@@ -4,10 +4,14 @@ import LinkButton from '~/components/Buttons/Link'
 import Crate from '~/components/Crate'
 import SvgDown from '~/components/Svgs/Down'
 
-const About = () => {
-  const innerCss = clsx('pt-1.5', 'pb-10')
+import Sketch from './Sketch'
 
-  const svgCss = clsx('mx-auto', 'text-green')
+const About = () => {
+  const innerCss = clsx('pb-10 lg:pb-40', 'relative')
+
+  const css = clsx('pt-2', 'max-limit')
+
+  const downCss = clsx('mx-auto', 'text-green')
 
   const titleCss = clsx('mt-10', 'section-title')
 
@@ -16,9 +20,12 @@ const About = () => {
   return (
     <Crate>
       <Crate.Inner customCss={innerCss} hasDots hasXBorder>
-        <section className="max-limit">
+        {/* Sketch */}
+        <Sketch />
+
+        <section className={css}>
           {/* Down Arrow */}
-          <SvgDown customCss={svgCss} />
+          <SvgDown customCss={downCss} />
 
           {/* Title */}
           <section className={titleCss}>

@@ -2,17 +2,18 @@ import clsx from 'clsx'
 
 import Crate from '~/components/Crate'
 
+import Deco from './Deco'
 import Roles from './Roles'
 
 const Work = () => {
-  const innerCss = clsx('py-10 lg:py-[4.5rem]')
+  const css = clsx('pb-12 pt-10 lg:py-[4.rem]', 'max-limit')
 
   const descCss = clsx('t-14 lg:t-20')
 
   return (
     <Crate>
-      <Crate.Inner customCss={innerCss} hasDots hasXBorder hasTopBorder>
-        <section className="max-limit">
+      <Crate.Inner hasDots hasXBorder hasTopBorder>
+        <section className={css}>
           {/* Title */}
           <section className="section-title">HOW IT WORKS</section>
 
@@ -30,6 +31,9 @@ const Work = () => {
           {/* Roles */}
           <Roles />
         </section>
+
+        {/* Decorator */}
+        <Deco />
       </Crate.Inner>
     </Crate>
   )

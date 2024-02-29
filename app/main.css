@@ -82,8 +82,14 @@
     background-image: url(app/assets/check.svg);
   }
 
+  .deco {
+    background-image: url(app/assets/deco.svg);
+    @apply bg-cover bg-center bg-no-repeat;
+  }
+
   .sketch {
-    background-image: url(app/assets/sketch.webp), url(app/assets/sketch.png);
+    background-image: url(app/assets/sketch.svg);
+    @apply bg-cover bg-center bg-no-repeat;
   }
 }
 
