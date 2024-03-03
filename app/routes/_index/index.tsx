@@ -1,5 +1,3 @@
-import type { ComponentProps } from '~/types'
-
 import About from './About'
 import Hero from './Hero'
 import History from './History'

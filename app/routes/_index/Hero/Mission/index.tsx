@@ -2,8 +2,8 @@ import clsx from 'clsx'
 
 import LinkButton from '~/components/Buttons/Link'
 
-import png from '~/assets/hero.png'
-import webp from '~/assets/hero.webp'
+import png from '~/assets/bot.png'
+import webp from '~/assets/bot.webp'
 
 const Mission = () => {
   const css = clsx(

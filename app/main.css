@@ -82,13 +82,21 @@
     background-image: url(app/assets/check.svg);
   }
 
+  .hero {
+    background:
+      linear-gradient(rgba(33, 33, 33, 0.25), rgba(33, 33, 33, 0.25)),
+      url(app/assets/hero.webp),
+      url(app/assets/hero.png);
+    @apply bg-cover bg-center bg-no-repeat;
+  }
+
   .deco {
     background-image: url(app/assets/deco.svg);
     @apply bg-cover bg-center bg-no-repeat;
   }
 
   .sketch {
-    background-image: url(app/assets/sketch.svg);
+    background-image: url(app/assets/sketch.webp), url(app/assets/sketch.png);
     @apply bg-cover bg-center bg-no-repeat;
   }
 }
