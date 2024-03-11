@@ -1,10 +1,10 @@
 import clsx from 'clsx'
 
 const Slogan = () => {
-  const css = clsx('pt-8', 'slogan')
+  const baseCss = clsx('pt-8', 'slogan')
   return (
     <section>
-      <h1 className={css}>
+      <h1 className={baseCss}>
         ON-CHAIN BILLBOARD
         <br />
         TO DEMOCRATIZE THE ATTENTION ECONOMY

@@ -1,8 +1,8 @@
-import type { ComponentProps } from '~/types'
+import type { ComponentProps } from '@types'
 
 import clsx from 'clsx'
 
-import SvgArrow from '~/components/Svgs/Arrow'
+import SvgArrow from '@svgs/Arrow'
 
 type SlideProps = ComponentProps & {
   current: string | null
@@ -10,19 +10,19 @@ type SlideProps = ComponentProps & {
   click: (value: string | null) => void
 }
 
-const Slide = ({ children, customCss, current, items, click }: SlideProps) => {
+const Slide = ({ children, css, current, items, click }: SlideProps) => {
   const index = current === null ? -1 : items.indexOf(current)
   const prev = index === 0 || index < 0 ? null : items[index - 1]
   const next = index === items.length - 1 || index < 0 ? null : items[index + 1]
 
-  const css = clsx(
+  const baseCss = clsx(
     'p-6',
     'h-fit',
     'f-col-between',
     'bg-black',
     'border border-green',
     'rounded-3xl',
-    customCss
+    css
   )
 
   const btnsCss = clsx(
@@ -44,17 +44,17 @@ const Slide = ({ children, customCss, current, items, click }: SlideProps) => {
   })
 
   return (
-    <section className={css}>
+    <section className={baseCss}>
       {/* Content */}
       <section>{children}</section>
 
       {/* Buttons */}
       <section className={btnsCss}>
         <section onClick={() => click(next)}>
-          <SvgArrow customCss={arrowRightCss} />
+          <SvgArrow css={arrowRightCss} />
         </section>
         <section className="mr-6" onClick={() => click(prev)}>
-          <SvgArrow customCss={arrowLeftCss} />
+          <SvgArrow css={arrowLeftCss} />
         </section>
       </section>
     </section>
@@ -66,8 +66,8 @@ type ContentProps = ComponentProps & {
   isActive: boolean
 }
 
-const Content = ({ children, customCss, title, isActive }: ContentProps) => {
-  const css = clsx('overflow-x-hidden', 'trans-300', {
+const Content = ({ children, css, title, isActive }: ContentProps) => {
+  const baseCss = clsx('overflow-x-hidden', 'trans-300', {
     'h-full opacity-100': isActive,
     'h-0 opacity-0': !isActive,
   })
@@ -77,7 +77,7 @@ const Content = ({ children, customCss, title, isActive }: ContentProps) => {
   const contentCss = clsx('t-14 lg:t-18', 'mt-1 lg:mt-6')
 
   return (
-    <section className={css}>
+    <section className={baseCss}>
       <h4 className={titleCss}>{title}</h4>
       <section className={contentCss}>{children}</section>
     </section>

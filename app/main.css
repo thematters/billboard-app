@@ -44,6 +44,11 @@
     @apply text-white hover:text-grass;
   }
 
+  .logo {
+    @apply h-[15px] w-[120px];
+    @apply lg:h-[19px] lg:w-[200px];
+  }
+
   .menu {
     @apply bg-dim;
     @apply w-screen;
@@ -57,6 +62,30 @@
 
   .menu-inactive {
     @apply h-0 opacity-0;
+  }
+
+  .menu-spacing {
+    @apply pt-[57px] lg:pt-[106px];
+  }
+
+  .modal-overlay {
+    @apply fixed content-[''] z-20;
+    @apply top-0 left-0 right-0 bottom-0;
+    @apply h-screen;
+
+    @apply before:fixed before:content-[''] before:z-20;
+    @apply before:top-0 before:left-0 before:right-0 before:bottom-0;
+    @apply before:h-screen;
+    @apply before:bg-dark before:opacity-60;
+  }
+
+  .modal {
+    @apply absolute z-20;
+    @apply px-4 lg:px-5 py-4;
+    @apply bg-black;
+    @apply h-4/5 sm:h-fit;
+    @apply w-screen sm:max-w-modal;
+    @apply rounded-t-lg sm:rounded-lg;
   }
 
   .slogan {
@@ -131,6 +160,10 @@
     @apply flex items-start;
   }
 
+  .f-end-center {
+    @apply flex items-end justify-center;
+  }
+
   /** border **/
   .b-x-green {
     @apply border-x border-green;
@@ -198,12 +231,24 @@
   }
 
   /** Visibility **/
+  .sm-shown {
+    @apply hidden sm:block;
+  }
+
   .md-shown {
     @apply hidden md:block;
   }
 
   .lg-shown {
     @apply hidden lg:block;
+  }
+
+  .sm-hidden {
+    @apply block sm:hidden;
+  }
+
+  .md-hidden {
+    @apply block md:hidden;
   }
 
   .lg-hidden {
@@ -219,5 +264,12 @@
   .dots {
     background-image: radial-gradient(rgba(204, 204, 204, 0.1) 1px, transparent 0.5px);
     background-size: calc(4 * 1px) calc(4 * 1px);
+  }
+
+  /* one line */
+  .one-line {
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+    overflow: hidden;
   }
 }

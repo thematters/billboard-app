@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import Crate from '~/components/Crate'
+import Crate from '@components/Crate'
 
 import Auction from './Auction'
 import Chart from './Chart'
@@ -18,7 +18,7 @@ const What = () => {
     <>
       {/* Title */}
       <Crate>
-        <Crate.Inner customCss="py-4" hasDots hasXBorder hasYBorder>
+        <Crate.Inner css="py-4" hasDots hasXBorder hasYBorder>
           <section className={titleCss}>
             <span className={numberCss}>002</span>
             <div className="slash"></div>

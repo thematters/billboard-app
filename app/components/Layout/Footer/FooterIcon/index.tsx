@@ -1,17 +1,17 @@
-import type { ComponentProps } from '~/types'
+import type { ComponentProps } from '@types'
 
 import { NavLink } from '@remix-run/react'
 import clsx from 'clsx'
 
-import SvgMail from '~/components/Svgs/Mail'
-import SvgPaper from '~/components/Svgs/Paper'
+import SvgMail from '@svgs/Mail'
+import SvgPaper from '@svgs/Paper'
 
 type Props = ComponentProps & {
   type: 'mail' | 'paper'
 }
 
-const FooterIcon = ({ children, customCss, type }: Props) => {
-  const css = clsx(
+const FooterIcon = ({ children, css, type }: Props) => {
+  const baseCss = clsx(
     'p-1 md:p-2.5',
     'w-fit',
     'bg-grass',
@@ -19,7 +19,7 @@ const FooterIcon = ({ children, customCss, type }: Props) => {
     'rounded-lg'
   )
   return (
-    <section className={css}>
+    <section className={baseCss}>
       {type === 'mail' && <SvgMail />}
       {type === 'paper' && <SvgPaper />}
     </section>

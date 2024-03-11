@@ -1,9 +1,9 @@
 import clsx from 'clsx'
 
-import SvgProtocol from '~/components/Svgs/Protocol'
+import SvgProtocol from '@svgs/Protocol'
 
 const Protocol = () => {
-  const css = clsx(
+  const baseCss = clsx(
     'mt-4 md:mt-10',
     'mb-10',
     'grid grid-cols-1 md:grid-cols-3 ',
@@ -26,8 +26,8 @@ const Protocol = () => {
   const pCss = clsx('t-14 lg:t-20', 'mt-6')
 
   return (
-    <section className={css}>
-      <SvgProtocol customCss={svgCss} width="auto" height="auto" />
+    <section className={baseCss}>
+      <SvgProtocol css={svgCss} width="auto" height="auto" />
       <section className={descCss}>
         <h4 className={h4Css}>
           A protocol within an open network that allows for seamless integration

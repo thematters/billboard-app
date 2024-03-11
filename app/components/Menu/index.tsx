@@ -1,17 +1,20 @@
-import type { ComponentProps } from '~/types'
+import type { ComponentProps } from '@types'
 
 import { NavLink } from '@remix-run/react'
 import clsx from 'clsx'
 
-import { MAIL_TO } from '~/common/constants'
-import Crate from '~/components/Crate'
-import SvgLink from '~/components/Svgs/Link'
+import Crate from '@components/Crate'
+import { MAIL } from '@constants'
+import useLockScroll from '@hooks/useLockScroll'
+import SvgLink from '@svgs/Link'
 
 type Props = ComponentProps & {
   isMenuActive: boolean
 }
 
-const Menu = ({ children, customCss, isMenuActive }: Props) => {
+const Menu = ({ children, css, isMenuActive }: Props) => {
+  useLockScroll(isMenuActive)
+
   const crateCss = clsx('lg:hidden', 'menu', {
     'menu-active': isMenuActive,
     'menu-inactive': !isMenuActive,
@@ -24,30 +27,30 @@ const Menu = ({ children, customCss, isMenuActive }: Props) => {
 
   const liCss = clsx('p-4', 't-14', 'b-b-green', 'text-white hover:text-grass')
 
-  const aCss = clsx('w-full', 'f-center-between')
+  const linkCss = clsx('w-full', 'f-center-between')
 
   return (
-    <Crate customCss={crateCss}>
-      <Crate.Inner customCss={innerCss} hasDots hasXBorder hasXSpacing={false}>
+    <Crate css={crateCss}>
+      <Crate.Inner css={innerCss} hasDots hasXBorder hasXSpacing={false}>
         <nav className="list-none">
           <li className={liCss}>
-            <NavLink className={aCss} to="/" target="_blank">
+            <NavLink className={linkCss} to="/" target="_blank">
               WHITE PAPER
               <SvgLink />
             </NavLink>
           </li>
           <li className={liCss}>
-            <NavLink className={aCss} to="/showcase">
+            <NavLink className={linkCss} to="/showcase">
               SHOWCASE
             </NavLink>
           </li>
           <li className={liCss}>
-            <NavLink className={aCss} to="/claim">
+            <NavLink className={linkCss} to="/claim">
               CLAIM
             </NavLink>
           </li>
           <li className={liCss}>
-            <NavLink className={aCss} to={MAIL_TO}>
+            <NavLink className={linkCss} to={MAIL}>
               CONTACT US
             </NavLink>
           </li>

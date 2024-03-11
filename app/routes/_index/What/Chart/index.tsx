@@ -1,9 +1,9 @@
 import clsx from 'clsx'
 
-import SvgChart from '~/components/Svgs/Chart'
+import SvgChart from '@svgs/Chart'
 
 const Chart = () => {
-  const css = clsx(
+  const baseCss = clsx(
     'mt-10',
     'mb-4 md:mb-10',
     'grid grid-cols-1 md:grid-cols-3 ',
@@ -25,8 +25,8 @@ const Chart = () => {
   const pCss = clsx('t-14 lg:t-20', 'mt-6')
 
   return (
-    <section className={css}>
-      <SvgChart customCss={svgCss} width="auto" height="auto" />
+    <section className={baseCss}>
+      <SvgChart css={svgCss} width="auto" height="auto" />
       <section className={descCss}>
         <h4 className={h4Css}>
           Every billboard NFT is continuously auctioned under the Harberger Tax,

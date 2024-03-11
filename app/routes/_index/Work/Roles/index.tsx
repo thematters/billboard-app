@@ -1,9 +1,9 @@
 import clsx from 'clsx'
 import { useState } from 'react'
 
-import Crate from '~/components/Crate'
-import Slide from '~/components/Slide'
-import SvgRoles from '~/components/Svgs/Roles'
+import Crate from '@components/Crate'
+import Slide from '@components/Slide'
+import SvgRoles from '@svgs/Roles'
 
 const Roles = () => {
   const names = ['advertiser', 'billboard', 'tax', 'treasury', 'funding']
@@ -17,7 +17,7 @@ const Roles = () => {
     setRole(value)
   }
 
-  const css = clsx(
+  const baseCss = clsx(
     'mt-10',
     'grid grid-cols-1 lg:grid-cols-2',
     'gap-x-0 lg:gap-x-10',
@@ -32,12 +32,12 @@ const Roles = () => {
   )
 
   return (
-    <section className={css}>
+    <section className={baseCss}>
       {/* Roles Illustration */}
-      <SvgRoles customCss={svgCss} width="100%" height="100%" click={click} />
+      <SvgRoles css={svgCss} width="100%" height="100%" click={click} />
 
       {/* Explanation */}
-      <Slide customCss="m-auto" current={role} items={names} click={click}>
+      <Slide css="m-auto" current={role} items={names} click={click}>
         <Slide.Content title="Advertiser" isActive={role === names[0]}>
           Advertisers can reach targeted audiences by using billboard space in
           specific communities, apps, or profiles. They can trade ad space

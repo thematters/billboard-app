@@ -1,14 +1,14 @@
 import { NavLink } from '@remix-run/react'
-import _ from 'lodash'
 import clsx from 'clsx'
+import _ from 'lodash'
 import { useEffect } from 'react'
 
-import { BREAKPOINTS } from '~/common/constants'
-import LinkButton from '~/components/Buttons/Link'
-import Logo from '~/components/Buttons/Logo'
-import Crate from '~/components/Crate'
-import Hamburger from '~/components/Hamburger'
-import SvgLink from '~/components/Svgs/Link'
+import { BREAKPOINTS } from '@constants'
+import LinkButton from '@components/Button/Link'
+import Logo from '@components/Button/Logo'
+import Crate from '@components/Crate'
+import Hamburger from '@components/Hamburger'
+import SvgLink from '@svgs/Link'
 
 type Props = {
   isMenuActive: boolean
@@ -36,19 +36,19 @@ const Header = ({ isMenuActive, setMenuActive }: Props) => {
   const click = () => setMenuActive(!isMenuActive)
 
   return (
-    <header className={headCss}>
+    <section className={headCss}>
       <Crate hasBottomBorder>
-        <Crate.Inner customCss={innerCss}>
+        <Crate.Inner css={innerCss}>
           {/* Billboard Logo */}
           <Logo />
 
           {/* Nav Menu */}
           <section className={navCss}>
-            <LinkButton color="dim" customCss="mr-4" to="/">
+            <LinkButton color="dim" css="mr-4" to="/">
               WHITE PAPER
-              <SvgLink customCss="ml-2" />
+              <SvgLink css="ml-2" />
             </LinkButton>
-            <LinkButton color="grass" customCss="mr-4" to="/showcase">
+            <LinkButton color="grass" css="mr-4" to="/showcase">
               SHOWCASE
             </LinkButton>
             <LinkButton color="grass" to="/claim">
@@ -62,7 +62,7 @@ const Header = ({ isMenuActive, setMenuActive }: Props) => {
           </section>
         </Crate.Inner>
       </Crate>
-    </header>
+    </section>
   )
 }
 

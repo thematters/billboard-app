@@ -1,9 +1,9 @@
 import clsx from 'clsx'
 
-import SvgRevenue from '~/components/Svgs/Revenue'
+import SvgRevenue from '@svgs/Revenue'
 
 const Revenue = () => {
-  const css = clsx(
+  const baseCss = clsx(
     'my-4 md:my-10',
     'grid grid-cols-1 md:grid-cols-3 ',
     'gap-x-0 md:gap-x-10',
@@ -25,8 +25,8 @@ const Revenue = () => {
   const pCss = clsx('t-14 lg:t-20', 'mt-6')
 
   return (
-    <section className={css}>
-      <SvgRevenue customCss={svgCss} width="auto" height="auto" />
+    <section className={baseCss}>
+      <SvgRevenue css={svgCss} width="auto" height="auto" />
       <section className={descCss}>
         <h4 className={h4Css}>
           The tax revenue from billboards is distributed to creators

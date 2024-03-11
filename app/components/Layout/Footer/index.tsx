@@ -1,14 +1,15 @@
 import { NavLink } from '@remix-run/react'
 import clsx from 'clsx'
 
-import Crate from '~/components/Crate'
-import SvgChevron from '~/components/Svgs/Chevron'
-import SvgDiscord from '~/components/Svgs/Discord'
-import SvgFacebook from '~/components/Svgs/Facebook'
-import SvgInstagram from '~/components/Svgs/Instagram'
-import SvgLinkedin from '~/components/Svgs/Linkedin'
-import SvgMatters from '~/components/Svgs/Matters'
-import SvgX from '~/components/Svgs/X'
+import Crate from '@components/Crate'
+import { MAIL } from '@constants'
+import SvgChevron from '@svgs/Chevron'
+import SvgDiscord from '@svgs/Discord'
+import SvgFacebook from '@svgs/Facebook'
+import SvgInstagram from '@svgs/Instagram'
+import SvgLinkedin from '@svgs/Linkedin'
+import SvgMatters from '@svgs/Matters'
+import SvgX from '@svgs/X'
 
 import FooterIcon from './FooterIcon'
 import FooterItem from './FooterItem'
@@ -17,7 +18,7 @@ import SocialItem from './SocialItem'
 const Footer = () => {
   const innerCss = clsx('lg:py-15 py-10')
 
-  const css = clsx(
+  const baseCss = clsx(
     'max-limit',
     'grid grid-cols-2 lg:grid-cols-3',
     'gap-x-6 md:gap-x-20'
@@ -43,11 +44,11 @@ const Footer = () => {
   return (
     <footer>
       <Crate hasTopBorder>
-        <Crate.Inner customCss={innerCss}>
-          <section className={css}>
+        <Crate.Inner css={innerCss}>
+          <section className={baseCss}>
             {/* Contact */}
             <FooterItem
-              to="mailto:hi@matters.town"
+              to={MAIL}
               type="mail"
               title="Contact Us"
               desc="Email us to own your Billboards"

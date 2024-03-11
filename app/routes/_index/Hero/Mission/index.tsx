@@ -1,15 +1,16 @@
 import clsx from 'clsx'
 
-import LinkButton from '~/components/Buttons/Link'
+import LinkButton from '@components/Button/Link'
 
-import png from '~/assets/bot.png'
-import webp from '~/assets/bot.webp'
+import png from '@assets/bot.png'
+import webp from '@assets/bot.webp'
 
 const Mission = () => {
-  const css = clsx(
+  const baseCss = clsx(
     'max-limit',
     'mt-10 lg:mt-32',
-    'grid grid-cols-1 lg:grid-cols-2 lg:gap-10'
+    'grid grid-cols-1 lg:grid-cols-2',
+    'lg:gap-10'
   )
 
   const descCss = clsx('t-14 lg:t-20', 'font-normal')
@@ -21,7 +22,7 @@ const Mission = () => {
   const imgContainerCss = clsx('lg:absolute', 'lg:-top-[160px]', 'lg:z-1')
 
   return (
-    <section className={css}>
+    <section className={baseCss}>
       <section className="lg:mb-10">
         <section className={descCss}>
           Our mission is to develop an open, privacy-preserving,
@@ -30,7 +31,7 @@ const Mission = () => {
           economy ecosystem.
         </section>
         <section className={btnsCss}>
-          <LinkButton customCss="mr-6" color="dim" to="/showcase">
+          <LinkButton css="mr-6" color="dim" to="/showcase">
             SHOWCASE
           </LinkButton>
           <LinkButton color="grass" to="/claim">

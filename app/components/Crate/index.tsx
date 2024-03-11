@@ -1,4 +1,4 @@
-import type { ComponentProps } from '~/types'
+import type { ComponentProps } from '@types'
 
 import clsx from 'clsx'
 
@@ -10,20 +10,20 @@ type CrateProps = ComponentProps & {
 
 const Crate = ({
   children,
-  customCss,
+  css,
   hasXSpacing = true,
   hasTopBorder,
   hasBottomBorder,
 }: CrateProps) => {
-  const css = clsx(
+  const baseCss = clsx(
     {
       'px-4 lg:px-8': hasXSpacing,
       'b-t-green': hasTopBorder,
       'b-b-green': hasBottomBorder,
     },
-    customCss
+    css
   )
-  return <section className={css}>{children}</section>
+  return <section className={baseCss}>{children}</section>
 }
 
 type InnerProps = ComponentProps & {
@@ -36,14 +36,14 @@ type InnerProps = ComponentProps & {
 
 const Inner = ({
   children,
-  customCss,
+  css,
   hasDots,
   hasXBorder,
   hasXSpacing = true,
   hasYBorder,
   hasTopBorder,
 }: InnerProps) => {
-  const css = clsx(
+  const baseCss = clsx(
     {
       'px-4 lg:px-12': hasXSpacing,
       'b-x-green': hasXBorder,
@@ -51,9 +51,9 @@ const Inner = ({
       'b-t-green': hasTopBorder,
       dots: hasDots,
     },
-    customCss
+    css
   )
-  return <section className={css}>{children}</section>
+  return <section className={baseCss}>{children}</section>
 }
 
 Crate.Inner = Inner

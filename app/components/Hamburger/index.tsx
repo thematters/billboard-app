@@ -5,7 +5,7 @@ type Props = {
 }
 
 const Hamburger = ({ isMenuActive }: Props) => {
-  const css = clsx('h-6 w-6', 'f-center flex-col', 'cursor-pointer')
+  const baseCss = clsx('h-6 w-6', 'f-center flex-col', 'cursor-pointer')
 
   const barCss = clsx('h-0.5 w-6', 'bg-white', 'rounded', 'trans-300')
 
@@ -23,7 +23,7 @@ const Hamburger = ({ isMenuActive }: Props) => {
   })
 
   return (
-    <div className={css}>
+    <div className={baseCss}>
       <div className={barTopCss}></div>
       <div className={barMiddleCss}></div>
       <div className={barBottomCss}></div>

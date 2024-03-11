@@ -1,14 +1,14 @@
 import clsx from 'clsx'
 
-import SvgCross from '~/components/Svgs/Cross'
+import SvgCross from '@svgs/Cross'
 
 const Decorator = () => {
-  const css = clsx('px-2', 'pt-6', 'f-center-between', 'text-green')
+  const baseCss = clsx('px-2', 'pt-6', 'f-center-between', 'text-green')
 
   const lineCss = clsx('mx-4', 'w-full', 'b-t-green')
 
   return (
-    <section className={css}>
+    <section className={baseCss}>
       <SvgCross />
       <div className={lineCss} />
       <SvgCross />

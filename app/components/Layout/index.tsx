@@ -1,20 +1,26 @@
-import type React from 'react'
-import type { ComponentProps } from '~/types'
+import type { ComponentProps } from '@types'
 
+import { useLocation } from '@remix-run/react'
 import clsx from 'clsx'
 import { useEffect, useState } from 'react'
 
-import Menu from '~/components/Menu'
+import Menu from '@components/Menu'
+
 import Footer from './Footer'
 import Header from './Header'
 import Main from './Main'
 
-const Layout = ({ children }: ComponentProps) => {
+const Layout = ({ children, css }: ComponentProps) => {
   const [isMenuActive, setMenuActive] = useState<boolean>(false)
+  const location = useLocation()
 
-  const css = clsx('relative', 'z-0')
+  useEffect(() => {
+    setMenuActive(false)
+  }, [location])
+
+  const baseCss = clsx('relative', 'z-0', css)
   return (
-    <section className={css}>
+    <section className={baseCss}>
       <Header isMenuActive={isMenuActive} setMenuActive={setMenuActive} />
       <Main>{children}</Main>
       <Footer />

@@ -1,15 +1,15 @@
 import clsx from 'clsx'
 
-import LinkButton from '~/components/Buttons/Link'
-import Crate from '~/components/Crate'
-import SvgDown from '~/components/Svgs/Down'
+import LinkButton from '@components/Button/Link'
+import Crate from '@components/Crate'
+import SvgDown from '@svgs/Down'
 
 import Sketch from './Sketch'
 
 const About = () => {
   const innerCss = clsx('pb-10 lg:pb-40', 'relative')
 
-  const css = clsx('pt-2', 'max-limit')
+  const baseCss = clsx('pt-2', 'max-limit')
 
   const downCss = clsx('mx-auto', 'text-green')
 
@@ -19,13 +19,13 @@ const About = () => {
 
   return (
     <Crate>
-      <Crate.Inner customCss={innerCss} hasDots hasXBorder>
+      <Crate.Inner css={innerCss} hasDots hasXBorder>
         {/* Sketch */}
         <Sketch />
 
-        <section className={css}>
+        <section className={baseCss}>
           {/* Down Arrow */}
-          <SvgDown customCss={downCss} />
+          <SvgDown css={downCss} />
 
           {/* Title */}
           <section className={titleCss}>
@@ -40,11 +40,7 @@ const About = () => {
             Internet, Web3.
           </section>
 
-          <LinkButton
-            customCss={btnCss}
-            color="dim"
-            to="https://matters-lab.io/"
-          >
+          <LinkButton css={btnCss} color="dim" to="https://matters-lab.io/">
             Visit Website
           </LinkButton>
         </section>

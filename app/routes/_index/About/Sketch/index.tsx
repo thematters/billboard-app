@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 
 const Sketch = () => {
-  const css = clsx(
+  const baseCss = clsx(
     'relative',
     'h-[250px] lg:h-[470px]',
     'h-min-[250px] lg:h-max-[470px]'
@@ -15,7 +15,7 @@ const Sketch = () => {
   )
 
   return (
-    <section className={css}>
+    <section className={baseCss}>
       <section className={bgCss} />
     </section>
   )

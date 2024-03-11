@@ -1,9 +1,9 @@
 import clsx from 'clsx'
 
-import SvgAuction from '~/components/Svgs/Auction'
+import SvgAuction from '@svgs/Auction'
 
 const Auction = () => {
-  const css = clsx(
+  const baseCss = clsx(
     'my-4 md:my-10',
     'grid grid-cols-1 md:grid-cols-3 ',
     'gap-x-0 md:gap-x-10',
@@ -24,8 +24,8 @@ const Auction = () => {
   const pCss = clsx('t-14 lg:t-20', 'mt-6')
 
   return (
-    <section className={css}>
-      <SvgAuction customCss={svgCss} width="auto" height="auto" />
+    <section className={baseCss}>
+      <SvgAuction css={svgCss} width="auto" height="auto" />
       <section className={descCss}>
         <h4 className={h4Css}>
           Creators can generate higher direct income through continuous NFT

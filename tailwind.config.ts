@@ -21,19 +21,24 @@ export default {
       },
       colors: {
         beige: "#ede8d6",
+        dark: '#000000',
         dim: "#212121",
         grass: "#c3f432",
         lemon: "#b1e41d",
         olive: "#2f3e07",
         steam: "#dddddd",
       },
+      width: {
+        modal: "375px",
+      },
       maxWidth: {
         main: "1104px",
+        modal: "375px",
       },
       minWidth: {
         main: "375px",
       },
     },
   },
-  plugins: [require("tailwind-hamburgers")],
+  plugins: [],
 } satisfies Config

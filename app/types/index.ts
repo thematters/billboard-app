@@ -1,10 +1,10 @@
 export type ComponentProps = {
   children?: React.ReactNode
-  customCss?: string
+  css?: string
 }
 
 export type SVGProps = {
-  customCss?: string
+  css?: string
   width?: number | string
   height?: number | string
 }

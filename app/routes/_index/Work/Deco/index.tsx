@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 
 const Deco = () => {
-  const css = clsx(
+  const baseCss = clsx(
     'relative',
     'h-[60px] lg:h-[120px]',
     'h-min-[60px] lg:h-max-[120px]'
@@ -15,7 +15,7 @@ const Deco = () => {
   )
 
   return (
-    <section className={css}>
+    <section className={baseCss}>
       <section className={bgCss} />
     </section>
   )

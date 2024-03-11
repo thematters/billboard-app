@@ -1,9 +1,9 @@
-import type { ComponentProps } from '~/types'
+import type { ComponentProps } from '@types'
 
 import { NavLink } from '@remix-run/react'
 import clsx from 'clsx'
 
-import SvgChevron from '~/components/Svgs/Chevron'
+import SvgChevron from '@svgs/Chevron'
 
 import FooterIcon from '../FooterIcon'
 
@@ -14,8 +14,8 @@ type Props = ComponentProps & {
   desc: string
 }
 
-const FooterItem = ({ children, customCss, to, type, title, desc }: Props) => {
-  const css = clsx('relative', 'f-center lg:f-start')
+const FooterItem = ({ children, css, to, type, title, desc }: Props) => {
+  const baseCss = clsx('relative', 'f-center lg:f-start')
 
   const itemCss = clsx('pl-4', 'grow')
 
@@ -30,12 +30,12 @@ const FooterItem = ({ children, customCss, to, type, title, desc }: Props) => {
   )
 
   return (
-    <NavLink className={css} to={to}>
+    <NavLink className={baseCss} to={to}>
       <FooterIcon type={type} />
       <section className={itemCss}>
         <section className={titleCss}>
           {title}
-          <SvgChevron customCss="md-shown" />
+          <SvgChevron css="md-shown" />
         </section>
         <p className={descCss}>{desc}</p>
       </section>
