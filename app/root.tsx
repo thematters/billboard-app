@@ -25,6 +25,7 @@ export const loader = async () => {
     billboardAddress: process.env.BILLBOARD_ADDRESS,
     billboardRegistryAddress: process.env.BILLBOARD_REGISTRY_ADDRESS,
     distributionAddress: process.env.DISTRIBUTION_ADDRESS,
+    multicall3Address: process.env.MULTICALL3_ADDRESS,
     showCaseTokenId: process.env.SHOW_CASE_TOKEN_ID,
     opExplorerURL: process.env.OP_EXPLORER_URL,
     coinGeckoURL: process.env.COINGECKO_URL,

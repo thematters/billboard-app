@@ -41,7 +41,7 @@ export const initDistribution = (address: string, client: PublicClient) =>
   })
 
 export const initInstances = (
-  chain: Chian,
+  chain: Chain,
   billboardAddress: string,
   billboardRegistryAddress: string,
   distributionAddress: string
