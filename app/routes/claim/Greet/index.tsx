@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 
-import BaseButton from '@components/Button/Base'
-import SvgClaim from '@svgs/Claim'
+import ButtonBase from '@component/Button/Base'
+import SvgClaim from '@svg/Claim'
 
 type Props = {
   openModal: () => void
@@ -9,11 +9,8 @@ type Props = {
 
 const Greet = ({ openModal }: Props) => {
   const baseCss = clsx('lg:pb-20', 'max-limit')
-
   const contentCss = clsx('t-14 md:t-20')
-
   const svgCss = clsx('my-6 lg:my-10', 'mx-auto')
-
   const btnCss = clsx('px-28', 'mx-auto', 't-18', 'font-normal')
 
   return (
@@ -25,9 +22,9 @@ const Greet = ({ openModal }: Props) => {
         your eligibility for claiming funding.
       </section>
       <SvgClaim css={svgCss} />
-      <BaseButton css={btnCss} color="dim" click={openModal}>
+      <ButtonBase css={btnCss} color="dim" click={openModal}>
         Connect
-      </BaseButton>
+      </ButtonBase>
     </section>
   )
 }

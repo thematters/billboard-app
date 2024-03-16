@@ -6,7 +6,6 @@ const Deco = () => {
     'h-[60px] lg:h-[120px]',
     'h-min-[60px] lg:h-max-[120px]'
   )
-
   const bgCss = clsx(
     'absolute -bottom-px right-0',
     '-left-8 lg:-left-20',

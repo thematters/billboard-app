@@ -1,13 +1,12 @@
 import clsx from 'clsx'
 
-import Crate from '@components/Crate'
+import Crate from '@component/Crate'
 
 import Deco from './Deco'
 import Roles from './Roles'
 
 const Work = () => {
   const baseCss = clsx('pb-12 pt-10 lg:py-[4.rem]', 'max-limit')
-
   const descCss = clsx('t-14 lg:t-20')
 
   return (

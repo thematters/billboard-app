@@ -1,9 +1,9 @@
 import clsx from 'clsx'
 
-import LinkButton from '@components/Button/Link'
+import ButtonLink from '@component/Button/Link'
 
-import png from '@assets/bot.png'
-import webp from '@assets/bot.webp'
+import png from '@asset/bot.png'
+import webp from '@asset/bot.webp'
 
 const Mission = () => {
   const baseCss = clsx(
@@ -12,13 +12,9 @@ const Mission = () => {
     'grid grid-cols-1 lg:grid-cols-2',
     'lg:gap-10'
   )
-
   const descCss = clsx('t-14 lg:t-20', 'font-normal')
-
   const btnsCss = clsx('mt-10', 'mb-14', 'f-center-start')
-
   const rightCss = clsx('relative', 'mt-8 lg:mt-0', 'mb-8 lg:mb-0', 'f-center')
-
   const imgContainerCss = clsx('lg:absolute', 'lg:-top-[160px]', 'lg:z-1')
 
   return (
@@ -31,12 +27,12 @@ const Mission = () => {
           economy ecosystem.
         </section>
         <section className={btnsCss}>
-          <LinkButton css="mr-6" color="dim" to="/showcase">
+          <ButtonLink css="mr-6" color="dim" to="/showcase">
             SHOWCASE
-          </LinkButton>
-          <LinkButton color="grass" to="/claim">
+          </ButtonLink>
+          <ButtonLink color="grass" to="/claim">
             CLAIM
-          </LinkButton>
+          </ButtonLink>
         </section>
       </section>
 

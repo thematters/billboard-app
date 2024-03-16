@@ -4,15 +4,15 @@ import { useEffect, useState } from 'react'
 import { isAddress } from 'viem'
 import { useAccount, useDisconnect } from 'wagmi'
 
-import Crate from '@components/Crate'
-import WalletModal from '@components/Modals/WalletModal'
-import useModal from '@hooks/useModal'
+import Crate from '@component/Crate'
+import WalletModal from '@component/Modals/Wallet'
+import useModal from '@hook/useModal'
 
 import Claimed from './Claimed'
 import Empty from './Empty'
 import Error from './Error'
 import Greet from './Greet'
-import Items from './Items'
+import Records from './Records'
 import Skeleton from './Skeleton'
 
 const Claim = () => {
@@ -67,7 +67,7 @@ const Claim = () => {
         <Crate.Inner css={innerCss} hasDots hasXBorder>
           {step === 'greeting' && <Greet openModal={openModal} />}
           {step === 'loading' && <Skeleton />}
-          {step === 'claim' && <Items data={data.items} callback={setStep} />}
+          {step === 'claim' && <Records data={data.items} callback={setStep} />}
           {step === 'claimed' && <Claimed click={disconnect} />}
           {step === 'empty' && <Empty click={disconnect} />}
           {step === 'error' && <Error click={disconnect} />}

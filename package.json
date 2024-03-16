@@ -12,6 +12,7 @@
     "@remix-run/serve": "^2.2.0",
     "@tanstack/react-query": "^5.24.7",
     "@walletconnect/modal": "^2.6.2",
+    "alchemy-sdk": "^3.2.0",
     "billboard-app": "link:",
     "clsx": "^2.0.0",
     "dayjs": "^1.11.10",
@@ -19,6 +20,7 @@
     "isbot": "latest",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
+    "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.2.0",
     "viem": "^2.7.19",
     "wagmi": "^2.5.7"

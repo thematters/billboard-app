@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import Crate from '@components/Crate'
+import Crate from '@component/Crate'
 
 import Auction from './Auction'
 import Chart from './Chart'
@@ -9,9 +9,7 @@ import Revenue from './Revenue'
 
 const What = () => {
   const titleCss = clsx('t-20 md:t-36', 'font-cyber', 'f-center')
-
-  const numberCss = clsx('text-green', 'hidden lg:block')
-
+  const numberCss = clsx('text-green', 'lg-shown')
   const listCss = clsx('max-limit', 'grid grid-cols-1', 'lg:py-5')
 
   return (

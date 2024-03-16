@@ -1,9 +1,9 @@
 import clsx from 'clsx'
 import { useState } from 'react'
 
-import Crate from '@components/Crate'
-import Slide from '@components/Slide'
-import SvgRoles from '@svgs/Roles'
+import Crate from '@component/Crate'
+import Slide from '@component/Slide'
+import SvgRoles from '@svg/Roles'
 
 const Roles = () => {
   const names = ['advertiser', 'billboard', 'tax', 'treasury', 'funding']
@@ -23,7 +23,6 @@ const Roles = () => {
     'gap-x-0 lg:gap-x-10',
     'gap-y-10 lg:gap-y-0'
   )
-
   const svgCss = clsx(
     'h-[253px] w-[311px]',
     'md:h-full md:w-full',

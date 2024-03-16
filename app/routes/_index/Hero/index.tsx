@@ -1,6 +1,6 @@
-import type { ComponentProps } from '@types'
+import type { ComponentProps } from '@type'
 
-import Crate from '@components/Crate'
+import Crate from '@component/Crate'
 
 import Decorator from './Decorator'
 import Mission from './Mission'

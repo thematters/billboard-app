@@ -1,17 +1,12 @@
 import clsx from 'clsx'
-import _ from 'lodash'
-import { useEffect, useState } from 'react'
 
-import { BREAKPOINTS } from '@constants'
-import SvgSkeletonClaimMD from '@svgs/SkeletonClaimMD'
-import SvgSkeletonClaimSM from '@svgs/SkeletonClaimSM'
+import SvgSkeletonClaimMD from '@svg/SkeletonClaimMD'
+import SvgSkeletonClaimSM from '@svg/SkeletonClaimSM'
 
 const Skeleton = () => {
   const baseCss = clsx('md:px-10', 'lg:px-20')
-
-  const skeletonCss = clsx('w-full')
-  const skeletonSMCss = clsx(skeletonCss, 'md-hidden')
-  const skeletonMDCss = clsx(skeletonCss, 'md-shown')
+  const skeletonSMCss = clsx('w-full', 'md-hidden')
+  const skeletonMDCss = clsx('w-full', 'md-shown')
 
   return (
     <section className={baseCss}>

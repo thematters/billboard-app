@@ -37,6 +37,12 @@
     @apply text-black;
   }
 
+  .btn-green {
+    @apply bg-green;
+    @apply border border-green;
+    @apply text-black;
+  }
+
   .btn-dim {
     @apply bg-gradient-to-r from-olive to-black to-30%;
     @apply hover:from-black hover:via-olive hover:to-black hover:to-100%;
@@ -94,7 +100,7 @@
   }
 
   .slash {
-    background-image: url(app/assets/slash.svg);
+    background-image: url(app/asset/slash.svg);
     @apply mx-8 h-[24px];
     @apply flex grow;
     @apply hidden lg:flex;
@@ -108,25 +114,32 @@
   }
 
   .check {
-    background-image: url(app/assets/check.svg);
+    background-image: url(app/asset/check.svg);
   }
 
   .hero {
     background:
       linear-gradient(rgba(33, 33, 33, 0.25), rgba(33, 33, 33, 0.25)),
-      url(app/assets/hero.webp),
-      url(app/assets/hero.png);
+      url(app/asset/hero.webp),
+      url(app/asset/hero.png);
     @apply bg-cover bg-center bg-no-repeat;
   }
 
   .deco {
-    background-image: url(app/assets/deco.svg);
+    background-image: url(app/asset/deco.svg);
     @apply bg-cover bg-center bg-no-repeat;
   }
 
   .sketch {
-    background-image: url(app/assets/sketch.webp), url(app/assets/sketch.png);
+    background-image: url(app/asset/sketch.webp), url(app/asset/sketch.png);
     @apply bg-cover bg-center bg-no-repeat;
+  }
+
+  .tab-border {
+    @apply after:absolute after:content-[''];
+    @apply after:top-0;
+    @apply after:h-full after:w-0;
+    @apply after:border-r after:border-dashed;
   }
 }
 

@@ -2,9 +2,9 @@ import { NavLink, useOutletContext } from '@remix-run/react'
 import clsx from 'clsx'
 import { useAccount } from 'wagmi'
 
-import BaseButton from '@components/Button/Base'
-import SvgClaimed from '@svgs/Claimed'
-import { shortedAddress } from '@utils/web3'
+import ButtonBase from '@component/Button/Base'
+import SvgClaimed from '@svg/Claimed'
+import { shortenAddress } from '@util/web3'
 
 type Props = {
   click: () => void
@@ -15,11 +15,8 @@ const Claimed = ({ click }: Props) => {
   const { address } = useAccount()
 
   const baseCss = clsx('lg:pb-20', 'max-limit')
-
   const contentCss = clsx('t-14 md:t-20', 'text-center')
-
   const svgCss = clsx('my-6 lg:my-10', 'mx-auto')
-
   const btnCss = clsx('px-28', 'mx-auto', 't-18', 'font-normal')
 
   return (
@@ -38,9 +35,9 @@ const Claimed = ({ click }: Props) => {
         .
       </section>
       <SvgClaimed css={svgCss} />
-      <BaseButton css={btnCss} color="dim" click={click}>
+      <ButtonBase css={btnCss} color="dim" click={click}>
         Got it
-      </BaseButton>
+      </ButtonBase>
     </section>
   )
 }

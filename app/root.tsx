@@ -9,41 +9,32 @@ import {
 } from '@remix-run/react'
 import { optimism, optimismSepolia } from 'wagmi/chains'
 
-import Document from '@components/Document'
-import Layout from '@components/Layout'
-import WalletContext from '@components/WalletContext'
+import Doc from '@component/Doc'
+import Layout from '@component/Layout'
+import WalletContext from '@component/Context/Wallet'
+import { readEnvs } from '@util/server'
 
 import styles from './main.css'
 
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: styles }]
 
 export const loader = async () => {
-  const isProduction = process.env.ENV === 'production'
-  return {
-    env: process.env.ENV || '',
-    chainId: isProduction ? optimism.id : optimismSepolia.id,
-    billboardAddress: process.env.BILLBOARD_ADDRESS,
-    billboardRegistryAddress: process.env.BILLBOARD_REGISTRY_ADDRESS,
-    distributionAddress: process.env.DISTRIBUTION_ADDRESS,
-    multicall3Address: process.env.MULTICALL3_ADDRESS,
-    showCaseTokenId: process.env.SHOW_CASE_TOKEN_ID,
-    opExplorerURL: process.env.OP_EXPLORER_URL,
-    coinGeckoURL: process.env.COINGECKO_URL,
-  }
+  const envs = readEnvs()
+  return envs
 }
 
 const App = () => {
-  const context = useLoaderData<typeof loader>()
+  const context = useLoaderData()
   return (
     <WalletContext>
-      <Document>
+      <Doc>
         <Layout>
           <Outlet context={context} />
         </Layout>
         <Scripts />
         <ScrollRestoration />
         <LiveReload />
-      </Document>
+      </Doc>
     </WalletContext>
   )
 }

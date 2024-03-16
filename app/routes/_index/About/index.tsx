@@ -1,20 +1,16 @@
 import clsx from 'clsx'
 
-import LinkButton from '@components/Button/Link'
-import Crate from '@components/Crate'
-import SvgDown from '@svgs/Down'
+import LinkButton from '@component/Button/Link'
+import Crate from '@component/Crate'
+import SvgDown from '@svg/Down'
 
 import Sketch from './Sketch'
 
 const About = () => {
   const innerCss = clsx('pb-10 lg:pb-40', 'relative')
-
   const baseCss = clsx('pt-2', 'max-limit')
-
   const downCss = clsx('mx-auto', 'text-green')
-
   const titleCss = clsx('mt-10', 'section-title')
-
   const btnCss = clsx('px-20', 'mx-auto', 'f-center', 'font-normal')
 
   return (

@@ -1,6 +1,6 @@
 import About from './About'
 import Hero from './Hero'
-import History from './History'
+import Record from './Record'
 import Road from './Road'
 import What from './What'
 import Work from './Work'
@@ -10,7 +10,7 @@ const Index = () => {
     <>
       <Hero />
       <What />
-      <History />
+      <Record />
       <Work />
       <Road />
       <About />

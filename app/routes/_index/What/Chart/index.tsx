@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import SvgChart from '@svgs/Chart'
+import SvgChart from '@svg/Chart'
 
 const Chart = () => {
   const baseCss = clsx(
@@ -10,18 +10,14 @@ const Chart = () => {
     'gap-x-0 md:gap-x-10',
     'gap-y-10'
   )
-
   const svgCss = clsx(
     'h-[235px] w-[311px]',
     'md:h-full md:w-full',
     'f-center',
     'mx-auto'
   )
-
   const descCss = clsx('col-span-2', 'f-col-center', 'mt-6 lg:my-10')
-
   const h4Css = clsx('t-20 lg:t-28', 'font-bold')
-
   const pCss = clsx('t-14 lg:t-20', 'mt-6')
 
   return (

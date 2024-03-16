@@ -1,4 +1,4 @@
-import type { ComponentProps } from '@types'
+import type { ComponentProps } from '@type'
 
 import clsx from 'clsx'
 
@@ -21,7 +21,6 @@ const Event = ({ children, css, isThick, isChecked, hasChecker }: Props) => {
       'lg:before:-top-px lg:before:h-[3px]': isThick,
     }
   )
-
   const circleCss = clsx(
     "after:absolute after:content-['']",
     'after:h-6 after:w-6',
@@ -38,7 +37,6 @@ const Event = ({ children, css, isThick, isChecked, hasChecker }: Props) => {
       'after:bg-black': !isChecked,
     }
   )
-
   const baseCss = clsx(
     'pb-2 pl-12 pt-2',
     'lg:pb-0 lg:pl-0 lg:pt-9',
@@ -47,7 +45,6 @@ const Event = ({ children, css, isThick, isChecked, hasChecker }: Props) => {
     circleCss,
     css
   )
-
   const contentCss = clsx('t-16', 'font-semibold')
 
   return (
