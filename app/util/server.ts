@@ -2,6 +2,8 @@ import { json } from '@remix-run/node'
 import fs from 'fs-extra'
 import { optimism, optimismSepolia } from 'wagmi/chains'
 
+import { STATE } from '@constant'
+
 export const readEnvs = () => {
   const envs = process.env
   const isProduction = envs.ENV === 'production'
@@ -22,7 +24,7 @@ export const readEnvs = () => {
 }
 
 export const sendError = (code: string, error?: any) => {
-  return json({ state: 'error', code, error })
+  return json({ state: STATE.error, code, error })
 }
 
 export const readFile = async (path: string, fallback: string) => {

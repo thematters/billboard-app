@@ -16,5 +16,5 @@ export const genAuctionIds = (start: bigint, length = 20) => {
 export const genEndAt = (timestamp: number) =>
   dayjs(timestamp).add(LEASE_TERM_IN_DAYS, 'day')
 
-export const formatDate = (timestamp: number, pattern = 'MMM DD YYYY') =>
-  dayjs(timestamp).format(pattern)
+export const formatDate = (time: number | string, pattern = 'MMM DD YYYY') =>
+  dayjs(time).format(pattern)

@@ -8,6 +8,11 @@ export const LEASE_TERM_IN_DAYS = 14
 
 export const MAIL = 'mailto:hi@matters.town'
 
+export const STATE = {
+  error: 'error',
+  successful: 'successful',
+}
+
 export const ERROR = {
   // General
   CHAIN_NOT_SET: 'CHAIN_NOT_SET',

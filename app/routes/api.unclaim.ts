@@ -5,7 +5,7 @@ import _ from 'lodash'
 import { isAddress } from 'viem'
 import { optimism, optimismSepolia } from 'viem/chains'
 
-import { ERROR } from '@constant'
+import { ERROR, STATE } from '@constant'
 import { readEnvs, readFile, sendError } from '@util/server'
 import { initClient, initDistribution } from '@util/viem'
 
@@ -53,7 +53,7 @@ export const loader = async ({ request }) => {
     }
 
     const rounds = _.orderBy(rawRounds, ['fromBlock'], ['desc']).map(
-      ({ root, amount: rootAmount, dirpath: path }) => ({
+      ({ root, amountTotal: rootAmount, dirpath: path }) => ({
         root,
         rootAmount,
         path,
@@ -149,7 +149,7 @@ export const loader = async ({ request }) => {
       count += items.length
     }
 
-    return json({ state: 'successful', items: data, count: count })
+    return json({ state: STATE.successful, items: data, count: count })
   } catch (error) {
     return sendError(ERROR.UNKNOWN_ERROR, error.message)
   }
