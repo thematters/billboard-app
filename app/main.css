@@ -141,6 +141,21 @@
     @apply after:h-full after:w-0;
     @apply after:border-r after:border-dashed;
   }
+
+  /* embla custom styles */
+  .embla {
+    overflow: hidden;
+  }
+
+  .embla__container {
+    display: flex;
+  }
+
+  .embla__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    @apply mr-4;
+  }
 }
 
 @layer utilities {

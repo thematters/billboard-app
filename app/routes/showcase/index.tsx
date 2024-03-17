@@ -1,7 +1,3 @@
-import clsx from 'clsx'
-
-import Crate from '@component/Crate'
-
 import Auctions from './Auctions'
 import Board from './Board'
 import Funds from './Funds'

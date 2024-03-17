@@ -1,5 +1,4 @@
 import { NavLink, useOutletContext } from '@remix-run/react'
-import dayjs from 'dayjs'
 
 import clsx from 'clsx'
 

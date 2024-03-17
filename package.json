@@ -16,11 +16,11 @@
     "billboard-app": "link:",
     "clsx": "^2.0.0",
     "dayjs": "^1.11.10",
+    "embla-carousel-react": "^8.0.0",
     "fs-extra": "^11.2.0",
     "isbot": "latest",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
-    "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.2.0",
     "viem": "^2.7.19",
     "wagmi": "^2.5.7"
