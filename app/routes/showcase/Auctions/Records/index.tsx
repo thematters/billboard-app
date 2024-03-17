@@ -5,6 +5,8 @@ import ButtonLink from '@component/Button/Link'
 import SvgLink from '@svg/Link'
 import { formatDate, shortenAddress } from '@util/web3'
 
+import Record from './Record'
+
 type Props = {
   data: Record<string, any>[]
 }
@@ -34,8 +36,6 @@ const Records = ({ data }: Props) => {
   const rowsCss = clsx('max-h-[324px]', 'overflow-y-scroll')
   const rowCss = clsx(rowBaseCss, 'border-b border-green/40')
   const emptyRowCss = clsx('col-span-4', 'text-center')
-  const linkCss = clsx('w-fit', 'f-center-start', 'hover:text-grass')
-  const svgLinkCss = clsx('ml-1', 'md-shown')
   const moreCss = clsx('py-4', 'f-center')
   const moreBtnCss = clsx('t-12', 'font-normal', 'bg-black')
 
@@ -43,7 +43,7 @@ const Records = ({ data }: Props) => {
     <section className={baseCss}>
       <section className={headCss}>
         <section className={cellCss}>Price</section>
-        <section className={cellCss}>To</section>
+        <section className={cellCss}>Bidder</section>
         <section className={cellCss}>Date</section>
         <section>TxHash</section>
       </section>
@@ -54,17 +54,7 @@ const Records = ({ data }: Props) => {
       )}
       <section className={rowsCss}>
         {auctions.map((auction) => (
-          <section key={auction.id} className={rowCss}>
-            <section className={cellCss}>{auction.price}</section>
-            <section className={cellCss}>{auction.to}</section>
-            <section className={cellCss}>{auction.endAt}</section>
-            <section>
-              <NavLink className={linkCss} to={auction.link} target="_blank">
-                {auction.txHash}
-                <SvgLink css={svgLinkCss} width={12} height={12} />
-              </NavLink>
-            </section>
-          </section>
+          <Record key={auction.id} auction={auction} />
         ))}
         {(auctions?.length || 0) === 10 && (
           <section className={moreCss}>
