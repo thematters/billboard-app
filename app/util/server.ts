@@ -15,6 +15,7 @@ export const readEnvs = () => {
     addressMulticall3: envs.ADDRESS_MULTICALL3,
     tokenIdShowCase: envs.TOKEN_ID_SHOW_CASE,
     keyAlchemy: envs.KEY_ALCHEMY,
+    urlAlchemy: envs.URL_ALCHEMY,
     urlOpExplorer: envs.URL_OP_EXPLORER,
     urlCoinGecko: envs.URL_COINGECKO,
   }

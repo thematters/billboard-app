@@ -4,14 +4,14 @@ import Crate from '@component/Crate'
 
 import Auctions from './Auctions'
 import Board from './Board'
-import Records from './Records'
+import Funds from './Funds'
 
 const Showcase = () => {
   return (
     <>
       <Board />
       <Auctions />
-      <Records />
+      <Funds />
     </>
   )
 }

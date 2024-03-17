@@ -19,6 +19,7 @@ export const loader = async ({ request }) => {
       addressRegistry,
       tokenIdShowCase: tokenId,
       keyAlchemy,
+      urlAlchemy,
     } = readEnvs()
 
     if (!addressOperator || !addressRegistry) {
@@ -35,7 +36,7 @@ export const loader = async ({ request }) => {
     })
 
     // init contracts
-    const client = initClient(chain)
+    const client = initClient(chain, urlAlchemy)
     const operator = initOperator(addressOperator, client)
     const registry = initRegistry(addressRegistry, client)
     const id = BigInt(tokenId)

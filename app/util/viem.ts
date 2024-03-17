@@ -6,10 +6,10 @@ import ABIDistribution from '@abi/distribution'
 import ABIOperator from '@abi/operator'
 import ABIRegistry from '@abi/registry'
 
-export const initClient = (chain: Chain) =>
+export const initClient = (chain: Chain, url?: string) =>
   createPublicClient({
     chain,
-    transport: http(),
+    transport: url ? http(url) : http(),
   })
 
 export const initOperator = (address: string, client: PublicClient) =>
