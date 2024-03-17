@@ -14,7 +14,6 @@ const Auction = ({ data }: Props) => {
   const context = useOutletContext()
   const { auction, board, highestBid, taxRate } = data
   const address = shortenAddress(context.addressRegistry)
-  const addressLink = `${context.urlOpExplorer}/address/${context.addressOperator}`
   const endAt = formatDate(auction.endAt)
 
   const auctionCss = clsx('grid grid-cols-1 md:grid-cols-2')
@@ -60,7 +59,7 @@ const Auction = ({ data }: Props) => {
       <section className="mt-6">
         <section className={itemCss}>
           <p>Contract (ERC-721)</p>
-          <NavLink className={linkCss} to={addressLink} target="_blank">
+          <NavLink className={linkCss} to={context.urlContract} target="_blank">
             {address}
             <SvgLink css="ml-1" width={18} height={18} />
           </NavLink>

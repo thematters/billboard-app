@@ -1,6 +1,7 @@
 import { NavLink, useOutletContext } from '@remix-run/react'
 import clsx from 'clsx'
 
+import ButtonLink from '@component/Button/Link'
 import SvgLink from '@svg/Link'
 import { formatDate, shortenAddress } from '@util/web3'
 
@@ -17,7 +18,6 @@ const Records = ({ data }: Props) => {
     txHash: shortenAddress(auction.txHash),
     link: `${context.urlOpExplorer}/tx/${auction.txHash}`,
   }))
-
   const isEmpty = !auctions || auctions.length == 0
 
   const baseCss = clsx('bg-dim', 'grid grid-cols-1')
@@ -36,6 +36,8 @@ const Records = ({ data }: Props) => {
   const emptyRowCss = clsx('col-span-4', 'text-center')
   const linkCss = clsx('w-fit', 'f-center-start', 'hover:text-grass')
   const svgLinkCss = clsx('ml-1', 'md-shown')
+  const moreCss = clsx('py-4', 'f-center')
+  const moreBtnCss = clsx('t-12', 'font-normal', 'bg-black')
 
   return (
     <section className={baseCss}>
@@ -64,6 +66,20 @@ const Records = ({ data }: Props) => {
             </section>
           </section>
         ))}
+        {(auctions?.length || 0) === 10 && (
+          <section className={moreCss}>
+            <ButtonLink
+              css={moreBtnCss}
+              to={context.urlContract}
+              target="_blank"
+            >
+              <p className="f-center">
+                View More on Etherscan
+                <SvgLink css="ml-1" width={14} height={14} />
+              </p>
+            </ButtonLink>
+          </section>
+        )}
       </section>
     </section>
   )

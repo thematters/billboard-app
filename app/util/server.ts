@@ -7,6 +7,7 @@ import { STATE } from '@constant'
 export const readEnvs = () => {
   const envs = process.env
   const isProduction = envs.ENV === 'production'
+  const urlContract = `${envs.URL_OP_EXPLORER}/address/${envs.ADDRESS_OPERATOR}`
   return {
     env: envs.ENV,
     chain: isProduction ? optimism : optimismSepolia,
@@ -20,6 +21,7 @@ export const readEnvs = () => {
     urlAlchemy: envs.URL_ALCHEMY,
     urlOpExplorer: envs.URL_OP_EXPLORER,
     urlCoinGecko: envs.URL_COINGECKO,
+    urlContract,
   }
 }
 
