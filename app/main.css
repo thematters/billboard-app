@@ -258,6 +258,27 @@
     @apply text-[12px] leading-[18px]; 
   }
 
+  /** Grid **/
+  .cols-1 {
+    @apply grid grid-cols-1;
+  }
+
+  .cols-2 {
+    @apply grid grid-cols-2;
+  }
+
+  .cols-3 {
+    @apply grid grid-cols-3;
+  }
+
+  .cols-1-md-3 {
+    @apply grid grid-cols-1 md:grid-cols-3;
+  }
+
+  .cols-1-lg-3 {
+    @apply grid grid-cols-1 lg:grid-cols-3;
+  }
+
   /** Visibility **/
   .sm-shown {
     @apply hidden sm:block;
