@@ -33,8 +33,6 @@ const Funds = () => {
   }, [api])
 
   const innerCss = clsx('py-8 lg:py-20')
-  const skeletonSMCss = clsx('w-full', 'md-hidden')
-  const skeletonMDCss = clsx('w-full', 'md-shown')
 
   return (
     <Crate>
@@ -45,8 +43,8 @@ const Funds = () => {
           </section>
           {(step === 'loading' || step === 'error') && (
             <>
-              <SvgSkeletonFundSM css={skeletonSMCss} />
-              <SvgSkeletonFundMD css={skeletonMDCss} />
+              <SvgSkeletonFundSM css="skeleton-sm" />
+              <SvgSkeletonFundMD css="skeleton-md" />
             </>
           )}
           {step === 'loaded' && <Records data={data || {}} />}

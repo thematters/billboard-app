@@ -26,14 +26,16 @@ const Records = ({ data }: Props) => {
     'bg-black',
     'border-b border-dashed border-beige/60'
   )
-  const emptyCss = clsx(baseCss, 'md:grid-cols-1', 'text-center')
+  const emptyCss = clsx('col-span-3', 'text-center')
   const btnCss = clsx('px-28', 'mt-10', 'mx-auto', 't-18', 'font-normal')
 
   return (
     <section>
       {isEmpty && (
-        <section className={emptyCss}>
-          No funding distribution data available
+        <section className={baseCss}>
+          <section className={emptyCss}>
+            No funding distribution data available
+          </section>
         </section>
       )}
 
