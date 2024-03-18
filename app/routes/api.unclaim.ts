@@ -40,7 +40,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     const url = new URL(request.url)
     const userAddress = (url?.searchParams?.get('address') || '').toLowerCase()
     if (!isAddress(userAddress)) {
-      return sendError(ERROR.INVALID_ADDRESS)
+      return sendError(ERROR.ADDRESS_INVALID)
     }
 
     // read the rounds files
@@ -50,8 +50,11 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     }
 
     const rawRounds = await readFile(roundsPath, '[]')
-    if (!rawRounds || rawRounds.length === 0) {
-      return sendError(ERROR.ROUNDS_IS_EMPTY)
+    if (!rawRounds) {
+      return sendError(ERROR.ROUNDS_INVALID)
+    }
+    if (rawRounds.length === 0) {
+      return json({ state: STATE.successful, items: [], count: 0 })
     }
 
     const rounds = _.orderBy(rawRounds, ['fromBlock'], ['desc']).map(

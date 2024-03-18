@@ -22,8 +22,11 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     }
 
     const rawRounds = await readFile(roundsPath, '[]')
-    if (!rawRounds || rawRounds.length === 0) {
-      return sendError(ERROR.ROUNDS_IS_EMPTY)
+    if (!rawRounds) {
+      return sendError(ERROR.ROUNDS_INVALID)
+    }
+    if (rawRounds.length === 0) {
+      return json({ state: STATE.successful, rounds: [] })
     }
 
     const baseRounds = _.orderBy(rawRounds, ['fromBlock'], ['desc'])
