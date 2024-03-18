@@ -41,7 +41,7 @@ export const readFile = async (path: string, fallback: string) => {
   return JSON.parse((await fs.readFile(path, 'utf8')) || fallback)
 }
 
-export const getPublicFilePath = (origin: string) => {
+export const getPublicPath = (origin: string) => {
   const temp = origin.replace('./public/', '')
   return path.resolve('./public', temp)
 }

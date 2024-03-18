@@ -8,7 +8,7 @@ import { isAddress } from 'viem'
 import { optimism, optimismSepolia } from 'viem/chains'
 
 import { ERROR, STATE } from '@constant'
-import { readEnvs, readFile, sendError } from '@util/server'
+import { getPublicPath, readEnvs, readFile, sendError } from '@util/server'
 import { initClient, initDistribution } from '@util/viem'
 
 const checkHasClaimed = async (
@@ -24,8 +24,8 @@ const checkHasClaimed = async (
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   try {
     // collect envs
-    const srcPath = './app/static'
-    const roundsPath = `${srcPath}/rounds.json`
+    const srcPath = './public/static'
+    const roundsPath = getPublicPath(`${srcPath}/rounds.json`)
 
     const { chain, addressDistribution } = readEnvs()
 
@@ -70,8 +70,8 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     const data = []
     for (const round of rounds) {
       const { root, rootAmount, path } = round
-      const distPath = `${srcPath}/${path}/distrib.json`
-      const treePath = `${srcPath}/${path}/treedump.json`
+      const distPath = getPublicPath(`${srcPath}/${path}/distrib.json`)
+      const treePath = getPublicPath(`${srcPath}/${path}/treedump.json`)
 
       const [distExists, treeExists] = await Promise.all([
         fs.pathExists(distPath),

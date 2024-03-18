@@ -7,17 +7,13 @@ import _ from 'lodash'
 import { optimism, optimismSepolia } from 'viem/chains'
 
 import { ERROR, STATE } from '@constant'
-import { getPublicFilePath, readFile, sendError } from '@util/server'
+import { getPublicPath, readFile, sendError } from '@util/server'
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   try {
     // collect envs
-    const srcPath = './app/static'
-    const roundsPath = `${srcPath}/rounds.json`
-
-    const test = getPublicFilePath('./public/static/rounds.json')
-    const testExists = await fs.pathExists(test)
-    console.log(test, testExists)
+    const srcPath = './public/static'
+    const roundsPath = getPublicPath(`${srcPath}/rounds.json`)
 
     // read the rounds files
     const roundExists = await fs.pathExists(roundsPath)
@@ -38,7 +34,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     const rounds = []
     for (const round of baseRounds) {
       const { dirpath: path } = round
-      const distPath = `${srcPath}/${path}/distrib.json`
+      const distPath = getPublicPath(`${srcPath}/${path}/distrib.json`)
       const distExists = await fs.pathExists(distPath)
 
       if (!distExists) {
