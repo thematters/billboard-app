@@ -99,8 +99,6 @@ const Records = ({ data, callback }: Props) => {
   const totalNumCss = clsx('font-bold')
   const btnCss = clsx('mt-10', 'px-28', 'mx-auto', 't-18', 'font-normal')
 
-  console.log(Object.keys(error || {}))
-
   return (
     <section className={baseCss}>
       <section className="section-title">CLAIM FUNDING</section>
