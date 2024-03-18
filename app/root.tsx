@@ -29,7 +29,7 @@ export const loader = async () => {
 const App = () => {
   const context = useLoaderData() as AppContext
   return (
-    <ContextWallet projectId={context.keyWalletConnect}>
+    <ContextWallet projectId={context.idWalletConnect}>
       <Doc>
         <Layout>
           <Outlet context={context} />

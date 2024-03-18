@@ -17,7 +17,7 @@ export const readEnvs = () => {
     addressDistribution: envs.ADDRESS_DISTRIBUTION,
     addressMulticall3: envs.ADDRESS_MULTICALL3,
     tokenIdShowCase: envs.TOKEN_ID_SHOW_CASE,
-    keyWalletConnect: envs.KEY_WALLET_CONNECT,
+    idWalletConnect: envs.ID_WALLET_CONNECT,
     urlOpExplorer: envs.URL_OP_EXPLORER,
     urlCoinGecko: envs.URL_COINGECKO,
     urlContract,

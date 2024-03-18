@@ -9,7 +9,7 @@ export type AppContext = {
   addressDistribution: string
   addressMulticall3: string
   tokenIdShowCase: number
-  keyWalletConnect: string
+  idWalletConnect: string
   urlOpExplorer: string
   urlCoinGecko: string
   urlContract: string
