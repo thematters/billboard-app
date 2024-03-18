@@ -15,6 +15,9 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     const srcPath = './app/static'
     const roundsPath = `${srcPath}/rounds.json`
 
+    const test = await fs.readdir('.')
+    console.log(test)
+
     // read the rounds files
     const roundExists = await fs.pathExists(roundsPath)
     if (!roundExists) {
