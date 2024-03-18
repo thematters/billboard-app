@@ -23,7 +23,7 @@ const Protocol = () => {
 
   return (
     <section className={baseCss}>
-      <SvgProtocol css={svgCss} width="auto" height="auto" />
+      <SvgProtocol css={svgCss} width="100%" height="100%" />
       <section className={descCss}>
         <h4 className={h4Css}>
           A protocol within an open network that allows for seamless integration

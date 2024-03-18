@@ -21,7 +21,7 @@ const Auction = () => {
 
   return (
     <section className={baseCss}>
-      <SvgAuction css={svgCss} width="auto" height="auto" />
+      <SvgAuction css={svgCss} width="100%" height="100%" />
       <section className={descCss}>
         <h4 className={h4Css}>
           Creators can generate higher direct income through continuous NFT

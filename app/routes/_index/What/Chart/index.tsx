@@ -22,7 +22,7 @@ const Chart = () => {
 
   return (
     <section className={baseCss}>
-      <SvgChart css={svgCss} width="auto" height="auto" />
+      <SvgChart css={svgCss} width="100%" height="100%" />
       <section className={descCss}>
         <h4 className={h4Css}>
           Every billboard NFT is continuously auctioned under the Harberger Tax,

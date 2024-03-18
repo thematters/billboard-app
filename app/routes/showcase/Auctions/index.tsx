@@ -48,7 +48,9 @@ const Auctions = () => {
             </>
           )}
           {step === 'loaded' && <Records data={data || {}} />}
-          {step === 'error' && <ErrorMessage message={data.error} />}
+          {step === 'error' && (
+            <ErrorMessage message={data.error || data.code} />
+          )}
         </section>
       </Crate.Inner>
     </Crate>

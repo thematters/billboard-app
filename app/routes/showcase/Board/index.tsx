@@ -47,7 +47,9 @@ const Board = () => {
             </>
           )}
           {step === 'loaded' && <Meta data={data} />}
-          {step === 'error' && <ErrorMessage message={data.error} />}
+          {step === 'error' && (
+            <ErrorMessage message={data.error || data.code} />
+          )}
         </section>
       </Crate.Inner>
     </Crate>

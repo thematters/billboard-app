@@ -22,7 +22,7 @@ const Revenue = () => {
 
   return (
     <section className={baseCss}>
-      <SvgRevenue css={svgCss} width="auto" height="auto" />
+      <SvgRevenue css={svgCss} width="100%" height="100%" />
       <section className={descCss}>
         <h4 className={h4Css}>
           The tax revenue from billboards is distributed to creators
