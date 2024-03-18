@@ -36,7 +36,12 @@ const About = () => {
             Internet, Web3.
           </section>
 
-          <LinkButton css={btnCss} color="dim" to="https://matters-lab.io/">
+          <LinkButton
+            css={btnCss}
+            color="dim"
+            to="https://matters-lab.io/"
+            target="_blank"
+          >
             Visit Website
           </LinkButton>
         </section>
