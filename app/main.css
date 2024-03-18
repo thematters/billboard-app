@@ -321,4 +321,13 @@
     text-wrap: nowrap;
     overflow: hidden;
   }
+
+  /** Skeleton **/
+  .skeleton-sm {
+    @apply w-full md-hidden;
+  }
+
+  .skeleton-md {
+    @apply w-full md-shown;
+  }
 }

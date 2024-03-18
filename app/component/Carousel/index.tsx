@@ -10,7 +10,7 @@ type Props = ComponentProps & {
   size: number
 }
 
-const Carousel = ({ children, css, size }: ComponentProps) => {
+const Carousel = ({ children, css, size }: Props) => {
   const [curr, setCurr] = useState(0)
   const [emblaRef, emblaApi] = useEmblaCarousel()
 

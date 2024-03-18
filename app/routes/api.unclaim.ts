@@ -1,3 +1,5 @@
+import type { LoaderFunctionArgs } from '@remix-run/node'
+
 import { StandardMerkleTree } from '@openzeppelin/merkle-tree'
 import { json } from '@remix-run/node'
 import fs from 'fs-extra'
@@ -19,7 +21,7 @@ const checkHasClaimed = async (
   return { cid, claimed: result }
 }
 
-export const loader = async ({ request }) => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
   try {
     // collect envs
     const srcPath = './app/static'
@@ -36,7 +38,7 @@ export const loader = async ({ request }) => {
 
     // collect params
     const url = new URL(request.url)
-    const userAddress = url?.searchParams?.get('address').toLowerCase()
+    const userAddress = (url?.searchParams?.get('address') || '').toLowerCase()
     if (!isAddress(userAddress)) {
       return sendError(ERROR.INVALID_ADDRESS)
     }
@@ -83,7 +85,7 @@ export const loader = async ({ request }) => {
       // gather data from distrib
       const rawDist = await readFile(distPath, '[]')
       const dist = _.filter(
-        rawDist.map((d) => ({
+        rawDist.map((d: Record<string, any>) => ({
           ...d,
           eth_address: d.eth_address.toLowerCase(),
         })),
@@ -96,7 +98,7 @@ export const loader = async ({ request }) => {
       // gather data from tree
       const rawTree = await readFile(treePath, '{}')
       const treeData = StandardMerkleTree.load(rawTree)
-      const tree = {}
+      const tree = {} as Record<string, any>
       for (const [i, v] of treeData.entries()) {
         const [cid, address, share] = v
         const lowerAddress = address.toLowerCase()
@@ -127,21 +129,24 @@ export const loader = async ({ request }) => {
       // filter out claimed
       const client = initClient(chain)
       const distribution = initDistribution(addressDistribution, client)
-      const cidChunks = _.chunk(base.cids, 2)
+      const cidChunks = _.chunk(base.cids, 2) as Array<string[]>
 
-      let claimed = []
+      let claimed = [] as string[]
       for (const cids of cidChunks) {
         const result = await Promise.all(
-          cids.map((cid) =>
+          cids.map((cid: string) =>
             checkHasClaimed(distribution, root, cid, userAddress)
           )
         )
-        const hasClaimed = result.reduce((r, d) => {
-          if (d.claimed === true) {
-            r.push(d.cid)
-          }
-          return r
-        }, [])
+        const hasClaimed = result.reduce(
+          (r: string[], d: Record<string, any>) => {
+            if (d.claimed === true) {
+              r.push(d.cid)
+            }
+            return r
+          },
+          []
+        )
         claimed = [...claimed, ...hasClaimed]
       }
       const items = _.filter(base.items, (d) => !claimed.includes(d.cid))
@@ -151,6 +156,7 @@ export const loader = async ({ request }) => {
 
     return json({ state: STATE.successful, items: data, count: count })
   } catch (error) {
-    return sendError(ERROR.UNKNOWN_ERROR, error.message)
+    // @ts-ignore
+    return sendError(ERROR.UNKNOWN_ERROR, error?.message || 'unknown')
   }
 }

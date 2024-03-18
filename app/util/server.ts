@@ -17,11 +17,18 @@ export const readEnvs = () => {
     addressDistribution: envs.ADDRESS_DISTRIBUTION,
     addressMulticall3: envs.ADDRESS_MULTICALL3,
     tokenIdShowCase: envs.TOKEN_ID_SHOW_CASE,
-    keyAlchemy: envs.KEY_ALCHEMY,
-    urlAlchemy: envs.URL_ALCHEMY,
+    keyWalletConnect: envs.KEY_WALLET_CONNECT,
     urlOpExplorer: envs.URL_OP_EXPLORER,
     urlCoinGecko: envs.URL_COINGECKO,
     urlContract,
+  }
+}
+
+export const readSecretEnvs = () => {
+  const envs = process.env
+  return {
+    keyAlchemy: envs.KEY_ALCHEMY,
+    urlAlchemy: envs.URL_ALCHEMY,
   }
 }
 

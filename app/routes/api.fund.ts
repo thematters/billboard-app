@@ -1,3 +1,5 @@
+import type { LoaderFunctionArgs } from '@remix-run/node'
+
 import { json } from '@remix-run/node'
 import dayjs from 'dayjs'
 import fs from 'fs-extra'
@@ -7,7 +9,7 @@ import { optimism, optimismSepolia } from 'viem/chains'
 import { ERROR, STATE } from '@constant'
 import { readFile, sendError } from '@util/server'
 
-export const loader = async ({ request }) => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
   try {
     // collect envs
     const srcPath = './app/static'
@@ -38,7 +40,7 @@ export const loader = async ({ request }) => {
 
       const rawDist = await readFile(distPath, '[]')
       const dist = rawDist.reduce(
-        (r, d) => {
+        (r: Record<string, any>, d: Record<string, any>) => {
           r.cids.add(d.id)
           r.users.add(d.userName)
           return r
@@ -55,9 +57,9 @@ export const loader = async ({ request }) => {
         amount: Number(round.amountTotal) / 1e6,
       })
     }
-
     return json({ state: STATE.successful, rounds })
   } catch (error) {
-    return sendError(ERROR.UNKNOWN_ERROR, error.message)
+    // @ts-ignore
+    return sendError(ERROR.UNKNOWN_ERROR, error?.message || 'unknown')
   }
 }

@@ -1,3 +1,5 @@
+import type { LoaderFunctionArgs } from '@remix-run/node'
+
 import { json } from '@remix-run/node'
 import { Alchemy, Network } from 'alchemy-sdk'
 import dayjs from 'dayjs'
@@ -6,16 +8,17 @@ import { parseAbiItem } from 'viem'
 import { optimism, optimismSepolia } from 'viem/chains'
 
 import { ERROR, LEASE_TERM_IN_DAYS } from '@constant'
-import { readEnvs, sendError } from '@util/server'
+import { formatAddress } from '@util/format'
+import { readEnvs, readSecretEnvs, sendError } from '@util/server'
 import {
   getBidWonLogs,
   initClient,
   initOperator,
   initRegistry,
 } from '@util/viem'
-import { genAuctionIds, genEndAt, shortenAddress } from '@util/web3'
+import { genAuctionIds, genEndAt } from '@util/web3'
 
-export const loader = async ({ request }) => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
   try {
     // collect envs
     const {
@@ -24,9 +27,8 @@ export const loader = async ({ request }) => {
       addressOperator,
       addressRegistry,
       tokenIdShowCase: tokenId,
-      keyAlchemy,
-      urlAlchemy,
     } = readEnvs()
+    const { keyAlchemy, urlAlchemy } = readSecretEnvs()
 
     if (!addressRegistry) {
       return sendError(ERROR.CONTRACT_NOT_SET)
@@ -43,8 +45,8 @@ export const loader = async ({ request }) => {
 
     // init contracts
     const client = initClient(chain, urlAlchemy)
-    const operator = initOperator(addressOperator, client)
-    const registry = initRegistry(addressRegistry, client)
+    const operator = initOperator(addressOperator || '', client)
+    const registry = initRegistry(addressRegistry || '', client)
     const id = BigInt(tokenId)
 
     // get last auction of the given board
@@ -75,7 +77,7 @@ export const loader = async ({ request }) => {
         id: Number(auctionId),
         endAt,
         price: Number(bid?.price || 0) / 1e6,
-        to: shortenAddress(bidder),
+        to: formatAddress(bidder),
         isWon: bid?.isWon || false,
         txHash,
       }
@@ -91,6 +93,7 @@ export const loader = async ({ request }) => {
       auctions: filteredAuctions,
     })
   } catch (error) {
-    return sendError(ERROR.UNKNOWN_ERROR, error.message)
+    // @ts-ignore
+    return sendError(ERROR.UNKNOWN_ERROR, error?.message || 'unknown')
   }
 }

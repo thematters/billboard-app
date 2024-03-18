@@ -12,7 +12,7 @@ import Meta from './Meta'
 const Board = () => {
   const [step, setStep] = useState('loading')
   const api = useFetcher()
-  const data = api?.data
+  const data = api?.data as Record<string, any>
 
   useEffect(() => {
     api.submit({}, { method: 'GET', action: '/api/board' })
@@ -20,6 +20,7 @@ const Board = () => {
 
   useEffect(() => {
     const apiState = api?.state
+    // @ts-ignore
     const dataState = api?.data?.state
 
     if (apiState === 'loading' && apiState !== 'loading') {

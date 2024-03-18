@@ -22,9 +22,9 @@ const Claim = () => {
   const { disconnect } = useDisconnect()
 
   const api = useFetcher()
-  const data = api?.data
+  const data = api?.data as Record<string, any>
 
-  const isEstablished = isAddress(address) && isConnected
+  const isEstablished = isAddress(address || '') && isConnected
 
   useEffect(() => {
     if (!isEstablished) {
@@ -35,7 +35,10 @@ const Claim = () => {
     }
     closeModal()
     setStep('loading')
-    api.submit({ address }, { methid: 'GET', action: '/api/unclaim' })
+    api.submit({ address } as Record<string, any>, {
+      method: 'GET',
+      action: '/api/unclaim',
+    })
   }, [address, isConnected])
 
   useEffect(() => {
@@ -44,7 +47,9 @@ const Claim = () => {
     }
 
     const apiState = api?.state
+    // @ts-ignore
     const dataState = api?.data?.state
+    // @ts-ignore
     const dataCount = api?.data?.count
     if (apiState === 'loading') {
       setStep('loading')
@@ -67,7 +72,9 @@ const Claim = () => {
         <Crate.Inner css={innerCss} hasDots hasXBorder>
           {step === 'greeting' && <Greet openModal={openModal} />}
           {step === 'loading' && <Skeleton />}
-          {step === 'claim' && <Records data={data.items} callback={setStep} />}
+          {step === 'claim' && (
+            <Records data={data?.items || []} callback={setStep} />
+          )}
           {step === 'claimed' && <Claimed click={disconnect} />}
           {step === 'empty' && <Empty click={disconnect} />}
           {step === 'error' && <Error click={disconnect} />}

@@ -1,12 +1,10 @@
-import { NavLink, useOutletContext } from '@remix-run/react'
+import { NavLink } from '@remix-run/react'
 import clsx from 'clsx'
 
-import ButtonLink from '@component/Button/Link'
 import SvgLink from '@svg/Link'
-import { formatDate, shortenAddress } from '@util/web3'
 
 type Props = {
-  auction: Record<string, any>[]
+  auction: Record<string, any>
 }
 
 const Record = ({ auction }: Props) => {

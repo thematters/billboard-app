@@ -12,7 +12,7 @@ import Records from './Records'
 const Funds = () => {
   const [step, setStep] = useState('loading')
   const api = useFetcher()
-  const data = api?.data
+  const data = api?.data as Record<string, any>
 
   useEffect(() => {
     api.submit({}, { method: 'GET', action: '/api/fund' })
@@ -20,6 +20,7 @@ const Funds = () => {
 
   useEffect(() => {
     const apiState = api?.state
+    // @ts-ignore
     const dataState = api?.data?.state
 
     if (apiState === 'loading' && apiState !== 'loading') {
@@ -32,8 +33,6 @@ const Funds = () => {
   }, [api])
 
   const innerCss = clsx('py-8 lg:py-20')
-  const skeletonSMCss = clsx('w-full', 'md-hidden')
-  const skeletonMDCss = clsx('w-full', 'md-shown')
 
   return (
     <Crate>
@@ -44,8 +43,8 @@ const Funds = () => {
           </section>
           {(step === 'loading' || step === 'error') && (
             <>
-              <SvgSkeletonFundSM css={skeletonSMCss} />
-              <SvgSkeletonFundMD css={skeletonMDCss} />
+              <SvgSkeletonFundSM css="skeleton-sm" />
+              <SvgSkeletonFundMD css="skeleton-md" />
             </>
           )}
           {step === 'loaded' && <Records data={data || {}} />}

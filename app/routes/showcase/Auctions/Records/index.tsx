@@ -1,25 +1,29 @@
+import type { AppContext } from '@type'
+
 import { NavLink, useOutletContext } from '@remix-run/react'
 import clsx from 'clsx'
 
 import ButtonLink from '@component/Button/Link'
 import SvgLink from '@svg/Link'
-import { formatDate, shortenAddress } from '@util/web3'
+import { formatAddress, formatDate } from '@util/format'
 
 import Record from './Record'
 
 type Props = {
-  data: Record<string, any>[]
+  data: Record<string, any>
 }
 
 const Records = ({ data }: Props) => {
-  const context = useOutletContext()
-  const auctions = (data?.auctions || []).map((auction) => ({
-    ...auction,
-    price: (auction?.price || 0).toFixed(2),
-    endAt: formatDate(auction.endAt),
-    txHash: shortenAddress(auction.txHash),
-    link: `${context.urlOpExplorer}/tx/${auction.txHash}`,
-  }))
+  const context = useOutletContext<AppContext>()
+  const auctions = (data?.auctions || []).map(
+    (auction: Record<string, any>) => ({
+      ...auction,
+      price: (auction?.price || 0).toFixed(2),
+      endAt: formatDate(auction.endAt),
+      txHash: formatAddress(auction.txHash),
+      link: `${context.urlOpExplorer}/tx/${auction.txHash}`,
+    })
+  )
   const isEmpty = !auctions || auctions.length == 0
 
   const baseCss = clsx('bg-dim', 'grid grid-cols-1')
@@ -53,13 +57,14 @@ const Records = ({ data }: Props) => {
         </section>
       )}
       <section className={rowsCss}>
-        {auctions.map((auction) => (
+        {auctions.map((auction: Record<string, any>) => (
           <Record key={auction.id} auction={auction} />
         ))}
         {(auctions?.length || 0) === 10 && (
           <section className={moreCss}>
             <ButtonLink
               css={moreBtnCss}
+              color="dim"
               to={context.urlContract}
               target="_blank"
             >

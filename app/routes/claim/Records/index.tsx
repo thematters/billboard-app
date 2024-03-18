@@ -1,3 +1,5 @@
+import type { AppContext } from '@type'
+
 import { useOutletContext } from '@remix-run/react'
 import clsx from 'clsx'
 import { encodeFunctionData } from 'viem'
@@ -14,12 +16,12 @@ import SvgSpinner from '@svg/Spinner'
 import Record from './Record'
 
 type Props = {
-  data: Record<string, any>
+  data: Record<string, any>[]
   callback: (step: string) => void
 }
 
 const Records = ({ data, callback }: Props) => {
-  const context = useOutletContext()
+  const context = useOutletContext<AppContext>()
   const { address } = useAccount()
   const {
     data: hash,
@@ -33,7 +35,7 @@ const Records = ({ data, callback }: Props) => {
   const base = data.reduce(
     (r, v) => {
       const sub = v.items.reduce(
-        (r, d) => {
+        (r: Record<string, any>, d: Record<string, any>) => {
           const amount = Number(d.amount) / 1e6
           r.items.push({ ...d, root: v.root, amount })
           r.amount = r.amount + amount
@@ -50,18 +52,24 @@ const Records = ({ data, callback }: Props) => {
   )
 
   const claim = async () => {
-    const calls = base.items.map(({ root, cid, share, proof }) => ({
-      target: context.addressDistribution,
-      allowFailure: false,
-      callData: encodeFunctionData({
-        abi: ABIDistribution,
-        functionName: 'claim',
-        args: [root, cid, address, BigInt(share), proof],
-      }),
-    }))
+    if (!address) {
+      return
+    }
+
+    const calls = base.items.map(
+      ({ root, cid, share, proof }: Record<string, any>) => ({
+        target: context.addressDistribution,
+        allowFailure: false,
+        callData: encodeFunctionData({
+          abi: ABIDistribution,
+          functionName: 'claim',
+          args: [root, cid, address, BigInt(share), proof],
+        }),
+      })
+    )
 
     writeContract({
-      address: context.addressMulticall3,
+      address: context.addressMulticall3 as `0x${string}`,
       abi: ABIMulticall3,
       functionName: 'aggregate3',
       args: [calls],
@@ -91,11 +99,13 @@ const Records = ({ data, callback }: Props) => {
   const totalNumCss = clsx('font-bold')
   const btnCss = clsx('mt-10', 'px-28', 'mx-auto', 't-18', 'font-normal')
 
+  console.log(Object.keys(error || {}))
+
   return (
     <section className={baseCss}>
       <section className="section-title">CLAIM FUNDING</section>
       <section className={listCss}>
-        {base.items.map((item, index) => (
+        {base.items.map((item: Record<string, any>, index: number) => (
           <Record key={index} data={item} />
         ))}
       </section>
@@ -106,7 +116,9 @@ const Records = ({ data, callback }: Props) => {
       <ButtonBase css={btnCss} color="dim" click={claim}>
         {isPending ? <SvgSpinner css="animate-spin" height={27} /> : 'Claim'}
       </ButtonBase>
-      {isError && error && <ErrorMessage message={error.shortMessage} />}
+      {isError && error && (
+        <ErrorMessage message={(error as any).shortMessage || ''} />
+      )}
     </section>
   )
 }

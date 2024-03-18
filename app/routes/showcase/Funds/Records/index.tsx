@@ -3,23 +3,19 @@ import _ from 'lodash'
 
 import Carousel from '@component/Carousel'
 import ButtonLink from '@component/Button/Link'
-import { formatDate } from '@util/web3'
+import { formatRound } from '@util/format'
 
 import Record from './Record'
 
 type Props = {
-  data: Record<string, any>[]
+  data: Record<string, any>
 }
 
 const Records = ({ data }: Props) => {
-  const rawRounds = (data?.rounds || []).map((round) => ({
-    ...round,
-    id: _.padStart((round?.id || '').replace('#', ''), 3, '0'),
-    price: (round?.amount || 0).toFixed(2),
-    from: formatDate(round.from),
-    to: formatDate(round.to),
-  }))
-  const rounds = _.chunk(rawRounds, 5)
+  const rawRounds = (data?.rounds || []).map((round: Record<string, any>) =>
+    formatRound(round)
+  )
+  const rounds = _.chunk(rawRounds, 5) as Array<Record<string, any>[]>
   const isEmpty = !rounds || rounds.length === 0
 
   const baseCss = clsx(

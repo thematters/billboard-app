@@ -1,19 +1,20 @@
-import { NavLink, useOutletContext } from '@remix-run/react'
+import type { AppContext } from '@type'
 
+import { NavLink, useOutletContext } from '@remix-run/react'
 import clsx from 'clsx'
 
 import ButtonBase from '@component/Button/Base'
 import SvgLink from '@svg/Link'
-import { shortenAddress, formatDate } from '@util/web3'
+import { formatAddress, formatDate } from '@util/format'
 
 type Props = {
   data: Record<string, any>
 }
 
 const Auction = ({ data }: Props) => {
-  const context = useOutletContext()
+  const context = useOutletContext<AppContext>()
   const { auction, board, highestBid, taxRate } = data
-  const address = shortenAddress(context.addressRegistry)
+  const address = formatAddress(context.addressRegistry)
   const endAt = formatDate(auction.endAt)
 
   const auctionCss = clsx('grid grid-cols-1 md:grid-cols-2')

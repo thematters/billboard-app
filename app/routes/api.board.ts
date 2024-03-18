@@ -1,3 +1,5 @@
+import type { LoaderFunctionArgs } from '@remix-run/node'
+
 import { json } from '@remix-run/node'
 import { Alchemy, Network } from 'alchemy-sdk'
 import dayjs from 'dayjs'
@@ -5,11 +7,11 @@ import _ from 'lodash'
 import { optimism, optimismSepolia } from 'viem/chains'
 
 import { ERROR, LEASE_TERM_IN_DAYS } from '@constant'
-import { readEnvs, sendError } from '@util/server'
+import { readEnvs, readSecretEnvs, sendError } from '@util/server'
 import { initClient, initOperator, initRegistry } from '@util/viem'
 import { genEndAt } from '@util/web3'
 
-export const loader = async ({ request }) => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
   try {
     // collect envs
     const {
@@ -18,9 +20,8 @@ export const loader = async ({ request }) => {
       addressOperator,
       addressRegistry,
       tokenIdShowCase: tokenId,
-      keyAlchemy,
-      urlAlchemy,
     } = readEnvs()
+    const { keyAlchemy, urlAlchemy } = readSecretEnvs()
 
     if (!addressOperator || !addressRegistry) {
       return sendError(ERROR.CONTRACT_NOT_SET)
@@ -75,6 +76,7 @@ export const loader = async ({ request }) => {
       },
     })
   } catch (error) {
-    return sendError(ERROR.UNKNOWN_ERROR, error.message)
+    // @ts-ignore
+    return sendError(ERROR.UNKNOWN_ERROR, error?.message || 'unknown')
   }
 }
