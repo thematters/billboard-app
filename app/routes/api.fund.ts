@@ -15,13 +15,9 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     const srcPath = './app/static'
     const roundsPath = `${srcPath}/rounds.json`
 
-    const testPath = `./public/rounds.json`
     const test1 = await fs.readdir('.')
-    const test2 = await fs.readdir('./build')
-    const test3 = await fs.readdir('./public')
-    const test4 = await fs.readdir('./public')
-    const testExists = await fs.pathExists(testPath)
-    console.log(test1, test2, test3, test4, testExists)
+    const test2 = await fs.readdir('../')
+    console.log(test1, test2)
 
     // read the rounds files
     const roundExists = await fs.pathExists(roundsPath)
