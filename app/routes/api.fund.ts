@@ -7,7 +7,7 @@ import _ from 'lodash'
 import { optimism, optimismSepolia } from 'viem/chains'
 
 import { ERROR, STATE } from '@constant'
-import { readFile, sendError } from '@util/server'
+import { getPublicFilePath, readFile, sendError } from '@util/server'
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   try {
@@ -15,9 +15,9 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     const srcPath = './app/static'
     const roundsPath = `${srcPath}/rounds.json`
 
-    const test1 = await fs.readdir('.')
-    const test2 = await fs.readdir('../')
-    console.log(test1, test2)
+    const test = getPublicFilePath('./public/static/rounds.json')
+    const testExists = await fs.pathExists(test)
+    console.log(test, testExists)
 
     // read the rounds files
     const roundExists = await fs.pathExists(roundsPath)
