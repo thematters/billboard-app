@@ -51,17 +51,10 @@ const Roles = () => {
 
         <Slide.Content title="Harberger Tax" isActive={role === names[2]}>
           <section>
-            Harberger Tax is a market-based mechanism discussed in Radical
-            Markets, and Property Is Only Another Name for Monopoly. It aims to
-            efficiently distribute public resources, combining fairness and
-            efficiency through partial common ownership. Under Harberger Tax,
-            asset ownership is fluid, favoring holders who can maximize its
-            value. Generally, the Harberger Tax can be summarized in two rules:
-            1. People can freely set prices for their assets and pay property
-            tax based on the set price. 2. Anyone can buy assets at any time if
-            the bid price exceeds the set price. Temporary owners must actively
-            set higher prices for their assets to extend ownership duration and
-            reduce the risk of being outbid by other participants in the market.
+            Harberger Tax is a market-based mechanism that allows individuals 
+            to set prices for their assets and pay property tax based on those 
+            prices, while also enabling anyone to purchase the assets if they 
+            offer a higher bid than the set price.
           </section>
         </Slide.Content>
 
@@ -72,13 +65,10 @@ const Roles = () => {
         </Slide.Content>
 
         <Slide.Content title="Quadratic Funding" isActive={role === names[4]}>
-          Quadratic funding is a democratic crowdfunding mechanism promoting
-          fair and inclusive public goods funding. It combines modest individual
-          contributions with more considerable matching sums from sponsors or
-          contributors. Each donor's contribution is matched by the total amount
-          generated, the number of distinct contributors, and the total amount
-          donated. It was proposed by Vitalik Buterin, Zoë Hitzig, and E. Glen
-          Weyl in their paper.
+          Quadratic funding is a democratic crowdfunding mechanism that combines 
+          small individual contributions with matching funds from sponsors. It matches 
+          each sponsor's contribution based on the total amount generated, the number 
+          of contributors, and the total amount donated.
         </Slide.Content>
       </Slide>
     </section>

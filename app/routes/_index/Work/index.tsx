@@ -20,7 +20,7 @@ const Work = () => {
           <section className={descCss}>
             The on-chain billboard protocol revolutionizes platform attention by
             converting it into NFT billboards through Harberger tax auctions.
-            Advertisers have the opportunity to bid on NFTs, enabling them to
+            Advertisers can bid on NFTs, enabling them to
             promote their ideas and work through fair and efficient market
             competition. The tax revenue generated from the auctions is then
             distributed back to the platform contributors through quadratic

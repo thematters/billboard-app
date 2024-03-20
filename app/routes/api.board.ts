@@ -65,7 +65,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     return json({
       state: 'successful',
       board,
-      taxRate: Number(taxRate) / LEASE_TERM_IN_DAYS / 100,
+      taxRate: Number(taxRate) / LEASE_TERM_IN_DAYS / 1000,
       auction: {
         id: Number(auctionId),
         endAt,
