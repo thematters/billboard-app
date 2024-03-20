@@ -54,7 +54,7 @@ const Footer = () => {
             <FooterItem
               to="/"
               type="paper"
-              title="White Paper"
+              title="Green Paper"
               desc="Click to get more information"
             />
 

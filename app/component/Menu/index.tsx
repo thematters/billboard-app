@@ -32,7 +32,7 @@ const Menu = ({ children, css, isMenuActive }: Props) => {
         <nav className="list-none">
           <li className={liCss}>
             <NavLink className={linkCss} to="/" target="_blank">
-              WHITE PAPER
+              GREEN PAPER
               <SvgLink />
             </NavLink>
           </li>

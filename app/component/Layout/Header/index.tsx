@@ -43,7 +43,7 @@ const Header = ({ isMenuActive, setMenuActive }: Props) => {
           {/* Nav Menu */}
           <section className={navCss}>
             <ButtonLink color="dim" css="mr-4" to="/">
-              WHITE PAPER
+              GREEN PAPER
               <SvgLink css="ml-2" />
             </ButtonLink>
             <ButtonLink color="grass" css="mr-4" to="/showcase">
