@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import LinkButton from '@component/Button/Link'
+import ButtonLink from '@component/Button/Link'
 import Crate from '@component/Crate'
 import SvgDown from '@svg/Down'
 
@@ -11,7 +11,7 @@ const About = () => {
   const baseCss = clsx('pt-2', 'max-limit')
   const downCss = clsx('mx-auto', 'text-green')
   const titleCss = clsx('mt-10', 'section-title')
-  const btnCss = clsx('px-20', 'mx-auto', 'f-center', 'font-normal')
+  const btnCss = clsx('px-20', 'f-center', 'font-normal')
 
   return (
     <Crate>
@@ -36,14 +36,16 @@ const About = () => {
             Internet, Web3.
           </section>
 
-          <LinkButton
-            css={btnCss}
-            color="dim"
-            to="https://matters-lab.io/"
-            target="_blank"
-          >
-            Visit Website
-          </LinkButton>
+          <section className="f-center">
+            <ButtonLink
+              css={btnCss}
+              color="dim"
+              to="https://matters-lab.io/"
+              target="_blank"
+            >
+              Visit Website
+            </ButtonLink>
+          </section>
         </section>
       </Crate.Inner>
     </Crate>

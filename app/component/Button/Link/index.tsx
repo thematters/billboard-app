@@ -19,7 +19,7 @@ const LinkButton = ({ children, css, color, to, target }: Props) => {
     css
   )
   return (
-    <NavLink to={to} target={target}>
+    <NavLink className="w-fit" to={to} target={target}>
       <button className={baseCss}>{children}</button>
     </NavLink>
   )
