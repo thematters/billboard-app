@@ -14,7 +14,7 @@ type Props = {
 const Auction = ({ data }: Props) => {
   const context = useOutletContext<AppContext>()
   const { auction, board, highestBid, taxRate } = data
-  const address = formatAddress(context.addressRegistry)
+  const address = formatAddress(context.addressOperator)
   const endAt = formatDate(auction.endAt)
 
   const auctionCss = clsx('grid grid-cols-1 md:grid-cols-2')
