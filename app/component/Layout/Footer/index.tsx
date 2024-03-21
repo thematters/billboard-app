@@ -2,7 +2,7 @@ import { NavLink } from '@remix-run/react'
 import clsx from 'clsx'
 
 import Crate from '@component/Crate'
-import { MAIL } from '@constant'
+import { MAIL, PAPER_LINK } from '@constant'
 import SvgChevron from '@svg/Chevron'
 import SvgDiscord from '@svg/Discord'
 import SvgFacebook from '@svg/Facebook'
@@ -52,7 +52,7 @@ const Footer = () => {
 
             {/* Whitepaper */}
             <FooterItem
-              to="/"
+              to={PAPER_LINK}
               type="paper"
               title="Green Paper"
               desc="Click to get more information"

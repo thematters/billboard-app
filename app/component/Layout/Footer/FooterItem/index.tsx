@@ -22,7 +22,7 @@ const FooterItem = ({ children, css, to, type, title, desc }: Props) => {
   const dividerCss = clsx('absolute -right-10', 'w-px md:h-full', 'bg-beige/30')
 
   return (
-    <NavLink className={baseCss} to={to}>
+    <NavLink className={baseCss} to={to} target="_blank">
       <FooterIcon type={type} />
       <section className={itemCss}>
         <section className={titleCss}>

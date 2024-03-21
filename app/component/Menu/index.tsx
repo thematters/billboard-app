@@ -4,7 +4,7 @@ import { NavLink } from '@remix-run/react'
 import clsx from 'clsx'
 
 import Crate from '@component/Crate'
-import { MAIL } from '@constant'
+import { MAIL, PAPER_LINK } from '@constant'
 import useLockScroll from '@hook/useLockScroll'
 import SvgLink from '@svg/Link'
 
@@ -31,7 +31,7 @@ const Menu = ({ children, css, isMenuActive }: Props) => {
       <Crate.Inner css={innerCss} hasDots hasXBorder hasXSpacing={false}>
         <nav className="list-none">
           <li className={liCss}>
-            <NavLink className={linkCss} to="/" target="_blank">
+            <NavLink className={linkCss} to={PAPER_LINK} target="_blank">
               GREEN PAPER
               <SvgLink />
             </NavLink>

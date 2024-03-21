@@ -51,9 +51,9 @@ const Roles = () => {
 
         <Slide.Content title="Harberger Tax" isActive={role === names[2]}>
           <section>
-            Harberger Tax is a market-based mechanism that allows individuals 
-            to set prices for their assets and pay property tax based on those 
-            prices, while also enabling anyone to purchase the assets if they 
+            Harberger Tax is a market-based mechanism that allows individuals to
+            set prices for their assets and pay property tax based on those
+            prices, while also enabling anyone to purchase the assets if they
             offer a higher bid than the set price.
           </section>
         </Slide.Content>
@@ -65,10 +65,10 @@ const Roles = () => {
         </Slide.Content>
 
         <Slide.Content title="Quadratic Funding" isActive={role === names[4]}>
-          Quadratic funding is a democratic crowdfunding mechanism that combines 
-          small individual contributions with matching funds from sponsors. It matches 
-          each sponsor's contribution based on the total amount generated, the number 
-          of contributors, and the total amount donated.
+          Quadratic funding is a democratic crowdfunding mechanism that combines
+          small individual contributions with matching funds from sponsors. It
+          matches each sponsor's contribution based on the total amount
+          generated, the number of contributors, and the total amount donated.
         </Slide.Content>
       </Slide>
     </section>

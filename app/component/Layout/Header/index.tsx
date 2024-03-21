@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import _ from 'lodash'
 import { useEffect } from 'react'
 
-import { BREAKPOINT } from '@constant'
+import { BREAKPOINT, PAPER_LINK } from '@constant'
 import ButtonLink from '@component/Button/Link'
 import Logo from '@component/Button/Logo'
 import Crate from '@component/Crate'
@@ -42,7 +42,7 @@ const Header = ({ isMenuActive, setMenuActive }: Props) => {
 
           {/* Nav Menu */}
           <section className={navCss}>
-            <ButtonLink color="dim" css="mr-4" to="/">
+            <ButtonLink color="dim" css="mr-4" to={PAPER_LINK} target="_blank">
               GREEN PAPER
               <SvgLink css="ml-2" />
             </ButtonLink>

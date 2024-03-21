@@ -8,6 +8,10 @@ export const LEASE_TERM_IN_DAYS = 14
 
 export const MAIL = 'mailto:hi@matters.town'
 
+export const PAPER_LINK =
+  'https://matterslab.notion.site/On-chain-Billboard-for-' +
+  'Decentralized-Content-Ecosystems-aa10959b6258456ebbf7f5f49eb9f0fd'
+
 export const STATE = {
   error: 'error',
   successful: 'successful',

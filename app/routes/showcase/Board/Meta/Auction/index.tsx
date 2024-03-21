@@ -45,7 +45,9 @@ const Auction = ({ data }: Props) => {
           <section className={priceCss}>
             {(highestBid?.price || 0).toFixed(2)} USDT
           </section>
-          <section className="t-12">Tax Rate: {(taxRate * 100).toFixed(2)} %</section>
+          <section className="t-12">
+            Tax Rate: {(taxRate * 100).toFixed(2)} %
+          </section>
         </section>
         <section className="f-center-start md:f-center-end">
           <ButtonBase css={btnCss} color="green" disabled={true}>
