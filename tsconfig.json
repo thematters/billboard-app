@@ -13,8 +13,16 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./app/*"]
+      "@asset/*": ["./app/asset/*"],
+      "@abi/*": ["./app/common/abi/*"],
+      "@constant": ["./app/common/constant/index.ts"],
+      "@component/*": ["./app/component/*"],
+      "@svg/*": ["./app/component/Svg/*"],
+      "@hook/*": ["./app/hook/*"],
+      "@type": ["./app/type/index.ts"],
+      "@util/*": ["./app/util/*"]
     },
-    "noEmit": true
+    "noEmit": true,
+    "skipLibCheck": true
   }
 }

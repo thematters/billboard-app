@@ -10,28 +10,36 @@ export default {
     },
     colors: {
       black: "#333333",
+      gray: "#b3b3b3",
       green: "#80AB01",
       white: '#ffffff',
+      red: '#FF6262',
     },
     extend: {
-      borderRadius: {
-        "btn": '4rem',
+      fontFamily: {
+        cyber: ["Saved By Zero", "Space Grotesk", "sans-serif"],
+        space: ["Space Grotesk", "sans-serif"],
       },
       colors: {
-        "beige": "#EDE8D6",
-        "gradient-green": "#2F3E07",
-        "dim-black": "#212121",
-        "light-grey": "#DDDDDD",
-        "light-green": "#C3F432",
+        beige: "#ede8d6",
+        dark: '#000000',
+        dim: "#212121",
+        grass: "#c3f432",
+        lemon: "#b1e41d",
+        olive: "#2f3e07",
+        steam: "#dddddd",
       },
-      fontFamily: {
-        "cyber": ["Saved By Zero", "Space Grotesk", "sans-serif"],
-        "space": ["Space Grotesk", "sans-serif"],
+      width: {
+        modal: "375px",
+      },
+      maxWidth: {
+        main: "1104px",
+        modal: "375px",
       },
       minWidth: {
-        "device": "375px",
+        main: "375px",
       },
     },
   },
-  plugins: [require("tailwind-hamburgers")],
+  plugins: [],
 } satisfies Config

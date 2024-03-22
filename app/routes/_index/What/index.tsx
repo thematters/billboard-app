@@ -1,26 +1,43 @@
-import Crate from '~/components/Crate'
-import ImgBook from '~/components/Images/Book'
-import Title from '~/components/Title'
+import clsx from 'clsx'
+
+import Crate from '@component/Crate'
+
+import Auction from './Auction'
+import Chart from './Chart'
+import Protocol from './Protocol'
+import Revenue from './Revenue'
 
 const What = () => {
+  const titleCss = clsx('t-20 md:t-36', 'font-cyber', 'f-center')
+  const numberCss = clsx('text-green', 'lg-shown')
+  const listCss = clsx('max-limit', 'grid grid-cols-1', 'lg:py-5')
+
   return (
-    <Crate
-      color="light"
-      outerClass="rounded-2xl"
-      innerClass="py-4 grid grid-cols-1 gap-y-6"
-    >
-      <Title otherClass="flex-center">WHAT</Title>
-      <section className="text-14 lg:text-20">
-        An open protocol designed to migrate social media to the decentralized
-        blockchain, enabling transparent, competitive, and accountable
-        ecosystems, empowering user ownership -
-        <b>we leverage decentralization to architect a new attention economy</b>
-        .
-      </section>
-      <section className="py-4 flex-center">
-        <ImgBook className="w-[311px] h-[94px] lg:w-[896px] lg:h-[270px]" />
-      </section>
-    </Crate>
+    <>
+      {/* Title */}
+      <Crate>
+        <Crate.Inner css="py-4" hasDots hasXBorder hasYBorder>
+          <section className={titleCss}>
+            <span className={numberCss}>002</span>
+            <div className="slash"></div>
+            <span className="text-white">WHAT'S NEW&nbsp;</span>
+            <span className="text-grass">& WHY</span>
+          </section>
+        </Crate.Inner>
+      </Crate>
+
+      {/* Content */}
+      <Crate>
+        <Crate.Inner hasDots hasXBorder>
+          <section className={listCss}>
+            <Chart />
+            <Revenue />
+            <Auction />
+            <Protocol />
+          </section>
+        </Crate.Inner>
+      </Crate>
+    </>
   )
 }
 
