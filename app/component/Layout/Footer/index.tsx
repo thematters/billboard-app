@@ -76,7 +76,7 @@ const Footer = () => {
                 <SocialItem to="https://matters-lab.io/">
                   <SvgMatters />
                 </SocialItem>
-                <SocialItem to="https://www.instagram.com/matterslab2018/">
+                <SocialItem to="https://www.instagram.com/matters.lab/">
                   <SvgInstagram />
                 </SocialItem>
                 <SocialItem to="https://www.linkedin.com/company/matters-lab/">
