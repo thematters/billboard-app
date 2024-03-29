@@ -2,6 +2,7 @@ import type { AppContext } from '@type'
 
 import { useOutletContext } from '@remix-run/react'
 import clsx from 'clsx'
+import _ from 'lodash'
 import { encodeFunctionData } from 'viem'
 import { useAccount, useWriteContract } from 'wagmi'
 import { useEffect } from 'react'
@@ -36,7 +37,7 @@ const Records = ({ data, callback }: Props) => {
     (r, v) => {
       const sub = v.items.reduce(
         (r: Record<string, any>, d: Record<string, any>) => {
-          const amount = Number(d.amount) / 1e6
+          const amount = _.floor(Number(d.amount) / 1e6, 2)
           r.items.push({ ...d, root: v.root, amount })
           r.amount = r.amount + amount
           return r
