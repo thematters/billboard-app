@@ -4,7 +4,7 @@ import { NavLink, useOutletContext } from '@remix-run/react'
 import clsx from 'clsx'
 import { useAccount } from 'wagmi'
 
-import ButtonBase from '@component/Button/Base'
+import ButtonLink from '@component/Button/Link'
 import SvgClaimed from '@svg/Claimed'
 
 type Props = {
@@ -36,9 +36,9 @@ const Claimed = ({ click }: Props) => {
         .
       </section>
       <SvgClaimed css={svgCss} />
-      <ButtonBase css={btnCss} color="dim" click={click}>
+      <ButtonLink css={btnCss} color="dim" to="/" click={click}>
         Got it
-      </ButtonBase>
+      </ButtonLink>
     </section>
   )
 }
