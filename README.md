@@ -7,3 +7,4 @@
 ### Start local dev
 
 - Install dependencies: `pnpm add .`
+- Setup environment variables: `cp .env.example .env`

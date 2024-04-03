@@ -118,11 +118,12 @@
   }
 
   .hero {
-    background:
-      linear-gradient(rgba(33, 33, 33, 0.25), rgba(33, 33, 33, 0.25)),
-      url(app/asset/hero.webp),
-      url(app/asset/hero.png);
     @apply bg-cover bg-center bg-no-repeat;
+    background-image: url(app/asset/hero.png);
+
+    @supports(background-image: url(app/asset/hero.webp)) {
+      background-image: url(app/asset/hero.webp);
+    }
   }
 
   .deco {
@@ -131,8 +132,12 @@
   }
 
   .sketch {
-    background-image: url(app/asset/sketch.webp), url(app/asset/sketch.png);
     @apply bg-cover bg-center bg-no-repeat;
+    background-image: url(app/asset/sketch.png);
+
+    @supports(background-image: url(app/asset/sketch.webp)) {
+      background-image: url(app/asset/sketch.webp);
+    }
   }
 
   .tab-border {

@@ -5,11 +5,12 @@ import clsx from 'clsx'
 
 type Props = ComponentProps & {
   color: 'dim' | 'grass'
+  click?: () => void
   to: string
   target?: string
 }
 
-const LinkButton = ({ children, css, color, to, target }: Props) => {
+const LinkButton = ({ children, css, color, click, to, target }: Props) => {
   const baseCss = clsx(
     'btn-base',
     {
@@ -19,7 +20,7 @@ const LinkButton = ({ children, css, color, to, target }: Props) => {
     css
   )
   return (
-    <NavLink className="w-fit" to={to} target={target}>
+    <NavLink className="w-fit" to={to} target={target} onClick={click}>
       <button className={baseCss}>{children}</button>
     </NavLink>
   )
