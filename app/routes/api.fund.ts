@@ -33,30 +33,12 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
     const rounds = []
     for (const round of baseRounds) {
-      const { dirpath: path } = round
-      const distPath = getPublicPath(`${srcPath}/${path}/distrib.json`)
-      const distExists = await fs.pathExists(distPath)
-
-      if (!distExists) {
-        return sendError(ERROR.DIST_NOT_FOUND)
-      }
-
-      const rawDist = await readFile(distPath, '[]')
-      const dist = rawDist.reduce(
-        (r: Record<string, any>, d: Record<string, any>) => {
-          r.cids.add(d.id)
-          r.users.add(d.userName)
-          return r
-        },
-        { cids: new Set(), users: new Set() }
-      )
-
       rounds.push({
         id: round.id,
         from: round.fromTime,
         to: round.toTime,
-        cidCount: dist.cids.size,
-        userCount: dist.users.size,
+        cidCount: round.cidsCount,
+        userCount: round.authorsCount,
         amount: Number(round.amountTotal) / 1e6,
       })
     }
