@@ -7,9 +7,10 @@ const client = new S3Client() // use credentials from environment
 
 const AssetsDir = './public/static'
 
-export const main = async () => {
+export const main = async (branch = 'prod') => {
   const controller = new AbortController()
   const { signal } = controller
+  const developPrefix = branch !== 'prod' ? 'web-develop/' : ''
 
   try {
     // The Body object also has 'transformToByteArray' and 'transformToWebStream' methods.
@@ -17,7 +18,7 @@ export const main = async () => {
       await client.send(
         new GetObjectCommand({
           Bucket: 'matters-billboard',
-          Key: 'rounds/rounds.json',
+          Key: `${developPrefix}rounds/rounds.json`,
         })
       )
     ).Body.transformToString()
@@ -47,7 +48,7 @@ export const main = async () => {
         await client.send(
           new GetObjectCommand({
             Bucket: 'matters-billboard',
-            Key: `rounds/${lastRound.dirpath}/${file}`,
+            Key: `${developPrefix}rounds/${lastRound.dirpath}/${file}`,
           })
         )
       ).Body.transformToString()
@@ -68,4 +69,5 @@ export const main = async () => {
   }
 }
 
-await main()
+// console.log('run with argv:', process.argv)
+await main(process.argv?.[2] || 'prod')
