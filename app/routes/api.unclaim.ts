@@ -8,6 +8,7 @@ import { isAddress } from 'viem'
 import { optimism, optimismSepolia } from 'viem/chains'
 
 import { ERROR, STATE } from '@constant'
+import { formatDate, formatRoundId } from '@util/format'
 import { getPublicPath, readEnvs, readFile, sendError } from '@util/server'
 import { initClient, initDistribution } from '@util/viem'
 
@@ -58,10 +59,20 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     }
 
     const rounds = _.orderBy(rawRounds, ['fromBlock'], ['desc']).map(
-      ({ root, amountTotal: rootAmount, dirpath: path }) => ({
+      ({
+        id,
+        root,
+        amountTotal: rootAmount,
+        dirpath: path,
+        fromTime,
+        toTime,
+      }) => ({
+        roundId: formatRoundId(id),
         root,
         rootAmount,
         path,
+        from: formatDate(fromTime),
+        to: formatDate(toTime),
       })
     )
 
@@ -116,12 +127,15 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       const base = dist.reduce(
         (r, d) => {
           r.items.push({
+            roundId: d.roundId,
             cid: d.id,
             url: d.url,
             title: d.title,
             proof: tree[d.id]?.proof,
             share: tree[d.id]?.share,
             amount: d.clr_amount,
+            from: d.from,
+            to: d.to,
           })
           r.cids.push(d.id)
           return r
@@ -132,7 +146,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       // filter out claimed
       const client = initClient(chain)
       const distribution = initDistribution(addressDistribution, client)
-      const cidChunks = _.chunk(base.cids, 2) as Array<string[]>
+      const cidChunks = _.chunk(base.cids, 3) as Array<string[]>
 
       let claimed = [] as string[]
       for (const cids of cidChunks) {

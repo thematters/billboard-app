@@ -7,14 +7,13 @@ export const formatAddress = (address: string, size = 3) =>
 export const formatDate = (time: number | string, pattern = 'MMM DD YYYY') =>
   dayjs(time).format(pattern)
 
-export const formatRound = (round: Record<string, any>) => {
-  const id = (round.id || '').replace('#', '')
-  const amount = round.amount || 0
-  return {
-    ...round,
-    id: _.padStart(id, 3, '0'),
-    price: amount.toFixed(2),
-    from: formatDate(round.from),
-    to: formatDate(round.to),
-  }
-}
+export const formatRoundId = (id: string) =>
+  _.padStart((id || '').replace('#', ''), 3, '0')
+
+export const formatRound = (round: Record<string, any>) => ({
+  ...round,
+  id: formatRoundId(round.id),
+  price: (round.amount || 0).toFixed(2),
+  from: formatDate(round.from),
+  to: formatDate(round.to),
+})
