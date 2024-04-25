@@ -80,7 +80,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     let count = 0
     const data = []
     for (const round of rounds) {
-      const { root, rootAmount, path } = round
+      const { roundId, root, rootAmount, path, from, to } = round
       const distPath = getPublicPath(`${srcPath}/${path}/distrib.json`)
       const treePath = getPublicPath(`${srcPath}/${path}/treedump.json`)
 
@@ -127,15 +127,15 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       const base = dist.reduce(
         (r, d) => {
           r.items.push({
-            roundId: d.roundId,
+            roundId,
             cid: d.id,
             url: d.url,
             title: d.title,
             proof: tree[d.id]?.proof,
             share: tree[d.id]?.share,
             amount: d.clr_amount,
-            from: d.from,
-            to: d.to,
+            from,
+            to,
           })
           r.cids.push(d.id)
           return r
