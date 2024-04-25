@@ -29,7 +29,9 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       return json({ state: STATE.successful, rounds: [] })
     }
 
-    const baseRounds = _.orderBy(rawRounds, d => Number(d.fromBlock), ['desc'])
+    const baseRounds = _.orderBy(rawRounds, (d) => Number(d.fromBlock), [
+      'desc',
+    ])
 
     const rounds = []
     for (const round of baseRounds) {
