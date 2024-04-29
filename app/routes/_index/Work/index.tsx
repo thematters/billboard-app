@@ -11,7 +11,7 @@ const Work = () => {
 
   return (
     <Crate>
-      <Crate.Inner hasDots hasXBorder hasTopBorder>
+      <Crate.Inner hasDots hasXBorder hasTopBorder hasSideDeco>
         <section className={baseCss}>
           {/* Title */}
           <section className="section-title">HOW IT WORKS</section>

@@ -10,7 +10,7 @@ const Hero = () => {
   return (
     <Crate css="menu-spacing">
       <section className="hero">
-        <Crate.Inner hasDots hasXBorder>
+        <Crate.Inner hasDots hasXBorder hasSideDeco>
           <Slogan />
           <Decorator />
           <Mission />

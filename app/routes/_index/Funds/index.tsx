@@ -36,7 +36,7 @@ const Funds = () => {
 
   return (
     <Crate>
-      <Crate.Inner css={innerCss} hasDots hasXBorder hasTopBorder>
+      <Crate.Inner css={innerCss} hasDots hasXBorder hasTopBorder hasSideDeco>
         <section className="max-limit">
           <section className="section-title">
             FUNDING DISTRIBUTION HISTORY
