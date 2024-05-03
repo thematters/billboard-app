@@ -39,7 +39,7 @@ const Record = ({ data }: Props) => {
       <section className={rightCss}>
         <section className={amountHeadCss}>Amount</section>
         <section className={amountCss}>
-          {_.floor(data.amount, 2)}
+          {data.amount.toFixed(6)}
           <span className={amountUnitCss}> USDT</span>
         </section>
       </section>
