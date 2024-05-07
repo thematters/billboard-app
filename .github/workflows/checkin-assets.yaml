@@ -25,20 +25,12 @@ jobs:
         run: yarn add --ignore-scripts @aws-sdk/client-s3 ## the only dependency for ./bin/sync-up-latest-round.mjs
 
       - name: Sync up Latest Round
+        id: sync-up-latest-round
         run: "./bin/sync-up-latest-round.mjs | tee message.log"
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ap-southeast-1
-
-      - name: Create commits
-        run: |
-          # git config user.name 'Peter Evans'
-          git add -v -- ./public/static
-          git commit --author '${{ github.actor }} <>' -m "checkin latest round assets" -v --no-verify -- ./public/static
-        env:
-          GIT_COMMITTER_NAME: 'github-actions[bot]'
-          GIT_COMMITTER_EMAIL: ''
 
       - name: Create Pull Request
         id: cpr
@@ -52,7 +44,7 @@ jobs:
           delete-branch: true
           # path: public/static
           add-paths: public/static
-          title: check in latest round Assets
+          title: check in latest Round${{steps.sync-up-latest-round.outputs.round_id}} Assets
           body-path: message.log
           body: |
             Update preview Assets
