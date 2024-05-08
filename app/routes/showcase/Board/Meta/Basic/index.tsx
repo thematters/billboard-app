@@ -9,7 +9,7 @@ type Props = {
 }
 
 const Meta = ({ board }: Props) => {
-  const { contentURI, name, redirectURI } = board
+  const { contentURI, name, location } = board
 
   const baseCss = clsx('grid grid-cols-1', 'gap-y-4')
   const imgCss = clsx('h-auto', 'w-full', 'rounded-2xl')
@@ -31,7 +31,7 @@ const Meta = ({ board }: Props) => {
         <p className={nameCss}>{name}</p>
         <p className={locationCss}>
           Board Location:
-          <NavLink className={linkCss} to={redirectURI} target="_blank">
+          <NavLink className={linkCss} to={location} target="_blank">
             Discover Page
             <SvgLink css={svgLinkCss} />
           </NavLink>

@@ -44,6 +44,7 @@ export const main = async (branch = 'prod') => {
     }
 
     await writeFile(`${AssetsDir}/rounds.json`, roundsContent, { signal })
+
     console.log(
       new Date(),
       `written rounds.json with ${(roundsContent.length / 1024).toFixed(1)} KBytes.`

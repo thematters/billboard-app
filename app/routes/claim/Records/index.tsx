@@ -37,7 +37,7 @@ const Records = ({ data, callback }: Props) => {
     (r, v) => {
       const sub = v.items.reduce(
         (r: Record<string, any>, d: Record<string, any>) => {
-          const amount = _.floor(Number(d.amount) / 1e6, 2)
+          const amount = Number(d.amount) / 1e6
           r.items.push({ ...d, root: v.root, amount })
           r.amount = r.amount + amount
           return r
@@ -110,7 +110,7 @@ const Records = ({ data, callback }: Props) => {
       </section>
       <section className={totalCss}>
         <span className={totalHeadCss}>Total Amount:</span>
-        <span className={totalNumCss}>{base.total.toFixed(2)} USDT</span>
+        <span className={totalNumCss}>{base.total.toFixed(6)} USDT</span>
       </section>
       <ButtonBase css={btnCss} color="dim" click={claim}>
         {isPending ? <SvgSpinner css="animate-spin" height={27} /> : 'Claim'}
