@@ -63,6 +63,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
         id,
         root,
         amountTotal: rootAmount,
+        sharesTotal: rootShares,
         dirpath: path,
         fromTime,
         toTime,
@@ -70,6 +71,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
         roundId: formatRoundId(id),
         root,
         rootAmount,
+        rootShares,
         path,
         from: formatDate(fromTime),
         to: formatDate(toTime),
@@ -80,7 +82,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     let count = 0
     const data = []
     for (const round of rounds) {
-      const { roundId, root, rootAmount, path, from, to } = round
+      const { roundId, root, rootAmount, rootShares, path, from, to } = round
       const distPath = getPublicPath(`${srcPath}/${path}/distrib.json`)
       const treePath = getPublicPath(`${srcPath}/${path}/treedump.json`)
 
@@ -133,7 +135,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
             title: d.title,
             proof: tree[d.id]?.proof,
             share: tree[d.id]?.share,
-            amount: d.clr_amount,
+            amount: (rootAmount * tree[d.id]?.share) / rootShares,
             from,
             to,
           })
