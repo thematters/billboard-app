@@ -38,7 +38,13 @@ const Board = () => {
 
   return (
     <Crate css="menu-spacing">
-      <Crate.Inner css={innerCss} hasDots hasXBorder hasBottomBorder>
+      <Crate.Inner
+        css={innerCss}
+        hasDots
+        hasXBorder
+        hasBottomBorder
+        hasSideDeco
+      >
         <section className="max-limit">
           {(step === 'loading' || step === 'error') && (
             <>

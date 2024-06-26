@@ -161,6 +161,53 @@
     min-width: 0;
     @apply mr-4;
   }
+
+  /** side deco **/
+  .base-side-deco {
+    position: absolute;
+    content: "";
+    @apply bg-center bg-no-repeat;
+  }
+
+  .side-deco-sm::before {
+    @apply base-side-deco;
+    top: calc(50% - 50px);
+    left: -5px;
+
+    background-image: url(app/asset/side-deco-l-sm.svg);
+    width: 9px;
+    height: 100px;
+  }
+
+  .side-deco-sm::after {
+    @apply base-side-deco;
+    top: calc(50% - 50px);
+    right: -5px;
+
+    background-image: url(app/asset/side-deco-r-sm.svg);
+    width: 9px;
+    height: 100px;
+  }
+
+  .side-deco-md::before {
+    @apply base-side-deco;
+    top: calc(50% - 120px);
+    left: -3px;
+
+    background-image: url(app/asset/side-deco-l-md.svg);
+    width: 18px;
+    height: 240px;
+  }
+
+  .side-deco-md::after {
+    @apply base-side-deco;
+    top: calc(50% - 120px);
+    right: -3px;
+
+    background-image: url(app/asset/side-deco-r-md.svg);
+    width: 18px;
+    height: 240px;
+  }
 }
 
 @layer utilities {

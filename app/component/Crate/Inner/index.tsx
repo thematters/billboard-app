@@ -9,6 +9,7 @@ type CrateInnerProps = ComponentProps & {
   hasYBorder?: boolean
   hasTopBorder?: boolean
   hasBottomBorder?: boolean
+  hasSideDeco?: boolean
 }
 
 const CrateInner = ({
@@ -20,6 +21,7 @@ const CrateInner = ({
   hasYBorder,
   hasTopBorder,
   hasBottomBorder,
+  hasSideDeco,
 }: CrateInnerProps) => {
   const baseCss = clsx(
     {
@@ -28,6 +30,7 @@ const CrateInner = ({
       'b-y-green': hasYBorder,
       'b-t-green': hasTopBorder,
       'b-b-green': hasBottomBorder,
+      'side-deco-sm md:side-deco-md relative': hasSideDeco,
       dots: hasDots,
     },
     css

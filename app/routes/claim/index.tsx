@@ -69,7 +69,7 @@ const Claim = () => {
   return (
     <>
       <Crate css="menu-spacing">
-        <Crate.Inner css={innerCss} hasDots hasXBorder>
+        <Crate.Inner css={innerCss} hasDots hasXBorder hasSideDeco>
           {step === 'greeting' && <Greet openModal={openModal} />}
           {step === 'loading' && <Skeleton />}
           {step === 'claim' && (
