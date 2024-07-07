@@ -30,15 +30,9 @@ const Carousel = ({ children, css, size }: Props) => {
     })
   }, [emblaApi])
 
-  const dotsCss = clsx('mt-6', 'f-center')
-  const dotCss = clsx(
-    'mx-4',
-    'h-3 w-3',
-    'bg-beige/60',
-    'rounded-full',
-    'cursor-pointer'
-  )
-  const activeCss = clsx('h-4 w-4', 'bg-grass', 'cursor-default')
+  const dotsCss = 'mt-6 f-center'
+  const dotCss = 'mx-4 h-3 w-3 bg-beige/60 rounded-full cursor-pointer'
+  const activeCss = 'h-4 w-4 bg-grass cursor-default'
 
   return (
     <section>

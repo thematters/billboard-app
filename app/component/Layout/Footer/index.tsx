@@ -1,5 +1,4 @@
 import { NavLink } from '@remix-run/react'
-import clsx from 'clsx'
 
 import Crate from '@component/Crate'
 import { MAIL, PAPER_LINK } from '@constant'
@@ -16,26 +15,13 @@ import FooterItem from './FooterItem'
 import SocialItem from './SocialItem'
 
 const Footer = () => {
-  const innerCss = clsx('lg:py-15 py-10')
-  const baseCss = clsx(
-    'max-limit',
-    'grid grid-cols-2 lg:grid-cols-3',
-    'gap-x-6 md:gap-x-20'
-  )
-  const dividerCss = clsx(
-    'my-6 lg:my-0',
-    'border-t border-beige',
-    'opacity-50',
-    'col-span-2',
-    'lg-hidden'
-  )
-  const socialCss = clsx('f-center-between md:f-center lg:f-center-between')
-  const licenseCss = clsx(
-    'mt-4',
-    't-12',
-    'text-steam',
-    'text-center lg:text-left'
-  )
+  const innerCss = 'lg:py-15 py-10'
+  const baseCss =
+    'max-limit grid grid-cols-2 lg:grid-cols-3 gap-x-6 md:gap-x-20'
+  const dividerCss =
+    'my-6 lg:my-0 border-t border-beige opacity-50 col-span-2 lg-hidden'
+  const socialCss = 'f-center-between md:f-center lg:f-center-between'
+  const licenseCss = 'mt-4 t-12 text-steam text-center lg:text-left'
 
   return (
     <footer>

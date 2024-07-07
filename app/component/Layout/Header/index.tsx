@@ -11,23 +11,23 @@ import Hamburger from '@component/Hamburger'
 import SvgLink from '@svg/Link'
 
 type Props = {
-  isMenuActive: boolean
-  setMenuActive: (value: boolean) => void
+  isMainMenuActive: boolean
+  setMainMenuActive: (value: boolean) => void
 }
 
-const Header = ({ isMenuActive, setMenuActive }: Props) => {
-  const click = () => setMenuActive(!isMenuActive)
+const Header = ({ isMainMenuActive, setMainMenuActive }: Props) => {
+  const mainMenuClick = () => setMainMenuActive(!isMainMenuActive)
 
   useEffect(() => {
     const menuHandler = _.debounce(() => {
-      if (window.innerWidth > BREAKPOINT.lg && isMenuActive === true) {
-        setMenuActive(false)
+      if (window.innerWidth > BREAKPOINT.lg && isMainMenuActive === true) {
+        setMainMenuActive(false)
       }
     }, 100)
 
     window.addEventListener('resize', menuHandler)
     return () => window.removeEventListener('resize', menuHandler)
-  }, [isMenuActive])
+  }, [isMainMenuActive])
 
   const baseCss = clsx('fixed', 'top-0', 'left-0', 'w-full', 'z-10', 'bg-dim')
   const innerCss = clsx('py-4 lg:py-8', 'f-center-between')
@@ -37,10 +37,8 @@ const Header = ({ isMenuActive, setMenuActive }: Props) => {
     <section className={baseCss}>
       <Crate hasBottomBorder>
         <Crate.Inner css={innerCss}>
-          {/* Billboard Logo */}
           <Logo />
 
-          {/* Nav Menu */}
           <section className={navCss}>
             <ButtonLink color="dim" css="mr-4" to={PAPER_LINK} target="_blank">
               GREEN PAPER
@@ -54,9 +52,11 @@ const Header = ({ isMenuActive, setMenuActive }: Props) => {
             </ButtonLink>
           </section>
 
-          {/* Hamburger Menu */}
-          <section className="lg:hidden" onClick={click}>
-            <Hamburger isMenuActive={isMenuActive} />
+          <section className="lg:hidden">
+            <Hamburger
+              onClick={mainMenuClick}
+              isMenuActive={isMainMenuActive}
+            />
           </section>
         </Crate.Inner>
       </Crate>

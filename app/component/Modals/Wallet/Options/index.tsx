@@ -2,7 +2,6 @@ import type { AppContext, ComponentProps } from '@type'
 import type { Connector, CreateConnectorFn } from 'wagmi'
 
 import { useOutletContext } from '@remix-run/react'
-import clsx from 'clsx'
 import _ from 'lodash'
 import { useState } from 'react'
 import { useAccount, useConnect } from 'wagmi'
@@ -24,7 +23,7 @@ const Options = ({ children }: ComponentProps) => {
   const metaMask = _.find(connectors, { id: 'metaMask' }) as Connector
   const walletConnect = _.find(connectors, { id: 'walletConnect' }) as Connector
 
-  const baseCss = clsx('mb-6', 'grid grid-cols-1', 'gap-y-4')
+  const baseCss = 'mb-6 grid grid-cols-1 gap-y-4'
 
   return (
     <section className={baseCss}>

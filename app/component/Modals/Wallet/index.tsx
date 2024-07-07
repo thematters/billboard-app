@@ -1,7 +1,5 @@
 import type { ComponentProps } from '@type'
 
-import clsx from 'clsx'
-
 import Modal from '@component/Modal'
 
 import Foot from './Foot'
@@ -15,7 +13,7 @@ type Props = ComponentProps & {
 }
 
 const WalletModal = ({ children, isOpened, open, close }: Props) => {
-  const descCss = clsx('my-6', 't-14', 'font-normal')
+  const descCss = 'my-6 t-14 font-normal'
 
   return (
     <Modal isOpened={isOpened} open={open} close={close}>
