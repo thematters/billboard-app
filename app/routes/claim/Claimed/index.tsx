@@ -1,10 +1,9 @@
-import type { AppContext } from '@type'
-
-import { NavLink, useOutletContext } from '@remix-run/react'
+import { NavLink } from '@remix-run/react'
 import clsx from 'clsx'
 import { useAccount } from 'wagmi'
 
 import ButtonLink from '@component/Button/Link'
+import useEnvs from '@hook/useEnvs'
 import SvgClaimed from '@svg/Claimed'
 
 type Props = {
@@ -12,7 +11,7 @@ type Props = {
 }
 
 const Claimed = ({ click }: Props) => {
-  const context = useOutletContext<AppContext>()
+  const envs = useEnvs()
   const { address } = useAccount()
 
   const baseCss = clsx('lg:pb-20', 'max-limit')
@@ -28,7 +27,7 @@ const Claimed = ({ click }: Props) => {
         details about the transaction, you can check your wallet and&nbsp;
         <NavLink
           className="text-grass"
-          to={`${context.urlOpExplorer}/address/${address}`}
+          to={`${envs.urlOpExplorer}/address/${address}`}
           target="_blank"
         >
           on-chain records

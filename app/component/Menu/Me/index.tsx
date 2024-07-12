@@ -4,15 +4,13 @@ import { NavLink } from '@remix-run/react'
 import clsx from 'clsx'
 
 import Crate from '@component/Crate'
-import { MAIL, PAPER_LINK } from '@constant'
 import useLockScroll from '@hook/useLockScroll'
-import SvgLink from '@svg/Link'
 
 type Props = ComponentProps & {
   isActive: boolean
 }
 
-const MainMenu = ({ css, isActive }: Props) => {
+const MeMenu = ({ css, isActive }: Props) => {
   useLockScroll(isActive)
 
   const crateCss = clsx('lg:hidden', 'menu', {
@@ -31,24 +29,13 @@ const MainMenu = ({ css, isActive }: Props) => {
       <Crate.Inner css={innerCss} hasDots hasXBorder hasXSpacing={false}>
         <nav className="list-none">
           <li className={liCss}>
-            <NavLink className={linkCss} to={PAPER_LINK} target="_blank">
-              GREEN PAPER
-              <SvgLink />
+            <NavLink className={linkCss} to="">
+              MY BIDS
             </NavLink>
           </li>
           <li className={liCss}>
-            <NavLink className={linkCss} to="/showcase">
-              SHOWCASE
-            </NavLink>
-          </li>
-          <li className={liCss}>
-            <NavLink className={linkCss} to="/claim">
-              CLAIM
-            </NavLink>
-          </li>
-          <li className={liCss}>
-            <NavLink className={linkCss} to={MAIL}>
-              CONTACT US
+            <NavLink className={linkCss} to="">
+              DISCONNECT
             </NavLink>
           </li>
         </nav>
@@ -57,4 +44,4 @@ const MainMenu = ({ css, isActive }: Props) => {
   )
 }
 
-export default MainMenu
+export default MeMenu

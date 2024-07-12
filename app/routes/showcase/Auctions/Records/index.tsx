@@ -1,9 +1,8 @@
-import type { AppContext } from '@type'
-
-import { NavLink, useOutletContext } from '@remix-run/react'
+import { NavLink } from '@remix-run/react'
 import clsx from 'clsx'
 
 import ButtonLink from '@component/Button/Link'
+import useEnvs from '@hook/useEnvs'
 import SvgLink from '@svg/Link'
 import { formatAddress, formatDate } from '@util/format'
 
@@ -14,14 +13,14 @@ type Props = {
 }
 
 const Records = ({ data }: Props) => {
-  const context = useOutletContext<AppContext>()
+  const envs = useEnvs()
   const auctions = (data?.auctions || []).map(
     (auction: Record<string, any>) => ({
       ...auction,
       price: (auction?.price || 0).toFixed(2),
       endAt: formatDate(auction.endAt),
       txHash: formatAddress(auction.txHash),
-      link: `${context.urlOpExplorer}/tx/${auction.txHash}`,
+      link: `${envs.urlOpExplorer}/tx/${auction.txHash}`,
     })
   )
   const isEmpty = !auctions || auctions.length == 0
@@ -65,7 +64,7 @@ const Records = ({ data }: Props) => {
             <ButtonLink
               css={moreBtnCss}
               color="dim"
-              to={context.urlContract}
+              to={envs.urlContract}
               target="_blank"
             >
               <p className="f-center">

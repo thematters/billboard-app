@@ -7,16 +7,16 @@ import Head from './Head'
 import Options from './Options'
 
 type Props = ComponentProps & {
-  isOpened: boolean
+  isOpen: boolean
   open: () => void
   close: () => void
 }
 
-const WalletModal = ({ children, isOpened, open, close }: Props) => {
+const WalletModal = ({ children, isOpen, open, close }: Props) => {
   const descCss = 'my-6 t-14 font-normal'
 
   return (
-    <Modal isOpened={isOpened} open={open} close={close}>
+    <Modal isOpened={isOpen} open={open} close={close}>
       {/* Head */}
       <Head close={close} />
 

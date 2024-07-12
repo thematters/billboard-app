@@ -1,6 +1,3 @@
-import type { AppContext } from '@type'
-
-import { useOutletContext } from '@remix-run/react'
 import clsx from 'clsx'
 import _ from 'lodash'
 import { encodeFunctionData } from 'viem'
@@ -11,6 +8,7 @@ import ABIDistribution from '@abi/distribution'
 import ABIMulticall3 from '@abi/multicall3'
 import ButtonBase from '@component/Button/Base'
 import ErrorMessage from '@component/Error'
+import useEnvs from '@hook/useEnvs'
 import SvgClaimEmpty from '@svg/ClaimEmpty'
 import SvgSpinner from '@svg/Spinner'
 
@@ -22,7 +20,7 @@ type Props = {
 }
 
 const Records = ({ data, callback }: Props) => {
-  const context = useOutletContext<AppContext>()
+  const envs = useEnvs()
   const { address } = useAccount()
   const {
     data: hash,
@@ -59,7 +57,7 @@ const Records = ({ data, callback }: Props) => {
 
     const calls = base.items.map(
       ({ root, cid, share, proof }: Record<string, any>) => ({
-        target: context.addressDistribution,
+        target: envs.addressDistribution,
         allowFailure: false,
         callData: encodeFunctionData({
           abi: ABIDistribution,
@@ -70,7 +68,7 @@ const Records = ({ data, callback }: Props) => {
     )
 
     writeContract({
-      address: context.addressMulticall3 as `0x${string}`,
+      address: envs.addressMulticall3 as `0x${string}`,
       abi: ABIMulticall3,
       functionName: 'aggregate3',
       args: [calls],

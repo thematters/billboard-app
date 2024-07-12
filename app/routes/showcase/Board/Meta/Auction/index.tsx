@@ -1,9 +1,10 @@
-import type { AppContext } from '@type'
+import type { AppEnvs } from '@type'
 
-import { NavLink, useOutletContext } from '@remix-run/react'
+import { NavLink } from '@remix-run/react'
 import clsx from 'clsx'
 
 import ButtonBase from '@component/Button/Base'
+import useEnvs from '@hook/useEnvs'
 import SvgLink from '@svg/Link'
 import { formatAddress, formatDate } from '@util/format'
 
@@ -12,9 +13,9 @@ type Props = {
 }
 
 const Auction = ({ data }: Props) => {
-  const context = useOutletContext<AppContext>()
+  const envs = useEnvs()
   const { auction, board, highestBid, taxRate } = data
-  const address = formatAddress(context.addressOperator)
+  const address = formatAddress(envs.addressOperator)
   const endAt = formatDate(auction.endAt)
 
   const auctionCss = clsx('grid grid-cols-1 md:grid-cols-2')
@@ -62,14 +63,14 @@ const Auction = ({ data }: Props) => {
       <section className="mt-6">
         <section className={itemCss}>
           <p>Contract (ERC-721)</p>
-          <NavLink className={linkCss} to={context.urlContract} target="_blank">
+          <NavLink className={linkCss} to={envs.urlContract} target="_blank">
             {address}
             <SvgLink css="ml-1" width={18} height={18} />
           </NavLink>
         </section>
         <section className={itemCss}>
           <p>Token ID</p>
-          <p>{context.tokenIdShowCase}</p>
+          <p>{envs.tokenIdShowCase}</p>
         </section>
         <section className={itemLastCss}>
           <p>Chain</p>

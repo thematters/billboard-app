@@ -58,12 +58,12 @@
   .menu {
     @apply bg-dim;
     @apply w-screen;
-    @apply fixed top-[57px] z-10 overflow-hidden;
+    @apply fixed top-[67px] z-10 overflow-hidden;
     @apply transition-opacity duration-300;
   }
 
   .menu-active {
-    @apply h-[calc(100vh-57px)] opacity-100;
+    @apply h-[calc(100vh-67px)] opacity-100;
   }
 
   .menu-inactive {
@@ -71,7 +71,7 @@
   }
 
   .menu-spacing {
-    @apply pt-[57px] lg:pt-[106px];
+    @apply pt-[67px] lg:pt-[98px];
   }
 
   .modal-overlay {

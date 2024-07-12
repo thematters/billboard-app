@@ -1,11 +1,11 @@
-import type { AppContext, ComponentProps } from '@type'
+import type { ComponentProps } from '@type'
 import type { Connector, CreateConnectorFn } from 'wagmi'
 
-import { useOutletContext } from '@remix-run/react'
 import _ from 'lodash'
 import { useState } from 'react'
 import { useAccount, useConnect } from 'wagmi'
 
+import useEnvs from '@hook/useEnvs'
 import SvgMetaMask from '@svg/MetaMask'
 import SvgSpinner from '@svg/Spinner'
 import SvgWalletConnect from '@svg/WalletConnect'
@@ -15,10 +15,10 @@ import Option from './Option'
 type WalletOption = 'metaMask' | 'walletConnect' | 'none'
 
 const Options = ({ children }: ComponentProps) => {
-  const context = useOutletContext<AppContext>()
   const [option, setOption] = useState<WalletOption>('none')
   const { isConnecting } = useAccount()
   const { connectors, connect } = useConnect()
+  const envs = useEnvs()
 
   const metaMask = _.find(connectors, { id: 'metaMask' }) as Connector
   const walletConnect = _.find(connectors, { id: 'walletConnect' }) as Connector
@@ -30,7 +30,7 @@ const Options = ({ children }: ComponentProps) => {
       <Option
         connector={metaMask}
         click={() => {
-          connect({ connector: metaMask, chainId: context.chainId })
+          connect({ connector: metaMask, chainId: envs.chainId })
           setOption('metaMask')
         }}
         isConnecting={isConnecting && option === 'metaMask'}
@@ -41,7 +41,7 @@ const Options = ({ children }: ComponentProps) => {
       <Option
         connector={walletConnect}
         click={() => {
-          connect({ connector: walletConnect, chainId: context.chainId })
+          connect({ connector: walletConnect, chainId: envs.chainId })
           setOption('walletConnect')
         }}
         isConnecting={isConnecting && option === 'walletConnect'}
