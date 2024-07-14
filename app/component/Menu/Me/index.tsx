@@ -2,15 +2,19 @@ import type { ComponentProps } from '@type'
 
 import { NavLink } from '@remix-run/react'
 import clsx from 'clsx'
+import { useDisconnect } from 'wagmi'
 
 import Crate from '@component/Crate'
 import useLockScroll from '@hook/useLockScroll'
 
 type Props = ComponentProps & {
   isActive: boolean
+  setActive: (value: boolean) => void
 }
 
-const MeMenu = ({ css, isActive }: Props) => {
+const MeMenu = ({ css, isActive, setActive }: Props) => {
+  const { disconnect: walletDisconnect } = useDisconnect()
+
   useLockScroll(isActive)
 
   const crateCss = clsx('lg:hidden', 'menu', {
@@ -22,7 +26,12 @@ const MeMenu = ({ css, isActive }: Props) => {
     'menu-inactive': !isActive,
   })
   const liCss = 'p-4 t-14 b-b-green text-white hover:text-grass'
-  const linkCss = 'w-full f-center-between'
+  const linkCss = 'w-full f-center-between cursor-pointer'
+
+  const disconnect = () => {
+    walletDisconnect()
+    setActive(false)
+  }
 
   return (
     <Crate css={crateCss}>
@@ -34,9 +43,9 @@ const MeMenu = ({ css, isActive }: Props) => {
             </NavLink>
           </li>
           <li className={liCss}>
-            <NavLink className={linkCss} to="">
+            <section className={linkCss} onClick={disconnect}>
               DISCONNECT
-            </NavLink>
+            </section>
           </li>
         </nav>
       </Crate.Inner>

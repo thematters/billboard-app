@@ -1,14 +1,17 @@
 import { NavLink } from '@remix-run/react'
 import clsx from 'clsx'
-import _ from 'lodash'
+import { debounce } from 'lodash-es'
 import { useEffect } from 'react'
+import { isAddress } from 'viem'
+import { useAccount } from 'wagmi'
 
-import { BREAKPOINT, PAPER_LINK } from '@constant'
 import Avatar from '@component/Avatar'
 import ButtonLink from '@component/Button/Link'
 import Logo from '@component/Button/Logo'
 import Crate from '@component/Crate'
 import Hamburger from '@component/Hamburger'
+import { BREAKPOINT, PAPER_LINK } from '@constant'
+import useWalletModal from '@hook/useWalletModal'
 import SvgLink from '@svg/Link'
 
 type Props = {
@@ -24,12 +27,33 @@ const Header = ({
   isMainMenuActive,
   setMainMenuActive,
 }: Props) => {
-  const meMenuClick = () => setMeMenuActive(!isMeMenuActive)
-  const mainMenuClick = () => setMainMenuActive(!isMainMenuActive)
+  const { openModal } = useWalletModal()
+  const { address, isConnected } = useAccount()
+  const isEstablished = isAddress(address || '') && isConnected
+
+  const meMenuClick = () => {
+    setMeMenuActive(!isMeMenuActive)
+    setMainMenuActive(false)
+  }
+  const mainMenuClick = () => {
+    setMainMenuActive(!isMainMenuActive)
+    setMeMenuActive(false)
+  }
 
   useEffect(() => {
-    const menuHandler = _.debounce(() => {
-      if (window.innerWidth > BREAKPOINT.lg && isMainMenuActive === true) {
+    const meMenuHandler = debounce(() => {
+      if (window.innerWidth > BREAKPOINT.lg && isMeMenuActive) {
+        setMeMenuActive(false)
+      }
+    }, 100)
+
+    window.addEventListener('resize', meMenuHandler)
+    return () => window.removeEventListener('resize', meMenuHandler)
+  }, [isMeMenuActive])
+
+  useEffect(() => {
+    const menuHandler = debounce(() => {
+      if (window.innerWidth > BREAKPOINT.lg && isMainMenuActive) {
         setMainMenuActive(false)
       }
     }, 100)
@@ -71,7 +95,7 @@ const Header = ({
           </section>
 
           <section className="f-center-end">
-            <Avatar onClick={meMenuClick} isMenuActive={isMeMenuActive} />
+            <Avatar menuClick={meMenuClick} isMenuActive={isMeMenuActive} />
             <Hamburger
               css={hamCss}
               onClick={mainMenuClick}

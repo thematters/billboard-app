@@ -15,8 +15,8 @@ import Main from './Main'
 const Layout = ({ children }: ComponentProps) => {
   const [isMeMenuActive, setMeMenuActive] = useState<boolean>(false)
   const [isMainMenuActive, setMainMenuActive] = useState<boolean>(false)
-  const location = useLocation()
   const { isOpen, openModal, closeModal } = useWalletModal()
+  const location = useLocation()
 
   useEffect(() => {
     if (isMeMenuActive) {
@@ -37,11 +37,11 @@ const Layout = ({ children }: ComponentProps) => {
         isMainMenuActive={isMainMenuActive}
         setMainMenuActive={setMainMenuActive}
       />
-      <Main>{children}</Main>
-      <Footer />
-      <MeMenu isActive={isMeMenuActive} />
+      <MeMenu isActive={isMeMenuActive} setActive={setMeMenuActive} />
       <MainMenu isActive={isMainMenuActive} />
       <WalletModal isOpen={isOpen} open={openModal} close={closeModal} />
+      <Main>{children}</Main>
+      <Footer />
     </section>
   )
 }

@@ -17,7 +17,7 @@ import Skeleton from './Skeleton'
 
 const Claim = () => {
   const [step, setStep] = useState('greeting')
-  const { isOpen, openModal, closeModal } = useWalletModal()
+  const { isOpen, openModal } = useWalletModal()
   const { address, isConnected } = useAccount()
   const { disconnect } = useDisconnect()
 
@@ -33,7 +33,6 @@ const Claim = () => {
       return
     }
 
-    closeModal()
     setStep('loading')
     api.submit({ address } as Record<string, any>, {
       method: 'GET',

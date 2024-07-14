@@ -1,5 +1,9 @@
 import type { ComponentProps } from '@type'
 
+import { useEffect } from 'react'
+import { isAddress } from 'viem'
+import { useAccount } from 'wagmi'
+
 import Modal from '@component/Modal'
 
 import Foot from './Foot'
@@ -13,6 +17,15 @@ type Props = ComponentProps & {
 }
 
 const WalletModal = ({ children, isOpen, open, close }: Props) => {
+  const { address, isConnected } = useAccount()
+
+  useEffect(() => {
+    const isEstablished = isAddress(address || '') && isConnected
+    if (isEstablished) {
+      close()
+    }
+  }, [address, isConnected])
+
   const descCss = 'my-6 t-14 font-normal'
 
   return (
