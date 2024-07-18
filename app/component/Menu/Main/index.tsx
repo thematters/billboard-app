@@ -23,34 +23,36 @@ const MainMenu = ({ css, isActive }: Props) => {
     'menu-active': isActive,
     'menu-inactive': !isActive,
   })
-  const liCss = 'p-4 t-14 b-b-green text-white hover:text-grass'
-  const linkCss = 'w-full f-center-between'
+  const liCss = 't-14 b-b-green text-white hover:text-grass'
+  const itemCss = 'p-4 w-full f-center-between'
 
   return (
     <Crate css={crateCss}>
       <Crate.Inner css={innerCss} hasDots hasXBorder hasXSpacing={false}>
         <nav className="list-none">
-          <li className={liCss}>
-            <NavLink className={linkCss} to={PAPER_LINK} target="_blank">
-              GREEN PAPER
-              <SvgLink />
-            </NavLink>
-          </li>
-          <li className={liCss}>
-            <NavLink className={linkCss} to="/showcase">
-              SHOWCASE
-            </NavLink>
-          </li>
-          <li className={liCss}>
-            <NavLink className={linkCss} to="/claim">
-              CLAIM
-            </NavLink>
-          </li>
-          <li className={liCss}>
-            <NavLink className={linkCss} to={MAIL}>
-              CONTACT US
-            </NavLink>
-          </li>
+          <ul>
+            <li className={liCss}>
+              <NavLink className={itemCss} to={PAPER_LINK} target="_blank">
+                GREEN PAPER
+                <SvgLink />
+              </NavLink>
+            </li>
+            <li className={liCss}>
+              <NavLink className={itemCss} to="/showcase">
+                SHOWCASE
+              </NavLink>
+            </li>
+            <li className={liCss}>
+              <NavLink className={itemCss} to="/claim">
+                CLAIM
+              </NavLink>
+            </li>
+            <li className={liCss}>
+              <NavLink className={itemCss} to={MAIL}>
+                CONTACT US
+              </NavLink>
+            </li>
+          </ul>
         </nav>
       </Crate.Inner>
     </Crate>

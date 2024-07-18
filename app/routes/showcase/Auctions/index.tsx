@@ -1,5 +1,4 @@
 import { useFetcher } from '@remix-run/react'
-import clsx from 'clsx'
 import { useEffect, useState } from 'react'
 
 import Crate from '@component/Crate'
@@ -32,9 +31,9 @@ const Auctions = () => {
     }
   }, [api])
 
-  const innerCss = clsx('py-8 lg:py-20')
-  const skeletonSMCss = clsx('w-full', 'md-hidden')
-  const skeletonMDCss = clsx('w-full', 'md-shown')
+  const innerCss = 'py-8 lg:py-20'
+  const skeletonSMCss = 'w-full md-hidden'
+  const skeletonMDCss = 'w-full md-shown'
 
   return (
     <Crate>

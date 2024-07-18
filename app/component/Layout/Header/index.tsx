@@ -1,7 +1,7 @@
 import { NavLink } from '@remix-run/react'
 import clsx from 'clsx'
-import { debounce } from 'lodash-es'
 import { useEffect } from 'react'
+import { useMediaQuery } from 'usehooks-ts'
 import { isAddress } from 'viem'
 import { useAccount } from 'wagmi'
 
@@ -10,7 +10,8 @@ import ButtonLink from '@component/Button/Link'
 import Logo from '@component/Button/Logo'
 import Crate from '@component/Crate'
 import Hamburger from '@component/Hamburger'
-import { BREAKPOINT, PAPER_LINK } from '@constant'
+import { PAPER_LINK } from '@constant'
+import useDropdown from '@hook/useDropdown'
 import useWalletModal from '@hook/useWalletModal'
 import SvgLink from '@svg/Link'
 
@@ -30,6 +31,7 @@ const Header = ({
   const { openModal } = useWalletModal()
   const { address, isConnected } = useAccount()
   const isEstablished = isAddress(address || '') && isConnected
+  const isLarge = useMediaQuery('(min-width: 1104px)')
 
   const meMenuClick = () => {
     setMeMenuActive(!isMeMenuActive)
@@ -41,26 +43,16 @@ const Header = ({
   }
 
   useEffect(() => {
-    const meMenuHandler = debounce(() => {
-      if (window.innerWidth > BREAKPOINT.lg && isMeMenuActive) {
-        setMeMenuActive(false)
-      }
-    }, 100)
-
-    window.addEventListener('resize', meMenuHandler)
-    return () => window.removeEventListener('resize', meMenuHandler)
-  }, [isMeMenuActive])
+    if (isLarge && isMeMenuActive) {
+      setMeMenuActive(false)
+    }
+  }, [isLarge, isMeMenuActive])
 
   useEffect(() => {
-    const menuHandler = debounce(() => {
-      if (window.innerWidth > BREAKPOINT.lg && isMainMenuActive) {
-        setMainMenuActive(false)
-      }
-    }, 100)
-
-    window.addEventListener('resize', menuHandler)
-    return () => window.removeEventListener('resize', menuHandler)
-  }, [isMainMenuActive])
+    if (isLarge && isMainMenuActive) {
+      setMainMenuActive(false)
+    }
+  }, [isLarge, isMainMenuActive])
 
   const baseCss = 'fixed top-0 left-0 w-full z-10 bg-dim'
   const innerCss = 'py-4 lg:py-8 f-center-between'
@@ -83,7 +75,7 @@ const Header = ({
                 target="_blank"
               >
                 GREEN PAPER
-                <SvgLink />
+                <SvgLink css="ml-1" />
               </NavLink>
               <NavLink className={navBtnCss} to="/showcase">
                 SHOWCASE

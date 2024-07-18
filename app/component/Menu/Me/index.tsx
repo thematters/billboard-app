@@ -25,8 +25,8 @@ const MeMenu = ({ css, isActive, setActive }: Props) => {
     'menu-active': isActive,
     'menu-inactive': !isActive,
   })
-  const liCss = 'p-4 t-14 b-b-green text-white hover:text-grass'
-  const linkCss = 'w-full f-center-between cursor-pointer'
+  const liCss = 't-14 b-b-green text-white hover:text-grass'
+  const itemCss = 'p-4 w-full f-center-between cursor-pointer'
 
   const disconnect = () => {
     walletDisconnect()
@@ -37,16 +37,18 @@ const MeMenu = ({ css, isActive, setActive }: Props) => {
     <Crate css={crateCss}>
       <Crate.Inner css={innerCss} hasDots hasXBorder hasXSpacing={false}>
         <nav className="list-none">
-          <li className={liCss}>
-            <NavLink className={linkCss} to="">
-              MY BIDS
-            </NavLink>
-          </li>
-          <li className={liCss}>
-            <section className={linkCss} onClick={disconnect}>
-              DISCONNECT
-            </section>
-          </li>
+          <ul>
+            <li className={liCss}>
+              <NavLink className={itemCss} to="/bids">
+                MY BIDS
+              </NavLink>
+            </li>
+            <li className={liCss}>
+              <section className={itemCss} onClick={disconnect}>
+                DISCONNECT
+              </section>
+            </li>
+          </ul>
         </nav>
       </Crate.Inner>
     </Crate>
