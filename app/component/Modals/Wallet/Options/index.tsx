@@ -1,7 +1,7 @@
 import type { ComponentProps } from '@type'
 import type { Connector, CreateConnectorFn } from 'wagmi'
 
-import _ from 'lodash'
+import { find } from 'lodash-es'
 import { useState } from 'react'
 import { useAccount, useConnect } from 'wagmi'
 
@@ -20,10 +20,10 @@ const Options = ({ children }: ComponentProps) => {
   const { connectors, connect } = useConnect()
   const envs = useEnvs()
 
-  const metaMask = _.find(connectors, { id: 'metaMask' }) as Connector
-  const walletConnect = _.find(connectors, { id: 'walletConnect' }) as Connector
+  const metaMask = find(connectors, { id: 'metaMask' }) as Connector
+  const walletConnect = find(connectors, { id: 'walletConnect' }) as Connector
 
-  const baseCss = 'mb-6 grid grid-cols-1 gap-y-4'
+  const baseCss = 'mb-6 cols-1 gap-y-4'
 
   return (
     <section className={baseCss}>

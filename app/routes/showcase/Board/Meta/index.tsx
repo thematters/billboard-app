@@ -1,5 +1,3 @@
-import clsx from 'clsx'
-
 import Basic from './Basic'
 import Auction from './Auction'
 
@@ -8,22 +6,14 @@ type Props = {
 }
 
 const Meta = ({ data }: Props) => {
-  const baseCss = clsx(
-    'p-4 md:p-5',
-    'bg-dim',
-    'border',
-    'border-green',
-    'rounded-[20px]',
-    'grid grid-cols-1 md:grid-cols-2',
-    'gap-x-16'
-  )
+  const baseCss = 'cols-1 md:cols-2 gap-x-16'
 
   return (
     <section className={baseCss}>
-      {/* left - basic */}
+      {/* board basic info */}
       <Basic board={data.board} />
 
-      {/* right - auction and other info */}
+      {/* auction info */}
       <Auction data={data} />
     </section>
   )

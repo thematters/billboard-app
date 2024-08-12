@@ -2,7 +2,6 @@ import { NavLink } from '@remix-run/react'
 import clsx from 'clsx'
 import { useEffect } from 'react'
 import { useMediaQuery } from 'usehooks-ts'
-import { isAddress } from 'viem'
 import { useAccount } from 'wagmi'
 
 import Avatar from '@component/Avatar'
@@ -12,7 +11,6 @@ import Crate from '@component/Crate'
 import Hamburger from '@component/Hamburger'
 import { PAPER_LINK } from '@constant'
 import useDropdown from '@hook/useDropdown'
-import useWalletModal from '@hook/useWalletModal'
 import SvgLink from '@svg/Link'
 
 type Props = {
@@ -28,9 +26,7 @@ const Header = ({
   isMainMenuActive,
   setMainMenuActive,
 }: Props) => {
-  const { openModal } = useWalletModal()
   const { address, isConnected } = useAccount()
-  const isEstablished = isAddress(address || '') && isConnected
   const isLarge = useMediaQuery('(min-width: 1104px)')
 
   const meMenuClick = () => {
@@ -57,7 +53,7 @@ const Header = ({
   const baseCss = 'fixed top-0 left-0 w-full z-10 bg-dim'
   const innerCss = 'py-4 lg:py-8 f-center-between'
   const navCss =
-    'ml-6 hidden lg:f-center-end text-white border-l border-beige border-opacity-30'
+    'ml-6 hidden lg:f-center-end text-white border-l border-beige/30'
   const navBtnCss = 'pt-px ml-6 hover:text-grass'
   const hamCss = 'ml-6 lg:hidden'
 

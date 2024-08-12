@@ -6,7 +6,7 @@ import useLockScroll from '@hook/useLockScroll'
 
 type Props = ComponentProps & {
   isOpened: boolean
-  open: () => void
+  open: (event?: any) => void
   close: () => void
 }
 

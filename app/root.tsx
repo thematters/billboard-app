@@ -9,14 +9,12 @@ import {
   useLoaderData,
 } from '@remix-run/react'
 import { json } from '@remix-run/node'
-import { useState } from 'react'
 
 import EnvsContext from '@component/Context/Envs'
 import WalletContext from '@component/Context/Wallet'
-import WalletModalContext from '@component/Context/WalletModal'
 import Doc from '@component/Doc'
 import Layout from '@component/Layout'
-import { readEnvs } from '@util/server'
+import { readEnvs } from '@util/envs'
 
 import styles from './main.css'
 
@@ -32,16 +30,14 @@ const App = () => {
   return (
     <EnvsContext envs={envs}>
       <WalletContext projectId={envs.idWalletConnect}>
-        <WalletModalContext>
-          <Doc>
-            <Layout>
-              <Outlet context={envs} />
-            </Layout>
-            <Scripts />
-            <ScrollRestoration />
-            <LiveReload />
-          </Doc>
-        </WalletModalContext>
+        <Doc>
+          <Layout>
+            <Outlet context={envs} />
+          </Layout>
+          <Scripts />
+          <ScrollRestoration />
+          <LiveReload />
+        </Doc>
       </WalletContext>
     </EnvsContext>
   )

@@ -8,6 +8,7 @@ export type AppEnvs = {
   addressRegistry: string
   addressDistribution: string
   addressMulticall3: string
+  addressUSDT: string
   tokenIdShowCase: number
   idWalletConnect: string
   urlOpExplorer: string
@@ -29,6 +30,6 @@ export type SVGProps = {
 export type ModalControls = {
   isOpen: boolean
   setIsOpen: (value: boolean) => void
-  openModal: () => void
-  closeModal: () => void
+  open: () => void
+  close: () => void
 }

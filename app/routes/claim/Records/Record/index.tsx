@@ -1,6 +1,5 @@
 import { NavLink } from '@remix-run/react'
 import clsx from 'clsx'
-import _ from 'lodash'
 
 type Props = {
   data: Record<string, any>

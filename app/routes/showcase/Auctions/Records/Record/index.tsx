@@ -8,30 +8,24 @@ type Props = {
 }
 
 const Record = ({ auction }: Props) => {
-  const rowBaseCss = clsx(
-    'px-2 py-4',
-    'md:px-4',
-    'grid grid-cols-4',
-    'gap-x-4',
-    't-12 md:t-14'
-  )
-  const borderCss = clsx('tab-border', 'after:-right-2', 'after:border-green')
+  const rowBaseCss = 'px-2 py-4 md:px-4 cols-4 gap-x-4 t-12 md:t-14'
+  const borderCss = 'tab-border after:-right-2 after:border-green'
   const cellCss = clsx('relative', borderCss)
   const rowCss = clsx(rowBaseCss, 'border-b border-green/40')
-  const linkCss = clsx('w-fit', 'f-center-start', 'hover:text-grass')
-  const svgLinkCss = clsx('ml-1', 'md-shown')
+  const linkCss = 'w-fit f-center-start hover:text-grass'
+  const svgLinkCss = 'ml-1 md-shown'
 
   return (
     <section className={rowCss}>
-      <section className={cellCss}>{auction.price}</section>
-      <section className={cellCss}>{auction.to}</section>
-      <section className={cellCss}>{auction.endAt}</section>
-      <section>
+      <div className={cellCss}>{auction.price} USDT</div>
+      <div className={cellCss}>{auction.bidder}</div>
+      <div className={cellCss}>{auction.endAt}</div>
+      <div>
         <NavLink className={linkCss} to={auction.link} target="_blank">
           {auction.txHash}
           <SvgLink css={svgLinkCss} width={12} height={12} />
         </NavLink>
-      </section>
+      </div>
     </section>
   )
 }

@@ -8,11 +8,12 @@ import { useMediaQuery } from 'usehooks-ts'
 import { isAddress } from 'viem'
 import { useAccount, useDisconnect } from 'wagmi'
 
-import { BREAKPOINT } from '@constant'
 import useDropdown from '@hook/useDropdown'
-import useWalletModal from '@hook/useWalletModal'
 import SvgAvatar from '@svg/Avatar'
+import SvgCard from '@svg/Card'
 import SvgCross from '@svg/Cross'
+import SvgLeave from '@svg/Leave'
+import { publish } from '@util/event'
 
 type Props = ComponentProps & {
   menuClick: () => void
@@ -21,7 +22,6 @@ type Props = ComponentProps & {
 
 const Avatar = ({ menuClick, isMenuActive }: Props) => {
   const dropdown = useDropdown()
-  const { openModal } = useWalletModal()
   const { address, isConnected } = useAccount()
   const { disconnect: walletDisconnect } = useDisconnect()
   const isEstablished = isAddress(address || '') && isConnected
@@ -32,18 +32,20 @@ const Avatar = ({ menuClick, isMenuActive }: Props) => {
     dropdown.state.setIsOpen(false)
   }
 
+  const open = () => publish('wallet-open', {})
+
   const btnMenuProps = () => {
     if (!isEstablished) {
-      return { onClick: openModal }
+      return { onClick: open }
     }
-    if (window.innerWidth < BREAKPOINT.lg) {
+    if (!isLarge) {
       return { onClick: menuClick }
     }
   }
 
   const btnDropdownProps = () => {
     if (!isEstablished) {
-      return { onClick: openModal }
+      return { onClick: open }
     }
     return dropdown.props.getReferenceProps()
   }
@@ -61,7 +63,7 @@ const Avatar = ({ menuClick, isMenuActive }: Props) => {
 
   const dropdownCss = 'p-2 w-[216px] border border-grass rounded-2xl bg-black'
   const liCss = 't-18 hover:bg-oak rounded-lg'
-  const itemCss = 'px-4 py-3 w-full f-center-between cursor-pointer'
+  const itemCss = 'px-4 py-3 w-full f-center-start cursor-pointer'
 
   return (
     <>
@@ -83,13 +85,19 @@ const Avatar = ({ menuClick, isMenuActive }: Props) => {
             <nav className={dropdownCss}>
               <ul>
                 <li className={liCss}>
-                  <NavLink className={itemCss} to="/bids">
-                    MY BIDS
+                  <NavLink
+                    className={itemCss}
+                    to="/mybids"
+                    onClick={() => dropdown.state.setIsOpen(false)}
+                  >
+                    <SvgCard css="mr-2" width={18} height={18} />
+                    My Bids
                   </NavLink>
                 </li>
                 <li className={liCss}>
                   <section className={itemCss} onClick={disconnect}>
-                    DISCONNECT
+                    <SvgLeave css="mr-2" width={18} height={18} />
+                    Disconnect
                   </section>
                 </li>
               </ul>

@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react'
 import MainMenu from '@component/Menu/Main'
 import MeMenu from '@component/Menu/Me'
 import WalletModal from '@component/Modals/Wallet'
-import useWalletModal from '@hook/useWalletModal'
 
 import Footer from './Footer'
 import Header from './Header'
@@ -15,7 +14,6 @@ import Main from './Main'
 const Layout = ({ children }: ComponentProps) => {
   const [isMeMenuActive, setMeMenuActive] = useState<boolean>(false)
   const [isMainMenuActive, setMainMenuActive] = useState<boolean>(false)
-  const { isOpen, openModal, closeModal } = useWalletModal()
   const location = useLocation()
 
   useEffect(() => {
@@ -39,7 +37,7 @@ const Layout = ({ children }: ComponentProps) => {
       />
       <MeMenu isActive={isMeMenuActive} setActive={setMeMenuActive} />
       <MainMenu isActive={isMainMenuActive} />
-      <WalletModal isOpen={isOpen} open={openModal} close={closeModal} />
+      <WalletModal />
       <Main>{children}</Main>
       <Footer />
     </section>

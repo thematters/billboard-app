@@ -6,6 +6,8 @@ import { useDisconnect } from 'wagmi'
 
 import Crate from '@component/Crate'
 import useLockScroll from '@hook/useLockScroll'
+import SvgCard from '@svg/Card'
+import SvgLeave from '@svg/Leave'
 
 type Props = ComponentProps & {
   isActive: boolean
@@ -13,7 +15,7 @@ type Props = ComponentProps & {
 }
 
 const MeMenu = ({ css, isActive, setActive }: Props) => {
-  const { disconnect: walletDisconnect } = useDisconnect()
+  const { disconnect } = useDisconnect()
 
   useLockScroll(isActive)
 
@@ -26,10 +28,10 @@ const MeMenu = ({ css, isActive, setActive }: Props) => {
     'menu-inactive': !isActive,
   })
   const liCss = 't-14 b-b-green text-white hover:text-grass'
-  const itemCss = 'p-4 w-full f-center-between cursor-pointer'
+  const itemCss = 'p-4 w-full f-center-start cursor-pointer'
 
-  const disconnect = () => {
-    walletDisconnect()
+  const onDisconnect = () => {
+    disconnect()
     setActive(false)
   }
 
@@ -39,13 +41,15 @@ const MeMenu = ({ css, isActive, setActive }: Props) => {
         <nav className="list-none">
           <ul>
             <li className={liCss}>
-              <NavLink className={itemCss} to="/bids">
-                MY BIDS
+              <NavLink className={itemCss} to="/mybids">
+                <SvgCard css="mr-2" width={16} height={16} />
+                My Bids
               </NavLink>
             </li>
             <li className={liCss}>
-              <section className={itemCss} onClick={disconnect}>
-                DISCONNECT
+              <section className={itemCss} onClick={onDisconnect}>
+                <SvgLeave css="mr-2" width={16} height={16} />
+                Disconnect
               </section>
             </li>
           </ul>

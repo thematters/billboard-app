@@ -4,14 +4,25 @@ import { NavLink } from '@remix-run/react'
 import clsx from 'clsx'
 
 type Props = ComponentProps & {
+  linkCss?: string
   color: 'dim' | 'grass'
   click?: () => void
   to: string
   target?: string
 }
 
-const LinkButton = ({ children, css, color, click, to, target }: Props) => {
-  const baseCss = clsx(
+const LinkButton = ({
+  children,
+  css,
+  linkCss,
+  color,
+  click,
+  to,
+  target,
+}: Props) => {
+  const baseCss = clsx('w-fit', linkCss)
+
+  const btnCss = clsx(
     'btn-base',
     {
       'btn-dim': color === 'dim',
@@ -20,8 +31,8 @@ const LinkButton = ({ children, css, color, click, to, target }: Props) => {
     css
   )
   return (
-    <NavLink className="w-fit" to={to} target={target} onClick={click}>
-      <button className={baseCss}>{children}</button>
+    <NavLink className={baseCss} to={to} target={target} onClick={click}>
+      <button className={btnCss}>{children}</button>
     </NavLink>
   )
 }

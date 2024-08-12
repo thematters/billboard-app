@@ -1,12 +1,10 @@
-import type { ModalControls } from '@type'
-
 import { useFetcher } from '@remix-run/react'
 import { useEffect, useState } from 'react'
 import { isAddress } from 'viem'
 import { useAccount, useDisconnect } from 'wagmi'
 
 import Crate from '@component/Crate'
-import useWalletModal from '@hook/useWalletModal'
+import { publish } from '@util/event'
 
 import Claimed from './Claimed'
 import Empty from './Empty'
@@ -17,13 +15,14 @@ import Skeleton from './Skeleton'
 
 const Claim = () => {
   const [step, setStep] = useState('greeting')
-  const { isOpen, openModal } = useWalletModal()
   const { address, isConnected } = useAccount()
   const { disconnect } = useDisconnect()
 
   const api = useFetcher()
   const data = api?.data as Record<string, any>
   const isEstablished = isAddress(address || '') && isConnected
+
+  const open = () => publish('wallet-open', {})
 
   useEffect(() => {
     if (!isEstablished) {
@@ -68,7 +67,7 @@ const Claim = () => {
   return (
     <Crate css="menu-spacing">
       <Crate.Inner css={innerCss} hasDots hasXBorder>
-        {step === 'greeting' && <Greet openModal={openModal} />}
+        {step === 'greeting' && <Greet open={open} />}
         {step === 'loading' && <Skeleton />}
         {step === 'claim' && (
           <Records data={data?.items || []} callback={setStep} />

@@ -1,5 +1,4 @@
 import clsx from 'clsx'
-import _ from 'lodash'
 import { encodeFunctionData } from 'viem'
 import { useAccount, useWriteContract } from 'wagmi'
 import { useEffect } from 'react'

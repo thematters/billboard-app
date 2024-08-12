@@ -3,7 +3,7 @@ import type { LoaderFunctionArgs } from '@remix-run/node'
 import { json } from '@remix-run/node'
 import dayjs from 'dayjs'
 import fs from 'fs-extra'
-import _ from 'lodash'
+import { orderBy } from 'lodash-es'
 import { optimism, optimismSepolia } from 'viem/chains'
 
 import { ERROR, STATE } from '@constant'
@@ -29,9 +29,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       return json({ state: STATE.successful, rounds: [] })
     }
 
-    const baseRounds = _.orderBy(rawRounds, (d) => Number(d.fromBlock), [
-      'desc',
-    ])
+    const baseRounds = orderBy(rawRounds, (d) => Number(d.fromBlock), ['desc'])
 
     const rounds = []
     for (const round of baseRounds) {

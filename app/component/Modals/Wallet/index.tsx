@@ -1,28 +1,26 @@
-import type { ComponentProps } from '@type'
-
 import { useEffect } from 'react'
 import { isAddress } from 'viem'
 import { useAccount } from 'wagmi'
 
 import Modal from '@component/Modal'
+import useEventModal from '@hook/useEventModal'
 
 import Foot from './Foot'
 import Head from './Head'
 import Options from './Options'
 
-type Props = ComponentProps & {
-  isOpen: boolean
-  open: () => void
-  close: () => void
-}
-
-const WalletModal = ({ children, isOpen, open, close }: Props) => {
+const WalletModal = () => {
   const { address, isConnected } = useAccount()
+  const { isOpen, open, close, callback } = useEventModal('wallet', false)
 
   useEffect(() => {
     const isEstablished = isAddress(address || '') && isConnected
     if (isEstablished) {
       close()
+
+      if (callback) {
+        callback()
+      }
     }
   }, [address, isConnected])
 
@@ -35,9 +33,7 @@ const WalletModal = ({ children, isOpen, open, close }: Props) => {
 
       {/* Content */}
       <section>
-        <section className={descCss}>
-          Before claiming funding, please connect your wallet.
-        </section>
+        <section className={descCss}>Connect your wallet</section>
         <Options />
       </section>
 

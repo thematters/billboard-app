@@ -1,7 +1,7 @@
 import type { ComponentProps } from '@type'
 
 import clsx from 'clsx'
-import _ from 'lodash'
+import { range } from 'lodash-es'
 
 import useEmblaCarousel from 'embla-carousel-react'
 import { useEffect, useState } from 'react'
@@ -40,7 +40,7 @@ const Carousel = ({ children, css, size }: Props) => {
         <section className="embla__container">{children}</section>
       </section>
       <section className={dotsCss}>
-        {_.range(size).map((i) => (
+        {range(size).map((i) => (
           <section
             key={i}
             className={clsx(dotCss, curr == i && activeCss)}

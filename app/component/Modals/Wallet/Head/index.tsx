@@ -13,7 +13,7 @@ const Head = ({ close }: Props) => {
 
   return (
     <section className={baseCss}>
-      <section className={titleCss}>Claim</section>
+      <section className={titleCss}>Connect Wallet</section>
       <section className={cancelCss} onClick={close}>
         <SvgCancel />
       </section>

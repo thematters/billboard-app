@@ -14,6 +14,10 @@
   header, main, footer {
     @apply min-w-main;
   }
+
+  input {
+    outline: none;
+  }
 }
 
 @layer components {
@@ -150,16 +154,58 @@
   /* embla custom styles */
   .embla {
     overflow: hidden;
+    cursor: grab;
+    user-select: none;
   }
 
   .embla__container {
     display: flex;
+    grid-column-gap: 20px;
   }
 
   .embla__slide {
     flex: 0 0 100%;
     min-width: 0;
-    @apply mr-4;
+  }
+
+  .input-number {
+    @apply py-3 px-4;
+    @apply border border-beige/30;
+    @apply bg-black;
+    @apply text-right;
+    @apply rounded-lg;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-inner-spin-button {
+      margin: 0;
+      appearance: none;
+    }
+
+    &[type='number'] {
+      appearance: textfield;
+    }
+
+    &::placeholder {
+      @apply t-14 text-beige/30;
+    }
+  }
+
+  .input-text {
+    @apply py-3 px-4;
+    @apply border border-beige/30;
+    @apply bg-black;
+    @apply rounded-lg;
+
+    &::placeholder {
+      @apply t-14 text-beige/30;
+    }
+  }
+
+  .image-uploader {
+    position: relative;
+    @apply bg-center bg-cover;
+    @apply border border-beige/30 rounded-xl;
+    @apply max-w-[356px] aspect-img;
   }
 }
 
@@ -181,12 +227,20 @@
     @apply flex items-center justify-between;
   }
 
+  .f-col {
+    @apply flex flex-col;
+  }
+
   .f-col-center {
     @apply flex flex-col justify-center;
   }
 
   .f-col-between {
     @apply flex flex-col justify-between;
+  }
+
+  .f-col-reverse {
+    @apply flex flex-col-reverse;
   }
 
   .f-start {
@@ -224,6 +278,10 @@
 
   .b-b-grass {
     @apply border-b border-grass;
+  }
+
+  .b-b-dashed {
+    @apply border-b border-dashed;
   }
 
   /** font **/
@@ -274,6 +332,22 @@
 
   .cols-3 {
     @apply grid grid-cols-3;
+  }
+
+  .cols-4 {
+    @apply grid grid-cols-4;
+  }
+
+  .cols-5 {
+    @apply grid grid-cols-5;
+  }
+
+  .cols-8 {
+    @apply grid grid-cols-8;
+  }
+
+  .cols-10 {
+    @apply grid grid-cols-10;
   }
 
   .cols-1-md-3 {
@@ -334,5 +408,9 @@
 
   .skeleton-md {
     @apply w-full md-shown;
+  }
+
+  .aspect-img {
+    aspect-ratio: 177 / 100;
   }
 }
