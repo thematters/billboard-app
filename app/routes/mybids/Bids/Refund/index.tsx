@@ -40,7 +40,7 @@ const Refund = ({ setParentStep }: Props) => {
 
   return (
     <div className={baseCss}>
-      {isLoaded && !isError && (
+      {isLoaded && !isEmpty && !isError && (
         <Bids address={address} bids={bids} setParentStep={setParentStep} />
       )}
       {(isLoading || isError) && (

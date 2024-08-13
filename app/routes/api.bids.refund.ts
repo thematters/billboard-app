@@ -47,55 +47,56 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     // gather each token's data and it's ongoing bids
     const bids = []
     const lastId = Number(lastTokenId)
-    const ids = range(1, lastId + 1)
-    for (const id of ids) {
+    const tokenIds = range(1, lastId + 1)
+    for (const tokenId of tokenIds) {
       // feature flag
-      if (Number(tokenIdShowCase || 0) !== id) {
+      if (Number(tokenIdShowCase || 0) !== tokenId) {
         continue
       }
 
-      const board = await operator.read.getBoard([BigInt(id)])
+      const id = BigInt(tokenId)
+
+      const board = await operator.read.getBoard([id])
       if (board.startedAt == 0n) {
         continue
       }
 
-      const bidCount = await registry.read.getBidderBidCount([
-        BigInt(id),
+      const bidderBidCount = await registry.read.getBidderBidCount([
+        id,
         address as `0x${string}`,
       ])
-      if (bidCount == 0n) {
+      if (bidderBidCount == 0n) {
         continue
       }
 
       const { name, startedAt, epochInterval: interval } = board
-      const epoch = await operator.read.getEpochFromBlock([
+      const currEpoch = await operator.read.getEpochFromBlock([
         startedAt,
         currBlock,
         interval,
       ])
 
       // gather old bids
-      const epochs = range(Number(epoch) - 1, -1, -1)
+      const epochs = range(Number(currEpoch) - 1, -1, -1)
       for (const epochId of epochs) {
-        if (bids.length === Number(bidCount)) {
+        const epoch = BigInt(epochId)
+
+        // check if reach bidder all bid count
+        if (bids.length === Number(bidderBidCount)) {
           break
         }
 
-        const count = await registry.read.getBidCount([
-          BigInt(id),
-          BigInt(epochId),
+        const [epochBidCount, highestBidder] = await Promise.all([
+          registry.read.getBidCount([id, epoch]),
+          registry.read.highestBidder([id, epoch]),
         ])
-        if (count == 0n) {
+        if (epochBidCount == 0n || address == highestBidder) {
           continue
         }
 
         const [bid, epochRange] = await Promise.all([
-          operator.read.getBid([
-            BigInt(id),
-            BigInt(epochId),
-            address as `0x${string}`,
-          ]),
-          getEpochRange(alchemy, startedAt, BigInt(epochId), interval),
+          operator.read.getBid([id, epoch, address as `0x${string}`]),
+          getEpochRange(alchemy, startedAt, epoch, interval),
         ])
         if (bid.placedAt == 0n) {
           continue
@@ -106,9 +107,10 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
         if (bid.isWon === true) {
           continue
         }
+
         bids.push({
-          board: { id, name },
-          epoch: Number(epochId),
+          board: { id: tokenId, name },
+          epoch: epochId,
           epochRange,
           bid: {
             price: Number(bid.price).toFixed(0),
