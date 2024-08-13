@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import { encodeFunctionData } from 'viem'
 import { useAccount, useWriteContract } from 'wagmi'
 import { useEffect } from 'react'
@@ -80,35 +79,26 @@ const Records = ({ data, callback }: Props) => {
     }
   }, [hash, isSuccess])
 
-  const baseCss = clsx('lg:pb-20', 'max-limit')
-  const listCss = clsx(
-    'border-t border-green',
-    'max-h-[642px]',
-    'overflow-y-scroll'
-  )
-  const totalCss = clsx(
-    'p-4 md:p-5',
-    'bg-green',
-    'text-black',
-    'text-left md:text-right',
-    't-16 md:t-20'
-  )
-  const totalHeadCss = clsx('font-normal', 'mr-2')
-  const totalNumCss = clsx('font-bold')
-  const btnCss = clsx('mt-10', 'px-28', 'mx-auto', 't-18', 'font-normal')
+  const baseCss = 'lg:pb-20 max-limit'
+  const listCss = 'border-t border-green max-h-[642px] overflow-y-scroll'
+  const totalCss =
+    'p-4 md:p-5 bg-green text-black text-left md:text-right t-16 md:t-20'
+  const totalHeadCss = 'font-normal mr-2'
+  const totalNumCss = 'font-bold'
+  const btnCss = 'mt-10 px-28 mx-auto t-18 font-normal'
 
   return (
     <section className={baseCss}>
-      <section className="section-title">CLAIM FUNDING</section>
-      <section className={listCss}>
+      <h1 className="section-title">CLAIM FUNDING</h1>
+      <div className={listCss}>
         {base.items.map((item: Record<string, any>, index: number) => (
           <Record key={index} data={item} />
         ))}
-      </section>
-      <section className={totalCss}>
+      </div>
+      <div className={totalCss}>
         <span className={totalHeadCss}>Total Amount:</span>
         <span className={totalNumCss}>{base.total.toFixed(6)} USDT</span>
-      </section>
+      </div>
       <ButtonBase css={btnCss} color="dim" click={claim}>
         {isPending ? <SvgSpinner css="animate-spin" height={27} /> : 'Claim'}
       </ButtonBase>

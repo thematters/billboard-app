@@ -1,5 +1,4 @@
 import { NavLink } from '@remix-run/react'
-import clsx from 'clsx'
 import { useAccount } from 'wagmi'
 
 import ButtonLink from '@component/Button/Link'
@@ -14,15 +13,15 @@ const Claimed = ({ click }: Props) => {
   const envs = useEnvs()
   const { address } = useAccount()
 
-  const baseCss = clsx('lg:pb-20', 'max-limit')
-  const contentCss = clsx('t-14 md:t-20', 'text-center')
-  const svgCss = clsx('my-6 lg:my-10', 'mx-auto')
-  const btnCss = clsx('px-28', 'mx-auto', 't-18', 'font-normal')
+  const baseCss = 'lg:pb-20 max-limit'
+  const contentCss = 't-14 md:t-20 text-center'
+  const svgCss = 'my-6 lg:my-10 mx-auto'
+  const btnCss = 'px-28 mx-auto t-18 font-normal'
 
   return (
     <section className={baseCss}>
-      <section className="section-title">ClAIM SUCCESSFULLY</section>
-      <section className={contentCss}>
+      <h1 className="section-title">ClAIM SUCCESSFULLY</h1>
+      <div className={contentCss}>
         You have successfully claimed the distributed funding. To get more
         details about the transaction, you can check your wallet and&nbsp;
         <NavLink
@@ -33,7 +32,7 @@ const Claimed = ({ click }: Props) => {
           on-chain records
         </NavLink>
         .
-      </section>
+      </div>
       <SvgClaimed css={svgCss} />
       <ButtonLink css={btnCss} color="dim" to="/" click={click}>
         Got it

@@ -1,5 +1,3 @@
-import clsx from 'clsx'
-
 import SvgLoaderClaimMD from '@svg/Loader/ClaimMD'
 import SvgLoaderClaimSM from '@svg/Loader/ClaimSM'
 
