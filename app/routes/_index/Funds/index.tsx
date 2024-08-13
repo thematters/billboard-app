@@ -8,7 +8,7 @@ import Records from './Records'
 
 const Funds = () => {
   const { data, isLoading, isLoaded, isError } = useQueryData({
-    action: '/api/fund',
+    action: '/api/funds',
     params: {},
     auto: true,
   })

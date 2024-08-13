@@ -10,8 +10,8 @@ import Claimed from './Claimed'
 import Empty from './Empty'
 import Error from './Error'
 import Greet from './Greet'
+import Loader from './Loader'
 import Records from './Records'
-import Skeleton from './Skeleton'
 
 const Claim = () => {
   const [step, setStep] = useState('greeting')
@@ -68,7 +68,7 @@ const Claim = () => {
     <Crate css="menu-spacing">
       <Crate.Inner css={innerCss} hasDots hasXBorder>
         {step === 'greeting' && <Greet open={open} />}
-        {step === 'loading' && <Skeleton />}
+        {step === 'loading' && <Loader />}
         {step === 'claim' && (
           <Records data={data?.items || []} callback={setStep} />
         )}
