@@ -332,6 +332,11 @@ const abi = [
           },
         ],
       },
+      {
+        name: 'epochs',
+        type: 'uint256[]',
+        internalType: 'uint256[]',
+      },
     ],
     stateMutability: 'view',
   },
