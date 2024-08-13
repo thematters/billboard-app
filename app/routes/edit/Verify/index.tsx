@@ -11,17 +11,14 @@ type Props = {
 }
 
 const Verify = ({ id, address, setParentStep }: Props) => {
-  const { data, isLoading, isLoaded, isError, submit } = useQueryData({
+  const { data, isLoading, isLoaded, isError, refetch } = useQueryData({
     action: '/api/verify',
     params: { id, ...(address ? { address } : {}) },
     auto: true,
   })
 
   useEffect(() => {
-    submit(
-      { id, ...(address ? { address } : {}) },
-      { method: 'GET', action: '/api/verify' }
-    )
+    refetch({ id, ...(address ? { address } : {}) })
   }, [id, address])
 
   useEffect(() => {

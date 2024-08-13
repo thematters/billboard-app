@@ -29,7 +29,7 @@ const useQueryData = ({ action, params, auto = false }: Params) => {
     submit(params, { method: 'GET', action })
   }, [])
 
-  return { data, isLoading, isLoaded, isError, submit }
+  return { data, isLoading, isLoaded, isError, submit, refetch }
 }
 
 export default useQueryData

@@ -15,7 +15,7 @@ type Props = {
 }
 
 const Act = ({ id, epoch, address, setParentStep }: Props) => {
-  const { data, isLoading, isLoaded, isError, submit } = useQueryData({
+  const { data, isLoading, isLoaded, isError, refetch } = useQueryData({
     action: '/api/bid',
     params: { id, ...(address ? { address } : {}), epoch },
     auto: true,
@@ -24,10 +24,7 @@ const Act = ({ id, epoch, address, setParentStep }: Props) => {
   const hasBid = Number(data?.bid?.placedAt || 0) > 0
 
   useEffect(() => {
-    submit(
-      { id, ...(address ? { address } : {}), epoch },
-      { method: 'GET', action: '/api/bid' }
-    )
+    refetch({ id, ...(address ? { address } : {}), epoch })
   }, [id, address, epoch])
 
   const baseCss = 'lg:pb-20 max-limit'

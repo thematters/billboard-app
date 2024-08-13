@@ -16,17 +16,14 @@ const Board = () => {
   const { address, isConnected } = useAccount()
   const isEstablished = isAddress(address || '') && isConnected
 
-  const { data, isLoading, isLoaded, isError, submit } = useQueryData({
+  const { data, isLoading, isLoaded, isError, refetch } = useQueryData({
     action: '/api/board',
     params: { id, ...(isEstablished ? { address } : {}) },
     auto: true,
   })
 
   useEffect(() => {
-    submit(
-      { id, ...(isEstablished ? { address } : {}) },
-      { method: 'GET', action: '/api/board' }
-    )
+    refetch({ id, ...(isEstablished ? { address } : {}) })
   }, [id, address])
 
   const innerCss = 'py-8 lg:py-20'

@@ -15,17 +15,14 @@ type Props = {
 }
 
 const Act = ({ id, epoch, address, setParentStep }: Props) => {
-  const { data, isLoading, isLoaded, isError, submit } = useQueryData({
+  const { data, isLoading, isLoaded, isError, refetch } = useQueryData({
     action: '/api/edit',
     params: { id, ...(address ? { address } : {}), epoch },
     auto: true,
   })
 
   useEffect(() => {
-    submit(
-      { id, ...(address ? { address } : {}), epoch },
-      { method: 'GET', action: '/api/edit' }
-    )
+    refetch({ id, ...(address ? { address } : {}), epoch })
   }, [id, address, epoch])
 
   const baseCss = 'lg:pb-20 max-limit'

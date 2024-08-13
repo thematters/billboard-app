@@ -17,7 +17,7 @@ const Refund = ({ setParentStep }: Props) => {
   const { address, isConnected } = useAccount()
   const isEstablished = isAddress(address || '') && isConnected
 
-  const { data, isLoading, isLoaded, isError, submit } = useQueryData({
+  const { data, isLoading, isLoaded, isError, refetch } = useQueryData({
     action: '/api/bids/refund',
     params: { ...(isEstablished ? { address } : {}) },
     auto: true,
@@ -27,10 +27,7 @@ const Refund = ({ setParentStep }: Props) => {
   const isEmpty = bids.length === 0
 
   useEffect(() => {
-    submit(
-      { ...(isEstablished ? { address } : {}) },
-      { method: 'GET', action: '/api/bids/refund' }
-    )
+    refetch({ ...(isEstablished ? { address } : {}) })
   }, [address])
 
   const baseCss = 'mt-6'

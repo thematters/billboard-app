@@ -13,7 +13,7 @@ const Running = () => {
   const { address, isConnected } = useAccount()
   const isEstablished = isAddress(address || '') && isConnected
 
-  const { data, isLoading, isLoaded, isError, submit } = useQueryData({
+  const { data, isLoading, isLoaded, isError, refetch } = useQueryData({
     action: '/api/bids/running',
     params: { ...(isEstablished ? { address } : {}) },
     auto: true,
@@ -24,10 +24,7 @@ const Running = () => {
   const isEmpty = runningBids.length === 0 && upcomingBids.length === 0
 
   useEffect(() => {
-    submit(
-      { ...(isEstablished ? { address } : {}) },
-      { method: 'GET', action: '/api/bids/running' }
-    )
+    refetch({ ...(isEstablished ? { address } : {}) })
   }, [address])
 
   const baseCss = 'mt-6'
