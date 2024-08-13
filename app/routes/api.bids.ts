@@ -7,7 +7,7 @@ import { BLOCK_TIME, ERROR, STATE } from '@constant'
 import alchemy from '@service/alchemy.server'
 import { readSecretEnvs } from '@util/envs.server'
 import { readEnvs } from '@util/envs'
-import { sendError } from '@util/server'
+import { handleError, sendError } from '@util/server'
 import { genUTC8Date } from '@util/time'
 import {
   getBidUpdatedEvents,
@@ -124,7 +124,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       highestBidder,
     })
   } catch (error) {
-    const errorMessage = (error as any)?.message || 'unknown'
+    const errorMessage = handleError(error)
     console.log(errorMessage)
 
     // @ts-ignore

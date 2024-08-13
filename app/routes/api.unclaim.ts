@@ -10,7 +10,7 @@ import { optimism, optimismSepolia } from 'viem/chains'
 import { ERROR, STATE } from '@constant'
 import { formatDate, formatRoundId } from '@util/format'
 import { readEnvs } from '@util/envs'
-import { getPublicPath, readFile, sendError } from '@util/server'
+import { getPublicPath, handleError, readFile, sendError } from '@util/server'
 import { initClient, initDistribution } from '@util/viem'
 
 const checkHasClaimed = async (
@@ -176,7 +176,10 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
     return json({ state: STATE.successful, items: data, count: count })
   } catch (error) {
+    const errorMessage = handleError(error)
+    console.log(errorMessage)
+
     // @ts-ignore
-    return sendError(ERROR.UNKNOWN_ERROR, error?.message || 'unknown')
+    return sendError(ERROR.UNKNOWN_ERROR, errorMessage)
   }
 }

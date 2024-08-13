@@ -2,8 +2,10 @@ import { useEffect } from 'react'
 import { isAddress } from 'viem'
 import { useAccount } from 'wagmi'
 
+import ErrorMessage from '@component/Error'
 import useQueryData from '@hook/useQueryData'
-import SvgSpinner from '@svg/Spinner'
+import SvgLoaderMyBidsMD from '@svg/Loader/MyBidsMD'
+import SvgLoaderMyBidsSM from '@svg/Loader/MyBidsSM'
 
 import Bids from './Bids'
 
@@ -33,18 +35,23 @@ const Refund = ({ setParentStep }: Props) => {
 
   const baseCss = 'mt-6'
   const emptyCss = 'p-5 bg-black text-center'
-  const spinnerCss = 'my-12 mx-auto animate-spin'
-
-  if (isLoading) {
-    return <SvgSpinner css={spinnerCss} width={48} height={48} />
-  }
+  const loaderSMCss = 'w-full md-hidden'
+  const loaderMDCss = 'w-full md-shown'
 
   return (
     <div className={baseCss}>
-      {isEmpty ? (
-        <div className={emptyCss}>No bids refund at the moment.</div>
-      ) : (
+      {isLoaded && !isError && (
         <Bids address={address} bids={bids} setParentStep={setParentStep} />
+      )}
+      {(isLoading || isError) && (
+        <>
+          <SvgLoaderMyBidsSM css={loaderSMCss} />
+          <SvgLoaderMyBidsMD css={loaderMDCss} />
+          {isError && <ErrorMessage message={data.error || data.code} />}
+        </>
+      )}
+      {isLoaded && isEmpty && (
+        <div className={emptyCss}>No bids refund at the moment.</div>
       )}
     </div>
   )

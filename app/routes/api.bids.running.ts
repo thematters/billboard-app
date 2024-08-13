@@ -7,7 +7,7 @@ import { ERROR, STATE } from '@constant'
 import alchemy from '@service/alchemy.server'
 import { readSecretEnvs } from '@util/envs.server'
 import { readEnvs } from '@util/envs'
-import { sendError } from '@util/server'
+import { handleError, sendError } from '@util/server'
 import { initClient, initOperator, initRegistry } from '@util/viem'
 import { getEpochRange, getShiftedEpochRange } from '@util/web3'
 
@@ -114,7 +114,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
     return json({ state: STATE.successful, runningBids, upcomingBids })
   } catch (error) {
-    const errorMessage = (error as any)?.message || 'unknown'
+    const errorMessage = handleError(error)
     console.log(errorMessage)
 
     // @ts-ignore

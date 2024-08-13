@@ -7,7 +7,7 @@ import { ERROR, STATE } from '@constant'
 import { s3Uploader } from '@util/aws.server'
 import { readSecretEnvs } from '@util/envs.server'
 import { readEnvs } from '@util/envs'
-import { sendError } from '@util/server'
+import { handleError, sendError } from '@util/server'
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   try {
@@ -16,7 +16,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
     return json({ state: STATE.successful, filename })
   } catch (error) {
-    const errorMessage = (error as any)?.message || 'unknown'
+    const errorMessage = handleError(error)
     console.log(errorMessage)
 
     // @ts-ignore

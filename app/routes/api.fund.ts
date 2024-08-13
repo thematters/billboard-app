@@ -7,7 +7,7 @@ import { orderBy } from 'lodash-es'
 import { optimism, optimismSepolia } from 'viem/chains'
 
 import { ERROR, STATE } from '@constant'
-import { getPublicPath, readFile, sendError } from '@util/server'
+import { getPublicPath, handleError, readFile, sendError } from '@util/server'
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   try {
@@ -44,7 +44,10 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     }
     return json({ state: STATE.successful, rounds })
   } catch (error) {
+    const errorMessage = handleError(error)
+    console.log(errorMessage)
+
     // @ts-ignore
-    return sendError(ERROR.UNKNOWN_ERROR, error?.message || 'unknown')
+    return sendError(ERROR.UNKNOWN_ERROR, errorMessage)
   }
 }
