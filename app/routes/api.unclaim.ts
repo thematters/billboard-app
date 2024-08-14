@@ -177,7 +177,6 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     return json({ state: STATE.successful, items: data, count: count })
   } catch (error) {
     const errorMessage = handleError(error)
-    console.log(errorMessage)
 
     // @ts-ignore
     return sendError(ERROR.UNKNOWN_ERROR, errorMessage)

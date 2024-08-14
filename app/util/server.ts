@@ -4,8 +4,11 @@ import path from 'path'
 import { optimism, optimismSepolia } from 'wagmi/chains'
 
 import { STATE } from '@constant'
+import { readEnvs } from './envs'
 
 export const handleError = (error: any) => {
+  const { env } = readEnvs()
+
   if (error?.details) {
     // general error
     const parsed =
@@ -19,7 +22,9 @@ export const handleError = (error: any) => {
       typeof error.body === 'string' ? JSON.parse(error.body) : error.body
     return parsed.error.message || 'Unknown Error'
   }
-  return error?.message || 'Unknown Error'
+
+  console.log(error?.message)
+  return env === 'production' ? 'Unknown Error' : error?.message
 }
 
 export const sendError = (code: string, error?: any) => {
