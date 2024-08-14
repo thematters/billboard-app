@@ -2,8 +2,9 @@ import type { ComponentProps } from '@type'
 import type { UseBalanceReturnType } from 'wagmi'
 
 import { useSearchParams } from '@remix-run/react'
-
 import clsx from 'clsx'
+
+import { calTotalAmount, toFloatUSDT, toPercentTaxRate } from '@util/num'
 
 type Props = ComponentProps & {
   data: Record<string, any>
@@ -17,9 +18,9 @@ const Price = ({ css, data, balance, price, setPrice, isLocked }: Props) => {
   const [searchParams] = useSearchParams()
   const { board, bid, highestBid } = data
 
-  const taxRate = Number(board?.taxRate || 0) / 100
-  const amount = +(price + price * 14 * (taxRate / 100)).toFixed(3)
-  const highestPrice = Number(highestBid?.price || 0) / 1e6
+  const taxRate = Number(board?.taxRate || 0)
+  const totalAmount = calTotalAmount(price, taxRate)
+  const highestPrice = Number(toFloatUSDT(Number(highestBid?.price || 0)))
 
   const isInsufficient = balance && Number(balance.formatted) < price
   const hasHint = isInsufficient
@@ -83,18 +84,18 @@ const Price = ({ css, data, balance, price, setPrice, isLocked }: Props) => {
       </div>
       <div className={taxCss}>
         <p className="text-beige/60">Tax Rate Per Day</p>
-        <p className={taxNumCss}>{taxRate}%</p>
+        <p className={taxNumCss}>{toPercentTaxRate(taxRate)}%</p>
       </div>
       <div className={amountCss}>
         <p>
           Total&nbsp;
           <span className={calInlineCss}>
-            ({price} + {price} x 14 x {taxRate}%)
+            ({price} + {price} x 14 x {toPercentTaxRate(taxRate)}%)
           </span>
         </p>
-        <p className="text-right">{amount} USDT</p>
+        <p className="text-right">{totalAmount} USDT</p>
         <p className={calBlockCss}>
-          ({price} + {price} x 14 x {taxRate}%)
+          ({price} + {price} x 14 x {toPercentTaxRate(taxRate)}%)
         </p>
       </div>
     </section>

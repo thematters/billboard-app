@@ -6,6 +6,7 @@ import useEnvs from '@hook/useEnvs'
 import SvgChevron from '@svg/Chevron'
 import SvgLink from '@svg/Link'
 import { formatAddress } from '@util/format'
+import { toPercentTaxRate } from '@util/num'
 
 type Props = {
   board: Record<string, any>
@@ -17,7 +18,7 @@ const Basic = ({ board }: Props) => {
   const { imageURI, name, location, taxRate: rawTaxRate } = board
 
   const address = formatAddress(envs.addressOperator)
-  const taxRate = (Number(rawTaxRate) / 100).toFixed(2)
+  const taxRate = toPercentTaxRate(Number(rawTaxRate || 0))
 
   const baseCss = 'cols-1 gap-y-4'
   const imgCss = 'w-full aspect-img rounded-2xl border border-green'

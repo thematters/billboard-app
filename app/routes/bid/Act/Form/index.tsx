@@ -8,6 +8,7 @@ import ABIOperator from '@abi/operator'
 import { MAX_USDT_ALLOWANCE } from '@constant'
 import useEnvs from '@hook/useEnvs'
 import useUSDT from '@hook/useUSDT'
+import { calTotalAmount, toFloatTaxRate, toFloatUSDT, toUSDT } from '@util/num'
 
 import Auction from './Auction'
 import Content from './Content'
@@ -26,7 +27,9 @@ const Form = ({ data, id, epoch, address, setParentStep }: Props) => {
   const envs = useEnvs()
   const config = useConfig()
   const { board, bid } = data
-  const [price, setPrice] = useState<number>(Number(bid?.price || 0) / 1e6)
+  const [price, setPrice] = useState<number>(
+    Number(toFloatUSDT(Number(bid?.price || 0)))
+  )
   const [content, setContent] = useState(bid?.contentURI || '')
   const [redirect, setRedirect] = useState(bid?.redirectURI || '')
   const [isLocked, setIsLocked] = useState<boolean>(false)
@@ -60,10 +63,10 @@ const Form = ({ data, id, epoch, address, setParentStep }: Props) => {
     reset: bidReset,
   } = useWriteContract()
 
-  const lastBidPrice = Number(bid?.price || 0) / 1e6
-  const taxRate = Number(board.taxRate) / 100
-  const allowance = Number(usdtData || 0) / 1e6
-  const amount = +(price + price * 14 * taxRate).toFixed(3)
+  const lastBidPrice = Number(toFloatUSDT(Number(bid?.price || 0)))
+  const taxRate = Number(toFloatTaxRate(Number(board.taxRate)))
+  const allowance = Number(toFloatUSDT(Number(usdtData || 0)))
+  const amount = Number(calTotalAmount(price, taxRate, 3))
 
   const isSufficient = Number(balanceData?.formatted || 0) >= price
   const isExceededAllowance = amount > allowance
@@ -110,7 +113,7 @@ const Form = ({ data, id, epoch, address, setParentStep }: Props) => {
         args: [
           BigInt(id),
           BigInt(epoch),
-          BigInt(price * 1e6),
+          BigInt(toUSDT(price, 0)),
           content,
           redirect,
         ],

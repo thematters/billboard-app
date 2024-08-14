@@ -8,7 +8,7 @@ export const BLOCK_TIME = 2
 
 export const MAX_USDT_ALLOWANCE = 999999999999
 
-export const LEASE_TERM_IN_DAYS = 14
+export const EPOCH_IN_DAYS = 14
 
 export const MAIL = 'mailto:hi@matters.town'
 

@@ -6,6 +6,7 @@ import ButtonBase from '@component/Button/Base'
 import useEnvs from '@hook/useEnvs'
 import SvgLink from '@svg/Link'
 import { publish } from '@util/event'
+import { toFloatUSDT } from '@util/num'
 
 type Props = {
   data: Record<string, any>
@@ -16,7 +17,7 @@ const Auction = ({ data }: Props) => {
   const navigate = useNavigate()
   const { address, isConnected } = useAccount()
   const { board, currBid, epoch, epochRange, highestBid } = data
-  const highestBidPrice = (Number(highestBid?.price || 0) / 1e6).toFixed(2)
+  const price = toFloatUSDT(Number(highestBid?.price || 0), 2)
 
   const isEstablished = isAddress(address || '') && isConnected
   const hasBid = currBid && currBid > 0
@@ -69,7 +70,7 @@ const Auction = ({ data }: Props) => {
       {/* bid */}
       <div className="mt-6">
         <p className={bidInfoCss}>Current Highest Bid Price</p>
-        <p className={bidPriceCss}>{highestBidPrice} USDT</p>
+        <p className={bidPriceCss}>{price} USDT</p>
         <ButtonBase css={bidBtnCss} color="grass" click={click}>
           {hasBid ? 'Update Bid' : 'Place Bid'}
         </ButtonBase>

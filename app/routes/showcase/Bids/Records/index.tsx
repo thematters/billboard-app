@@ -4,6 +4,7 @@ import { orderBy } from 'lodash-es'
 import useEnvs from '@hook/useEnvs'
 import SvgSorter from '@svg/Sorter'
 import { formatRoundId, formatAddress } from '@util/format'
+import { toFloatUSDT } from '@util/num'
 
 import Record from './Record'
 
@@ -18,7 +19,7 @@ const Records = ({ data }: Props) => {
     (r: Record<string, any>, d: Record<string, any>) => {
       const bid = {
         ...d,
-        price: (Number(d.price) / 1e6).toFixed(2),
+        price: toFloatUSDT(Number(d.price || 0), 2),
         bidder: formatAddress(d.bidder),
         txHash: formatAddress(d.txHash),
         link: `${envs.urlOpExplorer}/tx/${d.txHash}`,

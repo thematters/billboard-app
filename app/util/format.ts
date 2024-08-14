@@ -13,7 +13,7 @@ export const formatRoundId = (id: string) =>
 export const formatRound = (round: Record<string, any>) => ({
   ...round,
   id: formatRoundId(round.id),
-  price: (round.amount || 0).toFixed(2),
+  price: Number(round.amount || 0).toFixed(2),
   from: formatDate(round.from),
   to: formatDate(round.to),
 })

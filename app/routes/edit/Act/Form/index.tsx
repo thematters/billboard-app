@@ -24,7 +24,6 @@ const Form = ({ data, id, epoch, address, setParentStep }: Props) => {
   const envs = useEnvs()
   const config = useConfig()
   const { board, bid } = data
-  const [price, setPrice] = useState<number>(Number(bid?.price || 0) / 1e6)
   const [content, setContent] = useState(bid?.contentURI || '')
   const [redirect, setRedirect] = useState(bid?.redirectURI || '')
   const [isLocked, setIsLocked] = useState<boolean>(false)

@@ -5,6 +5,7 @@ import LinkButton from '@component/Button/Link'
 import useEnvs from '@hook/useEnvs'
 import SvgLink from '@svg/Link'
 import { formatAddress, formatDate } from '@util/format'
+import { toFloatUSDT } from '@util/num'
 
 import Record from './Record'
 
@@ -18,7 +19,7 @@ const Records = ({ data }: Props) => {
     (auction: Record<string, any>) => {
       const { bid, epoch, epochRange, txHash } = auction
       return {
-        price: (Number(bid.price || 0) / 1e6).toFixed(2),
+        price: toFloatUSDT(Number(bid.price || 0), 2),
         bidder: formatAddress(bid.bidder),
         endAt: formatDate(epochRange.end),
         txHash: formatAddress(txHash),

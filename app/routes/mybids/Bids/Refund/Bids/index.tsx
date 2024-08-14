@@ -9,6 +9,7 @@ import BaseButton from '@component/Button/Base'
 import ErrorMessage from '@component/Error'
 import useEnvs from '@hook/useEnvs'
 import SvgSpinnerDim from '@svg/SpinnerDim'
+import { calAmount } from '@util/num'
 
 import Bid from './Bid'
 
@@ -24,7 +25,8 @@ const Bids = ({ address, bids, setParentStep }: Props) => {
     useWriteContract()
 
   const amount = bids.reduce((r, { bid }) => {
-    r += Number(((Number(bid.price) + Number(bid.tax)) / 1e6).toFixed(2))
+    const sub = calAmount(Number(bid.price), Number(bid.tax), 2)
+    r += Number(sub)
     return r
   }, 0)
 

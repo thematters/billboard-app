@@ -7,6 +7,7 @@ import { orderBy } from 'lodash-es'
 import { optimism, optimismSepolia } from 'viem/chains'
 
 import { ERROR, STATE } from '@constant'
+import { toFloatUSDT } from '@util/num'
 import { getPublicPath, handleError, readFile, sendError } from '@util/server'
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
@@ -39,7 +40,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
         to: round.toTime,
         cidCount: round.cidsCount,
         userCount: round.authorsCount,
-        amount: Number(round.amountTotal) / 1e6,
+        amount: toFloatUSDT(Number(round.amountTotal)),
       })
     }
     return json({ state: STATE.successful, rounds })

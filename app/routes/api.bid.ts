@@ -6,6 +6,7 @@ import { BLOCK_TIME, ERROR, STATE } from '@constant'
 import alchemy from '@service/alchemy.server'
 import { readSecretEnvs } from '@util/envs.server'
 import { readEnvs } from '@util/envs'
+import { toFloatTaxRate } from '@util/num'
 import { handleError, sendError } from '@util/server'
 import { initClient, initOperator, initRegistry } from '@util/viem'
 import { getEpochRange, getShiftedEpochRange } from '@util/web3'
@@ -82,7 +83,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       state: STATE.successful,
       board: {
         name: board.name,
-        taxRate: Number(board.taxRate).toFixed(0),
+        taxRate: toFloatTaxRate(Number(board.taxRate || 0)),
       },
       epoch,
       epochRange,
