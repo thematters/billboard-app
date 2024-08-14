@@ -3,8 +3,8 @@ export const readSecretEnvs = () => {
   return {
     keyAlchemy: envs.KEY_ALCHEMY,
     urlAlchemy: envs.URL_ALCHEMY,
-    awsAccessId: envs.AWS_ACCESS_ID,
-    awsAccessKey: envs.AWS_ACCESS_KEY,
+    awsS3AccessId: envs.AWS_S3_ACCESS_ID,
+    awsS3AccessKey: envs.AWS_S3_ACCESS_KEY,
     awsS3Bucket: envs.AWS_S3_BUCKET,
   }
 }

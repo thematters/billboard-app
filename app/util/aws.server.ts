@@ -4,12 +4,12 @@ import uuid from 'short-uuid'
 import { readSecretEnvs } from './envs.server'
 
 export const initS3 = () => {
-  const { awsAccessId, awsAccessKey } = readSecretEnvs()
+  const { awsS3AccessId, awsS3AccessKey } = readSecretEnvs()
   return new S3Client({
     region: 'ap-southeast-1',
     credentials: {
-      accessKeyId: awsAccessId || '',
-      secretAccessKey: awsAccessKey || '',
+      accessKeyId: awsS3AccessId || '',
+      secretAccessKey: awsS3AccessKey || '',
     },
   })
 }
