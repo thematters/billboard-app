@@ -115,7 +115,6 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     return json({ state: STATE.successful, runningBids, upcomingBids })
   } catch (error) {
     const errorMessage = handleError(error)
-    console.log(errorMessage)
 
     // @ts-ignore
     return sendError(ERROR.UNKNOWN_ERROR, errorMessage)

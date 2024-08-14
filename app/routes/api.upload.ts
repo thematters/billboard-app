@@ -17,7 +17,6 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     return json({ state: STATE.successful, filename })
   } catch (error) {
     const errorMessage = handleError(error)
-    console.log(errorMessage)
 
     // @ts-ignore
     return sendError(ERROR.UNKNOWN_ERROR, errorMessage)
