@@ -9,7 +9,7 @@ type Props = {
 
 const Bid = ({ data }: Props) => {
   const { board, bid, epoch, epochRange } = data
-  const amount = calAmount(Number(bid.price), Number(bid.tax), 2)
+  const amount = calAmount(Number(bid.price), Number(bid.tax), 3)
 
   const baseCss = 'p-5 bg-black t-14 md:t-18'
   const gridCss = 'cols-1 gap-y-2 md:cols-10 md:gap-y-0 md:gap-x-3'

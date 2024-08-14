@@ -34,12 +34,14 @@ const Running = () => {
 
   return (
     <div className={baseCss}>
-      {runningBids.map((data: Record<string, any>, idx: number) => (
-        <Bid key={idx} state="running" data={data} />
-      ))}
-      {upcomingBids.map((data: Record<string, any>, idx: number) => (
-        <Bid key={idx} state="upcoming" data={data} />
-      ))}
+      {isLoaded &&
+        runningBids.map((data: Record<string, any>, idx: number) => (
+          <Bid key={idx} state="running" data={data} />
+        ))}
+      {isLoaded &&
+        upcomingBids.map((data: Record<string, any>, idx: number) => (
+          <Bid key={idx} state="upcoming" data={data} />
+        ))}
       {(isLoading || isError) && (
         <>
           <SvgLoaderMyBidsSM css={loaderSMCss} />

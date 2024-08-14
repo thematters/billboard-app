@@ -33,9 +33,10 @@ const Bidding = () => {
 
   return (
     <div className={baseCss}>
-      {bids.map((data: Record<string, any>, idx: number) => (
-        <Bid key={idx} data={data} />
-      ))}
+      {isLoaded &&
+        bids.map((data: Record<string, any>, idx: number) => (
+          <Bid key={idx} data={data} />
+        ))}
       {(isLoading || isError) && (
         <>
           <SvgLoaderMyBidsSM css={loaderSMCss} />

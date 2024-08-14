@@ -25,7 +25,7 @@ const Bids = ({ address, bids, setParentStep }: Props) => {
     useWriteContract()
 
   const amount = bids.reduce((r, { bid }) => {
-    const sub = calAmount(Number(bid.price), Number(bid.tax), 2)
+    const sub = calAmount(Number(bid.price), Number(bid.tax), 3)
     r += Number(sub)
     return r
   }, 0)
