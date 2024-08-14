@@ -45,7 +45,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     ])
 
     // gather each token's data and it's ongoing bids
-    const bids = []
+    const allBids = []
     const lastId = Number(lastTokenId)
     const tokenIds = range(1, lastId + 1)
     for (const tokenId of tokenIds) {
@@ -55,7 +55,6 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       }
 
       const id = BigInt(tokenId)
-
       const board = await operator.read.getBoard([id])
       if (board.startedAt == 0n) {
         continue
@@ -76,52 +75,49 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
         interval,
       ])
 
-      // gather old bids
-      const epochs = range(Number(currEpoch) - 1, -1, -1)
-      for (const epochId of epochs) {
-        const epoch = BigInt(epochId)
-
-        // check if reach bidder all bid count
-        if (bids.length === Number(bidderBidCount)) {
-          break
-        }
-
-        const [epochBidCount, highestBidder] = await Promise.all([
-          registry.read.getBidCount([id, epoch]),
-          registry.read.highestBidder([id, epoch]),
+      // gather all non-refundable bids
+      const size = 1
+      const pages = range(Math.ceil(Number(bidderBidCount) / size))
+      for (const page of pages) {
+        const offset = page * size
+        const [, , , bids, epochs] = await operator.read.getBidderBids([
+          id,
+          address as `0x${string}`,
+          BigInt(size),
+          BigInt(offset),
         ])
-        if (epochBidCount == 0n || address == highestBidder) {
-          continue
-        }
 
-        const [bid, epochRange] = await Promise.all([
-          operator.read.getBid([id, epoch, address as `0x${string}`]),
-          getEpochRange(alchemy, startedAt, epoch, interval),
-        ])
-        if (bid.placedAt == 0n) {
-          continue
-        }
-        if (bid.isWithdrawn === true) {
-          break
-        }
-        if (bid.isWon === true) {
-          continue
-        }
+        for (const [index, bid] of bids.entries()) {
+          const bidEpoch = epochs[index]
+          if (bidEpoch >= currEpoch || bid.isWon === true) {
+            continue
+          }
+          if (bid.isWithdrawn === true) {
+            break
+          }
 
-        bids.push({
-          board: { id: tokenId, name },
-          epoch: epochId,
-          epochRange,
-          bid: {
-            price: Number(bid.price).toFixed(0),
-            placedAt: Number(bid.placedAt).toFixed(0),
-            tax: Number(bid.tax).toFixed(0),
-          },
-        })
+          const [highestBidder, bidEpochRange] = await Promise.all([
+            registry.read.highestBidder([id, bidEpoch]),
+            getEpochRange(alchemy, startedAt, bidEpoch, interval),
+          ])
+          if (address === highestBidder) {
+            continue
+          }
+
+          allBids.push({
+            board: { id: tokenId, name },
+            epoch: Number(bidEpoch),
+            epochRange: bidEpochRange,
+            bid: {
+              price: Number(bid.price).toFixed(0),
+              tax: Number(bid.tax).toFixed(0),
+            },
+          })
+        }
       }
     }
 
-    return json({ state: STATE.successful, bids })
+    return json({ state: STATE.successful, bids: allBids })
   } catch (error) {
     const errorMessage = handleError(error)
     console.log(errorMessage)
