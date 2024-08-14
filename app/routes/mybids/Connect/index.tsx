@@ -8,7 +8,7 @@ type Props = {
 
 const Connect = ({ open }: Props) => {
   const baseCss = 'lg:pb-20 max-limit'
-  const contentCss = 't-14 md-t-20 text-center'
+  const contentCss = 't-14 md:t-20 text-center'
   const svgCss = 'my-6 lg:my-10 mx-auto'
   const btnCss = 'px-28 mx-auto t-18 font-normal'
 
