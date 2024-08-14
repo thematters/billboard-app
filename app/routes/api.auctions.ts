@@ -55,10 +55,11 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       await getBidWonEvents(client, addressRegistry, id, currBlock),
       10
     )
+
     const auctions = []
     for (const event of events) {
       const { tokenId, epoch, bidder } = event.args
-      if (!tokenId || !epoch || !bidder) {
+      if (typeof tokenId !== 'bigint' || typeof epoch !== 'bigint' || !bidder) {
         continue
       }
 
