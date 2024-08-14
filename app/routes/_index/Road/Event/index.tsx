@@ -45,7 +45,7 @@ const Event = ({ children, css, isThick, isChecked, hasChecker }: Props) => {
     circleCss,
     css
   )
-  const contentCss = clsx('t-16', 'font-semibold')
+  const contentCss = 't-16 font-semibold'
 
   return (
     <section className={baseCss}>

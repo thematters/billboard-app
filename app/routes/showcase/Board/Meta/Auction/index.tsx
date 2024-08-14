@@ -1,81 +1,86 @@
-import type { AppContext } from '@type'
-
-import { NavLink, useOutletContext } from '@remix-run/react'
-import clsx from 'clsx'
+import { NavLink, useNavigate } from '@remix-run/react'
+import { isAddress } from 'viem'
+import { useAccount } from 'wagmi'
 
 import ButtonBase from '@component/Button/Base'
+import useEnvs from '@hook/useEnvs'
 import SvgLink from '@svg/Link'
-import { formatAddress, formatDate } from '@util/format'
+import { publish } from '@util/event'
+import { toFloatUSDT } from '@util/num'
 
 type Props = {
   data: Record<string, any>
 }
 
 const Auction = ({ data }: Props) => {
-  const context = useOutletContext<AppContext>()
-  const { auction, board, highestBid, taxRate } = data
-  const address = formatAddress(context.addressOperator)
-  const endAt = formatDate(auction.endAt)
+  const envs = useEnvs()
+  const navigate = useNavigate()
+  const { address, isConnected } = useAccount()
+  const { board, currBid, epoch, epochRange, highestBid } = data
+  const price = toFloatUSDT(Number(highestBid?.price || 0), 2)
 
-  const auctionCss = clsx('grid grid-cols-1 md:grid-cols-2')
-  const priceCss = clsx('t-28 md:t-36', 'md:font-smibold font-bold')
-  const btnCss = clsx(
-    'px-6 py-2',
-    'md:px-6 md:py-4',
-    'mt-4 md:mt-0',
-    't-16 md:t-18',
-    'f-center'
-  )
-  const endAtCss = clsx('mt-4', 't-12', 'text-grass')
-  const endAtTimeCss = clsx('ml-2', 't-16', 'font-semibold')
-  const linkCss = clsx('hover:text-grass', 'f-center-end')
-  const itemCss = clsx(
-    'py-4',
-    'w-full',
-    'f-center-between',
-    'border-b border-dashed border-green/40'
-  )
-  const itemLastCss = clsx(itemCss, 'border-b-0')
+  const isEstablished = isAddress(address || '') && isConnected
+  const hasBid = currBid && currBid > 0
+
+  const redirectToBid = () => {
+    const params = new URLSearchParams({
+      id: envs.tokenIdShowCase.toString(),
+      epoch,
+      from: 'showcase',
+    }).toString()
+    navigate(`/bid?${params}`)
+  }
+
+  const openWalletModal = () => {
+    publish('wallet-open', {
+      callback: () => () => redirectToBid(),
+    })
+  }
+
+  const click = () => {
+    if (!isEstablished) {
+      openWalletModal()
+      return
+    }
+    redirectToBid()
+  }
+
+  const baseCss = 'mt-6 md:mt-0'
+  const infoCss = 'pb-6 b-b-dashed border-beige/30'
+  const nameCss = 't-20 font-medium'
+  const linkCss =
+    'mt-1 t-14 w-fit f-center-start text-beige/30 hover:text-grass'
+  const bidInfoCss = 'mt-6 t-16 font-medium'
+  const bidPriceCss = 't-28 md:t-36 font-medium'
+  const bidBtnCss = 'mt-4 t-18 w-full f-center'
+  const epochCss = 'mt-6 t-12 md:t-14'
+  const epochTimeCss = 'mt-1 t-14 md:t-16 text-grass font-semibold'
 
   return (
-    <section className="mt-5 md:mt-0">
-      <section className="t-14 md:t-16">Last Highest Bid Price</section>
-      <section className={auctionCss}>
-        <section>
-          <section className={priceCss}>
-            {(highestBid?.price || 0).toFixed(2)} USDT
-          </section>
-          <section className="t-12">
-            Tax Rate: {(taxRate * 100).toFixed(2)} %
-          </section>
-        </section>
-        <section className="f-center-start md:f-center-end">
-          <ButtonBase css={btnCss} color="green" disabled={true}>
-            Place Bid (Beta)
-          </ButtonBase>
-        </section>
-      </section>
-      <section className={endAtCss}>
-        Bidding result time <span className={endAtTimeCss}>{endAt}</span>
-      </section>
+    <section className={baseCss}>
+      {/* info */}
+      <div className={infoCss}>
+        <p className={nameCss}>{board.name}</p>
+        <NavLink className={linkCss} to={board.location} target="_blank">
+          Board Location
+          <SvgLink css="ml-1" width={14} height={14} />
+        </NavLink>
+      </div>
 
-      <section className="mt-6">
-        <section className={itemCss}>
-          <p>Contract (ERC-721)</p>
-          <NavLink className={linkCss} to={context.urlContract} target="_blank">
-            {address}
-            <SvgLink css="ml-1" width={18} height={18} />
-          </NavLink>
-        </section>
-        <section className={itemCss}>
-          <p>Token ID</p>
-          <p>{context.tokenIdShowCase}</p>
-        </section>
-        <section className={itemLastCss}>
-          <p>Chain</p>
-          <p>Optimism</p>
-        </section>
-      </section>
+      {/* bid */}
+      <div className="mt-6">
+        <p className={bidInfoCss}>Current Highest Bid Price</p>
+        <p className={bidPriceCss}>{price} USDT</p>
+        <ButtonBase css={bidBtnCss} color="grass" click={click}>
+          {hasBid ? 'Update Bid' : 'Place Bid'}
+        </ButtonBase>
+        <div className={epochCss}>
+          <p>Auction Time</p>
+          <p className={epochTimeCss}>
+            {epochRange.start} - {epochRange.end} (UTC+8)
+          </p>
+        </div>
+      </div>
     </section>
   )
 }

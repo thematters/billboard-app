@@ -1,7 +1,5 @@
-import clsx from 'clsx'
-
 const Slogan = () => {
-  const baseCss = clsx('pt-8', 'slogan')
+  const baseCss = 'pt-8 slogan'
   return (
     <section>
       <h1 className={baseCss}>

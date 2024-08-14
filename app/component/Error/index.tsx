@@ -1,11 +1,13 @@
+import type { ComponentProps } from '@type'
+
 import clsx from 'clsx'
 
-type Props = {
+type Props = ComponentProps & {
   message: string
 }
 
-const ErrorMessage = ({ message }: Props) => {
-  const errorCss = clsx('mt-5', 't-14', 'text-red/60', 'text-center')
+const ErrorMessage = ({ css, message }: Props) => {
+  const errorCss = clsx('t-14 mt-5 text-center text-red/60', css)
   return (
     <section className={errorCss}>
       <p>Error Occurred:</p>

@@ -1,6 +1,6 @@
 import type { Chain } from 'viem'
 
-export type AppContext = {
+export type AppEnvs = {
   env: string
   chain: Chain
   chainId: number
@@ -8,6 +8,7 @@ export type AppContext = {
   addressRegistry: string
   addressDistribution: string
   addressMulticall3: string
+  addressUSDT: string
   tokenIdShowCase: number
   idWalletConnect: string
   urlOpExplorer: string
@@ -24,4 +25,11 @@ export type SVGProps = {
   css?: string
   width?: number | string
   height?: number | string
+}
+
+export type ModalControls = {
+  isOpen: boolean
+  setIsOpen: (value: boolean) => void
+  open: () => void
+  close: () => void
 }

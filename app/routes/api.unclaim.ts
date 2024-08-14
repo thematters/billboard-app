@@ -3,13 +3,14 @@ import type { LoaderFunctionArgs } from '@remix-run/node'
 import { StandardMerkleTree } from '@openzeppelin/merkle-tree'
 import { json } from '@remix-run/node'
 import fs from 'fs-extra'
-import _ from 'lodash'
+import { chunk, filter, orderBy } from 'lodash-es'
 import { isAddress } from 'viem'
 import { optimism, optimismSepolia } from 'viem/chains'
 
 import { ERROR, STATE } from '@constant'
 import { formatDate, formatRoundId } from '@util/format'
-import { getPublicPath, readEnvs, readFile, sendError } from '@util/server'
+import { readEnvs } from '@util/envs'
+import { getPublicPath, handleError, readFile, sendError } from '@util/server'
 import { initClient, initDistribution } from '@util/viem'
 
 const checkHasClaimed = async (
@@ -58,7 +59,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       return json({ state: STATE.successful, items: [], count: 0 })
     }
 
-    const rounds = _.orderBy(rawRounds, ['fromBlock'], ['desc']).map(
+    const rounds = orderBy(rawRounds, ['fromBlock'], ['desc']).map(
       ({
         id,
         root,
@@ -100,7 +101,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
       // gather data from distrib
       const rawDist = await readFile(distPath, '[]')
-      const dist = _.filter(
+      const dist = filter(
         rawDist.map((d: Record<string, any>) => ({
           ...d,
           eth_address: d.eth_address.toLowerCase(),
@@ -148,7 +149,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       // filter out claimed
       const client = initClient(chain)
       const distribution = initDistribution(addressDistribution, client)
-      const cidChunks = _.chunk(base.cids, 3) as Array<string[]>
+      const cidChunks = chunk(base.cids, 3) as Array<string[]>
 
       let claimed = [] as string[]
       for (const cids of cidChunks) {
@@ -168,14 +169,17 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
         )
         claimed = [...claimed, ...hasClaimed]
       }
-      const items = _.filter(base.items, (d) => !claimed.includes(d.cid))
+      const items = filter(base.items, (d) => !claimed.includes(d.cid))
       data.push({ root, rootAmount, items })
       count += items.length
     }
 
     return json({ state: STATE.successful, items: data, count: count })
   } catch (error) {
+    const errorMessage = handleError(error)
+    console.log(errorMessage)
+
     // @ts-ignore
-    return sendError(ERROR.UNKNOWN_ERROR, error?.message || 'unknown')
+    return sendError(ERROR.UNKNOWN_ERROR, errorMessage)
   }
 }

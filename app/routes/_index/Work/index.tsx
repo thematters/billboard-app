@@ -1,23 +1,21 @@
-import clsx from 'clsx'
-
 import Crate from '@component/Crate'
 
 import Deco from './Deco'
 import Roles from './Roles'
 
 const Work = () => {
-  const baseCss = clsx('pb-12 pt-10 lg:py-[4.rem]', 'max-limit')
-  const descCss = clsx('t-14 lg:t-20')
+  const baseCss = 'pb-12 pt-10 lg:py-[4.rem] max-limit'
+  const descCss = 't-14 lg:t-20'
 
   return (
     <Crate>
       <Crate.Inner hasDots hasXBorder hasTopBorder>
         <section className={baseCss}>
           {/* Title */}
-          <section className="section-title">HOW IT WORKS</section>
+          <h1 className="section-title">HOW IT WORKS</h1>
 
           {/* Description */}
-          <section className={descCss}>
+          <p className={descCss}>
             The on-chain billboard protocol revolutionizes platform attention by
             converting it into NFT billboards through Harberger tax auctions.
             Advertisers can bid on NFTs, enabling them to promote their ideas
@@ -25,7 +23,7 @@ const Work = () => {
             revenue generated from the auctions is then distributed back to the
             platform contributors through quadratic funding, ensuring a
             transparent and equitable allocation.
-          </section>
+          </p>
 
           {/* Roles */}
           <Roles />

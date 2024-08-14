@@ -19,6 +19,7 @@
       "@component/*": ["./app/component/*"],
       "@svg/*": ["./app/component/Svg/*"],
       "@hook/*": ["./app/hook/*"],
+      "@service/*": ["./app/service/*"],
       "@type": ["./app/type/index.ts"],
       "@util/*": ["./app/util/*"]
     },

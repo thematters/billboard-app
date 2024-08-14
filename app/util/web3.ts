@@ -1,14 +1,35 @@
 import dayjs from 'dayjs'
 
-import { LEASE_TERM_IN_DAYS } from '@constant'
+import { BLOCK_TIME } from '@constant'
+import { genUTC8DateTime } from '@util/time'
 
-export const genAuctionIds = (start: bigint, length = 20) => {
-  const safeLength = Math.min(Number(start || 1), length)
-  return Array.from(
-    { length: safeLength },
-    (_, i) => start + BigInt(i) * BigInt(-1)
-  )
+export const genEpochRange = (time: number, interval: number) => {
+  return {
+    start: genUTC8DateTime(time * 1000),
+    end: genUTC8DateTime(time * 1000 + BLOCK_TIME * interval * 1000),
+  }
 }
 
-export const genEndAt = (timestamp: number) =>
-  dayjs(timestamp).add(LEASE_TERM_IN_DAYS, 'day')
+export const getEpochRange = async (
+  client: any,
+  startAt: bigint,
+  epoch: bigint,
+  interval: bigint
+) => {
+  const block = startAt + epoch * interval
+  const time = await client.core.getBlock(Number(block))
+  return genEpochRange(time.timestamp, Number(interval))
+}
+
+export const getShiftedEpochRange = async (
+  client: any,
+  startAt: bigint,
+  epoch: bigint,
+  interval: bigint,
+  shift: number
+) => {
+  const block = startAt + epoch * interval
+  const time = await client.core.getBlock(Number(block))
+  const shiftTime = BLOCK_TIME * Number(interval) * shift
+  return genEpochRange(time.timestamp + shiftTime, Number(interval))
+}

@@ -6,14 +6,14 @@ import useLockScroll from '@hook/useLockScroll'
 
 type Props = ComponentProps & {
   isOpened: boolean
-  open: () => void
+  open: (event?: any) => void
   close: () => void
 }
 
 const Modal = ({ children, css, isOpened, open, close }: Props) => {
   useLockScroll(isOpened)
 
-  const overlayCss = clsx('modal-overlay', 'f-end-center sm:f-center')
+  const overlayCss = 'modal-overlay f-end-center sm:f-center'
   const baseCss = clsx('modal', css)
 
   if (!isOpened) {

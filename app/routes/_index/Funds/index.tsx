@@ -1,56 +1,33 @@
-import { useFetcher } from '@remix-run/react'
-import clsx from 'clsx'
-import { useEffect, useState } from 'react'
-
 import Crate from '@component/Crate'
 import ErrorMessage from '@component/Error'
-import SvgSkeletonFundMD from '@svg/SkeletonFundMD'
-import SvgSkeletonFundSM from '@svg/SkeletonFundSM'
+import useQueryData from '@hook/useQueryData'
+import SvgLoaderFundsMD from '@svg/Loader/FundsMD'
+import SvgLoaderFundsSM from '@svg/Loader/FundsSM'
 
 import Records from './Records'
 
 const Funds = () => {
-  const [step, setStep] = useState('loading')
-  const api = useFetcher()
-  const data = api?.data as Record<string, any>
+  const { data, isLoading, isLoaded, isError } = useQueryData({
+    action: '/api/funds',
+    params: {},
+    auto: true,
+  })
 
-  useEffect(() => {
-    api.submit({}, { method: 'GET', action: '/api/fund' })
-  }, [])
-
-  useEffect(() => {
-    const apiState = api?.state
-    // @ts-ignore
-    const dataState = api?.data?.state
-
-    if (apiState === 'loading' && apiState !== 'loading') {
-      setStep('loading')
-    } else if (apiState === 'idle' && dataState === 'error') {
-      setStep('error')
-    } else if (apiState === 'idle' && dataState === 'successful') {
-      setStep('loaded')
-    }
-  }, [api])
-
-  const innerCss = clsx('py-8 lg:py-20')
+  const innerCss = 'py-8 lg:py-20'
 
   return (
     <Crate>
       <Crate.Inner css={innerCss} hasDots hasXBorder hasTopBorder>
         <section className="max-limit">
-          <section className="section-title">
-            FUNDING DISTRIBUTION HISTORY
-          </section>
-          {(step === 'loading' || step === 'error') && (
+          <h1 className="section-title">FUNDING DISTRIBUTION HISTORY</h1>
+          {(isLoading || isError) && (
             <>
-              <SvgSkeletonFundSM css="skeleton-sm" />
-              <SvgSkeletonFundMD css="skeleton-md" />
+              <SvgLoaderFundsSM css="skeleton-sm" />
+              <SvgLoaderFundsMD css="skeleton-md" />
+              {isError && <ErrorMessage message={data.error || data.code} />}
             </>
           )}
-          {step === 'loaded' && <Records data={data || {}} />}
-          {step === 'error' && (
-            <ErrorMessage message={data.error || data.code} />
-          )}
+          {isLoaded && <Records data={data || {}} />}
         </section>
       </Crate.Inner>
     </Crate>
