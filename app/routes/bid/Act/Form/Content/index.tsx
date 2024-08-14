@@ -34,7 +34,7 @@ const Content = ({
   const baseCss = 'cols-1 gap-y-4'
   const topCss = 'f-center-between cursor-pointer'
   const headCss = 't-16 sm:t-18 font-semibold'
-  const btnCss = clsx({
+  const btnCss = clsx('trans-300', {
     '-rotate-90': isOpen,
     'rotate-90': !isOpen,
   })

@@ -62,7 +62,7 @@ const Avatar = ({ menuClick, isMenuActive }: Props) => {
   })
 
   const dropdownCss = 'p-2 w-[216px] border border-grass rounded-2xl bg-black'
-  const liCss = 't-18 hover:bg-oak rounded-lg'
+  const liCss = 't-18 hover:bg-oak rounded-lg trans-300'
   const itemCss = 'px-4 py-3 w-full f-center-start cursor-pointer'
 
   return (

@@ -12,7 +12,7 @@ const Record = ({ auction }: Props) => {
   const borderCss = 'tab-border after:-right-2 after:border-green'
   const cellCss = clsx('relative', borderCss)
   const rowCss = clsx(rowBaseCss, 'border-b border-green/40')
-  const linkCss = 'w-fit f-center-start hover:text-grass'
+  const linkCss = 'w-fit f-center-start hover:text-grass trans-300'
   const svgLinkCss = 'ml-1 md-shown'
 
   return (

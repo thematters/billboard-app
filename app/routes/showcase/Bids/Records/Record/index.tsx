@@ -20,7 +20,7 @@ const Record = ({ bid, isHighest }: Props) => {
   })
   const firstCellCss = clsx('md:f-center-start relative', borderCss)
   const svgCrownCss = 'mb-1 mr-2 md:mb-0'
-  const linkCss = 'w-fit f-center-start hover:text-grass'
+  const linkCss = 'w-fit f-center-start hover:text-grass trans-300'
   const svgLinkCss = 'md:ml-2 md-shown'
 
   return (

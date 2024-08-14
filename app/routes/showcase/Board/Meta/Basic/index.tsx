@@ -23,7 +23,7 @@ const Basic = ({ board }: Props) => {
   const baseCss = 'cols-1 gap-y-4'
   const imgCss = 'w-full aspect-img rounded-2xl border border-green'
   const headCss = 'f-center-between cursor-pointer'
-  const btnCss = clsx({
+  const btnCss = clsx('trans-300', {
     '-rotate-90': isOpen,
     'rotate-90': !isOpen,
   })
@@ -33,7 +33,7 @@ const Basic = ({ board }: Props) => {
   })
   const itemCss = 'py-4 w-full f-center-between b-b-dashed border-green/40'
   const lastCss = clsx(itemCss, 'border-b-0')
-  const linkCss = 'f-center-between hover:text-grass'
+  const linkCss = 'f-center-between hover:text-grass trans-300'
 
   return (
     <section className={baseCss}>

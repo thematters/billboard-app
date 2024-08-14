@@ -2,8 +2,6 @@ import { useNavigate } from '@remix-run/react'
 import clsx from 'clsx'
 
 import SvgChevron from '@svg/Chevron'
-import SvgEye from '@svg/Eye'
-import SvgEyeCross from '@svg/EyeCross'
 import { formatRoundId } from '@util/format'
 
 import Label from './Label'

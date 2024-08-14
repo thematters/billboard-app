@@ -49,7 +49,7 @@ const Auction = ({ data }: Props) => {
   const infoCss = 'pb-6 b-b-dashed border-beige/30'
   const nameCss = 't-20 font-medium'
   const linkCss =
-    'mt-1 t-14 w-fit f-center-start text-beige/30 hover:text-grass'
+    'mt-1 t-14 w-fit f-center-start text-beige/30 hover:text-grass trans-300'
   const bidInfoCss = 'mt-6 t-16 font-medium'
   const bidPriceCss = 't-28 md:t-36 font-medium'
   const bidBtnCss = 'mt-4 t-18 w-full f-center'

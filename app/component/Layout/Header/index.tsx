@@ -54,7 +54,7 @@ const Header = ({
   const innerCss = 'py-4 lg:py-8 f-center-between'
   const navCss =
     'ml-6 hidden lg:f-center-end text-white border-l border-beige/30'
-  const navBtnCss = 'pt-px ml-6 hover:text-grass'
+  const navBtnCss = 'pt-px ml-6 hover:text-grass trans-300'
   const hamCss = 'ml-6 lg:hidden'
 
   return (
