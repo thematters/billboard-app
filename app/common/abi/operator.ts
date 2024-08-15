@@ -156,6 +156,64 @@ const abi = [
   },
   {
     type: 'function',
+    name: 'clearLastAuction',
+    inputs: [
+      {
+        name: 'tokenId_',
+        type: 'uint256',
+        internalType: 'uint256',
+      },
+    ],
+    outputs: [
+      {
+        name: 'highestBidder',
+        type: 'address',
+        internalType: 'address',
+      },
+      {
+        name: 'price',
+        type: 'uint256',
+        internalType: 'uint256',
+      },
+      {
+        name: 'tax',
+        type: 'uint256',
+        internalType: 'uint256',
+      },
+    ],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    name: 'clearLastAuctions',
+    inputs: [
+      {
+        name: 'tokenIds_',
+        type: 'uint256[]',
+        internalType: 'uint256[]',
+      },
+    ],
+    outputs: [
+      {
+        name: 'highestBidders',
+        type: 'address[]',
+        internalType: 'address[]',
+      },
+      {
+        name: 'prices',
+        type: 'uint256[]',
+        internalType: 'uint256[]',
+      },
+      {
+        name: 'taxes',
+        type: 'uint256[]',
+        internalType: 'uint256[]',
+      },
+    ],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
     name: 'closed',
     inputs: [
       {
@@ -552,6 +610,25 @@ const abi = [
   },
   {
     type: 'function',
+    name: 'getLatestEpoch',
+    inputs: [
+      {
+        name: 'tokenId_',
+        type: 'uint256',
+        internalType: 'uint256',
+      },
+    ],
+    outputs: [
+      {
+        name: 'epoch',
+        type: 'uint256',
+        internalType: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
     name: 'getTaxRate',
     inputs: [
       {
@@ -565,6 +642,25 @@ const abi = [
         name: 'taxRate',
         type: 'uint256',
         internalType: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    name: 'isBoardWhitelistDisabled',
+    inputs: [
+      {
+        name: '',
+        type: 'uint256',
+        internalType: 'uint256',
+      },
+    ],
+    outputs: [
+      {
+        name: '',
+        type: 'bool',
+        internalType: 'bool',
       },
     ],
     stateMutability: 'view',
@@ -747,6 +843,24 @@ const abi = [
         name: 'location_',
         type: 'string',
         internalType: 'string',
+      },
+    ],
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    name: 'setBoardWhitelistDisabled',
+    inputs: [
+      {
+        name: 'tokenId_',
+        type: 'uint256',
+        internalType: 'uint256',
+      },
+      {
+        name: 'disabled',
+        type: 'bool',
+        internalType: 'bool',
       },
     ],
     outputs: [],
