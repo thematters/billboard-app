@@ -1,3 +1,4 @@
+import { orderBy } from 'lodash-es'
 import { useEffect } from 'react'
 import { isAddress } from 'viem'
 import { useAccount } from 'wagmi'
@@ -23,7 +24,7 @@ const Refund = ({ setParentStep }: Props) => {
     auto: true,
   })
 
-  const bids = data?.bids || []
+  const bids = orderBy(data?.bids || [], ['epoch'], ['desc'])
   const isEmpty = bids.length === 0
 
   useEffect(() => {

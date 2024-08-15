@@ -30,8 +30,8 @@ const Bids = ({ address, bids, setParentStep }: Props) => {
     return r
   }, 0)
 
-  const onRefund = () => {
-    if (!address) {
+  const onRefund = async () => {
+    if (bids.length === 0 || !address) {
       return
     }
 

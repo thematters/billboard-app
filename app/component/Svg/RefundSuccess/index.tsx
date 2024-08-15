@@ -2,7 +2,7 @@ import type { SVGProps } from '@type'
 
 import { memo } from 'react'
 
-const RefundSuccess = ({ css, width = 48, height = 48 }: SVGProps) => (
+const RefundSuccess = ({ css, width = 272, height = 207 }: SVGProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className={css}

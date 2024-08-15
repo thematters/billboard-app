@@ -25,8 +25,9 @@ const Refuned = ({ address, setParentStep }: Props) => {
     <section className={baseCss}>
       <h1 className="section-title">REFUND SUCCESSFULLY</h1>
       <p className={contentCss}>
-        You have successfully processed the refund. To get more details about
-        the transaction, you can check your wallet and&nbsp;
+        You have successfully processed the refund.
+        <br />
+        To get more details, you can check your wallet and&nbsp;
         <NavLink
           className="text-grass"
           to={`${envs.urlOpExplorer}/address/${address}`}

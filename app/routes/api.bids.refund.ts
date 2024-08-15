@@ -65,6 +65,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
         address as `0x${string}`,
       ])
       if (bidderBidCount == 0n) {
+        // skip if the user has no bids
         continue
       }
 
@@ -90,9 +91,11 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
         for (const [index, bid] of bids.entries()) {
           const bidEpoch = epochs[index]
           if (bidEpoch >= currEpoch || bid.isWon === true) {
+            // skip if the auction is running, and skip if the bid won
             continue
           }
           if (bid.isWithdrawn === true) {
+            // skip the rest if the user had withdrawn before
             break
           }
 
@@ -101,6 +104,17 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
             getEpochRange(alchemy, startedAt, bidEpoch, interval),
           ])
           if (address === highestBidder) {
+            // skip if bid is the highet one
+            continue
+          }
+
+          const highestBid = await registry.read.getBid([
+            id,
+            bidEpoch,
+            highestBidder,
+          ])
+          if (highestBid.isWon === false) {
+            // skip if bid is not cleared
             continue
           }
 
