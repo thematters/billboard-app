@@ -64,6 +64,7 @@ const Form = ({ data, id, epoch, address, setParentStep }: Props) => {
   } = useWriteContract()
 
   const lastBidPrice = Number(toFloatUSDT(Number(bid?.price || 0)))
+  const highestPrice = Number(toFloatUSDT(Number(highestBid?.price || 0)))
   const taxRate = Number(toFloatTaxRate(Number(board.taxRate)))
   const allowance = Number(toFloatUSDT(Number(usdtData || 0)))
   const amount = Number(calTotalAmount(price, taxRate, 3))
@@ -86,7 +87,7 @@ const Form = ({ data, id, epoch, address, setParentStep }: Props) => {
     isSufficient &&
     isValidRedirect &&
     price > 0 &&
-    price >= lastBidPrice &&
+    (price == lastBidPrice || price > highestPrice) &&
     (isPriceChanged || isContentChanged)
 
   const approve = async () => {

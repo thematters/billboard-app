@@ -70,7 +70,7 @@ const Auction = ({ data }: Props) => {
         <p className={timeCss}>
           {bidCount} bids
           <span className="mx-2">·</span>
-          Ends on {epochRange.end}
+          Ends on {epochRange.end} (UTC+8)
         </p>
       </div>
 

@@ -40,8 +40,6 @@ export const calTotalDiff = (
   taxRate: number,
   dp?: number
 ) => {
-  console.log(newPrice, oldPrice)
-
   let diff = new Decimal(0)
   if (newPrice <= oldPrice) {
     return isInteger(dp) ? diff.toFixed(dp) : diff.toString()

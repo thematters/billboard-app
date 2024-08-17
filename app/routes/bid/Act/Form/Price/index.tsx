@@ -3,6 +3,7 @@ import type { UseBalanceReturnType } from 'wagmi'
 
 import { useSearchParams } from '@remix-run/react'
 import clsx from 'clsx'
+import { useState } from 'react'
 
 import {
   calTotalAmount,
@@ -22,6 +23,7 @@ type Props = ComponentProps & {
 
 const Price = ({ data, balance, price, setPrice, hasBid, isLocked }: Props) => {
   const [searchParams] = useSearchParams()
+  const [changed, setChanged] = useState(false)
   const { board, bid, highestBid } = data
 
   const taxRate = Number(board?.taxRate || 0)
@@ -31,10 +33,15 @@ const Price = ({ data, balance, price, setPrice, hasBid, isLocked }: Props) => {
   const highestPrice = Number(toFloatUSDT(Number(highestBid?.price || 0)))
 
   const isInsufficient = balance && Number(balance.formatted) < price
-  const hasHint = isInsufficient
+  const isUnderPrice = changed && price != lastBidPrice && price <= highestPrice
+  const hasHint = isInsufficient || isUnderPrice
 
   const onChange = (event: any) => {
     setPrice(parseInt(event.target.valueAsNumber || 0, 10))
+
+    if (!changed) {
+      setChanged(true)
+    }
   }
   const onWheel = (event: any) => {
     event.target.blur()
@@ -87,8 +94,17 @@ const Price = ({ data, balance, price, setPrice, hasBid, isLocked }: Props) => {
                 The current highest bid is {highestPrice} USDT
               </p>
             )}
-            {hasHint && isInsufficient && (
-              <p className={hintCss}>Your USDT balance is not enough</p>
+            {hasHint && (
+              <>
+                {isInsufficient && (
+                  <p className={hintCss}>Your USDT balance is not enough</p>
+                )}
+                {isUnderPrice && (
+                  <p className={hintCss}>
+                    Your new bid should be higher than {highestPrice} USDT
+                  </p>
+                )}
+              </>
             )}
           </>
         )}
