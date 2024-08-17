@@ -43,7 +43,7 @@ const Content = ({
   return (
     <section className={baseCss}>
       <div className={topCss}>
-        <p className={headCss}>Setup AD</p>
+        <p className={headCss}>Update AD</p>
       </div>
 
       <div>

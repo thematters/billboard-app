@@ -9,7 +9,7 @@ type Props = {
   setParentStep: (value: string) => void
 }
 
-const Refuned = ({ address, setParentStep }: Props) => {
+const Retracted = ({ address, setParentStep }: Props) => {
   const envs = useEnvs()
 
   const click = () => {
@@ -23,9 +23,9 @@ const Refuned = ({ address, setParentStep }: Props) => {
 
   return (
     <section className={baseCss}>
-      <h1 className="section-title">REFUND SUCCESSFULLY</h1>
+      <h1 className="section-title">RETRACT SUCCESSFULLY</h1>
       <p className={contentCss}>
-        You have successfully processed the refund.
+        You have successfully processed the bids retraction.
         <br />
         To get more details, you can check your wallet and&nbsp;
         <NavLink
@@ -45,4 +45,4 @@ const Refuned = ({ address, setParentStep }: Props) => {
   )
 }
 
-export default Refuned
+export default Retracted

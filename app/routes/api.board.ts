@@ -57,7 +57,10 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       currBlock,
       interval,
     ])
-    const epochRange = await getEpochRange(alchemy, startedAt, epoch, interval)
+    const [epochRange, bidCount] = await Promise.all([
+      getEpochRange(alchemy, startedAt, epoch, interval),
+      registry.read.getBidCount([id, epoch]),
+    ])
 
     // get cuurent highest bid
     const highestBidder = await registry.read.highestBidder([id, epoch])
@@ -94,10 +97,17 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       },
       epoch: Number(epoch),
       epochRange,
+      bidCount: Number(bidCount),
       highestBid: {
+        bidder: highestBidder,
         price: Number(highestBid?.price || 0).toFixed(0),
       },
-      currBid: currBid ? Number(currBid.placedAt) : null,
+      currBid: currBid
+        ? {
+            price: Number(currBid.price || 0).toFixed(0),
+            placedAt: Number(currBid.placedAt),
+          }
+        : null,
     })
   } catch (error) {
     const errorMessage = handleError(error)

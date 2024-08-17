@@ -3,7 +3,7 @@ import { isAddress } from 'viem'
 import { useAccount } from 'wagmi'
 
 import Bidding from './Bidding'
-import Refund from './Refund'
+import Outbid from './Outbid'
 import Running from './Running'
 import Tabs from './Tabs'
 
@@ -28,7 +28,7 @@ const Bids = ({ setParentStep }: Props) => {
       <Tabs selected={tab} onClick={onTabClick} />
       {tab === 'running' && <Running />}
       {tab === 'bidding' && <Bidding />}
-      {tab === 'refund' && <Refund setParentStep={setParentStep} />}
+      {tab === 'outbid' && <Outbid setParentStep={setParentStep} />}
     </section>
   )
 }

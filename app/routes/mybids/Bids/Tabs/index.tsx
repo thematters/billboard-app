@@ -22,8 +22,8 @@ const Tabs = ({ selected, onClick }: Props) => {
       >
         Bidding
       </Tab>
-      <Tab isActive={selected === 'refund'} onClick={() => onClick('refund')}>
-        Bids Refund
+      <Tab isActive={selected === 'outbid'} onClick={() => onClick('outbid')}>
+        Outbid
       </Tab>
     </div>
   )

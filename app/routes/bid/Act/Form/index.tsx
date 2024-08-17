@@ -26,7 +26,7 @@ type Props = {
 const Form = ({ data, id, epoch, address, setParentStep }: Props) => {
   const envs = useEnvs()
   const config = useConfig()
-  const { board, bid } = data
+  const { board, bid, highestBid } = data
   const [price, setPrice] = useState<number>(
     Number(toFloatUSDT(Number(bid?.price || 0)))
   )
@@ -64,6 +64,7 @@ const Form = ({ data, id, epoch, address, setParentStep }: Props) => {
   } = useWriteContract()
 
   const lastBidPrice = Number(toFloatUSDT(Number(bid?.price || 0)))
+  const highestPrice = Number(toFloatUSDT(Number(highestBid?.price || 0)))
   const taxRate = Number(toFloatTaxRate(Number(board.taxRate)))
   const allowance = Number(toFloatUSDT(Number(usdtData || 0)))
   const amount = Number(calTotalAmount(price, taxRate, 3))
@@ -86,6 +87,7 @@ const Form = ({ data, id, epoch, address, setParentStep }: Props) => {
     isSufficient &&
     isValidRedirect &&
     price > 0 &&
+    (price == lastBidPrice || price > highestPrice) &&
     (isPriceChanged || isContentChanged)
 
   const approve = async () => {
@@ -155,7 +157,7 @@ const Form = ({ data, id, epoch, address, setParentStep }: Props) => {
 
   const baseCss = 'p-5 mx-auto max-w-[688px] bg-black rounded-lg'
   const innerCss = 'cols-1 gap-y-6'
-  const dividerCss = 'border-b border-dashed border-beige/30'
+  const dividerCss = 'b-b-dashed border-beige/30'
   const nameCss = 't-18 sm:t-20 font-semibold'
   const totalCss = 'mt-2 cols-2 t-14'
   const footCss = 'mt-5 sm:mt-10'
@@ -177,6 +179,7 @@ const Form = ({ data, id, epoch, address, setParentStep }: Props) => {
             setContent={setContent}
             redirect={redirect}
             setRedirect={setRedirect}
+            hasBid={hasBid}
             isLocked={isLocked}
           />
           <div className={dividerCss} />
@@ -187,6 +190,7 @@ const Form = ({ data, id, epoch, address, setParentStep }: Props) => {
             balance={balanceData}
             price={price}
             setPrice={setPrice}
+            hasBid={hasBid}
             isLocked={isLocked}
           />
         </section>

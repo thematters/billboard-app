@@ -1,6 +1,8 @@
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3'
 import uuid from 'short-uuid'
 
+import { ERROR } from '@constant'
+
 import { readSecretEnvs } from './envs.server'
 
 export const initS3 = () => {
@@ -35,11 +37,19 @@ export const s3Uploader = async ({
   const { awsS3Bucket } = readSecretEnvs()
   const s3 = initS3()
 
+  // size limit 1mb
+  const maxSize = 1024 * 1024
+
   // get ext
   const ext = filename.split('.').pop()
   const key = `${uuid.generate()}.${ext}`
 
   const body = await toBuffer(data)
+
+  if (Buffer.byteLength(body) > maxSize) {
+    throw new Error(ERROR.REACH_SIZE_LIMIT)
+  }
+
   const params = new PutObjectCommand({
     Bucket: awsS3Bucket,
     Key: key,
