@@ -17,7 +17,7 @@ const Auction = ({ data }: Props) => {
     <section>
       <p className={headCss}>Auction No.{formatRoundId(epoch)}</p>
       <div className={auctionCss}>
-        <p className="text-beige/60">Display Time (UTC+8)</p>
+        <p className="text-beige/60">AD Display Time (UTC+8)</p>
         <p className="mt-1">
           {runningEpochRange.start} - {runningEpochRange.end}
         </p>
