@@ -33,3 +33,20 @@ export const calTotalAmount = (price: number, taxRate: number, dp?: number) => {
   const value = new Decimal(price).plus(tax)
   return isInteger(dp) ? value.toFixed(dp) : value.toString()
 }
+
+export const calTotalDiff = (
+  newPrice: number,
+  oldPrice: number,
+  taxRate: number,
+  dp?: number
+) => {
+  console.log(newPrice, oldPrice)
+
+  let diff = new Decimal(0)
+  if (newPrice <= oldPrice) {
+    return isInteger(dp) ? diff.toFixed(dp) : diff.toString()
+  }
+
+  diff = new Decimal(newPrice).minus(oldPrice)
+  return calTotalAmount(diff.toNumber(), taxRate, dp)
+}

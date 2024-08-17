@@ -5,7 +5,7 @@ import { useState } from 'react'
 import useEnvs from '@hook/useEnvs'
 import SvgChevron from '@svg/Chevron'
 import SvgLink from '@svg/Link'
-import { formatAddress } from '@util/format'
+import { formatAddress, formatURL } from '@util/format'
 import { toPercentTaxRate } from '@util/num'
 
 type Props = {
@@ -63,9 +63,16 @@ const Basic = ({ board }: Props) => {
             <p>Chain</p>
             <p>Optimism</p>
           </div>
-          <div className={lastCss}>
-            <p>Board Tax Rate</p>
+          <div className={itemCss}>
+            <p>Tax Rate</p>
             <p>{taxRate} %</p>
+          </div>
+          <div className={lastCss}>
+            <p>Location</p>
+            <NavLink className={linkCss} to={board.location} target="_blank">
+              {formatURL(board.location)}
+              <SvgLink css="ml-1" width={16} height={16} />
+            </NavLink>
           </div>
         </div>
       </div>

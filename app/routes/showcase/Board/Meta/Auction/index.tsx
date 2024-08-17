@@ -6,6 +6,7 @@ import ButtonBase from '@component/Button/Base'
 import useEnvs from '@hook/useEnvs'
 import SvgLink from '@svg/Link'
 import { publish } from '@util/event'
+import { formatRoundId } from '@util/format'
 import { toFloatUSDT } from '@util/num'
 
 type Props = {
@@ -16,11 +17,14 @@ const Auction = ({ data }: Props) => {
   const envs = useEnvs()
   const navigate = useNavigate()
   const { address, isConnected } = useAccount()
-  const { board, currBid, epoch, epochRange, highestBid } = data
+  const { board, currBid, epoch, epochRange, bidCount, highestBid } = data
+
   const price = toFloatUSDT(Number(highestBid?.price || 0), 2)
+  const currPrice = toFloatUSDT(Number(currBid?.price || 0), 2)
 
   const isEstablished = isAddress(address || '') && isConnected
-  const hasBid = currBid && currBid > 0
+  const isBidder = currBid && currBid.placedAt > 0
+  const isHighestBidder = highestBid?.bidder === address
 
   const redirectToBid = () => {
     const params = new URLSearchParams({
@@ -46,40 +50,56 @@ const Auction = ({ data }: Props) => {
   }
 
   const baseCss = 'mt-6 md:mt-0'
-  const infoCss = 'pb-6 b-b-dashed border-beige/30'
   const nameCss = 't-20 font-medium'
-  const linkCss =
-    'mt-1 t-14 w-fit f-center-start text-beige/30 hover:text-grass trans-300'
-  const bidInfoCss = 'mt-6 t-16 font-medium'
-  const bidPriceCss = 't-28 md:t-36 font-medium'
-  const bidBtnCss = 'mt-4 t-18 w-full f-center'
-  const epochCss = 'mt-6 t-12 md:t-14'
-  const epochTimeCss = 'mt-1 t-14 md:t-16 text-grass font-semibold'
+  const epochCss = 'mt-6 t-12 md:t-16 font-noraml cols-1 gap-y-1'
+  const timeCss = 'text-grass font-semibold'
+  const highestCss = 'mt-6 pb-6 b-b-dashed border-beige/30'
+  const highestNameCss = 't-12 md:t-14 text-beige/60'
+  const highestPriceCss = 't-28 md:t-36 font-medium'
+  const btnCss = 't-18 w-full f-center'
+  const currBidCss = 't-14 ml-2 font-normal'
+  const hintCss = 'mt-2 t-14 text-beige/30'
+  const hintOutbidCss = 'mt-2 t-14 text-[#fffc62]/60'
 
   return (
     <section className={baseCss}>
-      {/* info */}
-      <div className={infoCss}>
-        <p className={nameCss}>{board.name}</p>
-        <NavLink className={linkCss} to={board.location} target="_blank">
-          Board Location
-          <SvgLink css="ml-1" width={14} height={14} />
-        </NavLink>
+      <h1 className={nameCss}>{board.name}</h1>
+
+      <div className={epochCss}>
+        <p>Auction No. {formatRoundId(`${epoch}`)}</p>
+        <p className={timeCss}>
+          {bidCount} bids
+          <span className="mx-2">·</span>
+          Ends on {epochRange.end}
+        </p>
       </div>
 
-      {/* bid */}
+      <div className={highestCss}>
+        <p className={highestNameCss}>Highest Bid</p>
+        <p className={highestPriceCss}>{price} USDT</p>
+      </div>
+
       <div className="mt-6">
-        <p className={bidInfoCss}>Current Highest Bid Price</p>
-        <p className={bidPriceCss}>{price} USDT</p>
-        <ButtonBase css={bidBtnCss} color="grass" click={click}>
-          {hasBid ? 'Update Bid' : 'Place Bid'}
+        <ButtonBase css={btnCss} color="grass" click={click}>
+          {isBidder ? (
+            <>
+              Update Bid <span className={currBidCss}>({currPrice} USDT)</span>
+            </>
+          ) : (
+            'Place Bid'
+          )}
         </ButtonBase>
-        <div className={epochCss}>
-          <p>Auction Time</p>
-          <p className={epochTimeCss}>
-            {epochRange.start} - {epochRange.end} (UTC+8)
-          </p>
-        </div>
+        {isBidder && (
+          <>
+            {isHighestBidder ? (
+              <p className={hintCss}>Your bid is the highest.</p>
+            ) : (
+              <p className={hintOutbidCss}>
+                You've been outbid. Update your bid to raise the bid price.
+              </p>
+            )}
+          </>
+        )}
       </div>
     </section>
   )

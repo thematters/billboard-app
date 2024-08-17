@@ -4,22 +4,30 @@ import type { UseBalanceReturnType } from 'wagmi'
 import { useSearchParams } from '@remix-run/react'
 import clsx from 'clsx'
 
-import { calTotalAmount, toFloatUSDT, toPercentTaxRate } from '@util/num'
+import {
+  calTotalAmount,
+  calTotalDiff,
+  toFloatUSDT,
+  toPercentTaxRate,
+} from '@util/num'
 
 type Props = ComponentProps & {
   data: Record<string, any>
   balance: UseBalanceReturnType['data']
   price: number
   setPrice: (value: number) => void
+  hasBid: boolean
   isLocked: boolean
 }
 
-const Price = ({ css, data, balance, price, setPrice, isLocked }: Props) => {
+const Price = ({ data, balance, price, setPrice, hasBid, isLocked }: Props) => {
   const [searchParams] = useSearchParams()
   const { board, bid, highestBid } = data
 
   const taxRate = Number(board?.taxRate || 0)
+  const lastBidPrice = Number(toFloatUSDT(Number(bid?.price || 0)))
   const totalAmount = calTotalAmount(price, taxRate)
+  const totalDiff = calTotalDiff(price, lastBidPrice, taxRate)
   const highestPrice = Number(toFloatUSDT(Number(highestBid?.price || 0)))
 
   const isInsufficient = balance && Number(balance.formatted) < price
@@ -47,13 +55,16 @@ const Price = ({ css, data, balance, price, setPrice, isLocked }: Props) => {
     'mt-5': !isLocked,
   })
   const taxNumCss = 'text-beige/60 text-right'
-  const amountCss = 'mt-2 cols-2 t-14'
+  const amountCss = clsx('cols-2 t-14 mt-2', {
+    'text-beige/60': hasBid,
+  })
   const calInlineCss = 'hidden sm:inline-block'
   const calBlockCss = 'col-span-2 sm:hidden'
+  const diffCss = 'mt-2 cols-2 t-14'
 
   return (
     <section>
-      <p className={headCss}>Setup Bid Price</p>
+      <p className={headCss}>{hasBid ? 'Update' : 'Setup'} Bid Price</p>
       <div className={bidCss}>
         <p>Bid Price</p>
         {isLocked && <p className="text-right">{price} USDT</p>}
@@ -98,6 +109,12 @@ const Price = ({ css, data, balance, price, setPrice, isLocked }: Props) => {
           ({price} + {price} x 14 x {toPercentTaxRate(taxRate)}%)
         </p>
       </div>
+      {hasBid && (
+        <div className={diffCss}>
+          <p>Price diffeerence for updating</p>
+          <p className="text-right">{totalDiff} USDT</p>
+        </div>
+      )}
     </section>
   )
 }

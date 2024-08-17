@@ -14,6 +14,7 @@ type Props = ComponentProps & {
   setContent: (value: string) => void
   redirect?: string
   setRedirect: (value: string) => void
+  hasBid: boolean
   isLocked: boolean
 }
 
@@ -24,6 +25,7 @@ const Content = ({
   setContent,
   redirect,
   setRedirect,
+  hasBid,
   isLocked,
 }: Props) => {
   const [isOpen, setIsOpen] = useState(!!content || !!redirect)
@@ -53,7 +55,7 @@ const Content = ({
   return (
     <section className={baseCss}>
       <div className={topCss} onClick={() => setIsOpen(!isOpen)}>
-        <p className={headCss}>Setup AD (optional)</p>
+        <p className={headCss}>{hasBid ? 'Update' : 'Setup'} AD (optional)</p>
         <SvgChevron css={btnCss} width="16" height="16" />
       </div>
 
