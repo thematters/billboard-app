@@ -48,7 +48,7 @@ const Content = ({
   const redirectInputCss = clsx('input-text mt-2 w-full', {
     'border border-red': hasHint,
   })
-  const hintCss = 'mt-2 font-12 text-red text-right'
+  const hintCss = 'mt-2 t-12 text-red text-right'
 
   const onChange = (event: any) => setRedirect(event.target.value)
 

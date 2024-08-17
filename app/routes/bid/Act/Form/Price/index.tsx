@@ -55,8 +55,8 @@ const Price = ({ data, balance, price, setPrice, hasBid, isLocked }: Props) => {
   const priceCss = clsx('input-number mt-2', {
     'border border-red': hasHint,
   })
-  const highestCss = 'mt-2 font-12 text-beige/60'
-  const hintCss = 'mt-2 font-12 text-red text-right'
+  const highestCss = 'mt-2 t-12 text-beige/60'
+  const hintCss = 'mt-2 t-12 text-red text-right'
   const taxCss = clsx('cols-2 t-14', {
     'mt-2': isLocked,
     'mt-5': !isLocked,
@@ -101,7 +101,7 @@ const Price = ({ data, balance, price, setPrice, hasBid, isLocked }: Props) => {
                 )}
                 {isUnderPrice && (
                   <p className={hintCss}>
-                    Your new bid should be higher than {highestPrice} USDT
+                    Your new bid price should be higher than {highestPrice} USDT
                   </p>
                 )}
               </>

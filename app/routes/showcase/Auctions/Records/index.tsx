@@ -55,7 +55,7 @@ const Records = ({ data }: Props) => {
       )}
       <div className={rowsCss}>
         {auctions.map((auction: Record<string, any>) => (
-          <Record key={auction.id} auction={auction} />
+          <Record key={auction.txHash} auction={auction} />
         ))}
         {(auctions?.length || 0) === 10 && (
           <div className={moreCss}>

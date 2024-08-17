@@ -14,7 +14,7 @@ type Props = {
   setParentStep: (value: string) => void
 }
 
-const Refund = ({ setParentStep }: Props) => {
+const Outbid = ({ setParentStep }: Props) => {
   const { address, isConnected } = useAccount()
   const isEstablished = isAddress(address || '') && isConnected
 
@@ -49,10 +49,10 @@ const Refund = ({ setParentStep }: Props) => {
         </>
       )}
       {isLoaded && isEmpty && (
-        <div className={emptyCss}>No bids refund at the moment.</div>
+        <div className={emptyCss}>No bids refundable at the moment.</div>
       )}
     </div>
   )
 }
 
-export default Refund
+export default Outbid

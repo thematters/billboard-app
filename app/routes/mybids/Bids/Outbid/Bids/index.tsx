@@ -55,7 +55,7 @@ const Bids = ({ address, bids, setParentStep }: Props) => {
 
   useEffect(() => {
     if (data && isSuccess) {
-      setParentStep('refunded')
+      setParentStep('retracted')
     }
   }, [data, isSuccess])
 
@@ -76,7 +76,7 @@ const Bids = ({ address, bids, setParentStep }: Props) => {
         {isPending ? (
           <SvgSpinnerDim css="animate-spin" height={27} />
         ) : (
-          'Get Refund'
+          'Retract Bids'
         )}
       </BaseButton>
       {error && <ErrorMessage message={(error as any).shortMessage || ''} />}

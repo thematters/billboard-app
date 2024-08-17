@@ -29,7 +29,7 @@ const Bid = ({ state, data }: Props) => {
   const gridCss = 'cols-1 gap-y-2 md:cols-10 md:gap-y-0 md:gap-x-3'
   const rowCss = clsx(baseCss, gridCss, 'b-b-dashed border-beige/30')
   const cellCss = 'font-semibold f-center-start'
-  const nameCss = clsx(cellCss, 'pl-2 md:col-span-2')
+  const nameCss = clsx(cellCss, 'mt-2 md:col-span-2 md:mt-0 md:pl-2')
   const timeCss = 'md:col-span-5 text-beige/60 f-center-start'
   const actionCss = 'f-center-start md:f-center-end'
   const editCss = 'w-fit text-grass f-center-end cursor-pointer'

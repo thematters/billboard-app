@@ -8,7 +8,7 @@ import { publish } from '@util/event'
 
 import Bids from './Bids'
 import Connect from './Connect'
-import Refunded from './Refunded'
+import Retracted from './Retracted'
 
 const MyBids = () => {
   const [step, setStep] = useState('mybids')
@@ -37,8 +37,8 @@ const MyBids = () => {
       <Crate.Inner css={innerCss} hasDots hasXBorder>
         {step === 'connect' && <Connect open={openWalletModal} />}
         {step === 'bids' && <Bids setParentStep={setStep} />}
-        {step === 'refunded' && (
-          <Refunded address={address} setParentStep={setStep} />
+        {step === 'retracted' && (
+          <Retracted address={address} setParentStep={setStep} />
         )}
       </Crate.Inner>
     </Crate>
