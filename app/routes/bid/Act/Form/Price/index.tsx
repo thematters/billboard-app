@@ -91,7 +91,8 @@ const Price = ({ data, balance, price, setPrice, hasBid, isLocked }: Props) => {
             />
             {highestPrice > 0 && !hasHint && (
               <p className={highestCss}>
-                The current highest bid is {highestPrice} USDT
+                The current highest bid is{' '}
+                <span className="text-beige">{highestPrice}</span> USDT
               </p>
             )}
             {hasHint && (
@@ -127,7 +128,7 @@ const Price = ({ data, balance, price, setPrice, hasBid, isLocked }: Props) => {
       </div>
       {hasBid && (
         <div className={diffCss}>
-          <p>Price diffeerence for updating</p>
+          <p>Price diffeerence to cover</p>
           <p className="text-right">{totalDiff} USDT</p>
         </div>
       )}
