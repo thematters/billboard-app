@@ -1,5 +1,6 @@
 import { NavLink } from '@remix-run/react'
 import clsx from 'clsx'
+import { orderBy } from 'lodash-es'
 
 import LinkButton from '@component/Button/Link'
 import useEnvs from '@hook/useEnvs'
@@ -15,17 +16,20 @@ type Props = {
 
 const Records = ({ data }: Props) => {
   const envs = useEnvs()
-  const auctions = (data?.auctions || []).map(
-    (auction: Record<string, any>) => {
+  const auctions = orderBy(
+    (data?.auctions || []).map((auction: Record<string, any>) => {
       const { bid, epoch, epochRange, txHash } = auction
       return {
+        epoch,
         price: toFloatUSDT(Number(bid.price || 0), 2),
         bidder: formatAddress(bid.bidder),
         endAt: formatDate(epochRange.end),
         txHash: formatAddress(txHash),
         link: `${envs.urlOpExplorer}/tx/${txHash}`,
       }
-    }
+    }),
+    ['epoch'],
+    ['desc']
   )
   const isEmpty = !auctions || auctions.length == 0
 
