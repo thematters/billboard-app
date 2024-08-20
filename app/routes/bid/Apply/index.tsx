@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 
 import LinkButton from '@component/Button/Link'
+import { FORM_LINK } from '@constant'
 
 const Apply = () => {
   const baseCss = 'lg:pb-20 max-limit'
@@ -31,7 +32,7 @@ const Apply = () => {
           css={btnCss}
           linkCss={btnLastLinkCss}
           color="grass"
-          to="/"
+          to={FORM_LINK}
           target="_blank"
         >
           Go Apply

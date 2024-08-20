@@ -12,6 +12,8 @@ export const EPOCH_IN_DAYS = 14
 
 export const MAIL = 'mailto:hi@matters.town'
 
+export const FORM_LINK = 'https://forms.gle/UKaCet12XMQHsLGi9'
+
 export const PAPER_LINK =
   'https://matterslab.notion.site/On-chain-Billboard-for-' +
   'Decentralized-Content-Ecosystems-aa10959b6258456ebbf7f5f49eb9f0fd'
