@@ -1,5 +1,5 @@
 import type { LinksFunction } from '@remix-run/node'
-import type { AppContext } from '@type'
+import type { AppEnvs } from '@type'
 
 import {
   LiveReload,
@@ -9,13 +9,12 @@ import {
   useLoaderData,
 } from '@remix-run/react'
 import { json } from '@remix-run/node'
-import { useState } from 'react'
-import { optimism, optimismSepolia } from 'wagmi/chains'
 
-import ContextWallet from '@component/Context/Wallet'
+import EnvsContext from '@component/Context/Envs'
+import WalletContext from '@component/Context/Wallet'
 import Doc from '@component/Doc'
 import Layout from '@component/Layout'
-import { readEnvs } from '@util/server'
+import { readEnvs } from '@util/envs'
 
 import styles from './main.css'
 
@@ -27,18 +26,20 @@ export const loader = async () => {
 }
 
 const App = () => {
-  const context = useLoaderData() as AppContext
+  const envs = useLoaderData() as AppEnvs
   return (
-    <ContextWallet projectId={context.idWalletConnect}>
-      <Doc>
-        <Layout>
-          <Outlet context={context} />
-        </Layout>
-        <Scripts />
-        <ScrollRestoration />
-        <LiveReload />
-      </Doc>
-    </ContextWallet>
+    <EnvsContext envs={envs}>
+      <WalletContext projectId={envs.idWalletConnect}>
+        <Doc>
+          <Layout>
+            <Outlet context={envs} />
+          </Layout>
+          <Scripts />
+          <ScrollRestoration />
+          <LiveReload />
+        </Doc>
+      </WalletContext>
+    </EnvsContext>
   )
 }
 

@@ -17,8 +17,8 @@ const SlideContent = ({
     'h-full opacity-100': isActive,
     'h-0 opacity-0': !isActive,
   })
-  const titleCss = clsx('t-20 lg:t-28', 'text-grass', 'font-bold')
-  const contentCss = clsx('t-14 lg:t-18', 'mt-1 lg:mt-6')
+  const titleCss = 't-20 lg:t-28 text-grass font-bold'
+  const contentCss = 't-14 lg:t-18 mt-1 lg:mt-6'
 
   return (
     <section className={baseCss}>

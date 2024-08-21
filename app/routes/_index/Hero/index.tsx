@@ -9,13 +9,13 @@ import Slogan from './Slogan'
 const Hero = () => {
   return (
     <Crate css="menu-spacing">
-      <section className="hero">
+      <div className="hero">
         <Crate.Inner hasDots hasXBorder>
           <Slogan />
           <Decorator />
           <Mission />
         </Crate.Inner>
-      </section>
+      </div>
     </Crate>
   )
 }

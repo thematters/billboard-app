@@ -1,55 +1,47 @@
-import { useFetcher } from '@remix-run/react'
-import clsx from 'clsx'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { isAddress } from 'viem'
+import { useAccount } from 'wagmi'
 
 import Crate from '@component/Crate'
 import ErrorMessage from '@component/Error'
-import SvgSkeletonBoardMD from '@svg/SkeletonBoardMD'
-import SvgSkeletonBoardSM from '@svg/SkeletonBoardSM'
+import useEnvs from '@hook/useEnvs'
+import useQueryData from '@hook/useQueryData'
+import SvgLoaderBoardMD from '@svg/Loader/BoardMD'
+import SvgLoaderBoardSM from '@svg/Loader/BoardSM'
 
 import Meta from './Meta'
 
 const Board = () => {
-  const [step, setStep] = useState('loading')
-  const api = useFetcher()
-  const data = api?.data as Record<string, any>
+  const { tokenIdShowCase: id } = useEnvs()
+  const { address, isConnected } = useAccount()
+  const isEstablished = isAddress(address || '') && isConnected
+
+  const { data, isLoading, isLoaded, isError, refetch } = useQueryData({
+    action: '/api/board',
+    params: { id, ...(isEstablished ? { address } : {}) },
+    auto: true,
+  })
 
   useEffect(() => {
-    api.submit({}, { method: 'GET', action: '/api/board' })
-  }, [])
+    refetch({ id, ...(isEstablished ? { address } : {}) })
+  }, [id, address])
 
-  useEffect(() => {
-    const apiState = api?.state
-    // @ts-ignore
-    const dataState = api?.data?.state
-
-    if (apiState === 'loading' && apiState !== 'loading') {
-      setStep('loading')
-    } else if (apiState === 'idle' && dataState === 'error') {
-      setStep('error')
-    } else if (apiState === 'idle' && dataState === 'successful') {
-      setStep('loaded')
-    }
-  }, [api])
-
-  const innerCss = clsx('py-8 lg:py-20')
-  const skeletonSMCss = clsx('w-full', 'md-hidden')
-  const skeletonMDCss = clsx('w-full', 'md-shown')
+  const innerCss = 'py-8 lg:py-20'
+  const loaderSMCss = 'w-full md-hidden'
+  const loaderMDCss = 'w-full md-shown'
 
   return (
     <Crate css="menu-spacing">
-      <Crate.Inner css={innerCss} hasDots hasXBorder hasBottomBorder>
+      <Crate.Inner css={innerCss} hasXBorder hasBottomBorder>
         <section className="max-limit">
-          {(step === 'loading' || step === 'error') && (
+          {(isLoading || isError) && (
             <>
-              <SvgSkeletonBoardSM css={skeletonSMCss} />
-              <SvgSkeletonBoardMD css={skeletonMDCss} />
+              <SvgLoaderBoardSM css={loaderSMCss} />
+              <SvgLoaderBoardMD css={loaderMDCss} />
+              {isError && <ErrorMessage message={data.error || data.code} />}
             </>
           )}
-          {step === 'loaded' && <Meta data={data} />}
-          {step === 'error' && (
-            <ErrorMessage message={data.error || data.code} />
-          )}
+          {isLoaded && <Meta data={data} />}
         </section>
       </Crate.Inner>
     </Crate>

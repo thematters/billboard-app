@@ -1,22 +1,19 @@
-import clsx from 'clsx'
-
-import ButtonLink from '@component/Button/Link'
+import LinkButton from '@component/Button/Link'
 import Crate from '@component/Crate'
 import SvgDown from '@svg/Down'
 
 import Sketch from './Sketch'
 
 const About = () => {
-  const innerCss = clsx('pb-10 lg:pb-40', 'relative')
-  const baseCss = clsx('pt-2', 'max-limit')
-  const downCss = clsx('mx-auto', 'text-green')
-  const titleCss = clsx('mt-10', 'section-title')
-  const btnCss = clsx('px-20', 'f-center', 'font-normal')
+  const innerCss = 'pb-10 lg:pb-40 relative'
+  const baseCss = 'pt-2 max-limit'
+  const downCss = 'mx-auto text-green'
+  const titleCss = 'mt-10 section-title'
+  const btnCss = 'px-20 t-18 f-center font-normal'
 
   return (
     <Crate>
       <Crate.Inner css={innerCss} hasDots hasXBorder>
-        {/* Sketch */}
         <Sketch />
 
         <section className={baseCss}>
@@ -24,28 +21,28 @@ const About = () => {
           <SvgDown css={downCss} />
 
           {/* Title */}
-          <section className={titleCss}>
+          <div className={titleCss}>
             ABOUT MATTERS <br className="md:hidden" />
             LAB
-          </section>
+          </div>
 
           {/* Description */}
-          <section className="mb-10">
+          <div className="mb-10">
             Matters Lab was established in 2018, with the mission to foster a
             freer and fairer creator ecosystem through the next evolution of the
             Internet, Web3.
-          </section>
+          </div>
 
-          <section className="f-center">
-            <ButtonLink
+          <div className="f-center">
+            <LinkButton
               css={btnCss}
               color="dim"
               to="https://matters-lab.io/"
               target="_blank"
             >
               Visit Website
-            </ButtonLink>
-          </section>
+            </LinkButton>
+          </div>
         </section>
       </Crate.Inner>
     </Crate>

@@ -1,15 +1,12 @@
 import type { ComponentProps } from '@type'
 
-import clsx from 'clsx'
-
 type Props = ComponentProps & {
   close: () => void
 }
 
 const Foot = ({ children, close }: Props) => {
-  const baseCss = clsx('hidden', 'sm:f-center-end')
-
-  const btnCss = clsx('w-fit', 'cursor-pointer')
+  const baseCss = 'hidden sm:f-center-end'
+  const btnCss = 'w-fit cursor-pointer'
 
   return (
     <section className={baseCss}>

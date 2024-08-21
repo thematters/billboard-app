@@ -1,5 +1,4 @@
-import clsx from 'clsx'
-import _ from 'lodash'
+import { chunk } from 'lodash-es'
 
 import Carousel from '@component/Carousel'
 import ButtonLink from '@component/Button/Link'
@@ -15,28 +14,20 @@ const Records = ({ data }: Props) => {
   const rawRounds = (data?.rounds || []).map((round: Record<string, any>) =>
     formatRound(round)
   )
-  const rounds = _.chunk(rawRounds, 5) as Array<Record<string, any>[]>
+  const rounds = chunk(rawRounds, 5) as Array<Record<string, any>[]>
   const isEmpty = !rounds || rounds.length === 0
 
-  const baseCss = clsx(
-    'p-4',
-    'md:px-5 md:py-6',
-    'grid grid-cols-1 md:grid-cols-3',
-    'gap-y-4 md:gap-y-0',
-    'bg-black',
-    'border-b border-dashed border-beige/60'
-  )
-  const emptyCss = clsx('col-span-3', 'text-center')
-  const btnCss = clsx('px-28', 'mt-10', 'mx-auto', 't-18', 'font-normal')
+  const baseCss =
+    'p-4 md:px-5 md:py-6 cols-1 md:cols-3 gap-y-4 md:gap-y-0 bg-black b-b-dashed border-beige/60'
+  const emptyCss = 'col-span-3 text-center'
+  const btnCss = 'px-28 mt-10 mx-auto t-18 font-normal'
 
   return (
     <section>
       {isEmpty && (
-        <section className={baseCss}>
-          <section className={emptyCss}>
-            No funding distribution data available
-          </section>
-        </section>
+        <div className={baseCss}>
+          <p className={emptyCss}>No funding distribution data available</p>
+        </div>
       )}
 
       {!isEmpty && (

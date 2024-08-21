@@ -1,32 +1,39 @@
-import type { ComponentProps } from '@type'
-
-import clsx from 'clsx'
+import { useEffect } from 'react'
+import { isAddress } from 'viem'
+import { useAccount } from 'wagmi'
 
 import Modal from '@component/Modal'
+import useEventModal from '@hook/useEventModal'
 
 import Foot from './Foot'
 import Head from './Head'
 import Options from './Options'
 
-type Props = ComponentProps & {
-  isOpened: boolean
-  open: () => void
-  close: () => void
-}
+const WalletModal = () => {
+  const { address, isConnected } = useAccount()
+  const { isOpen, open, close, callback } = useEventModal('wallet', false)
 
-const WalletModal = ({ children, isOpened, open, close }: Props) => {
-  const descCss = clsx('my-6', 't-14', 'font-normal')
+  useEffect(() => {
+    const isEstablished = isAddress(address || '') && isConnected
+    if (isEstablished) {
+      close()
+
+      if (callback) {
+        callback()
+      }
+    }
+  }, [address, isConnected])
+
+  const descCss = 'my-6 t-14 font-normal'
 
   return (
-    <Modal isOpened={isOpened} open={open} close={close}>
+    <Modal isOpened={isOpen} open={open} close={close}>
       {/* Head */}
       <Head close={close} />
 
       {/* Content */}
       <section>
-        <section className={descCss}>
-          Before claiming funding, please connect your wallet.
-        </section>
+        <section className={descCss}>Connect your wallet</section>
         <Options />
       </section>
 

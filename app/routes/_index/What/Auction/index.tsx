@@ -1,28 +1,16 @@
-import clsx from 'clsx'
-
 import SvgAuction from '@svg/Auction'
 
 const Auction = () => {
-  const baseCss = clsx(
-    'my-4 md:my-10',
-    'grid grid-cols-1 md:grid-cols-3 ',
-    'gap-x-0 md:gap-x-10',
-    'gap-y-10'
-  )
-  const svgCss = clsx(
-    'h-[235px] w-[311px]',
-    'md:h-full md:w-full',
-    'f-center',
-    'mx-auto'
-  )
-  const descCss = clsx('col-span-2', 'f-col-center', 'mt-6 lg:mt-10')
-  const h4Css = clsx('t-20 lg:t-28', 'font-bold')
-  const pCss = clsx('t-14 lg:t-20', 'mt-6')
+  const baseCss = 'my-4 md:my-10 cols-1 md:cols-3 gap-x-0 md:gap-x-10 gap-y-10'
+  const svgCss = 'h-[235px] w-[311px] md:h-full md:w-full f-center mx-auto'
+  const descCss = 'col-span-2 f-col-center mt-6 lg:mt-10'
+  const h4Css = 't-20 lg:t-28 font-bold'
+  const pCss = 't-14 lg:t-20 mt-6'
 
   return (
     <section className={baseCss}>
       <SvgAuction css={svgCss} width="100%" height="100%" />
-      <section className={descCss}>
+      <div className={descCss}>
         <h4 className={h4Css}>
           Creators can generate higher direct income through continuous NFT
           billboard auctions and by creating their own NFT billboards.
@@ -32,7 +20,7 @@ const Auction = () => {
           direct support from readers to creators and creating a buoyant content
           economy.
         </p>
-      </section>
+      </div>
     </section>
   )
 }

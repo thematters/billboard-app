@@ -1,56 +1,37 @@
-import { useFetcher } from '@remix-run/react'
-import clsx from 'clsx'
-import { useEffect, useState } from 'react'
-
 import Crate from '@component/Crate'
 import ErrorMessage from '@component/Error'
-import SvgSkeletonAuctionMD from '@svg/SkeletonAuctionMD'
-import SvgSkeletonAuctionSM from '@svg/SkeletonAuctionSM'
+import useEnvs from '@hook/useEnvs'
+import useQueryData from '@hook/useQueryData'
+import SvgLoaderAuctionsMD from '@svg/Loader/AuctionsMD'
+import SvgLoaderAuctionsSM from '@svg/Loader/AuctionsSM'
 
 import Records from './Records'
 
 const Auctions = () => {
-  const [step, setStep] = useState('loading')
-  const api = useFetcher()
-  const data = api?.data as Record<string, any>
+  const { tokenIdShowCase: id } = useEnvs()
+  const { data, isLoading, isLoaded, isError } = useQueryData({
+    action: '/api/auctions',
+    params: { id },
+    auto: true,
+  })
 
-  useEffect(() => {
-    api.submit({}, { method: 'GET', action: '/api/auction' })
-  }, [])
-
-  useEffect(() => {
-    const apiState = api?.state
-    // @ts-ignore
-    const dataState = api?.data?.state
-
-    if (apiState === 'loading' && apiState !== 'loading') {
-      setStep('loading')
-    } else if (apiState === 'idle' && dataState === 'error') {
-      setStep('error')
-    } else if (apiState === 'idle' && dataState === 'successful') {
-      setStep('loaded')
-    }
-  }, [api])
-
-  const innerCss = clsx('py-8 lg:py-20')
-  const skeletonSMCss = clsx('w-full', 'md-hidden')
-  const skeletonMDCss = clsx('w-full', 'md-shown')
+  const innerCss = 'py-8 lg:py-20'
+  const skeletonSMCss = 'w-full md-hidden'
+  const skeletonMDCss = 'w-full md-shown'
 
   return (
     <Crate>
       <Crate.Inner css={innerCss} hasDots hasXBorder hasBottomBorder>
         <section className="max-limit">
-          <section className="section-title">AUCTION HISTORY</section>
-          {(step === 'loading' || step === 'error') && (
+          <h1 className="section-title">AUCTION HISTORY</h1>
+          {(isLoading || isError) && (
             <>
-              <SvgSkeletonAuctionSM css={skeletonSMCss} />
-              <SvgSkeletonAuctionMD css={skeletonMDCss} />
+              <SvgLoaderAuctionsSM css={skeletonSMCss} />
+              <SvgLoaderAuctionsMD css={skeletonMDCss} />
+              {isError && <ErrorMessage message={data.error || data.code} />}
             </>
           )}
-          {step === 'loaded' && <Records data={data || {}} />}
-          {step === 'error' && (
-            <ErrorMessage message={data.error || data.code} />
-          )}
+          {isLoaded && <Records data={data || {}} />}
         </section>
       </Crate.Inner>
     </Crate>

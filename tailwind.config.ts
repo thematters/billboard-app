@@ -12,7 +12,7 @@ export default {
       black: "#333333",
       gray: "#b3b3b3",
       green: "#80AB01",
-      white: '#ffffff',
+      white: "#ffffff",
       red: '#FF6262',
     },
     extend: {
@@ -22,7 +22,8 @@ export default {
       },
       colors: {
         beige: "#ede8d6",
-        dark: '#000000',
+        dark: "#000000",
+        oak: "#4f4f4f",
         dim: "#212121",
         grass: "#c3f432",
         lemon: "#b1e41d",

@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import { useState } from 'react'
 
 import Crate from '@component/Crate'
@@ -17,18 +16,10 @@ const Roles = () => {
     setRole(value)
   }
 
-  const baseCss = clsx(
-    'mt-10',
-    'grid grid-cols-1 lg:grid-cols-2',
-    'gap-x-0 lg:gap-x-10',
-    'gap-y-10 lg:gap-y-0'
-  )
-  const svgCss = clsx(
-    'h-[253px] w-[311px]',
-    'md:h-full md:w-full',
-    'max-h-[476px] max-w-[584px]',
-    'm-auto'
-  )
+  const baseCss =
+    'mt-10 cols-1 lg:cols-2 gap-x-0 lg:gap-x-10 gap-y-10 lg:gap-y-0'
+  const svgCss =
+    'h-[253px] w-[311px] md:h-full md:w-full max-h-[476px] max-w-[584px] m-auto'
 
   return (
     <section className={baseCss}>

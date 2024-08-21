@@ -1,62 +1,94 @@
 import { NavLink } from '@remix-run/react'
 import clsx from 'clsx'
-import _ from 'lodash'
 import { useEffect } from 'react'
+import { useMediaQuery } from 'usehooks-ts'
+import { useAccount } from 'wagmi'
 
-import { BREAKPOINT, PAPER_LINK } from '@constant'
+import Avatar from '@component/Avatar'
 import ButtonLink from '@component/Button/Link'
 import Logo from '@component/Button/Logo'
 import Crate from '@component/Crate'
 import Hamburger from '@component/Hamburger'
+import { PAPER_LINK } from '@constant'
+import useDropdown from '@hook/useDropdown'
 import SvgLink from '@svg/Link'
 
 type Props = {
-  isMenuActive: boolean
-  setMenuActive: (value: boolean) => void
+  isMeMenuActive: boolean
+  setMeMenuActive: (value: boolean) => void
+  isMainMenuActive: boolean
+  setMainMenuActive: (value: boolean) => void
 }
 
-const Header = ({ isMenuActive, setMenuActive }: Props) => {
-  const click = () => setMenuActive(!isMenuActive)
+const Header = ({
+  isMeMenuActive,
+  setMeMenuActive,
+  isMainMenuActive,
+  setMainMenuActive,
+}: Props) => {
+  const { address, isConnected } = useAccount()
+  const isLarge = useMediaQuery('(min-width: 1104px)')
+
+  const meMenuClick = () => {
+    setMeMenuActive(!isMeMenuActive)
+    setMainMenuActive(false)
+  }
+  const mainMenuClick = () => {
+    setMainMenuActive(!isMainMenuActive)
+    setMeMenuActive(false)
+  }
 
   useEffect(() => {
-    const menuHandler = _.debounce(() => {
-      if (window.innerWidth > BREAKPOINT.lg && isMenuActive === true) {
-        setMenuActive(false)
-      }
-    }, 100)
+    if (isLarge && isMeMenuActive) {
+      setMeMenuActive(false)
+    }
+  }, [isLarge, isMeMenuActive])
 
-    window.addEventListener('resize', menuHandler)
-    return () => window.removeEventListener('resize', menuHandler)
-  }, [isMenuActive])
+  useEffect(() => {
+    if (isLarge && isMainMenuActive) {
+      setMainMenuActive(false)
+    }
+  }, [isLarge, isMainMenuActive])
 
-  const baseCss = clsx('fixed', 'top-0', 'left-0', 'w-full', 'z-10', 'bg-dim')
-  const innerCss = clsx('py-4 lg:py-8', 'f-center-between')
-  const navCss = clsx('hidden', 'lg:f-center-end')
+  const baseCss = 'fixed top-0 left-0 w-full z-10 bg-dim'
+  const innerCss = 'py-4 lg:py-8 f-center-between'
+  const navCss =
+    'ml-6 hidden lg:f-center-end text-white border-l border-beige/30'
+  const navBtnCss = 'pt-px ml-6 hover:text-grass trans-300'
+  const hamCss = 'ml-6 lg:hidden'
 
   return (
     <section className={baseCss}>
       <Crate hasBottomBorder>
         <Crate.Inner css={innerCss}>
-          {/* Billboard Logo */}
-          <Logo />
+          <section className="f-center-start">
+            <Logo />
 
-          {/* Nav Menu */}
-          <section className={navCss}>
-            <ButtonLink color="dim" css="mr-4" to={PAPER_LINK} target="_blank">
-              GREEN PAPER
-              <SvgLink css="ml-2" />
-            </ButtonLink>
-            <ButtonLink color="grass" css="mr-4" to="/showcase">
-              SHOWCASE
-            </ButtonLink>
-            <ButtonLink color="grass" to="/claim">
-              CLAIM
-            </ButtonLink>
+            <section className={navCss}>
+              <NavLink
+                className={clsx(navBtnCss, 'f-center-between')}
+                to={PAPER_LINK}
+                target="_blank"
+              >
+                GREEN PAPER
+                <SvgLink css="ml-1" />
+              </NavLink>
+              <NavLink className={navBtnCss} to="/showcase">
+                SHOWCASE
+              </NavLink>
+              <NavLink className={navBtnCss} to="/claim">
+                CLAIM
+              </NavLink>
+            </section>
           </section>
 
-          {/* Hamburger Menu */}
-          <section className="lg:hidden" onClick={click}>
-            <Hamburger isMenuActive={isMenuActive} />
+          <section className="f-center-end">
+            <Avatar menuClick={meMenuClick} isMenuActive={isMeMenuActive} />
+            <Hamburger
+              css={hamCss}
+              onClick={mainMenuClick}
+              isMenuActive={isMainMenuActive}
+            />
           </section>
         </Crate.Inner>
       </Crate>

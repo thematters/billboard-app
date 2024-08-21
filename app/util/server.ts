@@ -4,33 +4,27 @@ import path from 'path'
 import { optimism, optimismSepolia } from 'wagmi/chains'
 
 import { STATE } from '@constant'
+import { readEnvs } from './envs'
 
-export const readEnvs = () => {
-  const envs = process.env
-  const isProduction = envs.ENV === 'production'
-  const urlContract = `${envs.URL_OP_EXPLORER}/address/${envs.ADDRESS_OPERATOR}`
-  return {
-    env: envs.ENV,
-    chain: isProduction ? optimism : optimismSepolia,
-    chainId: isProduction ? optimism.id : optimismSepolia.id,
-    addressOperator: envs.ADDRESS_OPERATOR,
-    addressRegistry: envs.ADDRESS_REGISTRY,
-    addressDistribution: envs.ADDRESS_DISTRIBUTION,
-    addressMulticall3: envs.ADDRESS_MULTICALL3,
-    tokenIdShowCase: envs.TOKEN_ID_SHOW_CASE,
-    idWalletConnect: envs.ID_WALLET_CONNECT,
-    urlOpExplorer: envs.URL_OP_EXPLORER,
-    urlCoinGecko: envs.URL_COINGECKO,
-    urlContract,
-  }
-}
+export const handleError = (error: any) => {
+  const { env } = readEnvs()
 
-export const readSecretEnvs = () => {
-  const envs = process.env
-  return {
-    keyAlchemy: envs.KEY_ALCHEMY,
-    urlAlchemy: envs.URL_ALCHEMY,
+  if (error?.details) {
+    // general error
+    const parsed =
+      typeof error.details === 'string'
+        ? JSON.parse(error.details)
+        : error.details
+    return parsed.message || 'Unknown Error'
+  } else if (error?.body) {
+    // bad response
+    const parsed =
+      typeof error.body === 'string' ? JSON.parse(error.body) : error.body
+    return parsed.error.message || 'Unknown Error'
   }
+
+  console.log(error?.message)
+  return env === 'production' ? 'Unknown Error' : error?.message
 }
 
 export const sendError = (code: string, error?: any) => {
