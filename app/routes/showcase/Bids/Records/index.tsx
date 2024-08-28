@@ -33,7 +33,7 @@ const Records = ({ data }: Props) => {
     },
     { bids: [], highestBid: [] }
   )
-  const orderedBids = orderBy(bidsData.bids, ['placedAtTime'], ['desc'])
+  const orderedBids = orderBy(bidsData.bids, ['updatedAtTime'], ['desc'])
 
   const isEmpty = !rawBids || rawBids.length == 0
 

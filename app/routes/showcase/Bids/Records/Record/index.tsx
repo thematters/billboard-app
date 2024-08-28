@@ -10,7 +10,7 @@ type Props = {
 }
 
 const Record = ({ bid, isHighest }: Props) => {
-  const { price, bidder, placedAt, txHash, link } = bid
+  const { price, bidder, updatedAt, txHash, link } = bid
 
   const baseCss = 'px-2 py-4 md:px-4 cols-4 gap-x-4 t-12 md:t-14'
   const borderCss = 'tab-border after:-right-2 after:border-green'
@@ -32,7 +32,7 @@ const Record = ({ bid, isHighest }: Props) => {
         USDT
       </div>
       <div className={cellCss}>{bidder}</div>
-      <div className={cellCss}>{placedAt}</div>
+      <div className={cellCss}>{updatedAt}</div>
       <div className="f-center-start">
         <NavLink className={linkCss} to={link} target="_blank">
           {txHash}
