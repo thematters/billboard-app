@@ -93,8 +93,8 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
         continue
       }
 
-      const [placedAtTime, events] = await Promise.all([
-        alchemy.core.getBlock(Number(bid.placedAt)),
+      const [updatedAtTime, events] = await Promise.all([
+        alchemy.core.getBlock(Number(bid.updatedAt)),
         getBidUpdatedEvents(
           client,
           addressRegistry,
@@ -104,15 +104,15 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
           currBlock
         ),
       ])
-      const placedAt = genUTC8Date(placedAtTime.timestamp * 1000)
+      const updatedAt = genUTC8Date(updatedAtTime.timestamp * 1000)
       const tx = maxBy(events, (d) => Number(d.args.price))
       const txHash = tx?.transactionHash || ''
 
       bids.push({
         bidder,
         price: Number(bid.price).toFixed(0),
-        placedAt,
-        placedAtTime: placedAtTime.timestamp,
+        updatedAt,
+        updatedAtTime: updatedAtTime.timestamp,
         txHash,
       })
     }
