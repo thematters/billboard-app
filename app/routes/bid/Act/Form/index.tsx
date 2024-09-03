@@ -8,7 +8,13 @@ import ABIOperator from '@abi/operator'
 import { MAX_USDT_ALLOWANCE } from '@constant'
 import useEnvs from '@hook/useEnvs'
 import useUSDT from '@hook/useUSDT'
-import { calTotalAmount, toFloatTaxRate, toFloatUSDT, toUSDT } from '@util/num'
+import {
+  calTotalAmount,
+  calTotalDiff,
+  toFloatTaxRate,
+  toFloatUSDT,
+  toUSDT,
+} from '@util/num'
 
 import Auction from './Auction'
 import Content from './Content'
@@ -65,12 +71,17 @@ const Form = ({ data, id, epoch, address, setParentStep }: Props) => {
 
   const lastBidPrice = Number(toFloatUSDT(Number(bid?.price || 0)))
   const highestPrice = Number(toFloatUSDT(Number(highestBid?.price || 0)))
-  const taxRate = Number(toFloatTaxRate(Number(board.taxRate)))
+  const taxRate = Number(board?.taxRate || 0)
   const allowance = Number(toFloatUSDT(Number(usdtData || 0)))
-  const amount = Number(calTotalAmount(price, taxRate, 3))
+  const totalAmount = Number(calTotalAmount(price, taxRate))
+  const totalDiff = Number(calTotalDiff(price, lastBidPrice, taxRate))
 
-  const isSufficient = Number(balanceData?.formatted || 0) >= price
-  const isExceededAllowance = amount > allowance
+  const hasBid = Number(bid?.placedAt || 0) > 0
+  const isSufficient = hasBid
+    ? Number(balanceData?.formatted || 0) >= totalDiff
+    : Number(balanceData?.formatted || 0) >= totalAmount
+
+  const isExceededAllowance = totalAmount > allowance
   const isValidRedirect = redirect === '' || isUrl(redirect)
   const isContentChanged =
     content != bid.contentURI || redirect != bid.redirectURI
@@ -81,7 +92,6 @@ const Form = ({ data, id, epoch, address, setParentStep }: Props) => {
     approveIsLoading ||
     isWaitingTx ||
     bidIsLoading
-  const hasBid = Number(bid?.placedAt || 0) > 0
   const error = usdtError || approveError || bidError
   const canLock =
     isSufficient &&
