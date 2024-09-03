@@ -32,11 +32,9 @@ const Price = ({ data, balance, price, setPrice, hasBid, isLocked }: Props) => {
   const totalDiff = calTotalDiff(price, lastBidPrice, taxRate)
   const highestPrice = Number(toFloatUSDT(Number(highestBid?.price || 0)))
 
-  const hasLastBid = lastBidPrice > 0
-  const isInsufficient =
-    balance &&
-    ((!hasLastBid && Number(balance.formatted) < Number(totalAmount)) ||
-      (hasLastBid && Number(balance.formatted) < Number(totalDiff)))
+  const isInsufficient = hasBid
+    ? Number(balance?.formatted || 0) < Number(totalDiff)
+    : Number(balance?.formatted || 0) < Number(totalAmount)
   const isUnderPrice = changed && price != lastBidPrice && price <= highestPrice
   const hasHint = isInsufficient || isUnderPrice
 
