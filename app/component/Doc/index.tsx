@@ -4,9 +4,10 @@ import { Links, Meta } from '@remix-run/react'
 
 type Props = {
   children: React.ReactNode
+  gaId: string
 }
 
-const Doc = ({ children }: Props) => (
+const Doc = ({ children, gaId }: Props) => (
   <html lang="en">
     <head>
       <title>
@@ -28,6 +29,21 @@ const Doc = ({ children }: Props) => (
         rel="stylesheet"
       />
       <Links />
+      <script
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+      ></script>
+      <script
+        async
+        dangerouslySetInnerHTML={{
+          __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${gaId}');
+          `,
+        }}
+      />
     </head>
     <body>{children}</body>
   </html>
