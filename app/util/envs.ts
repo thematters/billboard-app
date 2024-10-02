@@ -18,5 +18,6 @@ export const readEnvs = () => {
     urlOpExplorer: envs.URL_OP_EXPLORER,
     urlCoinGecko: envs.URL_COINGECKO,
     urlContract,
+    gaId: envs.GA_ID,
   }
 }

@@ -10,6 +10,7 @@ import {
 } from '@remix-run/react'
 import { json } from '@remix-run/node'
 
+import AnaltyicsContext from '@component/Context/Analytics'
 import EnvsContext from '@component/Context/Envs'
 import WalletContext from '@component/Context/Wallet'
 import Doc from '@component/Doc'
@@ -30,13 +31,15 @@ const App = () => {
   return (
     <EnvsContext envs={envs}>
       <WalletContext projectId={envs.idWalletConnect}>
-        <Doc>
-          <Layout>
-            <Outlet context={envs} />
-          </Layout>
-          <Scripts />
-          <ScrollRestoration />
-          <LiveReload />
+        <Doc gaId={envs.gaId}>
+          <AnaltyicsContext gaId={envs.gaId}>
+            <Layout>
+              <Outlet context={envs} />
+            </Layout>
+            <Scripts />
+            <ScrollRestoration />
+            <LiveReload />
+          </AnaltyicsContext>
         </Doc>
       </WalletContext>
     </EnvsContext>
