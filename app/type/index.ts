@@ -14,6 +14,12 @@ export type AppEnvs = {
   urlOpExplorer: string
   urlCoinGecko: string
   urlContract: string
+  gaId: string
+}
+
+export type Analytics = {
+  init: () => void
+  trackPageView: () => void
 }
 
 export type ComponentProps = {

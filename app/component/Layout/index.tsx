@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import MainMenu from '@component/Menu/Main'
 import MeMenu from '@component/Menu/Me'
 import WalletModal from '@component/Modals/Wallet'
+import useAnalytics from '@hook/useAnalytics'
 
 import Footer from './Footer'
 import Header from './Header'
@@ -15,6 +16,7 @@ const Layout = ({ children }: ComponentProps) => {
   const [isMeMenuActive, setMeMenuActive] = useState<boolean>(false)
   const [isMainMenuActive, setMainMenuActive] = useState<boolean>(false)
   const location = useLocation()
+  const analytics = useAnalytics()
 
   useEffect(() => {
     if (isMeMenuActive) {
@@ -23,6 +25,10 @@ const Layout = ({ children }: ComponentProps) => {
 
     if (isMainMenuActive) {
       setMainMenuActive(false)
+    }
+
+    if (analytics) {
+      analytics.trackPageView()
     }
   }, [location])
 
