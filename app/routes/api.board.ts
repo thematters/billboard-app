@@ -97,7 +97,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       },
       epoch: Number(epoch),
       epochRange,
-      bidCount: Number(bidCount),
+      bidderCount: Number(bidCount),
       highestBid: {
         bidder: highestBidder,
         price: Number(highestBid?.price || 0).toFixed(0),
