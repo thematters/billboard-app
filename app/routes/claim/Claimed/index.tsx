@@ -22,8 +22,8 @@ const Claimed = ({ click }: Props) => {
     <section className={baseCss}>
       <h1 className="section-title">ClAIM SUCCESSFULLY</h1>
       <div className={contentCss}>
-        You have successfully claimed the distributed funding. To get more
-        details about the transaction, you can check your wallet and&nbsp;
+        You have successfully claimed the creator rewards. To get more details
+        about the transaction, you can check your wallet and&nbsp;
         <NavLink
           className="text-grass"
           to={`${envs.urlOpExplorer}/address/${address}`}

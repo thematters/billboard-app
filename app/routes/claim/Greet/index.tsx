@@ -13,11 +13,11 @@ const Greet = ({ open }: Props) => {
 
   return (
     <section className={baseCss}>
-      <h1 className="section-title">CLAIM FUNDING</h1>
+      <h1 className="section-title">CREATOR REWARDS</h1>
       <p className={contentCss}>
         The tax revenue from billboards is periodically distributed to creators
         through the quadratic funding mechanism. Connect your wallet to check
-        your eligibility for claiming funding.
+        your eligibility for claiming rewards.
       </p>
       <SvgClaim css={svgCss} />
       <BaseButton css={btnCss} color="dim" click={open}>

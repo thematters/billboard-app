@@ -39,12 +39,12 @@ const MainMenu = ({ css, isActive }: Props) => {
             </li>
             <li className={liCss}>
               <NavLink className={itemCss} to="/showcase">
-                SHOWCASE
+                BID
               </NavLink>
             </li>
             <li className={liCss}>
               <NavLink className={itemCss} to="/claim">
-                CLAIM
+                CREATOR REWARDS
               </NavLink>
             </li>
             <li className={liCss}>
