@@ -13,9 +13,9 @@ const Empty = ({ click }: Props) => {
 
   return (
     <section className={baseCss}>
-      <h1 className="section-title">CLAIM FUNDING</h1>
+      <h1 className="section-title">CREATOR REWARDS</h1>
       <p className={contentCss}>
-        There appears to be no new funding available to claim. Consider changing
+        There appear to be no new rewards available to claim. Consider changing
         your wallet address and try again. The upcoming distribution round will
         commence shortly, so we invite you to come back later.
       </p>
