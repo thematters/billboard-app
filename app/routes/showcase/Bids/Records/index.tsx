@@ -14,7 +14,7 @@ type Props = {
 
 const Records = ({ data }: Props) => {
   const envs = useEnvs()
-  const { epoch, epochRange, bids: rawBids, highestBidder } = data
+  const { epoch, epochRange, bids: rawBids } = data
   const bidsData = (rawBids || []).reduce(
     (r: Record<string, any>, d: Record<string, any>) => {
       const bid = {
@@ -24,14 +24,10 @@ const Records = ({ data }: Props) => {
         txHash: formatAddress(d.txHash),
         link: `${envs.urlOpExplorer}/tx/${d.txHash}`,
       }
-      if (d.bidder === highestBidder) {
-        r.highestBid.push(bid)
-      } else {
-        r.bids.push(bid)
-      }
+      r.bids.push(bid)
       return r
     },
-    { bids: [], highestBid: [] }
+    { bids: [] }
   )
   const orderedBids = orderBy(bidsData.bids, ['updatedAtTime'], ['desc'])
 
@@ -73,11 +69,8 @@ const Records = ({ data }: Props) => {
         </div>
 
         <div className={rowsCss}>
-          {bidsData.highestBid.map((bid: Record<string, any>) => (
-            <Record key={bid.txHash} bid={bid} isHighest />
-          ))}
-          {orderedBids.map((bid: Record<string, any>) => (
-            <Record key={bid.txHash} bid={bid} />
+          {orderedBids.map((bid: Record<string, any>, index) => (
+            <Record key={bid.txHash} bid={bid} isHighest={index === 0} />
           ))}
         </div>
 

@@ -1,7 +1,7 @@
 import type { LoaderFunctionArgs } from '@remix-run/node'
 
 import { json } from '@remix-run/node'
-import { maxBy, range } from 'lodash-es'
+import { groupBy, orderBy } from 'lodash-es'
 
 import { BLOCK_TIME, ERROR, STATE } from '@constant'
 import alchemy from '@service/alchemy.server'
@@ -71,8 +71,6 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       Number(board.epochInterval)
     )
 
-    const highestBidder = await registry.read.highestBidder([id, epoch])
-
     // get current epoch all bids
     const total = Number(await registry.read.getBidCount([id, epoch]))
 
@@ -86,42 +84,46 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     }
 
     const bids = []
-    for (const num of range(total)) {
-      const bidder = await registry.read.bidders([id, epoch, BigInt(num)])
-      const bid = await operator.read.getBid([id, epoch, bidder])
-      if (!bid) {
-        continue
+    // gather all bid updated events
+    const allEvents = (
+      (await getBidUpdatedEvents(
+        client,
+        addressRegistry,
+        id,
+        epoch,
+        currBlock
+      )) || []
+    ).map((d) => ({
+      ...d.args,
+      blockNumber: d.blockNumber,
+      txHash: d.transactionHash || '',
+    }))
+    const grouppedEvents = groupBy(allEvents, 'price')
+    const filteredEvents = Object.entries(grouppedEvents).map(
+      ([price, events]) => {
+        return orderBy(events, ['blockNumber'], ['asc'])[0]
       }
-
-      const [updatedAtTime, events] = await Promise.all([
-        alchemy.core.getBlock(Number(bid.updatedAt)),
-        getBidUpdatedEvents(
-          client,
-          addressRegistry,
-          id,
-          epoch,
-          bidder,
-          currBlock
-        ),
-      ])
+    )
+    for (const event of filteredEvents) {
+      const updatedAtTime = await alchemy.core.getBlock(
+        Number(event.blockNumber)
+      )
       const updatedAt = genUTC8Date(updatedAtTime.timestamp * 1000)
-      const tx = maxBy(events, (d) => Number(d.args.price))
-      const txHash = tx?.transactionHash || ''
-
       bids.push({
-        bidder,
-        price: Number(bid.price).toFixed(0),
+        bidder: event.bidder,
+        price: Number(event.price).toFixed(0),
         updatedAt,
         updatedAtTime: updatedAtTime.timestamp,
-        txHash,
+        txHash: event.txHash,
       })
     }
+
     return json({
       state: STATE.successful,
       epoch: Number(epoch),
       epochRange,
       bids,
-      highestBidder,
+      bidderCount: total,
     })
   } catch (error) {
     const errorMessage = handleError(error)

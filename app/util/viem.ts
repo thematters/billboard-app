@@ -67,7 +67,6 @@ export const getBidUpdatedEvents = async (
   address: string,
   tokenId: bigint,
   epoch: bigint,
-  bidder: string,
   toBlock: bigint
 ) => {
   return await client.getLogs({
@@ -78,7 +77,6 @@ export const getBidUpdatedEvents = async (
     args: {
       tokenId,
       epoch,
-      bidder: bidder as `0x${string}`,
     },
     fromBlock: 0n,
     toBlock,

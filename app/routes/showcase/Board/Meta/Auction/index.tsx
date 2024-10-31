@@ -17,7 +17,7 @@ const Auction = ({ data }: Props) => {
   const envs = useEnvs()
   const navigate = useNavigate()
   const { address, isConnected } = useAccount()
-  const { board, currBid, epoch, epochRange, bidCount, highestBid } = data
+  const { board, currBid, epoch, epochRange, bidderCount, highestBid } = data
 
   const price = toFloatUSDT(Number(highestBid?.price || 0), 2)
   const currPrice = toFloatUSDT(Number(currBid?.price || 0), 2)
@@ -68,7 +68,7 @@ const Auction = ({ data }: Props) => {
       <div className={epochCss}>
         <p>Auction No. {formatRoundId(`${epoch}`)}</p>
         <p className={timeCss}>
-          {bidCount} bids
+          {bidderCount} bidders
           <span className="mx-2">·</span>
           Ends on {epochRange.end} (UTC+8)
         </p>
