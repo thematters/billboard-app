@@ -89,7 +89,7 @@ const Records = ({ data, callback }: Props) => {
 
   return (
     <section className={baseCss}>
-      <h1 className="section-title">CLAIM FUNDING</h1>
+      <h1 className="section-title">CREATOR REWARDS</h1>
       <div className={listCss}>
         {base.items.map((item: Record<string, any>, index: number) => (
           <Record key={index} data={item} />
