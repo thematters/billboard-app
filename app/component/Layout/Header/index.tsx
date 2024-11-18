@@ -74,10 +74,10 @@ const Header = ({
                 <SvgLink css="ml-1" />
               </NavLink>
               <NavLink className={navBtnCss} to="/showcase">
-                SHOWCASE
+                BID
               </NavLink>
               <NavLink className={navBtnCss} to="/claim">
-                CLAIM
+                CREATOR REWARDS
               </NavLink>
             </section>
           </section>

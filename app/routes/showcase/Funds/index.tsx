@@ -19,7 +19,11 @@ const Funds = () => {
     <Crate>
       <Crate.Inner css={innerCss} hasDots hasXBorder hasBottomBorder>
         <section className="max-limit">
-          <h1 className="section-title">FUNDING DISTRIBUTION HISTORY</h1>
+          <h1 className="section-title">
+            CREATOR REWARDS
+            <br />
+            DISTRIBUTION HISTORY
+          </h1>
           {(isLoading || isError) && (
             <>
               <SvgLoaderFundsSM css="skeleton-sm" />
