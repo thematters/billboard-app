@@ -4,7 +4,11 @@
 
 @layer base {
   html {
-    @apply w-full;
+    @apply w-full h-full font-base bg-black;
+  }
+
+  body {
+    @apply bg-black text-white;
   }
 
   input {
