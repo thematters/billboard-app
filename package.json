@@ -39,7 +39,7 @@
     "build": "remix vite:build",
     "dev": "remix vite:dev",
     "start": "remix-serve ./build/index.js",
-    "lint": "eslint .",
+    "lint": "eslint .; tsc",
     "lint:fix": "eslint --fix"
   }
 }
