@@ -2,11 +2,14 @@ export default {
   content: ['./app/**/*.{js,jsx,ts,tsx}'],
   theme: {
     screens: {
-      'sm': '375px',
-      'md': '768px',
-      'lg': '981px',
+      sm: '375px',
+      md: '768px',
+      lg: '981px',
     },
     extend: {
+      backdropBlur: {
+        xs: '2px',
+      },
       fontFamily: {
         base: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
       },
@@ -46,7 +49,12 @@ export default {
           900: '#202124',
         },
       },
-      maxWidth: {},
+      maxWidth: {
+        header: '1920px',
+        footer: '1302px',
+        main: '1302px',
+        drawer: '389px',
+      },
       minWidth: {
         main: '375px',
       },
