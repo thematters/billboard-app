@@ -1,5 +1,5 @@
 const Page = () => {
-  return <p>Index Page</p>
+  return <p>Not Found</p>
 }
 
 export default Page

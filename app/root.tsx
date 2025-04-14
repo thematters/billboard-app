@@ -1,48 +1,26 @@
-import type { LinksFunction } from '@remix-run/node'
-import type { AppEnvs } from '@type'
+import type { LinksFunction, LoaderFunction } from '@remix-run/node'
 
-import {
-  LiveReload,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-  useLoaderData,
-} from '@remix-run/react'
 import { json } from '@remix-run/node'
+import { Outlet, useLoaderData } from '@remix-run/react'
 
-import AnaltyicsContext from '@component/Context/Analytics'
-import EnvsContext from '@component/Context/Envs'
-import WalletContext from '@component/Context/Wallet'
-import Doc from '@component/Doc'
-import Layout from '@component/Layout'
-import { readEnvs } from '@util/envs'
+import Doc from '@components/Doc'
+import { readEnv } from '@utils/env'
 
-import styles from './main.css'
+import rootCss from './root.css'
 
-export const links: LinksFunction = () => [{ rel: 'stylesheet', href: styles }]
+export const links: LinksFunction = () => [{ rel: 'stylesheet', href: rootCss }]
 
-export const loader = async () => {
-  const envs = readEnvs()
-  return json(envs)
+export const loader: LoaderFunction = async () => {
+  const env = readEnv()
+  return json(env)
 }
 
 const App = () => {
-  const envs = useLoaderData() as AppEnvs
+  const env = useLoaderData<typeof loader>()
   return (
-    <EnvsContext envs={envs}>
-      <WalletContext projectId={envs.idWalletConnect}>
-        <Doc gaId={envs.gaId}>
-          <AnaltyicsContext gaId={envs.gaId}>
-            <Layout>
-              <Outlet context={envs} />
-            </Layout>
-            <Scripts />
-            <ScrollRestoration />
-            <LiveReload />
-          </AnaltyicsContext>
-        </Doc>
-      </WalletContext>
-    </EnvsContext>
+    <Doc gaId={env.gaId}>
+      <Outlet context={env} />
+    </Doc>
   )
 }
 

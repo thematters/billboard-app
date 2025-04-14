@@ -1,46 +1,64 @@
-import type { Config } from 'tailwindcss'
-
 export default {
-  content: ["./app/**/*.{js,jsx,ts,tsx}"],
+  content: ['./app/**/*.{js,jsx,ts,tsx}'],
   theme: {
     screens: {
-      sm: "540px",
-      md: "768px",
-      lg: "1104px",
-    },
-    colors: {
-      black: "#333333",
-      gray: "#b3b3b3",
-      green: "#80AB01",
-      white: "#ffffff",
-      red: '#FF6262',
+      sm: '375px',
+      md: '768px',
+      lg: '981px',
     },
     extend: {
+      backdropBlur: {
+        xs: '2px',
+      },
       fontFamily: {
-        cyber: ["Saved By Zero", "Space Grotesk", "sans-serif"],
-        space: ["Space Grotesk", "sans-serif"],
+        base: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
       },
       colors: {
-        beige: "#ede8d6",
-        dark: "#000000",
-        oak: "#4f4f4f",
-        dim: "#212121",
-        grass: "#c3f432",
-        lemon: "#b1e41d",
-        olive: "#2f3e07",
-        steam: "#dddddd",
-      },
-      width: {
-        modal: "375px",
+        black: '#121316',
+        green: {
+          100: '#C3F432',
+          200: '#86B402',
+          300: '#4A5B19',
+        },
+        yellow: {
+          100: '#FDEC6B',
+          200: '#C5B32B',
+          300: '#433E11',
+        },
+        purple: {
+          100: '#FA9EFF',
+          200: '#A14EA6',
+          300: '#4C144E',
+        },
+        red: {
+          100: '#FF8F91',
+          200: '#B0494B',
+          300: '#441718',
+        },
+        blue: {
+          100: '#72AAFD',
+          200: '#346EC4',
+          300: '#132B4E',
+        },
+        gray: {
+          100: '#D8D9DA',
+          300: '#A9B2BB',
+          500: '#7A828B',
+          700: '#4F5963',
+          800: '#2F353B',
+          900: '#202124',
+        },
       },
       maxWidth: {
-        main: "1104px",
-        modal: "375px",
+        header: '1920px',
+        footer: '1302px',
+        main: '1302px',
+        drawer: '389px',
       },
       minWidth: {
-        main: "375px",
+        main: '375px',
       },
     },
   },
   plugins: [],
-} satisfies Config
+}

@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply w-full h-full font-base bg-black;
+  }
+
+  body {
+    @apply bg-black text-white;
+  }
+
+  input {
+    outline: none;
+  }
+}
+
+@layer components {
+
+}
+
+@layer utilities {
+
+}
