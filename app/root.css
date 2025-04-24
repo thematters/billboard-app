@@ -4,10 +4,12 @@
 
 @layer base {
   html {
+    overscroll-behavior-y: none;
     @apply w-full h-full font-base bg-black;
   }
 
   body {
+    overscroll-behavior-y: none;
     @apply bg-black text-white;
   }
 
@@ -21,5 +23,31 @@
 }
 
 @layer utilities {
+  .fcc {
+    @apply flex justify-center items-center;
+  }
 
+  .fbc {
+    @apply flex flex-col justify-end items-center;
+  }
+
+  .flc {
+    @apply flex justify-start items-center;
+  }
+
+  .frc {
+    @apply flex justify-end items-center;
+  }
+
+  .fsc {
+    @apply flex justify-between items-center;
+  }
+
+  .hover-link {
+    @apply text-white hover:text-green-100 transition-all duration-500;
+  }
+
+  .hover-gray-button {
+    @apply bg-gray-700 hover:bg-gray-800 transition-all duration-500;
+  }
 }

@@ -1,5 +1,5 @@
 {
-  "include": ["remix.env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["remix.env.d.ts", "app/types/*.d.ts", "**/*.ts", "**/*.tsx"],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "isolatedModules": true,
@@ -14,7 +14,8 @@
     "baseUrl": ".",
     "paths": {
       "@components/*": ["./app/components/*"],
-      "@types": ["./app/types/index.ts"],
+      "@contexts/*": ["./app/contexts/*"],
+      "@hooks/*": ["./app/hooks/*"],
       "@utils/*": ["./app/utils/*"]
     },
     "skipLibCheck": true,

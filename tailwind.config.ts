@@ -2,8 +2,10 @@ export default {
   content: ['./app/**/*.{js,jsx,ts,tsx}'],
   theme: {
     screens: {
-      sm: '375px',
+      xs: '375px',
+      sm: '578px',
       md: '768px',
+      ml: '904px',
       lg: '981px',
     },
     extend: {
@@ -49,11 +51,15 @@ export default {
           900: '#202124',
         },
       },
+      screens: {
+        drawer: '390px',
+      },
       maxWidth: {
         header: '1920px',
         footer: '1302px',
         main: '1302px',
         drawer: '389px',
+        modal: '375px',
       },
       minWidth: {
         main: '375px',
