@@ -43,6 +43,10 @@
     @apply flex justify-between items-center;
   }
 
+  .fs {
+    @apply flex flex-col justify-between;
+  }
+
   .hover-link {
     @apply text-white hover:text-green-100 transition-all duration-500;
   }

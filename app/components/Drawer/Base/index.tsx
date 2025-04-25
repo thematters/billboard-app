@@ -9,7 +9,7 @@ type Props = ComponentPropsType & {
   id: DrawerIdType
 }
 
-const Base = ({ children, id }: Props) => {
+const Base = ({ children, classes, id }: Props) => {
   const { state, close } = useDrawer()
   const isOpen = state[id]
 
@@ -18,7 +18,8 @@ const Base = ({ children, id }: Props) => {
   const drawerCss = clsx(
     'fixed top-0 right-0 z-50 w-full h-full max-w-drawer bg-gray-900',
     'px-4 py-[22px] drawer:p-10',
-    'drawer:border-l-[1px] border-gray-800'
+    'drawer:border-l-[1px] border-gray-800',
+    classes
   )
 
   return (
