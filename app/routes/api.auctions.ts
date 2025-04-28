@@ -1,7 +1,7 @@
 import type { LoaderFunctionArgs } from '@remix-run/node'
 
 import { json } from '@remix-run/node'
-import { take } from 'lodash-es'
+import take from 'lodash-es/take.js'
 
 import { ERROR, STATE } from '@constant'
 import alchemy from '@service/alchemy.server'

@@ -3,7 +3,7 @@ import type { LoaderFunctionArgs } from '@remix-run/node'
 import { json } from '@remix-run/node'
 import dayjs from 'dayjs'
 import fs from 'fs-extra'
-import { orderBy } from 'lodash-es'
+import orderBy from 'lodash-es/orderBy.js'
 import { optimism, optimismSepolia } from 'viem/chains'
 
 import { ERROR, STATE } from '@constant'

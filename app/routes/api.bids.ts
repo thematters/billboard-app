@@ -1,7 +1,8 @@
 import type { LoaderFunctionArgs } from '@remix-run/node'
 
 import { json } from '@remix-run/node'
-import { groupBy, orderBy } from 'lodash-es'
+import groupBy from 'lodash-es/groupBy.js'
+import orderBy from 'lodash-es/orderBy.js'
 
 import { BLOCK_TIME, ERROR, STATE } from '@constant'
 import alchemy from '@service/alchemy.server'
