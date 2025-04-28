@@ -6,4 +6,5 @@ export default {
     },
   },
   ignoreRignoredRouteFiles: ["**/.*"],
+  serverDependenciesToBundle: ['lodash-es']
 }
