@@ -7,11 +7,9 @@ const Showcase = () => {
   return (
     <>
       <Board />
-      {/*
       <Bids />
       <Auctions />
       <Funds />
-      */}
     </>
   )
 }

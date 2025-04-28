@@ -10,7 +10,7 @@ const Index = () => {
     <>
       <Hero />
       <What />
-      {/* <Funds /> */}
+      <Funds />
       <Work />
       <Road />
       <About />
