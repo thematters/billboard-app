@@ -1,4 +1,4 @@
-import { chunk } from 'lodash-es'
+import chunk from 'lodash-es/chunk.js'
 
 import Carousel from '@component/Carousel'
 import ButtonLink from '@component/Button/Link'
