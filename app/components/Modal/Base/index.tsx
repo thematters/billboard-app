@@ -6,11 +6,14 @@ import Overlay from '@components/Overlay'
 import useModal from '@hooks/useModal'
 import useLockScroll from '@hooks/useLockScroll'
 
+import Head from './Head'
+
 type Props = ComponentPropsType & {
   id: ModalIdType
+  title: string
 }
 
-const Base = ({ children, id }: Props) => {
+const Base = ({ children, id, title }: Props) => {
   const { state, close } = useModal()
   const isSlideIn = useMediaQuery('(max-width: 577px)')
   const isOpen = state[id]
@@ -49,9 +52,10 @@ const Base = ({ children, id }: Props) => {
               initial="initial"
               animate="animate"
               exit="exit"
-              transition={{ duration: 0.38, ease: 'easeInOut' }}
+              transition={{ duration: 0.33, ease: 'easeInOut' }}
               onClick={(e) => e.stopPropagation()}
             >
+              <Head title={title} close={() => close(id)} />
               {children}
             </motion.div>
           </div>

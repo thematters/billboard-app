@@ -2,17 +2,12 @@ import useModal from '@hooks/useModal'
 
 import Base from '../Base'
 
-const WalletModal = () => {
-  const { close } = useModal()
+import Options from './Options'
 
+const WalletModal = () => {
   return (
-    <Base id="wallet">
-      <section onClick={() => close('wallet')}>
-        Modal Wallet
-        <br />
-        <br />
-        <br />
-      </section>
+    <Base id="wallet" title="Connect Wallet">
+      <Options />
     </Base>
   )
 }
