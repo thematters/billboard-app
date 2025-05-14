@@ -5,7 +5,7 @@ import LogoSvg from '@components/Svg/Logo'
 import NameSvg from '@components/Svg/Name'
 
 const Logo = () => {
-  const baseCss = clsx('block flc')
+  const baseCss = clsx('block f-row-cs')
   const logoCss = clsx('size-9 md:size-10')
   const nameCss = clsx('ml-3 hidden md:block')
 

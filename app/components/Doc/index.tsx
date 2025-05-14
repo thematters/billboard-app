@@ -1,11 +1,11 @@
 import { Links, Meta, Scripts } from '@remix-run/react'
 import clsx from 'clsx'
 
-type Props = ComponentPropsType & {
-  gaId: string
-}
+import useAppEnv from '@hooks/useAppEnv'
 
-const Doc = ({ children, gaId }: Props) => {
+const Doc = ({ children }: ComponentPropsType) => {
+  const env = useAppEnv()
+
   const bodyCss = clsx('relative z-0')
 
   return (
@@ -24,7 +24,7 @@ const Doc = ({ children, gaId }: Props) => {
         <Links />
         <script
           async
-          src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+          src={`https://www.googletagmanager.com/gtag/js?id=${env.gaId}`}
         ></script>
         <script
           async
@@ -33,7 +33,7 @@ const Doc = ({ children, gaId }: Props) => {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${gaId}');
+          gtag('config', '${env.gaId}');
           `,
           }}
         />

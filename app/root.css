@@ -19,39 +19,44 @@
 }
 
 @layer components {
-
+  .link-button {
+    @apply text-gray-10 hover:text-white font-semibold;
+    @apply transition-all duration-500;
+  }
 }
 
 @layer utilities {
-  .fcc {
-    @apply flex justify-center items-center;
+  .f-row-cb {
+    @apply flex flex-row items-center justify-between;
   }
 
-  .fbc {
-    @apply flex flex-col justify-end items-center;
+  .f-row-cc {
+    @apply flex flex-row items-center justify-center;
   }
 
-  .flc {
-    @apply flex justify-start items-center;
+  .f-row-ce {
+    @apply flex flex-row items-center justify-end;
   }
 
-  .frc {
-    @apply flex justify-end items-center;
+  .f-row-cs {
+    @apply flex flex-row items-center justify-start;
   }
 
-  .fsc {
-    @apply flex justify-between items-center;
+  .f-col-ce {
+    @apply flex flex-col items-center justify-end;
   }
 
-  .fs {
-    @apply flex flex-col justify-between;
-  }
-
-  .hover-link {
-    @apply text-white hover:text-green-100 transition-all duration-500;
+  .f-col-sb {
+    @apply flex flex-col items-stretch justify-between;
   }
 
   .hover-gray-button {
-    @apply bg-gray-700 hover:bg-gray-800 transition-all duration-500;
+    @apply bg-gray-70 hover:bg-gray-80 transition-all duration-500;
+  }
+
+  .hover-green-button {
+    @apply bg-gradient-to-r;
+    @apply from-[#8BAF23] via-0% via-[#BCC422] via-0% via-[#AEDF1C] via-0% to-[#D7E02C] to-100%;
+    @apply transition-all duration-500;
   }
 }

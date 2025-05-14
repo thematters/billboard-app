@@ -15,4 +15,5 @@ const Name = ({ classes, width = 200, height = 20 }: SVGPropsType) => (
     />
   </svg>
 )
+
 export default memo(Name)

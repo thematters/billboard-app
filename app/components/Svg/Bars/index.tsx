@@ -12,4 +12,5 @@ const Bars = ({ classes, width = 32, height = 32 }: SVGPropsType) => (
     <path stroke="#fff" d="M2.667 4h26.666M2.667 28h26.666M2.667 16h26.666" />
   </svg>
 )
+
 export default memo(Bars)

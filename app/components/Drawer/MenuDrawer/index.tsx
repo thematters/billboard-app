@@ -8,7 +8,7 @@ import Menu from './Menu'
 const MenuDrawer = () => {
   const { close } = useDrawer()
 
-  const baseCss = 'fs'
+  const baseCss = 'f-col-sb'
 
   return (
     <Base id="menu" classes={baseCss}>

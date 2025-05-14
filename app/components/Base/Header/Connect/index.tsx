@@ -8,7 +8,7 @@ const Connect = () => {
   const { open } = useModal()
 
   const baseCss = clsx(
-    'fcc size-8 rounded-full font-semibold md:h-10 md:px-5 md:w-min'
+    'f-row-cc size-8 rounded-full font-semibold md:h-10 md:px-5 md:w-min'
   )
   const connectCss = clsx('pl-2 hidden md:block')
   const walletCss = clsx('pl-2 hidden ml:block')

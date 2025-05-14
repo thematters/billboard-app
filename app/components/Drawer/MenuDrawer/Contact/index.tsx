@@ -8,8 +8,8 @@ import MattersSvg from '@components/Svg/Matters'
 import XSvg from '@components/Svg/X'
 
 const Contact = () => {
-  const iconCss = clsx('fsc')
-  const textCss = clsx('mt-6 fcc text-xs text-gray-500')
+  const iconCss = clsx('f-row-cb')
+  const textCss = clsx('mt-6 f-row-cc text-xs text-gray-50')
 
   return (
     <section>

@@ -1,3 +1,12 @@
+// App env types
+type AppEnvType = {
+  env: string
+  idWalletConnect: string
+  chain: Chain
+  chainId: number
+  gaId: string
+}
+
 // General types
 type ComponentPropsType = {
   children: React.ReactNode
@@ -8,7 +17,7 @@ type ComponentPropsType = {
 type OverlayPropsType = {
   children?: React.ReactNode
   classes?: string
-  close: () => void
+  close?: () => void
 }
 
 // Drawer types

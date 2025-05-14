@@ -5,20 +5,20 @@ import Overlay from '@components/Overlay'
 import useDrawer from '@hooks/useDrawer'
 import useLockScroll from '@hooks/useLockScroll'
 
-type Props = ComponentPropsType & {
+type PropsType = ComponentPropsType & {
   id: DrawerIdType
 }
 
-const Base = ({ children, classes, id }: Props) => {
-  const { state, close } = useDrawer()
+const Base = ({ children, classes, id }: PropsType) => {
+  const { state } = useDrawer()
   const isOpen = state[id]
 
   useLockScroll(isOpen)
 
   const drawerCss = clsx(
-    'fixed top-0 right-0 z-50 w-full h-full max-w-drawer bg-gray-900',
+    'fixed top-0 right-0 z-50 w-full h-full max-w-drawer bg-gray-90',
     'px-4 py-[22px] drawer:p-10',
-    'drawer:border-l-[1px] border-gray-800',
+    'drawer:border-l-[1px] border-gray-80',
     classes
   )
 
@@ -26,7 +26,7 @@ const Base = ({ children, classes, id }: Props) => {
     <AnimatePresence>
       {isOpen && (
         <>
-          <Overlay close={() => close(id)} />
+          <Overlay />
           <motion.aside
             className={drawerCss}
             initial={{ x: '100%' }}

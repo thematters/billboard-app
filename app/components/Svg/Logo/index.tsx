@@ -26,4 +26,5 @@ const Logo = ({ classes, width = 36, height = 36 }: SVGPropsType) => (
     </defs>
   </svg>
 )
+
 export default memo(Logo)

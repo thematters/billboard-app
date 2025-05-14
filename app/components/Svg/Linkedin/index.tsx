@@ -17,4 +17,5 @@ const Linkedin = ({ classes, width = 40, height = 40 }: SVGPropsType) => (
     />
   </svg>
 )
+
 export default memo(Linkedin)

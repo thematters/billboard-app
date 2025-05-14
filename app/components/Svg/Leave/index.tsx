@@ -15,4 +15,5 @@ const Leave = ({ classes, width = 24, height = 24 }: SVGPropsType) => (
     />
   </svg>
 )
+
 export default memo(Leave)

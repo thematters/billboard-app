@@ -1,9 +1,10 @@
-import { NavLink } from '@remix-run/react'
 import clsx from 'clsx'
 
+import LinkButton from '@components/Button/Link'
+
 const Menu = () => {
-  const baseCss = 'ml-12 hidden ml:block'
-  const innerCss = clsx('flc gap-x-10 font-semibold [&>li]:hover-link')
+  const baseCss = clsx('ml-12 hidden ml:block')
+  const innerCss = clsx('f-row-cs gap-x-10')
 
   const links = [
     { to: '/bid', name: 'Bid' },
@@ -17,7 +18,7 @@ const Menu = () => {
       <ul className={innerCss}>
         {links.map((link) => (
           <li key={link.to}>
-            <NavLink to={link.to}>{link.name}</NavLink>
+            <LinkButton to={link.to}>{link.name}</LinkButton>
           </li>
         ))}
       </ul>

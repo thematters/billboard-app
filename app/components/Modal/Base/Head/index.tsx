@@ -11,7 +11,7 @@ type PropsType = {
 const Head = ({ title, close }: PropsType) => {
   const baseCss = clsx('grid grid-cols-[1fr_auto_1fr] items-center')
   const titleCss = clsx('text-center text-xl font-semibold')
-  const buttonCss = clsx('justify-self-end fcc size-9 rounded-full')
+  const buttonCss = clsx('justify-self-end f-row-cc size-9 rounded-full')
 
   return (
     <section className={baseCss}>
