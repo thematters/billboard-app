@@ -1,7 +1,7 @@
 import type { LoaderFunctionArgs } from '@remix-run/node'
 
 import { json } from '@remix-run/node'
-import { take } from 'lodash-es'
+import { takeRight } from 'lodash-es'
 
 import { ERROR, STATE } from '@constant'
 import alchemy from '@service/alchemy.server'
@@ -51,7 +51,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     const { name, startedAt, epochInterval: interval } = board
 
     // get the lastest 10 auction
-    const events = take(
+    const events = takeRight(
       await getBidWonEvents(client, addressRegistry, id, currBlock),
       10
     )
