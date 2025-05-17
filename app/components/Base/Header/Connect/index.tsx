@@ -1,24 +1,24 @@
 import clsx from 'clsx'
 
-import BaseButton from '@components/Button/Base'
+import MonoButton from '@components/Button/Mono'
 import WalletSvg from '@components/Svg/Wallet'
 import useModal from '@hooks/useModal'
 
 const Connect = () => {
   const { open } = useModal()
 
-  const baseCss = clsx(
-    'f-row-cc size-8 rounded-full font-semibold md:h-10 md:px-5 md:w-min'
-  )
+  const click = () => open('wallet')
+
+  const baseCss = clsx('f-row-cc size-8 font-semibold md:h-10 md:px-5 md:w-min')
   const connectCss = clsx('pl-2 hidden md:block')
   const walletCss = clsx('pl-2 hidden ml:block')
 
   return (
-    <BaseButton classes={baseCss} color="gray" onClick={() => open('wallet')}>
+    <MonoButton classes={baseCss} color="gray" shape="circle" onClick={click}>
       <WalletSvg />
       <span className={connectCss}>Connect</span>
       <span className={walletCss}>Wallet</span>
-    </BaseButton>
+    </MonoButton>
   )
 }
 

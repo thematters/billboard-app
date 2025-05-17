@@ -23,6 +23,34 @@
     @apply text-gray-10 hover:text-white font-semibold;
     @apply transition-all duration-500;
   }
+
+  .mono-gray-button {
+    @apply bg-gray-70 hover:bg-gray-80 transition-all duration-500;
+  }
+
+  .mono-dim-gray-button {
+    @apply bg-gray-80 transition-all duration-500;
+  }
+
+  .grad-green-button {
+    background: linear-gradient(to right, var(--grad-green-from), var(--grad-green-to));
+    transition: --grad-green-from 0.5s, --grad-green-to 0.5s;
+
+    &:hover {
+      --grad-green-from: #8BAF23;
+      --grad-green-to: #BCC422;
+    }
+  }
+
+  .grad-green-button-border {
+    background: linear-gradient(to right, var(--grad-green-border-from), var(--grad-green-border-to));
+    transition: --grad-green-border-from 0.5s, --grad-green-border-to 0.5s;
+
+    &:hover {
+      --grad-green-border-from: #D5F772;
+      --grad-green-border-to: #F8FF74;
+    }
+  }
 }
 
 @layer utilities {
@@ -43,20 +71,34 @@
   }
 
   .f-col-ce {
-    @apply flex flex-col items-center justify-end;
+      @apply flex flex-col items-center justify-end;
   }
 
   .f-col-sb {
     @apply flex flex-col items-stretch justify-between;
   }
 
-  .hover-gray-button {
-    @apply bg-gray-70 hover:bg-gray-80 transition-all duration-500;
+  @property --grad-green-from {
+    syntax: '<color>';
+    initial-value: #AEDF1C;
+    inherits: false;
   }
 
-  .hover-green-button {
-    @apply bg-gradient-to-r;
-    @apply from-[#8BAF23] via-0% via-[#BCC422] via-0% via-[#AEDF1C] via-0% to-[#D7E02C] to-100%;
-    @apply transition-all duration-500;
+  @property --grad-green-to {
+    syntax: '<color>';
+    initial-value: #D7E02C;
+    inherits: false;
+  }
+
+  @property --grad-green-border-from {
+    syntax: '<color>';
+    initial-value: #E5FF9A;
+    inherits: false;
+  }
+
+  @property --grad-green-border-to {
+    syntax: '<color>';
+    initial-value: #FBFFAB;
+    inherits: false;
   }
 }

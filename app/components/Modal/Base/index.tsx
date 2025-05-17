@@ -52,7 +52,7 @@ const Base = ({ children, id, title }: PropsType) => {
               initial="initial"
               animate="animate"
               exit="exit"
-              transition={{ duration: 0.38, ease: 'easeInOut' }}
+              transition={{ duration: 0.4, ease: 'easeInOut' }}
               onClick={(e) => e.stopPropagation()}
             >
               <Head title={title} close={() => close(id)} />

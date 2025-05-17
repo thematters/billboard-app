@@ -2,17 +2,25 @@ import clsx from 'clsx'
 import throttle from 'lodash-es/throttle'
 
 type PropsType = ComponentPropsType & {
-  color: 'gray' | 'green' | 'none'
+  color: 'gray' | 'dim-gray' | 'black'
+  shape?: 'general' | 'circle'
   onClick: () => void
 }
 
-const BaseButton = ({ children, classes, color, onClick }: PropsType) => {
+const MonoButton = ({
+  children,
+  classes,
+  color,
+  shape = 'general',
+  onClick,
+}: PropsType) => {
   const click = throttle(onClick, 500, { trailing: false })
   const baseCss = clsx(
     {
+      'rounded-full': shape === 'circle',
       'cursor-pointer': true,
-      'hover-gray-button': color === 'gray',
-      'hover-green-button': color === 'green',
+      'mono-gray-button': color === 'gray',
+      'mono-dim-gray-button': color === 'dim-gray',
     },
     classes
   )
@@ -23,4 +31,4 @@ const BaseButton = ({ children, classes, color, onClick }: PropsType) => {
   )
 }
 
-export default BaseButton
+export default MonoButton

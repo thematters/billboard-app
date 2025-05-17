@@ -1,7 +1,7 @@
 import type { Connector } from 'wagmi'
 
 import clsx from 'clsx'
-import { find } from 'lodash-es'
+import find from 'lodash-es/find'
 import { useEffect, useState } from 'react'
 import { isAddress } from 'viem'
 import { useAccount, useConnect } from 'wagmi'
