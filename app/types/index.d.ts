@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type AnyFunc = any
+
 // App env types
 type AppEnvType = {
   env: string
@@ -35,7 +38,7 @@ type DrawerActionType = {
 
 type DrawerContextType = {
   state: DrawerStateType
-  close: (id: DrawerIdType) => void
+  close: (id: DrawerIdType, cb?: AnyFunc) => void
   open: (id: DrawerIdType) => void
 }
 
@@ -53,7 +56,7 @@ type ModalActionType = {
 
 type ModalContextType = {
   state: ModalStateType
-  close: (id: ModalIdType) => void
+  close: (id: ModalIdType, cb?: AnyFunc) => void
   open: (id: ModalIdType) => void
 }
 

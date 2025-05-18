@@ -36,7 +36,7 @@ const Alert = () => {
       position={isSm ? 'top-center' : 'bottom-right'}
       containerStyle={containerStyle}
       toastOptions={{
-        duration: 300000,
+        duration: 3800,
         style: toastStyle,
       }}
     />

@@ -26,7 +26,10 @@ export const ModalContextSource = createContext<ModalContextType>(
 const ModalContext = ({ children }: ComponentPropsType) => {
   const [state, dispatch] = useReducer(reducer, { wallet: false })
 
-  const close = (id: ModalIdType) => dispatch({ id, type: 'close' })
+  const close = (id: ModalIdType, cb?: () => void) => {
+    dispatch({ id, type: 'close' })
+    requestAnimationFrame(() => cb?.())
+  }
   const open = (id: ModalIdType) => dispatch({ id, type: 'open' })
 
   const value = useMemo(() => ({ state, close, open }), [state])

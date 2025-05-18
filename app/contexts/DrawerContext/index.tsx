@@ -26,7 +26,10 @@ export const DrawerContextSource = createContext<DrawerContextType>(
 const DrawerContext = ({ children }: ComponentPropsType) => {
   const [state, dispatch] = useReducer(reducer, { me: false, menu: false })
 
-  const close = (id: DrawerIdType) => dispatch({ id, type: 'close' })
+  const close = (id: DrawerIdType, cb?: () => void) => {
+    dispatch({ id, type: 'close' })
+    requestAnimationFrame(() => cb?.())
+  }
   const open = (id: DrawerIdType) => dispatch({ id, type: 'open' })
 
   const value = useMemo(() => ({ state, close, open }), [state])

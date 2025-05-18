@@ -4,9 +4,11 @@ import { useAccount, useDisconnect } from 'wagmi'
 import MonoButton from '@components/Button/Mono'
 import CopySvg from '@components/Svg/Copy'
 import LogoutSvg from '@components/Svg/Logout'
+import useAlert from '@hooks/useAlert'
 import useDrawer from '@hooks/useDrawer'
 
 const Controls = () => {
+  const { makeAlert } = useAlert()
   const { address } = useAccount()
   const { disconnect } = useDisconnect()
   const { close } = useDrawer()
@@ -21,7 +23,7 @@ const Controls = () => {
 
   const logout = () => {
     disconnect()
-    close('me')
+    close('me', makeAlert("You're disconnected"))
   }
 
   const baseCss = clsx('f-row-ce gap-x-2')

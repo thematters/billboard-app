@@ -11,8 +11,7 @@ const Switch = () => {
 
   const switchWallet = async () => {
     disconnect()
-    close('me')
-    open('wallet')
+    close('me', open('wallet'))
   }
 
   const baseCss = clsx('mt-2 text-xs text-gray-30')

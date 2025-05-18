@@ -8,6 +8,7 @@ import { useAccount, useConnect } from 'wagmi'
 
 import MetaMaskSvg from '@components/Svg/MetaMask'
 import WalletConnectSvg from '@components/Svg/WalletConnect'
+import useAlert from '@hooks/useAlert'
 import useAppEnv from '@hooks/useAppEnv'
 import useModal from '@hooks/useModal'
 
@@ -20,6 +21,7 @@ type WalletOption = 'metaMask' | 'walletConnect' | 'none'
 const WalletModal = () => {
   const env = useAppEnv()
   const { close } = useModal()
+  const { makeAlert } = useAlert()
   const { address, isConnected, isConnecting } = useAccount()
   const { connect, connectors } = useConnect()
   const [selected, setSelected] = useState<WalletOption>('none')
@@ -30,7 +32,7 @@ const WalletModal = () => {
   useEffect(() => {
     const isEstablished = isAddress(address || '') && isConnected
     if (isEstablished) {
-      close('wallet')
+      close('wallet', makeAlert("You're connected"))
     }
   }, [address, isConnected])
 
