@@ -1,3 +1,4 @@
+import Alert from '@components/Alert'
 import MeDrawer from '@components/Drawer/MeDrawer'
 import MenuDrawer from '@components/Drawer/MenuDrawer'
 import WalletModal from '@components/Modal/WalletModal'
@@ -15,6 +16,7 @@ const Base = ({ children }: ComponentPropsType) => {
       <MeDrawer />
       <MenuDrawer />
       <WalletModal />
+      <Alert />
     </>
   )
 }

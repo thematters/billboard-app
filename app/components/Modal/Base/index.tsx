@@ -15,7 +15,7 @@ type PropsType = ComponentPropsType & {
 
 const Base = ({ children, id, title }: PropsType) => {
   const { state, close } = useModal()
-  const isSlideIn = useMediaQuery('(max-width: 577px)')
+  const isSm = useMediaQuery('(max-width: 577px)')
   const isOpen = state[id]
 
   useLockScroll(isOpen)
@@ -24,11 +24,11 @@ const Base = ({ children, id, title }: PropsType) => {
   const modalCss = clsx({
     'p-6 max-h-2/3 w-full sm:max-w-modal bg-gray-90': true,
     'border border-gray-80': true,
-    'rounded-t-[20px]': isSlideIn,
-    'rounded-[20px]': !isSlideIn,
+    'rounded-t-[20px]': isSm,
+    'rounded-[20px]': !isSm,
   })
 
-  const variants = isSlideIn
+  const variants = isSm
     ? {
         initial: { y: '100%' },
         animate: { y: 0 },

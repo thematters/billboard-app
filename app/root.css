@@ -70,6 +70,10 @@
     @apply flex flex-row items-center justify-start;
   }
 
+  .f-row-ss {
+    @apply flex flex-row items-start justify-start;
+  }
+
   .f-col-ce {
       @apply flex flex-col items-center justify-end;
   }
@@ -100,5 +104,15 @@
     syntax: '<color>';
     initial-value: #FBFFAB;
     inherits: false;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0 }
+    to   { opacity: 1 }
+  }
+
+  @keyframes fade-out {
+    from { opacity: 1 }
+    to   { opacity: 0 }
   }
 }
