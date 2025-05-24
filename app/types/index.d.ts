@@ -1,12 +1,19 @@
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type AnyFunc = any
+type Anything = any
 
 // App env types
 type AppEnvType = {
   env: string
-  idWalletConnect: string
   chain: Chain
   chainId: number
+  addressOperator: string
+  addressRegistry: string
+  addressDistribution: string
+  addressMulticall3: string
+  addressUSDT: string
+  tokenIdShowCase: string
+  idWalletConnect: string
+  urlOpExplorer: string
   gaId: string
 }
 
@@ -38,7 +45,7 @@ type DrawerActionType = {
 
 type DrawerContextType = {
   state: DrawerStateType
-  close: (id: DrawerIdType, cb?: AnyFunc) => void
+  close: (id: DrawerIdType, cb?: Anything) => void
   open: (id: DrawerIdType) => void
 }
 

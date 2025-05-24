@@ -13,9 +13,12 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
+      "@abis/*": ["./app/abis/*"],
       "@components/*": ["./app/components/*"],
+      "@constants": ["./app/constants/index.ts"],
       "@contexts/*": ["./app/contexts/*"],
       "@hooks/*": ["./app/hooks/*"],
+      "@server/*": ["./app/server/*"],
       "@utils/*": ["./app/utils/*"]
     },
     "skipLibCheck": true,

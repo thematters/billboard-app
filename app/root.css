@@ -19,6 +19,10 @@
 }
 
 @layer components {
+  .section-title {
+    @apply text-[28px] font-medium md:text-5xl md:font-semibold text-white;
+  }
+
   .link-button {
     @apply text-gray-10 hover:text-white font-semibold;
     @apply transition-all duration-500;

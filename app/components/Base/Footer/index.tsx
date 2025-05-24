@@ -6,7 +6,7 @@ const Footer = () => {
   const boxCss = clsx('mx-auto max-w-footer')
   return (
     <footer>
-      <Box classes={boxCss}>footer</Box>
+      <Box classes={boxCss}> </Box>
     </footer>
   )
 }
