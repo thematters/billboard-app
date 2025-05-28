@@ -15,12 +15,13 @@ const Auctions = () => {
     params: { id },
   })
 
+  const baseCss = clsx('pt-20 md:pt-36')
   const titleCss = clsx('section-title text-center')
-  const mdLoaderCss = clsx('w-full animate-pulse hidden md:block')
-  const smLoaderCss = clsx('w-full animate-pulse block md:hidden')
+  const mdLoaderCss = clsx('loader-md')
+  const smLoaderCss = clsx('loader-sm')
 
   return (
-    <section>
+    <section className={baseCss}>
       {(isLoading || isError) && (
         <>
           <AuctionsMDLoaderSvg classes={mdLoaderCss} />

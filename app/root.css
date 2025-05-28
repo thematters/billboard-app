@@ -19,8 +19,16 @@
 }
 
 @layer components {
+  .main-min-max {
+    @apply min-w-main max-w-main;
+  }
+
   .section-title {
     @apply text-[28px] font-medium md:text-5xl md:font-semibold text-white;
+  }
+
+  .section-desc {
+    @apply text-sm md:text-xl text-gray-30 text-center font-normal;
   }
 
   .link-button {
@@ -33,10 +41,12 @@
   }
 
   .mono-dim-gray-button {
-    @apply bg-gray-80 transition-all duration-500;
+    @apply bg-black hover:bg-gray-90 border border-gray-80 hover:border-gray-70;
+    @apply transition-all duration-500;
   }
 
   .grad-green-button {
+    @apply text-black;
     background: linear-gradient(to right, var(--grad-green-from), var(--grad-green-to));
     transition: --grad-green-from 0.5s, --grad-green-to 0.5s;
 
@@ -54,6 +64,47 @@
       --grad-green-border-from: #D5F772;
       --grad-green-border-to: #F8FF74;
     }
+  }
+
+  .grad-dim-green-button {
+    @apply text-green-20 hover:text-green-10;
+
+    background: linear-gradient(to right, var(--grad-dim-green-from), var(--grad-dim-green-to));
+    transition: --grad-dim-green-from 0.5s, --grad-dim-green-to 0.5s;
+
+    &:hover {
+      --grad-dim-green-from: #252F0A;
+      --grad-dim-green-to: #15321F;
+    }
+  }
+
+  .grad-dim-green-button-border {
+    background: linear-gradient(to right, var(--grad-dim-green-border-from), var(--grad-dim-green-border-to));
+    transition: --grad-dim-green-border-from 0.5s, --grad-dim-green-border-to 0.5s;
+
+    &:hover {
+      --grad-dim-green-border-from: #46590D;
+      --grad-dim-green-border-to: #1A5428;
+    }
+  }
+
+  .tab-button {
+    @apply relative;
+    @apply cursor-pointer text-gray-30 hover:text-white font-semibold;
+    @apply transition-all duration-500;
+  }
+
+  .tab-active {
+    @apply text-white;
+    @apply before:absolute before:inset-x-0 before:-bottom-px before:h-[2px] before:bg-white;
+  }
+
+  .loader-md {
+    @apply w-full animate-pulse hidden md:block;
+  }
+
+  .loader-sm {
+    @apply w-full animate-pulse block md:hidden;
   }
 }
 
@@ -78,8 +129,12 @@
     @apply flex flex-row items-start justify-start;
   }
 
+  .f-col {
+    @apply flex flex-col;
+  }
+
   .f-col-ce {
-      @apply flex flex-col items-center justify-end;
+    @apply flex flex-col items-center justify-end;
   }
 
   .f-col-sb {
@@ -107,6 +162,30 @@
   @property --grad-green-border-to {
     syntax: '<color>';
     initial-value: #FBFFAB;
+    inherits: false;
+  }
+
+  @property --grad-dim-green-from {
+    syntax: '<color>';
+    initial-value: #171C05;
+    inherits: false;
+  }
+
+  @property --grad-dim-green-to {
+    syntax: '<color>';
+    initial-value: #0F2115;
+    inherits: false;
+  }
+
+  @property --grad-dim-green-border-from {
+    syntax: '<color>';
+    initial-value: #323E10;
+    inherits: false;
+  }
+
+  @property --grad-dim-green-border-to {
+    syntax: '<color>';
+    initial-value: #183520;
     inherits: false;
   }
 

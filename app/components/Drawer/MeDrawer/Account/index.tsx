@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { useAccount } from 'wagmi'
 
 import Avatar from '@components/Avatar'
 
@@ -7,6 +8,8 @@ import Detail from './Detail'
 import Switch from './Switch'
 
 const Account = () => {
+  const { address } = useAccount()
+
   const baseCss = clsx('f-row-cb p-4 rounded-xl border border-gray-80')
   const leftCss = clsx('f-row-cs')
 
@@ -15,7 +18,7 @@ const Account = () => {
       <section>
         <section className={baseCss}>
           <section className={leftCss}>
-            <Avatar />
+            <Avatar address={address as `0x${string}`} />
             <Detail />
           </section>
 

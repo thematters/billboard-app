@@ -1,5 +1,6 @@
 import type { Connector } from 'wagmi'
 
+import { NavLink } from '@remix-run/react'
 import clsx from 'clsx'
 import find from 'lodash-es/find'
 import { useEffect, useState } from 'react'
@@ -8,6 +9,7 @@ import { useAccount, useConnect } from 'wagmi'
 
 import MetaMaskSvg from '@components/Svg/MetaMask'
 import WalletConnectSvg from '@components/Svg/WalletConnect'
+import { METAMASK_LINK } from '@constants'
 import useAlert from '@hooks/useAlert'
 import useAppEnv from '@hooks/useAppEnv'
 import useModal from '@hooks/useModal'
@@ -37,6 +39,10 @@ const WalletModal = () => {
   }, [address, isConnected])
 
   const baseCss = clsx('pt-6 space-y-4')
+  const hintCss = clsx(
+    'f-row-cc mt-5 text-xs text-green-30 hover:text-green-20 font-normal',
+    'transition-all duration-500'
+  )
 
   return (
     <Base id="wallet" title="Connect Wallet">
@@ -64,6 +70,10 @@ const WalletModal = () => {
           <WalletConnectSvg />
         </Option>
       </section>
+
+      <NavLink className={hintCss} to={METAMASK_LINK} target="_blank">
+        Don't have a MetaMask wallet
+      </NavLink>
     </Base>
   )
 }

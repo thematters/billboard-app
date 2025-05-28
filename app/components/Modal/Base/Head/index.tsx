@@ -11,7 +11,7 @@ type PropsType = {
 const Head = ({ title, close }: PropsType) => {
   const baseCss = clsx('grid grid-cols-[1fr_auto_1fr] items-center')
   const titleCss = clsx('text-center text-xl font-semibold')
-  const buttonCss = clsx('justify-self-end f-row-cc size-9')
+  const buttonCss = clsx('justify-self-end f-row-cc !size-9')
 
   return (
     <section className={baseCss}>
@@ -20,6 +20,7 @@ const Head = ({ title, close }: PropsType) => {
       <MonoButton
         classes={buttonCss}
         color="gray"
+        type="button"
         shape="circle"
         onClick={close}
       >

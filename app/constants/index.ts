@@ -12,6 +12,8 @@ export const PAPER_LINK =
   'https://matterslab.notion.site/On-chain-Billboard-for-' +
   'Decentralized-Content-Ecosystems-aa10959b6258456ebbf7f5f49eb9f0fd'
 
+export const METAMASK_LINK = 'https://metamask.io/download'
+
 export const DATA_STATE = {
   error: 'error',
   successful: 'successful',

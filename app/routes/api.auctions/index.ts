@@ -11,10 +11,10 @@ import { getEpochRange } from '@utils/web3'
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   try {
-    // collect base
+    // get params
     const boardId = getBoardId(request)
 
-    // get contracts
+    // get context
     const id = BigInt(boardId)
     const { client, operator, registry } = getViemContext()
     const { alchemy } = getAlchemyContext()

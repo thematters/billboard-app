@@ -1,34 +1,61 @@
+import { NavLink } from '@remix-run/react'
 import clsx from 'clsx'
 import throttle from 'lodash-es/throttle'
 
 type PropsType = ComponentPropsType & {
-  color: 'green'
+  outerClasses?: string
+  color: 'green' | 'dim-green'
+  type: 'button' | 'link'
   shape?: 'general' | 'circle'
-  onClick: () => void
+  to?: string
+  onClick?: () => void
 }
 
 const GradButton = ({
   children,
   classes,
+  outerClasses,
   color,
+  type,
   shape = 'general',
+  to,
   onClick,
 }: PropsType) => {
-  const click = throttle(onClick, 500, { trailing: false })
-  const baseCss = clsx('cursor-pointer p-[1px]', {
+  const click = onClick ? throttle(onClick, 500, { trailing: false }) : () => {}
+
+  const sharedCss = clsx('cursor-pointer', {
     'rounded-xl': shape === 'general',
     'rounded-full': shape === 'circle',
-    'grad-green-button-border': color === 'green',
   })
-  const buttonCss = clsx(
-    'cursor-pointer',
+
+  const baseCss = clsx(
+    sharedCss,
+    'w-fit cursor-pointer p-[1px]',
     {
-      'rounded-xl': shape === 'general',
-      'rounded-full': shape === 'circle',
+      'grad-green-button-border': color === 'green',
+      'grad-dim-green-button-border': color === 'dim-green',
+    },
+    outerClasses
+  )
+  const buttonCss = clsx(
+    sharedCss,
+    {
       'grad-green-button': color === 'green',
+      'grad-dim-green-button': color === 'dim-green',
     },
     classes
   )
+
+  if (type === 'link' && to) {
+    return (
+      <div className={baseCss}>
+        <NavLink className={buttonCss} to={to} target="_blank">
+          {children}
+        </NavLink>
+      </div>
+    )
+  }
+
   return (
     <div className={baseCss}>
       <button className={buttonCss} onClick={click}>

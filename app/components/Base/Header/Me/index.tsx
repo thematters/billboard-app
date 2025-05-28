@@ -11,7 +11,13 @@ const Me = () => {
   const baseCss = clsx('f-row-cc size-8 md:size-10')
 
   return (
-    <GradButton classes={baseCss} color="green" shape="circle" onClick={click}>
+    <GradButton
+      classes={baseCss}
+      color="green"
+      type="button"
+      shape="circle"
+      onClick={click}
+    >
       <UserSvg />
     </GradButton>
   )

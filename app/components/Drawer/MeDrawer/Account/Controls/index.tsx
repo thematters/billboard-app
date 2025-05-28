@@ -27,14 +27,19 @@ const Controls = () => {
   }
 
   const baseCss = clsx('f-row-ce gap-x-2')
-  const buttonCss = clsx('f-row-cc size-10 rounded-lg')
+  const buttonCss = clsx('f-row-cc !size-10 rounded-lg')
 
   return (
     <section className={baseCss}>
-      <MonoButton classes={buttonCss} color="dim-gray" onClick={copy}>
+      <MonoButton classes={buttonCss} color="gray" type="button" onClick={copy}>
         <CopySvg />
       </MonoButton>
-      <MonoButton classes={buttonCss} color="dim-gray" onClick={logout}>
+      <MonoButton
+        classes={buttonCss}
+        color="gray"
+        type="button"
+        onClick={logout}
+      >
         <LogoutSvg />
       </MonoButton>
     </section>

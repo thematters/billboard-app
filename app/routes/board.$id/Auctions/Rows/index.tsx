@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 import orderBy from 'lodash-es/orderBy'
 
+import MonoButton from '@components/Button/Mono'
 import useAppEnv from '@hooks/useAppEnv'
 import { formatAddress, formatDate } from '@utils/format'
 import { toFloatUSDT } from '@utils/num'
@@ -38,6 +39,7 @@ const Rows = ({ data }: PropsType) => {
   )
   const rowCss = clsx('py-3 text-xs md:text-base text-gray-30 w-full')
   const emptyCss = clsx(rowCss, 'text-center')
+  const moreCss = clsx('block mt-8 mx-auto px-5 py-3 text-xs md:text-base')
 
   return (
     <section className={baseCss}>
@@ -53,6 +55,17 @@ const Rows = ({ data }: PropsType) => {
         {auctions.map((auction: Record<string, Anything>) => (
           <Row key={auction.txHash} auction={auction} />
         ))}
+        {auctions.length >= 8 && (
+          <MonoButton
+            classes={moreCss}
+            color="dim-gray"
+            type="link"
+            shape="circle"
+            to={env.urlContract}
+          >
+            View More on Etherscan
+          </MonoButton>
+        )}
       </section>
     </section>
   )

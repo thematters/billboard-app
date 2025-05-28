@@ -1,10 +1,12 @@
 import clsx from 'clsx'
-import { useAccount } from 'wagmi'
 
 import { makeAddressColor } from '@utils/color'
 
-const Avatar = () => {
-  const { address } = useAccount()
+type PropsType = {
+  address: `0x${string}`
+}
+
+const Avatar = ({ address }: PropsType) => {
   const { colorA, colorB } = makeAddressColor(address)
 
   const baseCss = clsx('rounded-full size-10')

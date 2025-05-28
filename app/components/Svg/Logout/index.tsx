@@ -15,4 +15,5 @@ const Logout = ({ classes, width = 20, height = 20 }: SVGPropsType) => (
     />
   </svg>
 )
+
 export default memo(Logout)

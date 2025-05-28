@@ -6,7 +6,7 @@ import Auctions from './Auctions'
 import Summary from './Summary'
 
 const Page = () => {
-  const baseCss = clsx('max-w-main mx-auto')
+  const baseCss = clsx('main-min-max mx-auto py-10 md:py-20')
   return (
     <Box classes={baseCss}>
       <Summary />

@@ -16,6 +16,12 @@ export const getBoardId = (request: LoaderFunctionArgs['request']) => {
   return id
 }
 
+export const getAddress = (request: LoaderFunctionArgs['request']) => {
+  const url = new URL(request.url)
+  const address = url.searchParams.get('address')
+  return address
+}
+
 export const handleError = (error: Anything) => {
   const { env } = readSecretEnv()
   const isProduction = env === 'production'

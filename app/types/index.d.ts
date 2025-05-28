@@ -14,6 +14,7 @@ type AppEnvType = {
   tokenIdShowCase: string
   idWalletConnect: string
   urlOpExplorer: string
+  urlContract: string
   gaId: string
 }
 
@@ -39,32 +40,35 @@ type DrawerStateType = {
 type DrawerIdType = 'me' | 'menu'
 
 type DrawerActionType = {
-  id: DrawerIdType
-  type: 'close' | 'open'
+  id?: DrawerIdType
+  type: 'close' | 'open' | 'reset'
 }
 
 type DrawerContextType = {
   state: DrawerStateType
   close: (id: DrawerIdType, cb?: Anything) => void
   open: (id: DrawerIdType) => void
+  reset: () => void
 }
 
 // Modal Types
 type ModalStateType = {
   wallet: boolean
+  whitelist: boolean
 }
 
-type ModalIdType = 'wallet'
+type ModalIdType = 'wallet' | 'whitelist'
 
 type ModalActionType = {
-  id: ModalIdType
-  type: 'close' | 'open'
+  id?: ModalIdType
+  type: 'close' | 'open' | 'reset'
 }
 
 type ModalContextType = {
   state: ModalStateType
   close: (id: ModalIdType, cb?: AnyFunc) => void
   open: (id: ModalIdType) => void
+  reset: () => void
 }
 
 // SVG Types
