@@ -4,7 +4,7 @@ import { json } from '@remix-run/node'
 import groupBy from 'lodash-es/groupBy'
 import orderBy from 'lodash-es/orderBy'
 
-import { DATA_STATE } from '@constants'
+import { DATA_STATE, ERROR } from '@constants'
 import { getAlchemyContext } from '@server/alchemy.server'
 import { getAddress, getBoardId, sendError } from '@server/helper.server'
 import { getViemContext } from '@server/viem.server'
@@ -27,6 +27,13 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       operator.read.getLatestEpoch([id]),
       client.getBlockNumber(),
     ])
+    if (!board) {
+      throw new Error(ERROR.BOARD_NOT_FOUND, { cause: ERROR.BOARD_NOT_FOUND })
+    }
+    if (!currBlock) {
+      throw new Error(ERROR.CURR_BLOCK_NUMBER_NOT_FOUND, { cause: ERROR.CURR_BLOCK_NUMBER_NOT_FOUND })
+    }
+
     const { startedAt, epochInterval: interval } = board
     const [epochRange, bidCount] = await Promise.all([
       getEpochRange(alchemy, startedAt, epoch, interval),

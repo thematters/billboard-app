@@ -1,3 +1,4 @@
+import { useParams } from '@remix-run/react'
 import clsx from 'clsx'
 
 import GradButton from '@components/Button/Grad'
@@ -7,14 +8,17 @@ import BidConnectSMSvg from '@components/Svg/BidConnectSM'
 import { FORM_LINK } from '@constants'
 
 const Unauthed = () => {
-  const titleCss = clsx('section-title text-center')
+  const { id } = useParams()
+
+  const titleCss = clsx('section-title')
   const descCss = clsx('mt-5 md:mt-10 md:w-1/2 mx-auto section-desc')
   const imageMDCss = clsx('my-10 w-full hidden md:block')
   const imageSMCss = clsx('my-8 mx-auto w-10/12 block md:hidden')
+  const buttonsCss = clsx('f-colr gap-y-4 md:f-row-cc md:gap-x-6 md:gap-y-0')
   const buttonCss = clsx(
     'f-row-cc gap-x-1 py-3 w-full md:w-[280px] font-semibold'
   )
-  const buttonOuterCss = clsx(' w-full md:w-fit mx-auto')
+  const buttonOuterCss = clsx('w-full md:w-fit mx-0')
 
   return (
     <section>
@@ -25,7 +29,18 @@ const Unauthed = () => {
       </p>
       <BidConnectMDSvg classes={imageMDCss} />
       <BidConnectSMSvg classes={imageSMCss} />
-      <div>
+      <div className={buttonsCss}>
+        <GradButton
+          classes={buttonCss}
+          outerClasses={buttonOuterCss}
+          color="dim-green"
+          type="link"
+          shape="general"
+          to={`/board/${id}`}
+          target="_self"
+        >
+          Back to Board
+        </GradButton>
         <GradButton
           classes={buttonCss}
           outerClasses={buttonOuterCss}

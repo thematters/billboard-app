@@ -11,7 +11,7 @@ export const getBoardId = (request: LoaderFunctionArgs['request']) => {
   const id = url.searchParams.get('id')
 
   if (!id) {
-    throw Error(ERROR.BOARD_ID_INVALID, { cause: ERROR.BOARD_ID_INVALID })
+    throw new Error(ERROR.BOARD_ID_INVALID, { cause: ERROR.BOARD_ID_INVALID })
   }
   return id
 }
@@ -20,6 +20,16 @@ export const getAddress = (request: LoaderFunctionArgs['request']) => {
   const url = new URL(request.url)
   const address = url.searchParams.get('address')
   return address
+}
+
+export const getEpoch = (request: LoaderFunctionArgs['request']) => {
+  const url = new URL(request.url)
+  const epoch = url.searchParams.get('epoch')
+
+  if (!epoch) {
+    throw new Error(ERROR.EPOCH_INVALID, { cause: ERROR.EPOCH_INVALID })
+  }
+  return epoch
 }
 
 export const handleError = (error: Anything) => {

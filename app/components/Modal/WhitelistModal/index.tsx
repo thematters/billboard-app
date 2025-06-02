@@ -12,7 +12,7 @@ const WhitelistModal = () => {
   const buttonOuterCss = clsx('w-full')
 
   return (
-    <Base id="whitelist" title="Apply for whitelist">
+    <Base id="whitelist" title="Apply for Whitelist">
       <p className={contentCss}>
         The Billboard auction is currently whitelisted. If you have not yet
         applied, click "Go Apply" to submit your application.

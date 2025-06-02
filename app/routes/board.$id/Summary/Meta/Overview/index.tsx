@@ -29,6 +29,7 @@ const Overview = ({ data }: PropsType) => {
     '[&>div>span]:text-white [&>div>span]:font-semibold',
     '[&>div>a]:f-row-cs [&>div>a]:gap-x-1 [&>div>a]:text-white [&>div>a]:font-semibold'
   )
+  const iconCss = clsx('text-green-10')
 
   return (
     <section className={baseCss}>
@@ -39,13 +40,13 @@ const Overview = ({ data }: PropsType) => {
       <div>
         <EyeSvg />
         Contract (ERC-721)
-        <NavLink to={env.addressOperator} target="_blank">
+        <NavLink to={env.urlContract} target="_blank">
           {address}
           <LinkSvg />
         </NavLink>
       </div>
       <div>
-        <ExclamationSvg />
+        <ExclamationSvg classes={iconCss} />
         Token ID
         <span>{board.id}</span>
       </div>

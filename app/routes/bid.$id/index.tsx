@@ -5,11 +5,12 @@ import { useAccount } from 'wagmi'
 import Box from '@components/Box'
 
 import Connect from './Connect'
+import Setup from './Setup'
 import Unauthed from './Unauthed'
 import Verify from './Verify'
 
 const Page = () => {
-  const [step, setStep] = useState('connect')
+  const [step, setStep] = useState<BidStepType>('connect')
   const { address, isConnected } = useAccount()
 
   useEffect(() => {
@@ -30,6 +31,7 @@ const Page = () => {
       {step === 'connect' && <Connect />}
       {step === 'verify' && <Verify setStep={setStep} />}
       {step === 'unauthed' && <Unauthed />}
+      {step === 'setup' && <Setup setStep={setStep} />}
     </Box>
   )
 }

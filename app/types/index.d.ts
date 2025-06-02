@@ -51,7 +51,7 @@ type DrawerContextType = {
   reset: () => void
 }
 
-// Modal Types
+// Modal types
 type ModalStateType = {
   wallet: boolean
   whitelist: boolean
@@ -71,9 +71,14 @@ type ModalContextType = {
   reset: () => void
 }
 
-// SVG Types
+// SVG types
 type SVGPropsType = {
   classes?: string
   width?: number | string
   height?: number | string
 }
+
+// Bid Step types
+type BidStepType = 'connect' | 'verify' | 'unauthed' | 'setup'
+
+type SetBidStepType = 'set-price' | 'set-image' | 'set-confirm'

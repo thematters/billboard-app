@@ -60,6 +60,8 @@ export default {
         main: '1302px',
         drawer: '389px',
         modal: '375px',
+        form: '440px',
+        uploader: '400px',
       },
       minWidth: {
         main: '375px',

@@ -10,7 +10,7 @@ const Connect = () => {
 
   const click = () => open('wallet')
 
-  const titleCss = clsx('section-title text-center')
+  const titleCss = clsx('section-title')
   const descCss = clsx('mt-5 md:mt-10 md:w-1/2 mx-auto section-desc')
   const imageMDCss = clsx('my-10 w-full hidden md:block')
   const imageSMCss = clsx('my-8 mx-auto w-10/12 block md:hidden')

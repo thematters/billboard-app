@@ -16,7 +16,7 @@ const Auctions = () => {
   })
 
   const baseCss = clsx('pt-20 md:pt-36')
-  const titleCss = clsx('section-title text-center')
+  const titleCss = clsx('section-title')
   const mdLoaderCss = clsx('loader-md')
   const smLoaderCss = clsx('loader-sm')
 

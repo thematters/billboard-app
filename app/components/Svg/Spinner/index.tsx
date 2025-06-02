@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import { memo, useId } from 'react'
 
 const Spinner = ({ classes, width = 24, height = 24 }: SVGPropsType) => {
@@ -5,7 +6,7 @@ const Spinner = ({ classes, width = 24, height = 24 }: SVGPropsType) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className={classes}
+      className={clsx('animate-spin', classes)}
       width={width}
       height={height}
       viewBox="0 0 24 24"
@@ -20,9 +21,9 @@ const Spinner = ({ classes, width = 24, height = 24 }: SVGPropsType) => {
           gradientTransform="matrix(2.5 -9 9.20046 2.55568 12 12.5)"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#DDD" />
-          <stop offset={0.823} stopColor="#DDD" stopOpacity={0} />
-          <stop offset={1} stopColor="#DDD" stopOpacity={0} />
+          <stop stopColor="cuurentColor" />
+          <stop offset={0.823} stopColor="currentColor" stopOpacity={0} />
+          <stop offset={1} stopColor="currentColor" stopOpacity={0} />
         </radialGradient>
       </defs>
       <path

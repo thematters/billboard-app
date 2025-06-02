@@ -23,6 +23,11 @@ export const toFloatUSDT = (num: number, dp?: number) => {
   return isInteger(dp) ? value.toFixed(dp) : value.toString()
 }
 
+export const calTax = (price: number, taxRate: number, dp?: number) => {
+  const value = new Decimal(price).times(taxRate).times(EPOCH_IN_DAYS)
+  return isInteger(dp) ? value.toFixed(dp) : value.toString()
+}
+
 export const calAmount = (price: number, tax: number, dp?: number) => {
   const value = new Decimal(price).plus(tax).dividedBy(1e6)
   return isInteger(dp) ? value.toFixed(dp) : value.toString()

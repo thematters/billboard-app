@@ -8,6 +8,8 @@ type PropsType = ComponentPropsType & {
   type: 'button' | 'link'
   shape?: 'general' | 'circle'
   to?: string
+  target?: string
+  disabled?: boolean
   onClick?: () => void
 }
 
@@ -19,6 +21,8 @@ const GradButton = ({
   type,
   shape = 'general',
   to,
+  target = '_blank',
+  disabled,
   onClick,
 }: PropsType) => {
   const click = onClick ? throttle(onClick, 500, { trailing: false }) : () => {}
@@ -49,7 +53,7 @@ const GradButton = ({
   if (type === 'link' && to) {
     return (
       <div className={baseCss}>
-        <NavLink className={buttonCss} to={to} target="_blank">
+        <NavLink className={buttonCss} to={to} target={target}>
           {children}
         </NavLink>
       </div>
@@ -58,7 +62,7 @@ const GradButton = ({
 
   return (
     <div className={baseCss}>
-      <button className={buttonCss} onClick={click}>
+      <button className={buttonCss} disabled={disabled} onClick={click}>
         {children}
       </button>
     </div>
