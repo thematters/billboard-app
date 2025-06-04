@@ -15,9 +15,7 @@ const Unauthed = () => {
   const imageMDCss = clsx('my-10 w-full hidden md:block')
   const imageSMCss = clsx('my-8 mx-auto w-10/12 block md:hidden')
   const buttonsCss = clsx('f-colr gap-y-4 md:f-row-cc md:gap-x-6 md:gap-y-0')
-  const buttonCss = clsx(
-    'f-row-cc gap-x-1 py-3 w-full md:w-[280px] font-semibold'
-  )
+  const buttonCss = clsx('f-row-cc gap-x-1 py-3 w-full md:w-[280px]')
   const buttonOuterCss = clsx('w-full md:w-fit mx-0')
 
   return (
@@ -35,7 +33,6 @@ const Unauthed = () => {
           outerClasses={buttonOuterCss}
           color="dim-green"
           type="link"
-          shape="general"
           to={`/board/${id}`}
           target="_self"
         >
@@ -46,7 +43,6 @@ const Unauthed = () => {
           outerClasses={buttonOuterCss}
           color="green"
           type="link"
-          shape="general"
           to={FORM_LINK}
         >
           <ApplySvg />

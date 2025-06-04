@@ -17,7 +17,7 @@ const BidButton = ({ data }: PropsType) => {
   const { board, currBid, epoch, whitelisted } = data
 
   const id = board.id
-  const currPrice = toFloatUSDT(Number(currBid?.price || 0), 2)
+  const currPrice = toFloatUSDT(currBid?.price || 0, 2)
   const isBidder = currBid && currBid.placedAt > 0
 
   const click = () => {
@@ -36,7 +36,7 @@ const BidButton = ({ data }: PropsType) => {
     }
   }
 
-  const buttonCss = clsx('py-3 w-full md:w-[280px] font-semibold')
+  const buttonCss = clsx('py-3 w-full md:w-[280px]')
   const buttonOuterCss = clsx('mt-8 w-full md:w-fit')
 
   return (
@@ -47,7 +47,7 @@ const BidButton = ({ data }: PropsType) => {
       type="button"
       onClick={click}
     >
-      {isConnected && isBidder && <>Place Higher Bid - {currPrice} USDT</>}
+      {isConnected && isBidder && <>Update Bid - {currPrice} USDT</>}
       {isConnected && !isBidder && <>Place Bid</>}
       {!isConnected && <>Connect to Place Bid</>}
     </GradButton>

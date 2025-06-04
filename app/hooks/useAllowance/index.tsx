@@ -5,12 +5,12 @@ import { useReadContract } from 'wagmi'
 import { AppEnvContextSource } from '@contexts/AppEnvContext'
 
 const useAllowance = (address: `0x${string}`) => {
-  const env = useContext(AppEnvContextSource)
+  const { addressOperator, addressUSDT } = useContext(AppEnvContextSource)
   return useReadContract({
     abi: erc20Abi,
-    address: env.addressUSDT as `0x${string}`,
+    address: addressUSDT,
     functionName: 'allowance',
-    args: [address, env.addressOperator as `0x${string}`],
+    args: [address, addressOperator],
     query: {
       refetchOnWindowFocus: true,
     },

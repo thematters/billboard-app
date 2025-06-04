@@ -50,4 +50,12 @@ export const ERROR = {
   REACH_SIZE_LIMIT: 'REACH_SIZE_LIMIT',
 }
 
+export const TX_STATE = {
+  success: 'success',
+}
+
+export const TX_ERROR_MESSAGE = {
+  reject: 'User rejected the request.',
+}
+
 export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'

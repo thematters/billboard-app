@@ -38,6 +38,7 @@ const GradButton = ({
     {
       'grad-green-button-border': color === 'green',
       'grad-dim-green-button-border': color === 'dim-green',
+      disabled,
     },
     outerClasses
   )

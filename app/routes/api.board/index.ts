@@ -31,7 +31,9 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       throw new Error(ERROR.BOARD_NOT_FOUND, { cause: ERROR.BOARD_NOT_FOUND })
     }
     if (!currBlock) {
-      throw new Error(ERROR.CURR_BLOCK_NUMBER_NOT_FOUND, { cause: ERROR.CURR_BLOCK_NUMBER_NOT_FOUND })
+      throw new Error(ERROR.CURR_BLOCK_NUMBER_NOT_FOUND, {
+        cause: ERROR.CURR_BLOCK_NUMBER_NOT_FOUND,
+      })
     }
 
     const { startedAt, epochInterval: interval } = board

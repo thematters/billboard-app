@@ -23,7 +23,7 @@ const Setup = ({ setStep }: PropsType) => {
   return (
     <section>
       <Loader data={data} isLoading={isLoading} isError={isError} />
-      {isLoaded && <SetBid data={data} />}
+      {isLoaded && <SetBid data={data} setStep={setStep} />}
     </section>
   )
 }

@@ -27,7 +27,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     const { alchemy } = getAlchemyContext()
     const { operator, registry } = getViemContext()
 
-    const [board, bid, highestBidder] = await Promise.all([
+    const [board, prevBid, highestBidder] = await Promise.all([
       operator.read.getBoard([id]),
       operator.read.getBid([id, epoch, address]),
       registry.read.highestBidder([id, epoch]),
@@ -55,11 +55,11 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
       highestBid: {
         price: Number(highestBid?.price || 0).toFixed(0),
       },
-      bid: {
-        price: Number(bid.price).toFixed(0),
-        contentURI: bid.contentURI,
-        redirectURI: bid.redirectURI,
-        placedAt: Number(bid.priceAt).toFixed(0),
+      prevBid: {
+        price: Number(prevBid?.price || 0).toFixed(0),
+        contentURI: prevBid.contentURI,
+        redirectURI: prevBid.redirectURI,
+        placedAt: Number(prevBid?.placedAt || 0).toFixed(0),
       },
     })
   } catch (error) {

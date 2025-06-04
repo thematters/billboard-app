@@ -19,7 +19,7 @@ const Bids = ({ data }: PropsType) => {
     (r: Record<string, Anything>, d: Record<string, Anything>) => {
       const bid = {
         ...d,
-        price: toFloatUSDT(Number(d.price || 0), 2),
+        price: toFloatUSDT(d.price || 0, 2),
         bidder: formatAddress(d.bidder),
         bidderAddress: d.bidder,
         txHash: formatAddress(d.txHash),

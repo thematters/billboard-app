@@ -6,11 +6,11 @@ type AppEnvType = {
   env: string
   chain: Chain
   chainId: number
-  addressOperator: string
-  addressRegistry: string
-  addressDistribution: string
-  addressMulticall3: string
-  addressUSDT: string
+  addressOperator: `0x${string}`
+  addressRegistry: `0x${string}`
+  addressDistribution: `0x${string}`
+  addressMulticall3: `0x${string}`
+  addressUSDT: `0x${string}`
   tokenIdShowCase: string
   idWalletConnect: string
   urlOpExplorer: string
@@ -79,6 +79,12 @@ type SVGPropsType = {
 }
 
 // Bid Step types
-type BidStepType = 'connect' | 'verify' | 'unauthed' | 'setup'
+type BidStepType =
+  | 'connect'
+  | 'verify'
+  | 'unauthed'
+  | 'setup'
+  | 'success-new'
+  | 'success-update'
 
 type SetBidStepType = 'set-price' | 'set-image' | 'set-confirm'

@@ -21,8 +21,8 @@ const Spinner = ({ classes, width = 24, height = 24 }: SVGPropsType) => {
           gradientTransform="matrix(2.5 -9 9.20046 2.55568 12 12.5)"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="cuurentColor" />
-          <stop offset={0.823} stopColor="currentColor" stopOpacity={0} />
+          <stop offset={0} stopColor="currentColor" stopOpacity={1} />
+          <stop offset={0.8} stopColor="currentColor" stopOpacity={0.5} />
           <stop offset={1} stopColor="currentColor" stopOpacity={0} />
         </radialGradient>
       </defs>

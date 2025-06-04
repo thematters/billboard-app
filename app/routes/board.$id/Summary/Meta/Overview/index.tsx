@@ -16,12 +16,12 @@ type PropsType = {
 }
 
 const Overview = ({ data }: PropsType) => {
-  const env = useAppEnv()
+  const { addressOperator, urlContract } = useAppEnv()
   const { board } = data
 
-  const address = formatAddress(env.addressOperator as `0x${string}`)
+  const address = formatAddress(addressOperator)
   const location = formatURL(board.location)
-  const taxRate = toPercentTaxRate(Number(board.taxRate || 0))
+  const taxRate = toPercentTaxRate(board.taxRate || 0)
 
   const baseCss = clsx(
     'pt-2 f-col text-sm text-gray-30',
@@ -40,7 +40,7 @@ const Overview = ({ data }: PropsType) => {
       <div>
         <EyeSvg />
         Contract (ERC-721)
-        <NavLink to={env.urlContract} target="_blank">
+        <NavLink to={urlContract} target="_blank">
           {address}
           <LinkSvg />
         </NavLink>

@@ -8,7 +8,7 @@ export const toFloatTaxRate = (taxRate: number) => {
   return num.dividedBy(1000).dividedBy(EPOCH_IN_DAYS).toString()
 }
 
-export const toPercentTaxRate = (taxRate: number) => {
+export const toPercentTaxRate = (taxRate: number | string) => {
   const num = new Decimal(taxRate)
   return num.times(100).toString()
 }
@@ -18,14 +18,24 @@ export const toUSDT = (num: number, dp?: number) => {
   return isInteger(dp) ? value.toFixed(dp) : value.toString()
 }
 
-export const toFloatUSDT = (num: number, dp?: number) => {
+export const toFloatUSDT = (num: number | string, dp?: number) => {
   const value = new Decimal(num).dividedBy(1e6)
   return isInteger(dp) ? value.toFixed(dp) : value.toString()
+}
+
+export const toFloatUSDTAsNumber = (num: number | string, dp?: number) => {
+  const value = new Decimal(num).dividedBy(1e6)
+  return isInteger(dp) ? Number(value.toFixed(dp)) : value.toNumber()
 }
 
 export const calTax = (price: number, taxRate: number, dp?: number) => {
   const value = new Decimal(price).times(taxRate).times(EPOCH_IN_DAYS)
   return isInteger(dp) ? value.toFixed(dp) : value.toString()
+}
+
+export const calTaxAsNumber = (price: number, taxRate: number, dp?: number) => {
+  const value = new Decimal(price).times(taxRate).times(EPOCH_IN_DAYS)
+  return isInteger(dp) ? Number(value.toFixed(dp)) : value.toNumber()
 }
 
 export const calAmount = (price: number, tax: number, dp?: number) => {
@@ -37,6 +47,16 @@ export const calTotalAmount = (price: number, taxRate: number, dp?: number) => {
   const tax = new Decimal(price).times(taxRate).times(EPOCH_IN_DAYS)
   const value = new Decimal(price).plus(tax)
   return isInteger(dp) ? value.toFixed(dp) : value.toString()
+}
+
+export const calTotalAmountAsNumber = (
+  price: number,
+  taxRate: number,
+  dp?: number
+) => {
+  const tax = new Decimal(price).times(taxRate).times(EPOCH_IN_DAYS)
+  const value = new Decimal(price).plus(tax)
+  return isInteger(dp) ? Number(value.toFixed(dp)) : value.toNumber()
 }
 
 export const calTotalDiff = (

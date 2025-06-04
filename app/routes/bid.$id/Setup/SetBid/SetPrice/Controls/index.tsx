@@ -13,18 +13,14 @@ const Controls = ({ disabled, updateSetBidStep }: PropsType) => {
   const navigate = useNavigate()
   const { id, from } = useQueryParams()
 
-  const back = () => {
-    if (!from || from === 'board') {
-      navigate(`/board/${id}`)
-    }
-  }
+  const back = () => navigate(`/board/${id}`)
+  const next = () => updateSetBidStep('set-image')
 
   const baseCss = clsx(
     'f-colr gap-y-3 md:f-row-cb md:gap-x-10 max-w-form mx-auto'
   )
-  const buttonCss = clsx('py-3 w-full font-semibold')
+  const buttonCss = clsx('py-3 w-full')
   const buttonOuterCss = clsx('w-full')
-  const nextButtonOuterCss = clsx(buttonOuterCss, { disabled })
 
   return (
     <section className={baseCss}>
@@ -40,11 +36,11 @@ const Controls = ({ disabled, updateSetBidStep }: PropsType) => {
 
       <GradButton
         classes={buttonCss}
-        outerClasses={nextButtonOuterCss}
+        outerClasses={buttonOuterCss}
         color="green"
         type="button"
         disabled={disabled}
-        onClick={() => updateSetBidStep('set-image')}
+        onClick={next}
       >
         Next
       </GradButton>

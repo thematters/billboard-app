@@ -11,6 +11,7 @@ import RedirectInput from './RedirectInput'
 type PropsType = {
   content: string
   redirect: string
+  isNewBid: boolean
   setContent: (value: string) => void
   setRedirect: (value: string) => void
   updateSetBidStep: (value: SetBidStepType) => void
@@ -19,6 +20,7 @@ type PropsType = {
 const SetContent = ({
   content,
   redirect,
+  isNewBid,
   setContent,
   setRedirect,
   updateSetBidStep,
@@ -35,7 +37,7 @@ const SetContent = ({
 
   return (
     <section>
-      <h1 className={titleCss}>Place Bid</h1>
+      <h1 className={titleCss}>{isNewBid ? 'Place Bid' : 'Update Bid'}</h1>
       <State num={2} />
 
       <section className={formCss}>
@@ -52,12 +54,7 @@ const SetContent = ({
         />
       </section>
 
-      <Controls
-        disabled={!canSave}
-        setContent={setContent}
-        setRedirect={setRedirect}
-        updateSetBidStep={updateSetBidStep}
-      />
+      <Controls disabled={!canSave} updateSetBidStep={updateSetBidStep} />
     </section>
   )
 }

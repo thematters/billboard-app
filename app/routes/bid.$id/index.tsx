@@ -6,6 +6,7 @@ import Box from '@components/Box'
 
 import Connect from './Connect'
 import Setup from './Setup'
+import Success from './Success'
 import Unauthed from './Unauthed'
 import Verify from './Verify'
 
@@ -32,6 +33,8 @@ const Page = () => {
       {step === 'verify' && <Verify setStep={setStep} />}
       {step === 'unauthed' && <Unauthed />}
       {step === 'setup' && <Setup setStep={setStep} />}
+      {step === 'success-new' && <Success isNewBid={true} />}
+      {step === 'success-update' && <Success isNewBid={false} />}
     </Box>
   )
 }

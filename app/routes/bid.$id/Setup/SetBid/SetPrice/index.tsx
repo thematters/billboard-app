@@ -2,7 +2,12 @@ import clsx from 'clsx'
 import { useAccount, useBalance } from 'wagmi'
 
 import useAppEnv from '@hooks/useAppEnv'
-import { calTax, calTotalAmount, calTotalDiff, toFloatUSDT } from '@utils/num'
+import {
+  calTaxAsNumber,
+  calTotalAmountAsNumber,
+  calTotalDiff,
+  toFloatUSDTAsNumber,
+} from '@utils/num'
 
 import Balance from '../Balance'
 import Detail from '../Detail'
@@ -15,6 +20,7 @@ type PropsType = {
   data: Record<string, Anything>
   price: number
   priceChanged: boolean
+  isNewBid: boolean
   setPrice: (value: number) => void
   setPriceChanged: (value: boolean) => void
   updateSetBidStep: (value: SetBidStepType) => void
@@ -24,37 +30,35 @@ const SetPrice = ({
   data,
   price,
   priceChanged,
+  isNewBid,
   setPrice,
   setPriceChanged,
   updateSetBidStep,
 }: PropsType) => {
-  const { board, bid, highestBid } = data
-
-  const { addressUSDT } = useAppEnv()
+  // context
+  const { board, highestBid, prevBid } = data
+  const { addressUSDT: token } = useAppEnv()
   const { address } = useAccount()
-  const { data: balanceData } = useBalance({
-    address,
-    token: addressUSDT as `0x${string}`,
-  })
+  const { data: balanceData } = useBalance({ address, token })
 
   // data
   const balance = Number(balanceData?.formatted || 0)
-  const lastBidPrice = Number(toFloatUSDT(Number(bid?.price || 0)))
-  const highestBidPrice = Number(toFloatUSDT(Number(highestBid?.price || 0)))
   const taxRate = Number(board?.taxRate || 0)
-  const tax = Number(calTax(price, taxRate, 2))
-  const totalAmount = Number(calTotalAmount(price, taxRate, 2))
-  const totalDiff = Number(calTotalDiff(price, lastBidPrice, taxRate))
+  const tax = calTaxAsNumber(price, taxRate, 3)
+  const prevBidPrice = toFloatUSDTAsNumber(prevBid?.price || 0)
+  const prevBidTotalAmount = calTotalAmountAsNumber(prevBidPrice, taxRate, 3)
+  const highestBidPrice = toFloatUSDTAsNumber(highestBid?.price || 0)
+  const totalAmount = calTotalAmountAsNumber(price, taxRate, 3)
+  const totalDiff = Number(calTotalDiff(price, prevBidPrice, taxRate))
 
   // condition
-  const hasBid = Number(bid?.placedAt || 0) > 0
-  const isSufficient = hasBid ? balance >= totalDiff : balance >= totalAmount
+  const isSufficient = isNewBid ? balance >= totalAmount : balance >= totalDiff
   const isUnderPrice =
-    priceChanged && price != lastBidPrice && price <= highestBidPrice
+    priceChanged && price != prevBidPrice && price <= highestBidPrice
   const canNext =
     isSufficient &&
     price > 0 &&
-    (price === lastBidPrice || price > highestBidPrice)
+    (price === prevBidPrice || price > highestBidPrice)
 
   // css
   const baseCss = clsx('h-auto')
@@ -64,7 +68,7 @@ const SetPrice = ({
 
   return (
     <section className={baseCss}>
-      <h1 className={titleCss}>Place Bid</h1>
+      <h1 className={titleCss}>{isNewBid ? 'Place Bid' : 'Update Bid'}</h1>
       <State num={1} />
 
       <section className={formCss}>
@@ -79,7 +83,13 @@ const SetPrice = ({
           setPrice={setPrice}
           setPriceChanged={setPriceChanged}
         />
-        <Balance price={price} tax={tax} totalAmount={totalAmount} />
+        <Balance
+          prevBidTotalAmount={prevBidTotalAmount}
+          price={price}
+          tax={tax}
+          totalAmount={totalAmount}
+          totalDiff={totalDiff}
+        />
         <Detail
           price={price}
           taxRate={taxRate}

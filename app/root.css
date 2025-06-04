@@ -46,7 +46,7 @@
   }
 
   .grad-green-button {
-    @apply text-black;
+    @apply text-black font-semibold;
     background: linear-gradient(to right, var(--grad-green-from), var(--grad-green-to));
     transition: --grad-green-from 0.5s, --grad-green-to 0.5s;
 
@@ -76,14 +76,21 @@
   }
 
   .grad-dim-green-button {
-    @apply text-green-20 hover:text-green-10;
+    @apply text-green-20 font-semibold;
 
     background: linear-gradient(to right, var(--grad-dim-green-from), var(--grad-dim-green-to));
     transition: --grad-dim-green-from 0.5s, --grad-dim-green-to 0.5s;
 
     &:hover {
+      @apply text-green-10;
       --grad-dim-green-from: #252F0A;
       --grad-dim-green-to: #15321F;
+    }
+
+    &:disabled {
+      @apply text-green-30 cursor-not-allowed;
+      --grad-dim-green-from: #171C05;
+      --grad-dim-green-to: #0F2115;
     }
   }
 
@@ -94,6 +101,11 @@
     &:hover {
       --grad-dim-green-border-from: #46590D;
       --grad-dim-green-border-to: #1A5428;
+    }
+
+    &.disabled {
+      --grad-dim-green-border-from: #171C05;
+      --grad-dim-green-border-to: #0F2115;
     }
   }
 

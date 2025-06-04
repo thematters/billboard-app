@@ -17,7 +17,7 @@ const Controls = () => {
     try {
       await navigator.clipboard.writeText(address || '')
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 

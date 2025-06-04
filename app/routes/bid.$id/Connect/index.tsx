@@ -14,7 +14,7 @@ const Connect = () => {
   const descCss = clsx('mt-5 md:mt-10 md:w-1/2 mx-auto section-desc')
   const imageMDCss = clsx('my-10 w-full hidden md:block')
   const imageSMCss = clsx('my-8 mx-auto w-10/12 block md:hidden')
-  const buttonCss = clsx('py-3 w-full md:w-[280px] font-semibold')
+  const buttonCss = clsx('py-3 w-full md:w-[280px]')
   const buttonOuterCss = clsx('w-full md:w-fit mx-auto')
 
   return (

@@ -3,7 +3,12 @@ import clsx from 'clsx'
 import RedirectLink from '@components/Bid/RedirectLink'
 import UploadedImage from '@components/Bid/UploadedImage'
 import ExclamationSvg from '@components/Svg/Exclamation'
-import { calTax, calTotalAmount } from '@utils/num'
+import {
+  calTaxAsNumber,
+  calTotalAmountAsNumber,
+  calTotalDiff,
+  toFloatUSDTAsNumber,
+} from '@utils/num'
 
 import Balance from '../Balance'
 import Detail from '../Detail'
@@ -16,7 +21,9 @@ type PropsType = {
   price: number
   content: string
   redirect: string
+  isNewBid: boolean
   updateSetBidStep: (value: SetBidStepType) => void
+  setStep: (value: BidStepType) => void
 }
 
 const SetConfirm = ({
@@ -24,14 +31,19 @@ const SetConfirm = ({
   price,
   content,
   redirect,
+  isNewBid,
   updateSetBidStep,
+  setStep,
 }: PropsType) => {
-  const { board, epochRange } = data
+  const { board, epochRange, prevBid } = data
 
   // data
   const taxRate = Number(board?.taxRate || 0)
-  const tax = Number(calTax(price, taxRate, 2))
-  const totalAmount = Number(calTotalAmount(price, taxRate, 2))
+  const tax = calTaxAsNumber(price, taxRate, 3)
+  const prevBidPrice = toFloatUSDTAsNumber(prevBid?.price || 0)
+  const prevBidTotalAmount = calTotalAmountAsNumber(prevBidPrice, taxRate, 3)
+  const totalAmount = calTotalAmountAsNumber(price, taxRate, 3)
+  const totalDiff = Number(calTotalDiff(price, prevBidPrice, taxRate))
 
   // css
   const titleCss = clsx('section-title')
@@ -46,7 +58,7 @@ const SetConfirm = ({
 
   return (
     <section>
-      <h1 className={titleCss}>Place Bid</h1>
+      <h1 className={titleCss}>{isNewBid ? 'Place Bid' : 'Update Bid'}</h1>
       <State num={3} />
 
       <section className={formCss}>
@@ -58,7 +70,13 @@ const SetConfirm = ({
         {content && <UploadedImage classes={imageCss} content={content} />}
         {redirect && <RedirectLink classes={redirectCss} redirect={redirect} />}
 
-        <Balance price={price} tax={tax} totalAmount={totalAmount} />
+        <Balance
+          prevBidTotalAmount={prevBidTotalAmount}
+          price={price}
+          tax={tax}
+          totalAmount={totalAmount}
+          totalDiff={totalDiff}
+        />
         <Detail
           price={price}
           taxRate={taxRate}
@@ -77,7 +95,16 @@ const SetConfirm = ({
         terms
       </p>
 
-      <Controls totalAmount={totalAmount} updateSetBidStep={updateSetBidStep} />
+      <Controls
+        prevBid={prevBid}
+        price={price}
+        content={content}
+        redirect={redirect}
+        totalAmount={totalAmount}
+        isNewBid={isNewBid}
+        updateSetBidStep={updateSetBidStep}
+        setStep={setStep}
+      />
     </section>
   )
 }

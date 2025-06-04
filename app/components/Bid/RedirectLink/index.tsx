@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 
 import CopySvg from '@components/Svg/Copy'
+import useAlert from '@hooks/useAlert'
 
 type PropsType = {
   classes?: string
@@ -8,11 +9,14 @@ type PropsType = {
 }
 
 const RedirectLink = ({ classes, redirect }: PropsType) => {
+  const { makeAlert } = useAlert()
+
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(redirect || '')
+      makeAlert('Link copied')
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 

@@ -19,7 +19,7 @@ const Rows = ({ data }: PropsType) => {
       const { bid, epoch, epochRange, txHash } = auction
       return {
         epoch,
-        price: toFloatUSDT(Number(bid.price || 0), 2),
+        price: toFloatUSDT(bid.price || 0, 2),
         bidder: formatAddress(bid.bidder),
         endAt: formatDate(epochRange.end),
         txHash: formatAddress(txHash),
