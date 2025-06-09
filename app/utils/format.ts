@@ -24,3 +24,7 @@ export const formatRound = (round: Record<string, Anything>) => ({
   from: formatDate(round.from),
   to: formatDate(round.to),
 })
+
+export const formatParams = (data: Record<string, Anything>) => {
+  return new URLSearchParams(data).toString()
+}

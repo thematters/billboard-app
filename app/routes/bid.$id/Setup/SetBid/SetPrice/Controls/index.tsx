@@ -13,7 +13,10 @@ const Controls = ({ disabled, updateSetBidStep }: PropsType) => {
   const navigate = useNavigate()
   const { id, from } = useQueryParams()
 
-  const back = () => navigate(`/board/${id}`)
+  const back = () => {
+    const url = from === 'bidding' ? '/mybids?tab=bidding' : `/board/${id}`
+    navigate(url)
+  }
   const next = () => updateSetBidStep('set-image')
 
   const baseCss = clsx(
@@ -31,6 +34,7 @@ const Controls = ({ disabled, updateSetBidStep }: PropsType) => {
         type="button"
         onClick={back}
       >
+        {from === 'bidding' && <>Back to Bids</>}
         {(!from || from === 'board') && <>Back to Board</>}
       </GradButton>
 

@@ -152,8 +152,8 @@ const Controls = ({
   const baseCss = clsx(
     'mt-8 f-colr gap-y-3 md:f-row-cb md:gap-x-10 max-w-form mx-auto'
   )
-  const buttonCss = clsx('py-3 f-row-cc w-full max-w-[280px]')
-  const buttonOuterCss = clsx('w-full max-w-[280px] mx-auto')
+  const buttonCss = clsx('py-3 f-row-cc w-full md:max-w-[280px]')
+  const buttonOuterCss = clsx('w-full md:w-full md:max-w-[280px] mx-auto')
 
   return (
     <>

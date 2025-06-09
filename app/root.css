@@ -109,6 +109,13 @@
     }
   }
 
+  .button-dot {
+    @apply relative;
+    @apply after:content-[''] after:absolute after:-bottom-[2px] after:right-0;
+    @apply after:h-3 after:w-3 after:rounded-full after:bg-purple-10 after:pointer-events-none;
+    @apply after:border-2 after:border-black;
+  }
+
   .tab-button {
     @apply relative;
     @apply cursor-pointer text-gray-30 hover:text-white font-semibold;
@@ -184,6 +191,24 @@
   .uploader {
     @apply relative bg-center bg-cover rounded-[20px];
     @apply max-w-uploader aspect-img;
+
+    &.empty {
+      background: radial-gradient(circle, rgb(26, 27, 28) 0%, rgba(21, 21, 23) 100%);
+    }
+  }
+
+  .empty-image {
+    @apply rounded max-w-uploader aspect-img;
+
+    background: radial-gradient(circle, rgb(26, 27, 28) 0%, rgba(21, 21, 23) 100%);
+
+    & > div {
+      @apply w-full h-full rounded;
+      background-image:
+        linear-gradient(rgb(33, 33, 35, 0.6) 0.5px, transparent 0.5px, transparent calc(100% - 0.5px), rgb(33, 33, 35, 0.6) calc(100% - 0.5px)),
+        linear-gradient(90deg, rgb(33, 33, 35, 0.6) 0.5px, transparent 0.5px, transparent calc(100% - 0.5px), rgb(33, 33, 35, 0.6) calc(100% - 0.5px));
+      background-size: 5% 10%;
+    }
   }
 }
 

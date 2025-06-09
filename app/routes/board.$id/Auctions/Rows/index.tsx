@@ -51,7 +51,9 @@ const Rows = ({ data }: PropsType) => {
       </section>
 
       <section>
-        {isEmpty && <div className={emptyCss}>No auction data available</div>}
+        {isEmpty && (
+          <div className={emptyCss}>No auction data at the moment</div>
+        )}
         {auctions.map((auction: Record<string, Anything>) => (
           <Row key={auction.txHash} auction={auction} />
         ))}

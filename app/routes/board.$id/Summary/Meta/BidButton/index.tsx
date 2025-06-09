@@ -4,6 +4,7 @@ import { useAccount } from 'wagmi'
 
 import GradButton from '@components/Button/Grad'
 import useModal from '@hooks/useModal'
+import { formatParams } from '@utils/format'
 import { toFloatUSDT } from '@utils/num'
 
 type PropsType = {
@@ -23,10 +24,7 @@ const BidButton = ({ data }: PropsType) => {
   const click = () => {
     if (isConnected) {
       if (whitelisted) {
-        const params = new URLSearchParams({
-          epoch,
-          from: 'board',
-        }).toString()
+        const params = formatParams({ epoch, from: 'board' })
         navigate(`/bid/${id}?${params}`)
       } else {
         open('whitelist')

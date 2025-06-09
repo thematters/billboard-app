@@ -56,8 +56,8 @@ export default {
       },
       maxWidth: {
         header: '1920px',
-        footer: '1302px',
-        main: '1302px',
+        footer: '1240px',
+        main: '1240px',
         drawer: '389px',
         modal: '375px',
         form: '440px',

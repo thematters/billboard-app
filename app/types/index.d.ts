@@ -78,7 +78,7 @@ type SVGPropsType = {
   height?: number | string
 }
 
-// Bid Step types
+// Bid step types
 type BidStepType =
   | 'connect'
   | 'verify'
@@ -88,3 +88,6 @@ type BidStepType =
   | 'success-update'
 
 type SetBidStepType = 'set-price' | 'set-image' | 'set-confirm'
+
+// My bids step types
+type MyBidsStepType = 'connect' | 'bids'

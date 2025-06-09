@@ -6,7 +6,7 @@ type PropsType = {
 }
 
 const UploadedImage = ({ classes, content }: PropsType) => {
-  const baseStyle = { backgroundImage: `url(${content})` }
+  const baseStyle = content ? { backgroundImage: `url(${content})` } : {}
   const baseCss = clsx('uploader', classes)
   return <div style={baseStyle} className={baseCss} />
 }

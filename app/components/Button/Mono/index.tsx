@@ -7,6 +7,7 @@ type PropsType = ComponentPropsType & {
   type: 'button' | 'link'
   shape?: 'general' | 'circle'
   to?: string
+  target?: string
   onClick?: () => void
 }
 
@@ -17,6 +18,7 @@ const MonoButton = ({
   type,
   shape = 'general',
   to,
+  target = '_blank',
   onClick,
 }: PropsType) => {
   const click = onClick ? throttle(onClick, 500, { trailing: false }) : () => {}
@@ -34,7 +36,7 @@ const MonoButton = ({
 
   if (type === 'link' && to) {
     return (
-      <NavLink className={baseCss} to={to} target="_blank">
+      <NavLink className={baseCss} to={to} target={target}>
         {children}
       </NavLink>
     )
