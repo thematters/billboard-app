@@ -15,17 +15,17 @@ const Rows = ({ data }: PropsType) => {
   const isEmpty = runningBids.length === 0 && upcomingBids.length === 0
 
   const baseCss = clsx({
-    '[&>section]:border-b [&>section]:border-gray-80 [&>section]:border-dashed':
+    '[&>section]:border-b [&>section]:border-gray-80 [&>section]:border-dashed [&>section:last-child]:border-b-0':
       !isEmpty,
   })
 
   return (
-    <section>
+    <section className={baseCss}>
       {runningBids.map((d: Anything) => (
-        <Row key={d.id} data={d} />
+        <Row key={d.id} data={d} isRunning={true} />
       ))}
       {upcomingBids.map((d: Anything) => (
-        <Row key={d.id} data={d} />
+        <Row key={d.id} data={d} isRunning={false} />
       ))}
       {isEmpty && <EmptyRow />}
     </section>

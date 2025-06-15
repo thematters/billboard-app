@@ -1,8 +1,11 @@
+import { NavLink } from '@remix-run/react'
 import clsx from 'clsx'
 
 import UploadedImage from '@components/Bid/UploadedImage'
 import MonoButton from '@components/Button/Mono'
+import LinkSvg from '@components/Svg/Link'
 import WarnSvg from '@components/Svg/Warn'
+import useAppEnv from '@hooks/useAppEnv'
 import { formatParams } from '@utils/format'
 import { toFloatUSDT } from '@utils/num'
 
@@ -13,10 +16,12 @@ type PropsType = {
 }
 
 const Row = ({ data }: PropsType) => {
+  const { urlOpExplorer } = useAppEnv()
   const { board, epoch, epochRange, bid, highestBid } = data
 
   const bidParams = formatParams({ epoch, from: 'bidding' })
   const bidUrl = `/bid/${board.id}?${bidParams}`
+  const txUrl = `${urlOpExplorer}/tx/${bid.txHash}`
   const price = toFloatUSDT(bid?.price || 0, 3)
   const content = bid.contentURI
 
@@ -31,7 +36,12 @@ const Row = ({ data }: PropsType) => {
   const infoCss = clsx('self-stretch f-col gap-y-2')
   const timeCss = clsx('text-xs text-gray-50 font-normal')
   const nameCss = clsx('font-semibold')
+  const metaCss = clsx('f-row-cs gap-x-1')
   const hintCss = clsx('f-row-cs gap-x-1 text-xs text-purple-10 font-normal')
+  const hintDotCss = clsx('text-xs text-gray-50')
+  const hashCss = clsx(
+    'f-row-cs gap-x-1 text-xs text-gray-50 hover:text-gray-10 font-normal trans-500'
+  )
   const rightCss = clsx('f-row-cb md:f-col-sb md:self-stretch')
   const buttonDotCss = clsx('f-row-ce', { 'button-dot': isOutbid })
   const updateButtonCss = clsx('block py-1 px-4 text-sm')
@@ -49,12 +59,21 @@ const Row = ({ data }: PropsType) => {
             {epochRange.start} - {epochRange.end} (UTC+8)
           </p>
           <p className={nameCss}>{board.name}</p>
-          {isOutbid && (
-            <div className={hintCss}>
-              <WarnSvg />
-              You've been outbid
-            </div>
-          )}
+          <div className={metaCss}>
+            {isOutbid && (
+              <>
+                <div className={hintCss}>
+                  <WarnSvg />
+                  You've been outbid
+                </div>
+                <p className={hintDotCss}>·</p>
+              </>
+            )}
+            <NavLink className={hashCss} to={txUrl} target="_blank">
+              View Transaction
+              <LinkSvg width={12} height={12} />
+            </NavLink>
+          </div>
         </div>
       </div>
 

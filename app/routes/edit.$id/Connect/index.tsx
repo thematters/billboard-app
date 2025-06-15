@@ -1,7 +1,8 @@
 import clsx from 'clsx'
 
 import GradButton from '@components/Button/Grad'
-import MyBidsConnectSvg from '@components/Svg/MyBidsConnect'
+import BidConnectMDSvg from '@components/Svg/BidConnectMD'
+import BidConnectSMSvg from '@components/Svg/BidConnectSM'
 import useModal from '@hooks/useModal'
 
 const Connect = () => {
@@ -18,12 +19,12 @@ const Connect = () => {
 
   return (
     <section>
-      <h1 className={titleCss}>Bids</h1>
+      <h1 className={titleCss}>Edit Bid</h1>
       <p className={descCss}>
-        You'll need to connect your wallet to use the management page.
+        You'll need to connect your wallet before editting.
       </p>
-      <MyBidsConnectSvg classes={imageMDCss} />
-      <MyBidsConnectSvg classes={imageSMCss} />
+      <BidConnectMDSvg classes={imageMDCss} />
+      <BidConnectSMSvg classes={imageSMCss} />
       <GradButton
         classes={buttonCss}
         outerClasses={buttonOuterCss}
@@ -31,7 +32,7 @@ const Connect = () => {
         type="button"
         onClick={click}
       >
-        Connect to Continue
+        Connect to Edit
       </GradButton>
     </section>
   )

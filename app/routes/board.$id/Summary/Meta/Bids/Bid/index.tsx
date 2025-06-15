@@ -17,7 +17,7 @@ const Bid = ({ bid }: PropsType) => {
   const infoCss = clsx('f-row-cs mt-2')
   const timeCss = clsx('text-xs text-gray-50 font-normal')
   const hashCss = clsx(
-    'f-row-cs text-xs text-gray-30 hover:text-gray-10 font-semibold'
+    'f-row-cs text-xs text-gray-30 hover:text-gray-10 font-semibold trans-500'
   )
   const linkCss = clsx('ml-1')
   const priceCss = clsx('self-start')

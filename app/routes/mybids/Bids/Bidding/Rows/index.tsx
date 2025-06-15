@@ -14,7 +14,7 @@ const Rows = ({ data }: PropsType) => {
   const isEmpty = bids.length === 0
 
   const baseCss = clsx({
-    '[&>section]:border-b [&>section]:border-gray-80 [&>section]:border-dashed':
+    '[&>section]:border-b [&>section]:border-gray-80 [&>section]:border-dashed [&>section:last-child]:border-b-0':
       !isEmpty,
   })
 

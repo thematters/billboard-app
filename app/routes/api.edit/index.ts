@@ -11,7 +11,6 @@ import {
   sendError,
 } from '@server/helper.server'
 import { getViemContext } from '@server/viem.server'
-import { toFloatTaxRate } from '@utils/num'
 import { getEpochRange, getShiftedEpochRange } from '@utils/web3'
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
@@ -27,7 +26,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     const { alchemy } = getAlchemyContext()
     const { operator, registry } = getViemContext()
 
-    const [board, prevBid, highestBidder] = await Promise.all([
+    const [board, bid, highestBidder] = await Promise.all([
       operator.read.getBoard([id]),
       operator.read.getBid([id, epoch, address]),
       registry.read.highestBidder([id, epoch]),
@@ -35,31 +34,26 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     if (!board) {
       throw new Error(ERROR.BOARD_NOT_FOUND, { cause: ERROR.BOARD_NOT_FOUND })
     }
+    if (highestBidder !== address) {
+      throw new Error(ERROR.BID_NOT_FOUND, { cause: ERROR.BID_NOT_FOUND })
+    }
 
-    const { startedAt, epochInterval: interval } = board
-    const [highestBid, epochRange, displayEpochRange] = await Promise.all([
-      operator.read.getBid([id, epoch, highestBidder]),
+    const { name, startedAt, epochInterval: interval } = board
+    const [epochRange, displayEpochRange] = await Promise.all([
       getEpochRange(alchemy, startedAt, epoch, interval),
       getShiftedEpochRange(alchemy, startedAt, epoch, interval, 2),
     ])
 
     return json({
       state: DATA_STATE.successful,
-      board: {
-        name: board.name,
-        taxRate: toFloatTaxRate(Number(board.taxRate || 0)),
-      },
+      board: { id: boardId, name },
       epoch: boardEpoch,
       epochRange,
       displayEpochRange,
-      highestBid: {
-        price: Number(highestBid?.price || 0).toFixed(0),
-      },
-      prevBid: {
-        price: Number(prevBid?.price || 0).toFixed(0),
-        contentURI: prevBid.contentURI,
-        redirectURI: prevBid.redirectURI,
-        placedAt: Number(prevBid?.placedAt || 0).toFixed(0),
+      bid: {
+        contentURI: bid.contentURI,
+        redirectURI: bid.redirectURI,
+        placedAt: Number(bid?.placedAt || 0).toFixed(0),
       },
     })
   } catch (error) {

@@ -19,7 +19,7 @@ export const getBoardId = (request: LoaderFunctionArgs['request']) => {
 export const getAddress = (request: LoaderFunctionArgs['request']) => {
   const url = new URL(request.url)
   const address = url.searchParams.get('address')
-  return address
+  return address as `0x${string}`
 }
 
 export const getEpoch = (request: LoaderFunctionArgs['request']) => {

@@ -38,7 +38,7 @@ const SetBid = ({ data, setStep }: PropsType) => {
           updateSetBidStep={updateSetBidStep}
         />
       )}
-      {setBidStep === 'set-image' && (
+      {setBidStep === 'set-content' && (
         <SetContent
           content={content}
           redirect={redirect}

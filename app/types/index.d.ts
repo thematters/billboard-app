@@ -87,7 +87,12 @@ type BidStepType =
   | 'success-new'
   | 'success-update'
 
-type SetBidStepType = 'set-price' | 'set-image' | 'set-confirm'
+type SetBidStepType = 'set-price' | 'set-content' | 'set-confirm'
+
+// Edit won bid step types
+type EditStepType = 'connect' | 'verify' | 'unauthed' | 'setup' | 'success'
+
+type EditBidStepType = 'set-content' | 'set-confirm'
 
 // My bids step types
 type MyBidsStepType = 'connect' | 'bids'

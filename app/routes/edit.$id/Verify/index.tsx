@@ -7,7 +7,7 @@ import useQueryParams from '@hooks/useQueryParams'
 import Loader from '../Loader'
 
 type PropsType = {
-  setStep: (value: BidStepType) => void
+  setStep: (value: EditStepType) => void
 }
 
 const Verify = ({ setStep }: PropsType) => {

@@ -32,17 +32,16 @@
   }
 
   .link-button {
-    @apply text-gray-10 hover:text-white font-semibold;
-    @apply transition-all duration-500;
+    @apply text-gray-10 hover:text-white font-semibold trans-500;
   }
 
   .mono-gray-button {
-    @apply bg-gray-70 hover:bg-gray-80 transition-all duration-500;
+    @apply bg-gray-70 hover:bg-gray-80 trans-500;
   }
 
   .mono-dim-gray-button {
     @apply bg-black hover:bg-gray-90 border border-gray-80 hover:border-gray-70;
-    @apply transition-all duration-500;
+    @apply trans-500;
   }
 
   .grad-green-button {
@@ -119,7 +118,7 @@
   .tab-button {
     @apply relative;
     @apply cursor-pointer text-gray-30 hover:text-white font-semibold;
-    @apply transition-all duration-500;
+    @apply trans-500;
   }
 
   .tab-active {
@@ -251,6 +250,10 @@
 
   .aspect-img {
     aspect-ratio: 177 / 100;
+  }
+
+  .trans-500 {
+    @apply transition-all duration-500;
   }
 
   @property --grad-green-from {

@@ -5,16 +5,16 @@ import useQueryParams from '@hooks/useQueryParams'
 
 type PropsType = {
   disabled: boolean
-  updateSetBidStep: (value: SetBidStepType) => void
+  updateEditBidStep: (value: EditBidStepType) => void
 }
 
-const Controls = ({ disabled, updateSetBidStep }: PropsType) => {
+const Controls = ({ disabled, updateEditBidStep }: PropsType) => {
   const { id, from } = useQueryParams()
 
   const isFromMyBids = from === 'accepted' || from === 'bidding'
   const backUrl = isFromMyBids ? `/mybids?tab=${from}` : `/board/${id}`
 
-  const next = () => updateSetBidStep('set-content')
+  const next = () => updateEditBidStep('set-confirm')
 
   const baseCss = clsx(
     'f-colr gap-y-3 md:f-row-cb md:gap-x-10 max-w-form mx-auto'

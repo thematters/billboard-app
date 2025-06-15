@@ -37,7 +37,7 @@ const Controls = ({
   const env = useAppEnv()
   const config = useConfig()
   const { id, epoch } = useQueryParams()
-  const [isWaitingTx, setIsWaitingTx] = useState<boolean>(false)
+  const [isWaitingTx, setIsWaitingTx] = useState(false)
   const { address } = useAccount()
 
   const {
@@ -77,7 +77,7 @@ const Controls = ({
   const canConfirm =
     !isExceededAllowance && (isPriceChanged || isContentChanged)
 
-  const back = () => updateSetBidStep('set-image')
+  const back = () => updateSetBidStep('set-content')
 
   const approve = async () => {
     if (isLoading || !address) {
