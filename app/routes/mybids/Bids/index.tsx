@@ -6,10 +6,11 @@ import useQueryParams from '@hooks/useQueryParams'
 
 import Accepted from './Accepted'
 import Bidding from './Bidding'
+import Outbid from './Outbid'
 
 const Bids = () => {
   const { tab } = useQueryParams()
-  const [selected, setSelected] = useState(tab || 'accepted')
+  const [selected, setSelected] = useState(tab || 'outbid')
 
   const tabItems = [
     { key: 'accepted', name: 'Accepted' },
@@ -31,6 +32,7 @@ const Bids = () => {
       />
       {selected === 'accepted' && <Accepted />}
       {selected === 'bidding' && <Bidding />}
+      {selected === 'outbid' && <Outbid />}
     </section>
   )
 }
