@@ -6,6 +6,7 @@ import Box from '@components/Box'
 
 import Bids from './Bids'
 import Connect from './Connect'
+import Success from './Success'
 
 const Page = () => {
   const [step, setStep] = useState<MyBidsStepType>('bids')
@@ -27,7 +28,8 @@ const Page = () => {
   return (
     <Box classes={baseCss}>
       {step === 'connect' && <Connect />}
-      {step === 'bids' && <Bids />}
+      {step === 'bids' && <Bids setStep={setStep} />}
+      {step === 'success' && <Success setStep={setStep} />}
     </Box>
   )
 }

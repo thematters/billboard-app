@@ -32,7 +32,7 @@ const Success = () => {
         to={redirectUrl}
         target="_self"
       >
-        Beck to Bids
+        Back to Bids
       </GradButton>
     </section>
   )

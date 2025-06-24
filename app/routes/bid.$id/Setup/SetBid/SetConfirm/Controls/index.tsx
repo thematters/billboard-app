@@ -60,12 +60,12 @@ const Controls = ({
   // data
   const lastBidPrice = toFloatUSDTAsNumber(prevBid?.price || 0)
   const allowance = toFloatUSDTAsNumber(Number(allowanceData || 0))
+  const error = allowanceError || approveError || bidError
+  const errorMessage = (error as Anything)?.shortMessage || ''
 
   // condition
   const isExceededAllowance = totalAmount > allowance
   const isLoading = isWaitingTx || allowanceIsLoading
-  const error = allowanceError || approveError || bidError
-  const errorMessage = (error as Anything)?.shortMessage || ''
   const isPriceChanged = price != lastBidPrice
   const isContentChanged =
     content != prevBid.contentURI || redirect != prevBid.redirectURI

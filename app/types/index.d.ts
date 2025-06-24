@@ -95,4 +95,4 @@ type EditStepType = 'connect' | 'verify' | 'unauthed' | 'setup' | 'success'
 type EditBidStepType = 'set-content' | 'set-confirm'
 
 // My bids step types
-type MyBidsStepType = 'connect' | 'bids'
+type MyBidsStepType = 'connect' | 'bids' | 'success'

@@ -37,6 +37,10 @@
 
   .mono-gray-button {
     @apply bg-gray-70 hover:bg-gray-80 trans-500;
+
+    &:disabled {
+      @apply cursor-not-allowed hover:bg-gray-70 text-gray-50;
+    }
   }
 
   .mono-dim-gray-button {

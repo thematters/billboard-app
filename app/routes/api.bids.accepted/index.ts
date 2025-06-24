@@ -31,7 +31,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
         operator.read.getLatestEpoch([id]),
       ])
 
-      if (board.startedAt == 0n) {
+      if (board.startedAt === 0n) {
         continue
       }
 

@@ -4,7 +4,6 @@ import clsx from 'clsx'
 import UploadedImage from '@components/Bid/UploadedImage'
 import LinkSvg from '@components/Svg/Link'
 import useAppEnv from '@hooks/useAppEnv'
-import { formatParams } from '@utils/format'
 import { toFloatUSDT } from '@utils/num'
 
 import EmptyImage from '../../../EmptyImage'
@@ -15,7 +14,7 @@ type PropsType = {
 
 const Row = ({ data }: PropsType) => {
   const { urlOpExplorer } = useAppEnv()
-  const { board, epoch, epochRange, bid, highestBid } = data
+  const { board, epochRange, bid } = data
 
   const txUrl = `${urlOpExplorer}/tx/${bid.txHash}`
   const price = toFloatUSDT(bid?.price || 0, 3)
@@ -31,14 +30,10 @@ const Row = ({ data }: PropsType) => {
   const timeCss = clsx('text-xs text-gray-50 font-normal')
   const nameCss = clsx('font-semibold')
   const metaCss = clsx('f-row-cs gap-x-1')
-  const hintCss = clsx('f-row-cs gap-x-1 text-xs text-purple-10 font-normal')
-  const hintDotCss = clsx('text-xs text-gray-50')
   const hashCss = clsx(
     'f-row-cs gap-x-1 text-xs text-gray-50 hover:text-gray-10 font-normal trans-500'
   )
   const rightCss = clsx('f-row-cb md:f-col-sb md:self-stretch')
-  const buttonDotCss = clsx('f-row-ce', { 'button-dot': isOutbid })
-  const updateButtonCss = clsx('block py-1 px-4 text-sm')
 
   return (
     <section className={baseCss}>

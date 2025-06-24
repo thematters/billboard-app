@@ -9,7 +9,7 @@ type PropsType = {
 }
 
 const Rows = ({ data }: PropsType) => {
-  const bids = data?.bids || []
+  const bids = data?.outbids || []
 
   const isEmpty = bids?.length === 0
 
@@ -19,7 +19,7 @@ const Rows = ({ data }: PropsType) => {
   })
 
   return (
-    <section>
+    <section className={baseCss}>
       {bids.map((d: Anything) => (
         <Row key={d.id} data={d} />
       ))}

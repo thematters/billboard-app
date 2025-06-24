@@ -8,6 +8,7 @@ type PropsType = ComponentPropsType & {
   shape?: 'general' | 'circle'
   to?: string
   target?: string
+  disabled?: boolean
   onClick?: () => void
 }
 
@@ -19,6 +20,7 @@ const MonoButton = ({
   shape = 'general',
   to,
   target = '_blank',
+  disabled,
   onClick,
 }: PropsType) => {
   const click = onClick ? throttle(onClick, 500, { trailing: false }) : () => {}
@@ -30,6 +32,7 @@ const MonoButton = ({
       'rounded-full': shape === 'circle',
       'mono-gray-button': color === 'gray',
       'mono-dim-gray-button': color === 'dim-gray',
+      disabled,
     },
     classes
   )
@@ -43,7 +46,7 @@ const MonoButton = ({
   }
 
   return (
-    <button className={baseCss} onClick={click}>
+    <button className={baseCss} disabled={disabled} onClick={click}>
       {children}
     </button>
   )
