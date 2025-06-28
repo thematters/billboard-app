@@ -96,3 +96,6 @@ type EditBidStepType = 'set-content' | 'set-confirm'
 
 // My bids step types
 type MyBidsStepType = 'connect' | 'bids' | 'success'
+
+// Reward step types
+type ClaimRewardStepType = 'connect' | 'records' | 'success'

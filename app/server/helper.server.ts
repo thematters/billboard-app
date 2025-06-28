@@ -1,4 +1,6 @@
 import type { LoaderFunctionArgs } from '@remix-run/node'
+import fs from 'fs-extra'
+import path from 'path'
 
 import { json } from '@remix-run/node'
 
@@ -30,6 +32,24 @@ export const getEpoch = (request: LoaderFunctionArgs['request']) => {
     throw new Error(ERROR.EPOCH_INVALID, { cause: ERROR.EPOCH_INVALID })
   }
   return epoch
+}
+
+export const getPublicStaticFile = async (
+  filePath: string,
+  fallback: string
+) => {
+  const temp = filePath.replace('./public/', '')
+  const dataPath = path.resolve('./public', temp)
+  const fileExists = await fs.pathExists(dataPath)
+
+  if (!fileExists) {
+    throw new Error(ERROR.ROUNDS_FILE_NOT_FOUND, {
+      cause: ERROR.ROUNDS_FILE_NOT_FOUND,
+    })
+  }
+
+  const data = JSON.parse((await fs.readFile(dataPath, 'utf8')) || fallback)
+  return data
 }
 
 export const handleError = (error: Anything) => {

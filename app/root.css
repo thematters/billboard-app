@@ -213,6 +213,20 @@
       background-size: 5% 10%;
     }
   }
+
+  .green-scrollbar {
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      @apply bg-green-20 rounded-[3px];
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+  }
 }
 
 @layer utilities {

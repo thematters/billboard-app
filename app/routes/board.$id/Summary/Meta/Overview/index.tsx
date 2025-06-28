@@ -38,7 +38,7 @@ const Overview = ({ data }: PropsType) => {
         Optimism
       </div>
       <div>
-        <EyeSvg />
+        <EyeSvg classes={iconCss} />
         Contract (ERC-721)
         <NavLink to={urlContract} target="_blank">
           {address}

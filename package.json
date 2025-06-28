@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.821.0",
+    "@openzeppelin/merkle-tree": "^1.0.8",
     "@remix-run/node": "^2.16.5",
     "@remix-run/react": "^2.16.5",
     "@remix-run/serve": "^2.16.5",
@@ -16,6 +17,7 @@
     "dayjs": "^1.11.13",
     "decimal.js": "^10.5.0",
     "framer-motion": "^12.7.4",
+    "fs-extra": "^11.3.0",
     "is-url": "^1.2.4",
     "isbot": "^5.1.26",
     "lodash-es": "^4.17.21",
@@ -30,6 +32,7 @@
   "devDependencies": {
     "@eslint/js": "^9.24.0",
     "@remix-run/dev": "^2.16.5",
+    "@types/fs-extra": "^11.0.4",
     "@types/is-url": "^1.2.32",
     "@types/lodash-es": "^4.17.12",
     "@types/react": "^18.3.10",

@@ -18,9 +18,9 @@ const Connect = () => {
 
   return (
     <section>
-      <h1 className={titleCss}>Bids</h1>
+      <h1 className={titleCss}>Rewards</h1>
       <p className={descCss}>
-        You'll need to connect your wallet to use the management page.
+        You'll need to connect your wallet to enter the reward page.
       </p>
       <ConnectSvg classes={imageMDCss} />
       <ConnectSvg classes={imageSMCss} />
