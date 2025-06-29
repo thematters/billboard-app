@@ -15,7 +15,7 @@ const Menu = ({ close }: PropsType) => {
   const links = [
     { to: '/inbox', name: 'Inbox' },
     { to: '/mybids', name: 'Bids' },
-    { to: '/rewards', name: 'Rewards' },
+    { to: '/claim', name: 'Rewards' },
   ]
 
   return (
