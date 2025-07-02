@@ -173,6 +173,7 @@
     &.error {
       @apply border border-red-10;
     }
+
   }
 
   .input-text {
@@ -226,6 +227,41 @@
     &::-webkit-scrollbar-track {
       background: transparent;
     }
+  }
+
+  .reward-sketch {
+    @apply relative bg-cover bg-center bg-no-repeat;
+    @apply after:content-[''] after:absolute after:z-0;
+    @apply after:inset-0 after:bg-gradient-to-b after:from-transparent after:from-20% after:to-black;
+
+    box-shadow: inset 0 4px 8px 0 rgb(0 0 0 / 0.95);
+
+    background-image: url('assets/reward.jpg');
+
+    @supports(background-image: url('assets/reward.webp')) {
+      background-image: url('assets/reward.webp');
+    }
+
+    & > div {
+      @apply relative z-10;
+    }
+  }
+
+  /* Embla */
+  .embla {
+    overflow: hidden;
+    cursor: grab;
+    user-select: none;
+  }
+
+  .embla__container {
+    display: flex;
+    grid-column-gap: 20px;
+  }
+
+  .embla__slide {
+    flex: 0 0 100%;
+    min-width: 0;
   }
 }
 

@@ -1,6 +1,6 @@
 import { memo } from 'react'
 
-const RewardSM = ({ classes, width = 375, height = 378 }: SVGPropsType) => (
+const ClaimSM = ({ classes, width = 375, height = 378 }: SVGPropsType) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className={classes}
@@ -40,4 +40,4 @@ const RewardSM = ({ classes, width = 375, height = 378 }: SVGPropsType) => (
   </svg>
 )
 
-export default memo(RewardSM)
+export default memo(ClaimSM)

@@ -1,8 +1,8 @@
 import clsx from 'clsx'
 
 import Error from '@components/Error'
-import ClaimMDLoaderSvg from '@components/Svg/Loader/ClaimMD'
-import ClaimSMLoaderSvg from '@components/Svg/Loader/ClaimSM'
+import DistMDLoaderSvg from '@components/Svg/Loader/DistMD'
+import DistSMLoaderSvg from '@components/Svg/Loader/DistSM'
 
 type PropsType = {
   data: Record<string, Anything>
@@ -17,8 +17,8 @@ const Loader = ({ data, isLoading, isError }: PropsType) => {
   if (isLoading || isError) {
     return (
       <>
-        <ClaimMDLoaderSvg classes={mdLoaderCss} />
-        <ClaimSMLoaderSvg classes={smLoaderCss} />
+        <DistMDLoaderSvg classes={mdLoaderCss} />
+        <DistSMLoaderSvg classes={smLoaderCss} />
         {isError && <Error message={data.error || data.code} align="center" />}
       </>
     )

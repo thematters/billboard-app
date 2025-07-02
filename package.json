@@ -16,6 +16,7 @@
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
     "decimal.js": "^10.5.0",
+    "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.7.4",
     "fs-extra": "^11.3.0",
     "is-url": "^1.2.4",
@@ -54,7 +55,7 @@
   "scripts": {
     "build": "remix vite:build",
     "dev": "remix vite:dev",
-    "start": "remix-serve ./build/index.js",
+    "start": "remix-serve ./build/server/index.js",
     "lint": "eslint .; tsc",
     "lint:fix": "eslint --fix"
   }
