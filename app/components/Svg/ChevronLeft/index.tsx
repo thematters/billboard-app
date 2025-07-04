@@ -1,9 +1,9 @@
 import { memo } from 'react'
 
-const Chevron = ({ classes, width = 24, height = 24 }: SVGPropsType) => (
+const ChevronRight = ({ classes, width = 24, height = 24 }: SVGPropsType) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className={classes}
+    className={`${classes} -scale-x-100`}
     width={width}
     height={height}
     viewBox="0 0 24 24"
@@ -17,4 +17,4 @@ const Chevron = ({ classes, width = 24, height = 24 }: SVGPropsType) => (
   </svg>
 )
 
-export default memo(Chevron)
+export default memo(ChevronRight)

@@ -1,7 +1,7 @@
 import { NavLink } from '@remix-run/react'
 import clsx from 'clsx'
 
-import ChevronSvg from '@components/Svg/Chevron'
+import ChevronRightSvg from '@components/Svg/ChevronRight'
 import EmptyBoxSvg from '@components/Svg/EmptyBox'
 import useAppEnv from '@hooks/useAppEnv'
 
@@ -22,7 +22,7 @@ const EmptyRow = () => {
         target="_self"
       >
         It's still empty here. Go bid now
-        <ChevronSvg width={22} height={22} />
+        <ChevronRightSvg width={22} height={22} />
       </NavLink>
       <EmptyBoxSvg classes={svgCss} />
     </>
