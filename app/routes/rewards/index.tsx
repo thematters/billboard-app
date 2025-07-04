@@ -1,11 +1,13 @@
-import Distribution from './Distribution'
+import Action from './Action'
 import Hero from './Hero'
+import History from './History'
 
 const Page = () => {
   return (
     <>
       <Hero />
-      <Distribution />
+      <History />
+      <Action />
     </>
   )
 }

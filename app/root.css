@@ -247,6 +247,16 @@
     }
   }
 
+  .reward-action-sketch {
+    @apply bg-cover bg-center bg-no-repeat;
+
+    background-image: url('assets/reward-action.jpg');
+
+    @supports(background-image: url('assets/reward-action.webp')) {
+      background-image: url('assets/reward-action.webp');
+    }
+  }
+
   /* Embla */
   .embla {
     overflow: hidden;

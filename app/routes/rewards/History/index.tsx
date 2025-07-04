@@ -7,14 +7,14 @@ import Loader from './Loader'
 
 import Rows from './Rows'
 
-const Distribution = () => {
+const History = () => {
   const { data, isLoading, isLoaded, isError } = useQuery({
     action: '/api/rewards/distribution',
     params: {},
     auto: true,
   })
 
-  const baseCss = clsx('main-min-max mx-auto py-10 md:py-[100px]')
+  const baseCss = clsx('main-min-max mx-auto py-10 md:pt-[132px] md:pb-[100px]')
 
   return (
     <Box classes={baseCss}>
@@ -24,4 +24,4 @@ const Distribution = () => {
   )
 }
 
-export default Distribution
+export default History
