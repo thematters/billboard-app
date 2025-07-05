@@ -2,7 +2,6 @@ import clsx from 'clsx'
 
 import Box from '@components/Box'
 import GradButton from '@components/Button/Grad'
-import LinkSvg from '@components/Svg/Link'
 
 const Action = () => {
   const baseCss = clsx(
@@ -27,8 +26,7 @@ const Action = () => {
             type="link"
             to="https://matters-lab.io/"
           >
-            Contact Us
-            <LinkSvg width={16} height={16} />
+            List your AD space now
           </GradButton>
           <p className={descCss}>Don’t hesitate to get in touch.</p>
           <h1 className={titleCss}>Support your community—Billboard now</h1>

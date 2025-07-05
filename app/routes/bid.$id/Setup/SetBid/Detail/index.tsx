@@ -53,7 +53,7 @@ const Detail = ({ price, taxRate, tax, totalAmount }: PropsType) => {
             <section className={detailCss}>
               <h5>Total Amount</h5>
               <p>
-                The total amount consists of the bid price pluses the tax fee.
+                The total amount consists of the bid price plus the tax fee.
               </p>
               <p className={numCss}>
                 {price.toFixed(2)} + {tax} = {totalAmount}
@@ -61,9 +61,9 @@ const Detail = ({ price, taxRate, tax, totalAmount }: PropsType) => {
 
               <h5 className={subtitleCss}>Tax Fee</h5>
               <p>
-                To keep the AD Space bid price close to market value, we adopt a
-                tax system at a daily rate of 3.6%. If you win the bid and your
-                ad will run for 14 days by default, the tax is calculated as :
+                To keep the bid price close to market value, we adopt a tax
+                system at a daily rate of 3.6%. If you win the bid and your ad
+                will run for 14 days by default, the tax is calculated as :
               </p>
               <p className={numCss}>
                 {price.toFixed(2)} × {toPercentTaxRate(taxRate)}% × 14 = {tax}

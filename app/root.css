@@ -120,14 +120,24 @@
   }
 
   .tab-button {
-    @apply relative;
+    @apply relative trans-500;
     @apply cursor-pointer text-gray-30 hover:text-white font-semibold;
-    @apply trans-500;
+    @apply before:absolute before:inset-x-0 before:-bottom-px before:h-[2px];
+    @apply before:bg-transparent before:trans-500;
+
+    &.active {
+      @apply text-white;
+      @apply before:bg-white;
+    }
   }
 
-  .tab-active {
-    @apply text-white;
-    @apply before:absolute before:inset-x-0 before:-bottom-px before:h-[2px] before:bg-white;
+  .side-nav-button {
+    @apply text-base font-semibold rounded-xl bg-transparent cursor-pointer;
+    @apply text-gray-50 trans-300;
+
+    &.active {
+      @apply text-white bg-gray-80 cursor-default;
+    }
   }
 
   .loader-md {
@@ -314,6 +324,10 @@
 
   .aspect-img {
     aspect-ratio: 177 / 100;
+  }
+
+  .trans-300 {
+    @apply transition-all duration-300;
   }
 
   .trans-500 {
