@@ -1,4 +1,4 @@
-import { useNavigate } from '@remix-run/react'
+import { NavLink, useNavigate } from '@remix-run/react'
 import clsx from 'clsx'
 import { useAccount } from 'wagmi'
 
@@ -27,6 +27,7 @@ const Hero = () => {
   const descCss = clsx(
     'text-base md:text-xl text-center text-gray-30 font-normal'
   )
+  const linkCss = clsx('text-white')
   const buttonCss = clsx('py-3 w-full md:w-[280px]')
   const buttonOuterCss = clsx('mt-6 mb-8 w-full md:w-fit mx-auto')
 
@@ -48,8 +49,15 @@ const Hero = () => {
             Billboard is dedicated to creative work powered by community
             rewards. Revenue from billboards is periodically distributed to
             creators through the community-governed process. If you’re claiming
-            rewards for the first time, please check our step-by-step guide to
-            get started.
+            rewards for the first time, check our{' '}
+            <NavLink
+              className={linkCss}
+              to="https://matters.town/a/bnrzg4x1iren"
+              target="_blank"
+            >
+              step-by-step guide
+            </NavLink>{' '}
+            to get started.
           </p>
           <h1 className={titleCss}>
             Creative Works Powered by Community Support

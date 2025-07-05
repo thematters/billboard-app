@@ -10,7 +10,7 @@ import General from './General'
 import Reward from './Reward'
 
 const Page = () => {
-  const [selected, setSelected] = useState('reward')
+  const [selected, setSelected] = useState('general')
 
   const items = [
     { key: 'general', name: 'General' },

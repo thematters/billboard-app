@@ -26,10 +26,10 @@ const Action = () => {
             type="link"
             to="https://matters-lab.io/"
           >
-            List your AD space now
+            List Your AD Spaces Now
           </GradButton>
           <p className={descCss}>Don’t hesitate to get in touch.</p>
-          <h1 className={titleCss}>Support your community—Billboard now</h1>
+          <h1 className={titleCss}>Support your community—onboard now</h1>
         </div>
       </section>
     </Box>
