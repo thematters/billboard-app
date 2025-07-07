@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import chunk from 'lodash-es/chunk'
 import { useMediaQuery } from 'usehooks-ts'
 
-import Carousel from '@components/Carousel'
+import BaseCarousel from '@components/Carousel/Base'
 import { formatRound } from '@utils/format'
 
 import Row from './Row'
@@ -35,11 +35,11 @@ const Rows = ({ data }: PropsType) => {
   return (
     <>
       <h1 className={titleCss}>Reward Distribution History</h1>
-      <Carousel classes={carouselCss} size={rounds.length}>
+      <BaseCarousel classes={carouselCss} size={rounds.length}>
         {rounds.map((chunk: Record<string, Anything>[], i: number) => (
           <Row key={i} classes="embla__slide" rounds={chunk} />
         ))}
-      </Carousel>
+      </BaseCarousel>
     </>
   )
 }

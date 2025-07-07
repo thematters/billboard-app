@@ -11,7 +11,7 @@ type PropsType = ComponentPropsType & {
   size: number
 }
 
-const Carousel = ({ children, classes, size }: PropsType) => {
+const BaseCarousel = ({ children, classes, size }: PropsType) => {
   const [curr, setCurr] = useState(0)
   const [emblaRef, emblaApi] = useEmblaCarousel()
 
@@ -95,4 +95,4 @@ const Carousel = ({ children, classes, size }: PropsType) => {
   )
 }
 
-export default Carousel
+export default BaseCarousel

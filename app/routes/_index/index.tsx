@@ -1,5 +1,11 @@
+import Hero from './Hero'
+
 const Page = () => {
-  return <p></p>
+  return (
+    <>
+      <Hero />
+    </>
+  )
 }
 
 export default Page

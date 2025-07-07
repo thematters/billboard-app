@@ -5,7 +5,7 @@ import GradButton from '@components/Button/Grad'
 
 const Action = () => {
   const baseCss = clsx(
-    'reward-action-sketch f-colr px-4 md:px-5 lg:px-8 h-[560px] md:h-[672px] min-w-main'
+    'action-sketch f-colr px-4 md:px-5 lg:px-8 h-[560px] md:h-[672px] min-w-main'
   )
   const contentCss = clsx('f-colr gap-y-4 max-w-main mx-auto')
   const titleCss = clsx('section-title')
