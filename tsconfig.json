@@ -14,6 +14,7 @@
     "baseUrl": ".",
     "paths": {
       "@abis/*": ["./app/abis/*"],
+      "@assets/*": ["./app/assets/*"],
       "@components/*": ["./app/components/*"],
       "@constants": ["./app/constants/index.ts"],
       "@contexts/*": ["./app/contexts/*"],
