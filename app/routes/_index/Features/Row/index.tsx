@@ -17,7 +17,7 @@ const Row = ({ icon, color, title, items, to }: PropsType) => {
     'p-0 md:p-5 grid grid-cols-1 md:grid-cols-[auto_1fr] md:gap-x-8'
   )
   const iconCss = clsx('mx-auto')
-  const contentCss = clsx('')
+  const contentCss = clsx('mt-4 md:mt-0')
   const headCss = clsx(
     'f-row-cb text-base md:text-[28px] font-semibold md:font-medium',
     `text-${color}-10`

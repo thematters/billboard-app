@@ -1,3 +1,4 @@
+import range from 'lodash-es/range'
 import { useId } from 'react'
 
 import advertiser from '@assets/advertiser.png'
@@ -6,19 +7,11 @@ import creator from '@assets/creator.png'
 import reader from '@assets/reader.png'
 import treasury from '@assets/treasury.png'
 
-const Roles = ({ classes, width = 802, height = 605 }: SVGPropsType) => {
-  const aId = useId()
-  const bId = useId()
-  const cId = useId()
-  const dId = useId()
-  const eId = useId()
-  const fId = useId()
-  const gId = useId()
-  const hId = useId()
-  const iId = useId()
-  const jId = useId()
-  const kId = useId()
-  const lId = useId()
+const RolesMD = ({ classes, width = 802, height = 605 }: SVGPropsType) => {
+  const [aId, bId, cId, dId, eId, fId, gId, hId, iId, jId, kId, lId] = range(
+    12
+  ).map(() => useId())
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -283,4 +276,4 @@ const Roles = ({ classes, width = 802, height = 605 }: SVGPropsType) => {
   )
 }
 
-export default Roles
+export default RolesMD
