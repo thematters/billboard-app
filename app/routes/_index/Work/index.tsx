@@ -8,15 +8,15 @@ import RolesSMSvg from '@components/Svg/RolesSM'
 import Role from './Role'
 
 const Work = () => {
-  const baseCss = clsx('main-min-max mx-auto py-10 md:py-20')
+  const baseCss = clsx('main-min-max mx-auto py-10 md:py-24')
   const titleCss = clsx('section-title')
   const rolesCss = clsx(
-    'mt-10 grid grid-cols-1 md:grid-cols-[repeat(13,1fr)] gap-x-20'
+    'mt-12 grid grid-cols-1 md:grid-cols-[repeat(13,1fr)] gap-x-20'
   )
   const sketchCss = clsx('md:col-span-8')
   const svgMdCss = clsx('hidden md:block')
   const svgSmCss = clsx('block md:hidden')
-  const contentCss = clsx('mt-8 md:mt-0 md:col-span-5')
+  const contentCss = clsx('mt-8 md:mt-0 md:col-span-5 md:f-row-cc')
 
   return (
     <Box classes={baseCss}>

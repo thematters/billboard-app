@@ -1,5 +1,4 @@
 import clsx from 'clsx'
-import range from 'lodash-es/range'
 
 import BitSvg from '@components/Svg/AD/Bit'
 import DevconSvg from '@components/Svg/AD/Devcon'
@@ -23,17 +22,21 @@ const Marquee = ({ classes }: PropsType) => {
   return (
     <div className={baseCss}>
       <div className={listCss}>
-        {range(2).map(() => (
-          <>
-            <FoodaySvg opacity={0.5} />
-            <SocialLayerSvg opacity={0.5} />
-            <FireflySvg opacity={0.5} />
-            <LinkeSvg opacity={0.5} />
-            <BitSvg opacity={0.5} />
-            <NumbersSvg opacity={0.5} />
-            <DevconSvg opacity={0.5} />
-          </>
-        ))}
+        {/* duplicate on purpose for marquee */}
+        <FoodaySvg opacity={0.5} />
+        <SocialLayerSvg opacity={0.5} />
+        <FireflySvg opacity={0.5} />
+        <LinkeSvg opacity={0.5} />
+        <BitSvg opacity={0.5} />
+        <NumbersSvg opacity={0.5} />
+        <DevconSvg opacity={0.5} />
+        <FoodaySvg opacity={0.5} />
+        <SocialLayerSvg opacity={0.5} />
+        <FireflySvg opacity={0.5} />
+        <LinkeSvg opacity={0.5} />
+        <BitSvg opacity={0.5} />
+        <NumbersSvg opacity={0.5} />
+        <DevconSvg opacity={0.5} />
       </div>
     </div>
   )

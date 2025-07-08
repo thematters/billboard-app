@@ -2,8 +2,11 @@ import clsx from 'clsx'
 
 import Box from '@components/Box'
 import GradButton from '@components/Button/Grad'
+import useAppEnv from '@hooks/useAppEnv'
 
 const Action = () => {
+  const { tokenIdShowCase: id } = useAppEnv()
+
   const baseCss = clsx(
     'action-sketch f-colr px-4 md:px-5 lg:px-8 h-[560px] md:h-[672px] min-w-main'
   )
@@ -24,13 +27,13 @@ const Action = () => {
             outerClasses={buttonOuterCss}
             color="green"
             type="link"
-            to="/list"
+            to={`/board/${id}`}
             target="_self"
           >
-            List Your AD Spaces Now
+            Bid AD Board
           </GradButton>
-          <p className={descCss}>Don’t hesitate to get in touch.</p>
-          <h1 className={titleCss}>Support your community—onboard now</h1>
+          <p className={descCss}></p>
+          <h1 className={titleCss}>More exposure ? Bid now</h1>
         </div>
       </section>
     </Box>

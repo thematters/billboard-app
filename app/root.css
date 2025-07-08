@@ -308,14 +308,10 @@
   .action-sketch {
     @apply bg-cover bg-center bg-no-repeat;
 
-    background-image:
-      linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)),
-      url('assets/action.jpg');
+    background-image: url('assets/action.jpg');
 
     @supports(background-image: url('assets/action.webp')) {
-      background-image:
-        linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)),
-        url('assets/action.webp');
+      background-image: url('assets/action.webp');
     }
   }
 

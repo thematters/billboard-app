@@ -41,8 +41,8 @@ const Row = ({ icon, color, title, items, to }: PropsType) => {
             <ChevronRightSvg width={18} height={18} opacity={1} />
           </NavLink>
         </div>
-        {items.map((d: string) => (
-          <div className={itemCss}>
+        {items.map((d: string, idx: number) => (
+          <div key={idx} className={itemCss}>
             <SlimCheckSvg classes={checkCss} />
             <div className={textCss}>{d}</div>
           </div>

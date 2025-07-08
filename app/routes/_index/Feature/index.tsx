@@ -1,13 +1,13 @@
 import clsx from 'clsx'
 
 import Box from '@components/Box'
-import Sketch1Svg from '@components/Svg/Features/Sketch1'
-import Sketch2Svg from '@components/Svg/Features/Sketch2'
-import Sketch3Svg from '@components/Svg/Features/Sketch3'
+import Sketch1Svg from '@components/Svg/Feature/Sketch1'
+import Sketch2Svg from '@components/Svg/Feature/Sketch2'
+import Sketch3Svg from '@components/Svg/Feature/Sketch3'
 
 import Row from './Row'
 
-const Features = () => {
+const Feature = () => {
   const baseCss = clsx('main-min-max mx-auto py-10 md:py-24')
   const titleCss = clsx('section-title')
   const listCss = clsx('mt-8 md:mt-16 grid grid-cols-1 gap-y-10')
@@ -53,4 +53,4 @@ const Features = () => {
   )
 }
 
-export default Features
+export default Feature
