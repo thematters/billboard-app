@@ -38,12 +38,10 @@ const SideCarousel = ({ children, classes }: PropsType) => {
   }, [emblaApi])
 
   const baseCss = clsx('w-full', classes)
-  const buttonsCss = clsx('f-row-cc md:f-row-cs gap-x-9')
+  const buttonsCss = clsx('mt-8 md:mt-10 f-row-cc md:f-row-cs gap-x-9')
   const buttonCss = clsx(
-    'mt-10 !size-8 f-row-cc !bg-transparent border border-gray-80 text-green-10'
+    '!size-8 f-row-cc !bg-transparent border border-gray-80 text-green-10'
   )
-  const prevCss = clsx('', buttonCss)
-  const nextCss = clsx('', buttonCss)
 
   return (
     <section className={baseCss}>
@@ -54,7 +52,7 @@ const SideCarousel = ({ children, classes }: PropsType) => {
       </div>
       <div className={buttonsCss}>
         <MonoButton
-          classes={prevCss}
+          classes={buttonCss}
           color="gray"
           type="button"
           shape="circle"
@@ -64,7 +62,7 @@ const SideCarousel = ({ children, classes }: PropsType) => {
           <ChevronLeftSvg width={16} height={16} opacity={1} />
         </MonoButton>
         <MonoButton
-          classes={nextCss}
+          classes={buttonCss}
           color="gray"
           type="button"
           shape="circle"

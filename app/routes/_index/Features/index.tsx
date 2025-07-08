@@ -8,7 +8,7 @@ import Sketch3Svg from '@components/Svg/Features/Sketch3'
 import Row from './Row'
 
 const Features = () => {
-  const baseCss = clsx('main-min-max mx-auto py-10 md:py-20')
+  const baseCss = clsx('main-min-max mx-auto py-10 md:py-24')
   const titleCss = clsx('section-title')
   const listCss = clsx('mt-8 md:mt-16 grid grid-cols-1 gap-y-10')
 
