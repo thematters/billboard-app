@@ -65,6 +65,7 @@ export default {
       },
       minWidth: {
         main: '375px',
+        footer: '375px',
       },
     },
   },

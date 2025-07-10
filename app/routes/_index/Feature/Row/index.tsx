@@ -19,7 +19,7 @@ const Row = ({ icon, color, title, items, to }: PropsType) => {
   const iconCss = clsx('mx-auto')
   const contentCss = clsx('mt-4 md:mt-0')
   const headCss = clsx(
-    'f-row-cb text-base md:text-[28px] font-semibold md:font-medium',
+    'f-row-cb text-base md:text-[28px] md:leading-snug font-semibold md:font-medium',
     `text-${color}-10`
   )
   const linkCss = clsx(

@@ -2,6 +2,7 @@ import clsx from 'clsx'
 
 import Box from '@components/Box'
 import GradButton from '@components/Button/Grad'
+import { MAIL } from '@constants'
 
 const Page = () => {
   const baseCss = clsx(
@@ -24,9 +25,9 @@ const Page = () => {
             outerClasses={buttonOuterCss}
             color="green"
             type="link"
-            to="https://matters-lab.io/"
+            to={MAIL}
           >
-            List Your AD Spaces Now
+            Contact Us
           </GradButton>
           <p className={descCss}>
             Taking it a step further, this protocol can be seamlessly integrated

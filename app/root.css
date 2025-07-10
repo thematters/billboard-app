@@ -390,6 +390,16 @@
     @apply transition-all duration-500;
   }
 
+  .grad-green {
+    background: linear-gradient(to right, var(--grad-green-from), var(--grad-green-to));
+    transition: --grad-green-from 0.5s, --grad-green-to 0.5s;
+  }
+
+  .grad-green-border {
+    background: linear-gradient(to right, var(--grad-green-border-from), var(--grad-green-border-to));
+    transition: --grad-green-border-from 0.5s, --grad-green-border-to 0.5s;
+  }
+
   @property --grad-green-from {
     syntax: '<color>';
     initial-value: #AEDF1C;
