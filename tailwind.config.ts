@@ -58,7 +58,7 @@ export default {
         header: '1920px',
         footer: '1240px',
         main: '1240px',
-        drawer: '389px',
+        drawer: '390px',
         modal: '375px',
         form: '440px',
         uploader: '400px',
