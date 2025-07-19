@@ -27,7 +27,7 @@ const SideCarousel = ({ children, classes }: ComponentPropsType) => {
 
   const scrollByEvent = (event?: Anything) => {
     const { detail } = event
-    if (!detail || !detail.to) {
+    if (!detail || !Object.prototype.hasOwnProperty.call(detail, 'to')) {
       return
     }
 

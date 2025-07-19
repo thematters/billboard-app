@@ -43,6 +43,8 @@ const WalletModal = () => {
     'f-row-cc mt-5 text-xs text-green-30 hover:text-green-20 font-normal',
     'transition-all duration-500'
   )
+  const agreementCss = clsx('mt-4 px-6 text-xs text-gray-70 text-center')
+  const agreementLinkCss = clsx('underline underline-offset-1')
 
   return (
     <Base id="wallet" title="Connect Wallet">
@@ -74,6 +76,14 @@ const WalletModal = () => {
       <NavLink className={hintCss} to={METAMASK_LINK} target="_blank">
         Don't have a MetaMask wallet
       </NavLink>
+
+      <section className={agreementCss}>
+        Continued use indicates your agreement to the{' '}
+        <NavLink className={agreementLinkCss} to="/agreement" target="_blank">
+          User Agreement
+        </NavLink>
+        .
+      </section>
     </Base>
   )
 }

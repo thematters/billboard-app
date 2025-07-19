@@ -62,10 +62,12 @@ export default {
         modal: '375px',
         form: '440px',
         uploader: '400px',
+        agreement: '960px',
       },
       minWidth: {
         main: '375px',
         footer: '375px',
+        agreement: '375px',
       },
     },
   },
