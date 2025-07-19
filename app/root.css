@@ -386,6 +386,10 @@
     @apply transition-all duration-500;
   }
 
+  .group-ring {
+    @apply stroke-transparent group-hover:stroke-green-10 trans-300;
+  }
+
   .grad-green {
     background: linear-gradient(to right, var(--grad-green-from), var(--grad-green-to));
     transition: --grad-green-from 0.5s, --grad-green-to 0.5s;

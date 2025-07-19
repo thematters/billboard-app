@@ -1,11 +1,15 @@
 import { memo } from 'react'
 
+type PropsType = SVGPropsType & {
+  opacity?: number
+}
+
 const ChevronRight = ({
   classes,
   width = 24,
   height = 24,
   opacity = 0.6,
-}: SVGPropsType) => (
+}: PropsType) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className={classes}

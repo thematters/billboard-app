@@ -5,12 +5,9 @@ import { useEffect, useState } from 'react'
 import MonoButton from '@components/Button/Mono'
 import ChevronLeftSvg from '@components/Svg/ChevronLeft'
 import ChevronRightSvg from '@components/Svg/ChevronRight'
+import { subscribe, unsubscribe } from '@utils/event'
 
-type PropsType = ComponentsPropsType & {
-  // TODO
-}
-
-const SideCarousel = ({ children, classes }: PropsType) => {
+const SideCarousel = ({ children, classes }: ComponentPropsType) => {
   const [curr, setCurr] = useState(0)
   const [emblaRef, emblaApi] = useEmblaCarousel()
 
@@ -28,6 +25,19 @@ const SideCarousel = ({ children, classes }: PropsType) => {
     emblaApi.scrollNext()
   }
 
+  const scrollByEvent = (event?: Anything) => {
+    const { detail } = event
+    if (!detail || !detail.to) {
+      return
+    }
+
+    const { to } = detail
+    if (!emblaApi || to === emblaApi.selectedScrollSnap()) {
+      return
+    }
+    emblaApi.scrollTo(to)
+  }
+
   useEffect(() => {
     if (!emblaApi) {
       return
@@ -35,6 +45,11 @@ const SideCarousel = ({ children, classes }: PropsType) => {
     emblaApi.on('select', () => {
       setCurr(emblaApi.selectedScrollSnap())
     })
+    // listener for clicking svg roles
+    subscribe('scroll-by-event', scrollByEvent)
+    return () => {
+      unsubscribe('scroll-by-event', scrollByEvent)
+    }
   }, [emblaApi])
 
   const baseCss = clsx('w-full', classes)
@@ -56,7 +71,7 @@ const SideCarousel = ({ children, classes }: PropsType) => {
           color="gray"
           type="button"
           shape="circle"
-          disabled={!emblaApi?.canScrollPrev()}
+          disabled={curr === 0}
           onClick={prev}
         >
           <ChevronLeftSvg width={16} height={16} opacity={1} />
@@ -66,7 +81,7 @@ const SideCarousel = ({ children, classes }: PropsType) => {
           color="gray"
           type="button"
           shape="circle"
-          disabled={!emblaApi?.canScrollNext()}
+          disabled={curr === 2}
           onClick={next}
         >
           <ChevronRightSvg width={16} height={16} opacity={1} />

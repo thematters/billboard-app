@@ -27,7 +27,7 @@ const Work = () => {
           <RolesSMSvg classes={svgSmCss} width="100%" height="100%" />
         </div>
         <div className={contentCss}>
-          <SideCarousel size={3}>
+          <SideCarousel>
             <Role classes="embla__slide" num={1}>
               <h5>Advertiser</h5>
               <p>

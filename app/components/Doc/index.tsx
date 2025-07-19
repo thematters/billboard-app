@@ -6,7 +6,7 @@ import useAppEnv from '@hooks/useAppEnv'
 const Doc = ({ children }: ComponentPropsType) => {
   const env = useAppEnv()
 
-  const bodyCss = clsx('relative z-0')
+  const bodyCss = clsx('relative z-0 min-h-screen flex flex-col')
 
   return (
     <html lang="en">

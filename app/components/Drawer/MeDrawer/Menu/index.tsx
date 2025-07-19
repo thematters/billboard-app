@@ -13,7 +13,6 @@ const Menu = ({ close }: PropsType) => {
   const leaveCss = clsx('cursor-pointer')
 
   const links = [
-    { to: '/inbox', name: 'Inbox' },
     { to: '/mybids', name: 'Bids' },
     { to: '/claim', name: 'Rewards' },
   ]

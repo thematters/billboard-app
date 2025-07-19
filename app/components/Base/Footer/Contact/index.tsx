@@ -6,7 +6,6 @@ import FacebookSvg from '@components/Svg/Facebook'
 import InstagramSvg from '@components/Svg/Instagram'
 import LinkedinSvg from '@components/Svg/Linkedin'
 import MattersSvg from '@components/Svg/Matters'
-import FacebookSvg from '@components/Svg/Facebook'
 import XSvg from '@components/Svg/X'
 
 const Contact = () => {

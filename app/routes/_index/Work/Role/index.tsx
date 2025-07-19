@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 
 type PropsType = ComponentPropsType & {
-  num: boolean
+  num: number
 }
 
 const Role = ({ children, classes, num }: PropsType) => {
