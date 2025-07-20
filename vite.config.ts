@@ -5,6 +5,6 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 export default defineConfig({
   plugins: [remix(), tsconfigPaths()],
   ssr: {
-    noExternal: ['motion-dom'],
+    noExternal: ['motion-dom', 'viem'],
   },
 })
