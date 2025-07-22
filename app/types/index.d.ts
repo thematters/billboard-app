@@ -99,3 +99,8 @@ type MyBidsStepType = 'connect' | 'bids' | 'success'
 
 // Reward step types
 type ClaimRewardStepType = 'connect' | 'records' | 'success'
+
+type Analytics = {
+  init: () => void
+  trackPageView: () => void
+}

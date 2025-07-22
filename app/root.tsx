@@ -7,6 +7,7 @@ import { WagmiProvider } from 'wagmi'
 
 import Base from '@components/Base'
 import Doc from '@components/Doc'
+import AnalyticsContext from '@contexts/AnalyticsContext'
 import AppEnvContext from '@contexts/AppEnvContext'
 import DrawerContext from '@contexts/DrawerContext'
 import ModalContext from '@contexts/ModalContext'
@@ -35,9 +36,11 @@ const App = () => {
           <DrawerContext>
             <ModalContext>
               <Doc>
-                <Base>
-                  <Outlet context={env} />
-                </Base>
+                <AnalyticsContext gaId={env.gaId}>
+                  <Base>
+                    <Outlet context={env} />
+                  </Base>
+                </AnalyticsContext>
               </Doc>
             </ModalContext>
           </DrawerContext>
