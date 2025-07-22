@@ -6,13 +6,21 @@ import ChevronRightSvg from '@components/Svg/ChevronRight'
 import Icon from '../Icon'
 
 type PropsType = ComponentPropsType & {
+  type: 'mail' | 'paper'
   to: string
   title: string
   content: string
   inMiddle?: boolean
 }
 
-const Item = ({ children, to, title, content, inMiddle }: PropsType) => {
+const Item = ({ children, type, to, title, content, inMiddle }: PropsType) => {
+  const isMail = type === 'mail'
+
+  const onClick = (event: React.MouseEvent) => {
+    event.preventDefault()
+    window.open(to, isMail ? '_self' : '_blank')
+  }
+
   const baseCss = clsx('relative grid grid-cols-[auto_1fr] gap-x-4 f-row-cc', {
     'lg:f-row-cc': inMiddle,
     'lg:f-row-cs': !inMiddle,
@@ -28,7 +36,7 @@ const Item = ({ children, to, title, content, inMiddle }: PropsType) => {
   const rightDividerCss = clsx(dividerCss, '-right-10')
 
   return (
-    <NavLink className={baseCss} to={to} target="_blank">
+    <NavLink className={baseCss} to="#" onClick={onClick}>
       {inMiddle && <div className={leftDividerCss} />}
       <Icon>{children}</Icon>
       <div className={contentCss}>

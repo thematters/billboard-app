@@ -10,7 +10,7 @@ type PropsType = ComponentPropsType & {
   to?: string
   target?: string
   disabled?: boolean
-  onClick?: () => void
+  onClick?: (params?: Anything) => void
 }
 
 const GradButton = ({

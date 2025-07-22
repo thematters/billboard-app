@@ -5,6 +5,11 @@ import GradButton from '@components/Button/Grad'
 import { MAIL } from '@constants'
 
 const Page = () => {
+  const onClick = (event: MouseEvent) => {
+    event.preventDefault()
+    window.open(MAIL, '_self')
+  }
+
   const baseCss = clsx(
     'list-sketch f-colr px-4 md:px-5 lg:px-8 h-[800px] min-w-main'
   )
@@ -24,8 +29,8 @@ const Page = () => {
             classes={buttonCss}
             outerClasses={buttonOuterCss}
             color="green"
-            type="link"
-            to={MAIL}
+            type="button"
+            onClick={onClick}
           >
             Contact Us
           </GradButton>

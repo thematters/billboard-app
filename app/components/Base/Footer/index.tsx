@@ -18,6 +18,7 @@ const Footer = () => {
       <Box classes={baseCss}>
         <section className={footerCss}>
           <Item
+            type="mail"
             to={MAIL}
             title="Contact Us"
             content="Email us to own your Billboards"
@@ -25,6 +26,7 @@ const Footer = () => {
             <MailSvg />
           </Item>
           <Item
+            type="paper"
             to={PAPER_LINK}
             title="Green Paper"
             content="Find more details about our goal"
