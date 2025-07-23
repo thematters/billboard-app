@@ -14,7 +14,7 @@ import ModalContext from '@contexts/ModalContext'
 import useWagmi from '@hooks/useWagmi'
 import { readEnv } from '@utils/env'
 
-import rootCss from './root.css?url'
+import rootCss from './root.css'
 
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: rootCss }]
 
