@@ -4,12 +4,10 @@ const useLockScroll = (value: boolean) => {
   useEffect(() => {
     if (value) {
       document.documentElement.classList.add('overflow-y-hidden')
-      document.body.classList.add('overflow-y-hidden')
     }
 
     return () => {
       document.documentElement.classList.remove('overflow-y-hidden')
-      document.body.classList.remove('overflow-y-hidden')
     }
   }, [value])
 }

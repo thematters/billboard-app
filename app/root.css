@@ -5,12 +5,12 @@
 @layer base {
   html {
     overscroll-behavior-y: none;
-    @apply w-full h-full font-base bg-black;
+    @apply w-full h-full font-base bg-black overflow-x-hidden;
   }
 
   body {
     overscroll-behavior-y: none;
-    @apply bg-black text-white;
+    @apply bg-black text-white overflow-x-hidden;
   }
 
   input {
