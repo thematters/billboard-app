@@ -29,7 +29,7 @@
     "short-uuid": "^5.2.0",
     "usehooks-ts": "^3.1.1",
     "viem": "^2.28.4",
-    "wagmi": "^2.15.2"
+    "wagmi": "^2.15.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.24.0",

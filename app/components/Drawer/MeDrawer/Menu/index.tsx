@@ -21,11 +21,11 @@ const Menu = ({ close }: PropsType) => {
     <nav>
       <ul className={innerCss}>
         {links.map((link) => (
-          <li key={link.to} className={link.to === '/inbox' ? firstCss : ''}>
+          <li key={link.to} className={link.to === '/mybids' ? firstCss : ''}>
             <LinkButton to={link.to} onClick={close}>
               {link.name}
             </LinkButton>
-            {link.to === '/inbox' && (
+            {link.to === '/mybids' && (
               <div onClick={close}>
                 <LeaveSvg classes={leaveCss} />
               </div>
