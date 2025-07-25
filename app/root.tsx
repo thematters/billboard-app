@@ -11,8 +11,8 @@ import AnalyticsContext from '@contexts/AnalyticsContext'
 import AppEnvContext from '@contexts/AppEnvContext'
 import DrawerContext from '@contexts/DrawerContext'
 import ModalContext from '@contexts/ModalContext'
-import useWagmi from '@hooks/useWagmi'
 import { readEnv } from '@utils/env'
+import { createWagmiConfig } from '@utils/wagmi'
 
 import rootCss from './root.css?url'
 
@@ -27,7 +27,7 @@ const queryClient = new QueryClient()
 
 const App = () => {
   const env = useLoaderData<typeof loader>()
-  const config = useWagmi(env.idWalletConnect)
+  const config = createWagmiConfig(env.idWalletConnect)
 
   return (
     <AppEnvContext env={env}>
