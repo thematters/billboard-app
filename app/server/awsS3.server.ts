@@ -5,17 +5,7 @@ import { ERROR } from '@constants'
 
 import { readSecretEnv } from './env.server'
 
-// FIXME: setup the right type for _awsContext
-declare global {
-  // eslint-disable-next-line no-var
-  var _awsS3Context: Anything
-}
-
-export const getAWSS3Context = () => {
-  if (globalThis._awsS3Context) {
-    return globalThis._awsS3Context
-  }
-
+const getAWSS3Context = () => {
   const { awsS3AccessId, awsS3AccessKey } = readSecretEnv()
 
   if (!awsS3AccessId || !awsS3AccessKey) {
@@ -30,9 +20,10 @@ export const getAWSS3Context = () => {
     },
   })
 
-  globalThis._awsS3Context = { s3 }
-  return globalThis._awsS3Context
+  return s3
 }
+
+export const s3 = getAWSS3Context()
 
 export const toBuffer = async (data: Anything) => {
   const result = []
@@ -56,8 +47,6 @@ export const s3Uploader = async ({
   if (!awsS3Bucket) {
     throw new Error(ERROR.AWS_NOT_SET, { cause: ERROR.AWS_NOT_SET })
   }
-
-  const { s3 } = getAWSS3Context()
 
   // size limit 1mb
   const maxSize = 1024 * 1024

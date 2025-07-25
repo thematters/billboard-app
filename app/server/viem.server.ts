@@ -7,17 +7,7 @@ import { ERROR } from '@constants'
 import { readEnv } from '@utils/env'
 import { readSecretEnv } from './env.server'
 
-// FIXME: setup the right type for _viemContext
-declare global {
-  // eslint-disable-next-line no-var
-  var _viemContext: Anything
-}
-
-export const getViemContext = () => {
-  if (globalThis._viemContext) {
-    return globalThis._viemContext
-  }
-
+const getViemContext = () => {
   const { chain, addressOperator, addressRegistry, addressDistribution } =
     readEnv()
   const { urlAlchemy } = readSecretEnv()
@@ -55,11 +45,12 @@ export const getViemContext = () => {
     client: { public: client },
   })
 
-  globalThis._viemContext = {
+  return {
     client,
     operator,
     registry,
     distribution,
   }
-  return globalThis._viemContext
 }
+
+export const viemContext = getViemContext()

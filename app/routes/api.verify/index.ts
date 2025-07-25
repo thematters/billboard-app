@@ -3,7 +3,7 @@ import type { LoaderFunctionArgs } from '@remix-run/node'
 import { json } from '@remix-run/node'
 import { DATA_STATE } from '@constants'
 import { getAddress, getBoardId, sendError } from '@server/helper.server'
-import { getViemContext } from '@server/viem.server'
+import { viemContext } from '@server/viem.server'
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   try {
@@ -13,7 +13,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
     // get context
     const id = BigInt(boardId)
-    const { operator } = getViemContext()
+    const { operator } = viemContext
 
     const whitelisted = await operator.read.whitelist([
       id,

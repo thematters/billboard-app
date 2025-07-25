@@ -5,9 +5,9 @@ import groupBy from 'lodash-es/groupBy'
 import orderBy from 'lodash-es/orderBy'
 
 import { DATA_STATE, ERROR } from '@constants'
-import { getAlchemyContext } from '@server/alchemy.server'
+import { alchemy } from '@server/alchemy.server'
 import { getAddress, getBoardId, sendError } from '@server/helper.server'
-import { getViemContext } from '@server/viem.server'
+import { viemContext } from '@server/viem.server'
 import { toFloatTaxRate } from '@utils/num'
 import { genUTC8Date } from '@utils/time'
 import { getEpochRange } from '@utils/web3'
@@ -19,8 +19,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
     // get context
     const id = BigInt(boardId)
-    const { client, operator, registry } = getViemContext()
-    const { alchemy } = getAlchemyContext()
+    const { client, operator, registry } = viemContext
 
     const [board, epoch, currBlock] = await Promise.all([
       operator.read.getBoard([id]),

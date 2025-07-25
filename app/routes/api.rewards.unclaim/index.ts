@@ -12,7 +12,7 @@ import {
   getPublicStaticFile,
   sendError,
 } from '@server/helper.server'
-import { getViemContext } from '@server/viem.server'
+import { viemContext } from '@server/viem.server'
 import { formatDate, formatRoundId } from '@utils/format'
 
 const checkHasClaimed = async (
@@ -31,7 +31,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     const address = (getAddress(request) || '').toLowerCase()
 
     // get context
-    const { distribution } = getViemContext()
+    const { distribution } = viemContext
 
     const roundsData = await getPublicStaticFile(
       './public/static/rounds.json',

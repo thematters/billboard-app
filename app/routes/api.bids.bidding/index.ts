@@ -5,9 +5,9 @@ import orderBy from 'lodash-es/orderBy'
 import range from 'lodash-es/range'
 
 import { DATA_STATE } from '@constants'
-import { getAlchemyContext } from '@server/alchemy.server'
+import { alchemy } from '@server/alchemy.server'
 import { getAddress, sendError } from '@server/helper.server'
-import { getViemContext } from '@server/viem.server'
+import { viemContext } from '@server/viem.server'
 import { getEpochRange } from '@utils/web3'
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
@@ -16,8 +16,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     const address = getAddress(request)
 
     // get context
-    const { alchemy } = getAlchemyContext()
-    const { client, operator, registry } = getViemContext()
+    const { client, operator, registry } = viemContext
 
     const [lastTokenId, currBlock] = await Promise.all([
       registry.read.lastTokenId(),

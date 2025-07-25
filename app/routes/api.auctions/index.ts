@@ -4,9 +4,9 @@ import { json } from '@remix-run/node'
 import takeRight from 'lodash-es/takeRight'
 
 import { DATA_STATE } from '@constants'
-import { getAlchemyContext } from '@server/alchemy.server'
+import { alchemy } from '@server/alchemy.server'
 import { getBoardId, sendError } from '@server/helper.server'
-import { getViemContext } from '@server/viem.server'
+import { viemContext } from '@server/viem.server'
 import { getEpochRange } from '@utils/web3'
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
@@ -16,8 +16,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
     // get context
     const id = BigInt(boardId)
-    const { client, operator, registry } = getViemContext()
-    const { alchemy } = getAlchemyContext()
+    const { client, operator, registry } = viemContext
 
     const [board, currBlock] = await Promise.all([
       operator.read.getBoard([id]),

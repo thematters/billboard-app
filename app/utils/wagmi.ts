@@ -1,9 +1,11 @@
+import type { Config } from 'wagmi'
+
 import { createConfig, http } from 'wagmi'
 import { optimism, optimismSepolia } from 'wagmi/chains'
 import { injected, walletConnect } from 'wagmi/connectors'
 
 export const createWagmiConfig = (() => {
-  let config = null
+  let config: Config | null = null
   return (projectId: string) => {
     if (config) {
       return config

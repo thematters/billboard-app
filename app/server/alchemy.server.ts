@@ -4,17 +4,7 @@ import { ERROR } from '@constants'
 
 import { readSecretEnv } from './env.server'
 
-// FIXME: setup the right type for _alchemyContext
-declare global {
-  // eslint-disable-next-line no-var
-  var _alchemyContext: Anything
-}
-
-export const getAlchemyContext = () => {
-  if (globalThis._alchemyContext) {
-    return globalThis._alchemyContext
-  }
-
+const getAlchemyContext = () => {
   const { env, keyAlchemy, urlAlchemy } = readSecretEnv()
 
   if (!keyAlchemy || !urlAlchemy) {
@@ -26,6 +16,7 @@ export const getAlchemyContext = () => {
     network: env === 'production' ? Network.OPT_MAINNET : Network.OPT_SEPOLIA,
   })
 
-  globalThis._alchemyContext = { alchemy }
-  return globalThis._alchemyContext
+  return alchemy
 }
+
+export const alchemy = getAlchemyContext()

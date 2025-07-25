@@ -3,14 +3,14 @@ import type { LoaderFunctionArgs } from '@remix-run/node'
 import { json } from '@remix-run/node'
 
 import { DATA_STATE, ERROR } from '@constants'
-import { getAlchemyContext } from '@server/alchemy.server'
+import { alchemy } from '@server/alchemy.server'
 import {
   getAddress,
   getBoardId,
   getEpoch,
   sendError,
 } from '@server/helper.server'
-import { getViemContext } from '@server/viem.server'
+import { viemContext } from '@server/viem.server'
 import { getEpochRange, getShiftedEpochRange } from '@utils/web3'
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
@@ -23,8 +23,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     // get context
     const id = BigInt(boardId)
     const epoch = BigInt(boardEpoch)
-    const { alchemy } = getAlchemyContext()
-    const { operator, registry } = getViemContext()
+    const { operator, registry } = viemContext
 
     const [board, bid, highestBidder] = await Promise.all([
       operator.read.getBoard([id]),

@@ -4,9 +4,9 @@ import { json } from '@remix-run/node'
 import range from 'lodash-es/range'
 
 import { DATA_STATE } from '@constants'
-import { getAlchemyContext } from '@server/alchemy.server'
+import { alchemy } from '@server/alchemy.server'
 import { getAddress, sendError } from '@server/helper.server'
-import { getViemContext } from '@server/viem.server'
+import { viemContext } from '@server/viem.server'
 import { getEpochRange } from '@utils/web3'
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
@@ -15,8 +15,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     const address = getAddress(request)
 
     // get context
-    const { alchemy } = getAlchemyContext()
-    const { operator, registry } = getViemContext()
+    const { operator, registry } = viemContext
 
     const [lastTokenId] = await Promise.all([registry.read.lastTokenId()])
 
