@@ -27,7 +27,7 @@ export const createWagmiConfig = (() => {
         [optimism.id]: http(),
         [optimismSepolia.id]: http(),
       },
-      ssr: true,
+      ssr: false,
     })
     return config
   }
