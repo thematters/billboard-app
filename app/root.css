@@ -24,7 +24,7 @@
   }
 
   .section-title {
-    @apply text-[28px] font-medium md:text-5xl md:font-semibold text-white text-center;
+    @apply text-[28px] font-medium md:text-5xl md:font-semibold text-center;
   }
 
   .section-desc {
