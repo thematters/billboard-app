@@ -2,7 +2,7 @@ import { erc20Abi } from 'viem'
 import { useContext } from 'react'
 import { useReadContract } from 'wagmi'
 
-import { AppEnvContextSource } from '@contexts/AppEnvContext'
+import { AppEnvContextSource } from '@contexts/AppEnv'
 
 const useAllowance = (address: `0x${string}`) => {
   const { addressOperator, addressUSDT } = useContext(AppEnvContextSource)
