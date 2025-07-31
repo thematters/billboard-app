@@ -5,7 +5,7 @@
 @layer base {
   html {
     overscroll-behavior-y: none;
-    @apply w-full h-full font-base bg-black overflow-x-hidden;
+    @apply w-full h-auto font-base bg-black;
   }
 
   body {
