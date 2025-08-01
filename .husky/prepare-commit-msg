@@ -1,1 +1,1 @@
-exec < /dev/tty && npm exec cz --hook || true
+exec < /dev/tty && git cz --hook || true
