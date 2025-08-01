@@ -1,5 +1,5 @@
 {
-  "include": ["remix.env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["remix.env.d.ts", "app/types/*.d.ts", "**/*.ts", "**/*.tsx"],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "isolatedModules": true,
@@ -13,17 +13,16 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "@asset/*": ["./app/asset/*"],
-      "@abi/*": ["./app/common/abi/*"],
-      "@constant": ["./app/common/constant/index.ts"],
-      "@component/*": ["./app/component/*"],
-      "@svg/*": ["./app/component/Svg/*"],
-      "@hook/*": ["./app/hook/*"],
-      "@service/*": ["./app/service/*"],
-      "@type": ["./app/type/index.ts"],
-      "@util/*": ["./app/util/*"]
+      "@abis/*": ["./app/abis/*"],
+      "@assets/*": ["./app/assets/*"],
+      "@components/*": ["./app/components/*"],
+      "@constants": ["./app/constants/index.ts"],
+      "@contexts/*": ["./app/contexts/*"],
+      "@hooks/*": ["./app/hooks/*"],
+      "@server/*": ["./app/server/*"],
+      "@utils/*": ["./app/utils/*"]
     },
-    "noEmit": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "noEmit": true
   }
 }
