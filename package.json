@@ -2,8 +2,8 @@
   "name": "billboard-app",
   "sideEffects": false,
   "type": "module",
-  "engine": {
-    "node": ">=20.0.0"
+  "engines": {
+    "node": ">=20.19.0"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.821.0",
