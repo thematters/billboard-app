@@ -7,10 +7,14 @@ export default {
       md: '768px',
       ml: '904px',
       lg: '981px',
+      '3xl': '1920px',
     },
     extend: {
       backdropBlur: {
         xs: '2px',
+      },
+      backgroundPosition: {
+        'c50-v25': '50% 25%',
       },
       fontFamily: {
         base: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],

@@ -240,7 +240,7 @@
   }
 
   .home-sketch {
-    @apply relative bg-cover bg-[center_-100px] md:bg-center bg-no-repeat;
+    @apply relative bg-cover bg-[center_-100px] 3xl:bg-[length:1920px_auto] md:bg-center bg-no-repeat;
 
     background-image:
       linear-gradient(rgba(18, 19, 22, 0.55), rgba(18, 19, 22, 0.55)),
@@ -280,7 +280,7 @@
   }
 
   .reward-sketch {
-    @apply relative bg-cover bg-center bg-no-repeat;
+    @apply relative bg-cover bg-center 3xl:bg-c50-v25 bg-no-repeat;
     @apply after:content-[''] after:absolute after:z-0;
     @apply after:inset-0 after:bg-gradient-to-b after:from-transparent after:from-10% after:to-black;
 
@@ -302,7 +302,7 @@
   }
 
   .action-sketch {
-    @apply bg-cover bg-center bg-no-repeat;
+    @apply bg-cover 3xl:bg-[length:1920px_auto] bg-center bg-no-repeat;
 
     background-image: url('assets/action.jpg');
 
