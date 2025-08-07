@@ -1,0 +1,71 @@
+{
+  "format": "standard-v1",
+  "tree": [
+    "0x06286db028b04d1210bd92b9bb83b9d64e33042e73708a552471753a2c52fc3e",
+    "0xa9d72ac9a80c03a52d6b1715cfd8e598df59c853080600002b50db7460de1f9c",
+    "0xaf96a45de89eafe0e77416c4210c1f7d83dd66d34e2bf60b94e66490fce1ee1a",
+    "0x65869c68229be0de4c400e0867b8334f8aafbbeb9a6657a73f62e1407af94cf2",
+    "0x5eb1261cd6913927e94e1d466bdfa41f11566ff08e266d2c7cb0cfa19b53295f",
+    "0xe16f5f529a3f681579d127bfbc96c6268a3536f78900dce8d7e82001860ff9cf",
+    "0xb40322d9f53c0487ba2008b4b21358c4d554d38d32977c866f54a5b6c9e456b9",
+    "0x8c5b4c3eea3ae0dfc0aa3eb5c4c0791e8ade6a13bc6a48ad5933bff919b07d6d",
+    "0x6c12db33105486dc7bdd67d9ebb88845aaad16e556d6fdca86d88806a9715c80",
+    "0x5d3ba4625dec693b2249c67bf2af4007f3f4ccae8eb97764d1a71dab6a1e369b",
+    "0x074c3cdfed1cc402a7bdb70aa994b0e75db7acd0042bb12ff2978798d27b9787"
+  ],
+  "values": [
+    {
+      "value": [
+        "QmeJRH7iQySpEpM7HLt7vEBiDpiUm29xiMYuWaGsCnrbrN",
+        "0x9d2f38b7c5180b3983f87ad607e0fe4db63aac30",
+        2214
+      ],
+      "treeIndex": 10
+    },
+    {
+      "value": [
+        "QmUoaP2LN9bMwAzV6ctZHY6UbVqPqLr5APWN3qLxEjPSRJ",
+        "0x9d2f38b7c5180b3983f87ad607e0fe4db63aac30",
+        2214
+      ],
+      "treeIndex": 7
+    },
+    {
+      "value": [
+        "Qmc2jH5CRbUG8N7cwgDsUDNFJw75LsKTkktVmVDG18mmhA",
+        "0x9d2f38b7c5180b3983f87ad607e0fe4db63aac30",
+        2214
+      ],
+      "treeIndex": 9
+    },
+    {
+      "value": [
+        "QmVV9qEuBBnMPfHJgdq36DGtz3ucHD3tZibfAnBvKmkMXv",
+        "0x9d2f38b7c5180b3983f87ad607e0fe4db63aac30",
+        2214
+      ],
+      "treeIndex": 5
+    },
+    {
+      "value": [
+        "QmZCjkygtW3rLQ1pRMHCug76YyFRr1cYm3xK14Bin6ui8k",
+        "0x077cd7b08c5a505f4cd23f444e9a83d1f2b40400",
+        572
+      ],
+      "treeIndex": 6
+    },
+    {
+      "value": [
+        "QmV4LBoePTeRkwDmUCiD4s9CamL5RkoseESqcVNS8RDgjg",
+        "0xd019a57d878191c7639de949ec4f13af7fd858b0",
+        572
+      ],
+      "treeIndex": 8
+    }
+  ],
+  "leafEncoding": [
+    "string",
+    "address",
+    "uint256"
+  ]
+}
