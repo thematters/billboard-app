@@ -1,53 +1,47 @@
+import clsx from 'clsx'
 import { useEffect } from 'react'
-import { isAddress } from 'viem'
 import { useAccount } from 'wagmi'
 
-import ErrorMessage from '@component/Error'
-import useQueryData from '@hook/useQueryData'
-import SvgLoaderMyBidsMD from '@svg/Loader/MyBidsMD'
-import SvgLoaderMyBidsSM from '@svg/Loader/MyBidsSM'
+import Tabs from '@components/Tabs'
+import useQuery from '@hooks/useQuery'
 
-import Bid from './Bid'
+import Loader from '../Loader'
 
-const Bidding = () => {
+import Rows from './Rows'
+
+type PropsType = {
+  items: Array<{ key: string; name: string }>
+  selected: string
+  setSelected: (value: string) => void
+}
+
+const Bidding = ({ items, selected, setSelected }: PropsType) => {
   const { address, isConnected } = useAccount()
-  const isEstablished = isAddress(address || '') && isConnected
-
-  const { data, isLoading, isLoaded, isError, refetch } = useQueryData({
+  const { data, isLoading, isLoaded, isError, refetch } = useQuery({
     action: '/api/bids/bidding',
-    params: { ...(isEstablished ? { address } : {}) },
+    params: { ...(isConnected ? { address } : {}) },
     auto: true,
   })
 
-  const bids = data?.bids || []
-  const isEmpty = bids.length === 0
-
   useEffect(() => {
-    refetch({ ...(isEstablished ? { address } : {}) })
-  }, [address])
+    refetch({ ...(isConnected ? { address } : {}) })
+  }, [address, isConnected])
 
-  const baseCss = 'mt-6'
-  const emptyCss = 'p-5 bg-black text-center'
-  const loaderSMCss = 'w-full md-hidden'
-  const loaderMDCss = 'w-full md-shown'
+  const titleCss = clsx('section-title px-4 text-left md:text-center')
+  const tabCss = clsx('mt-4 md:mt-5 px-4 md:px-0')
 
   return (
-    <div className={baseCss}>
-      {isLoaded &&
-        bids.map((data: Record<string, any>, idx: number) => (
-          <Bid key={idx} data={data} />
-        ))}
-      {(isLoading || isError) && (
-        <>
-          <SvgLoaderMyBidsSM css={loaderSMCss} />
-          <SvgLoaderMyBidsMD css={loaderMDCss} />
-          {isError && <ErrorMessage message={data.error || data.code} />}
-        </>
-      )}
-      {isLoaded && isEmpty && (
-        <div className={emptyCss}>No ongoing bids at the moment.</div>
-      )}
-    </div>
+    <>
+      <h1 className={titleCss}>Bids</h1>
+      <Tabs
+        classes={tabCss}
+        items={items}
+        selected={selected}
+        onClick={setSelected}
+      />
+      <Loader data={data} isLoading={isLoading} isError={isError} />
+      {isLoaded && <Rows data={data || {}} />}
+    </>
   )
 }
 
