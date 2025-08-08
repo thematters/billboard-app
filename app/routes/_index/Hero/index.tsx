@@ -41,7 +41,7 @@ const Hero = () => {
               to={`/board/${id}`}
               target="_self"
             >
-              Bid AD Board
+              Bid Advertising Board
             </GradButton>
             <GradButton
               classes={buttonCss}
@@ -51,7 +51,7 @@ const Hero = () => {
               to="/list"
               target="_self"
             >
-              List Your Idle AD Spaces
+              List Your Advertising Spaces
             </GradButton>
           </div>
           <p className={descCss}>
@@ -59,8 +59,8 @@ const Hero = () => {
             transparency, supporting creators with fair profit-sharing.
           </p>
           <h1 className={titleCss}>
-            Amplify your reach,
-            <br className={breakerCss} /> benefit all
+            Amplify Your Reach,
+            <br className={breakerCss} /> Benefit All
           </h1>
         </div>
       </section>
