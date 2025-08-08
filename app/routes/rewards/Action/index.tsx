@@ -27,10 +27,10 @@ const Action = () => {
             to="/list"
             target="_self"
           >
-            List Your AD Spaces Now
+            List Your Advertising Spaces
           </GradButton>
           <p className={descCss}>Don’t hesitate to get in touch.</p>
-          <h1 className={titleCss}>Support your community—onboard now</h1>
+          <h1 className={titleCss}>Support Your Community—Onboard Now</h1>
         </div>
       </section>
     </Box>

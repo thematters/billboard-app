@@ -20,7 +20,7 @@ const Work = () => {
 
   return (
     <Box classes={baseCss}>
-      <h1 className={titleCss}>How it works</h1>
+      <h1 className={titleCss}>How It Works</h1>
       <section className={rolesCss}>
         <div className={sketchCss}>
           <RolesMDSvg classes={svgMdCss} width="100%" height="100%" />
@@ -31,10 +31,10 @@ const Work = () => {
             <Role classes="embla__slide" num={1}>
               <h5>Advertiser</h5>
               <p>
-                Advertisers can reach targeted audiences by using billboard
-                space in specific communities, apps, or profiles. They can trade
-                ad space directly via growing DeFi infrastructure and profit
-                when sold at higher prices.
+                Advertisers can reach targeted audiences by using billboard in
+                specific communities, apps, or websites, and they earn a profit
+                whenever another advertiser wins the same billboard at a higher
+                bid.
               </p>
             </Role>
             <Role classes="embla__slide" num={2}>

@@ -38,8 +38,8 @@ const General = () => {
         </p>
         <p>
           Billboard applies this model to each NFT, restarting the auction every
-          14 days instead of relying on opaque ad networks. Advertisers bid
-          openly during each period, and the resulting tax feeds a
+          14 days instead of relying on opaque advertising networks. Advertisers
+          bid openly during each period, and the resulting tax feeds a
           quadratic-funding pool that multiplies reader donations and rewards
           creators.
         </p>

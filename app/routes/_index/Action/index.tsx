@@ -30,10 +30,10 @@ const Action = () => {
             to={`/board/${id}`}
             target="_self"
           >
-            Bid AD Board
+            Bid Advertising Board
           </GradButton>
           <p className={descCss}></p>
-          <h1 className={titleCss}>More exposure ? Bid now</h1>
+          <h1 className={titleCss}>More Exposure ? Bid Now</h1>
         </div>
       </section>
     </Box>

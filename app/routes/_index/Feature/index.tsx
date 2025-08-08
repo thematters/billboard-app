@@ -21,9 +21,9 @@ const Feature = () => {
           color="green"
           title="New Advertising Experience Unlocked"
           items={[
-            'All AD boards are in on-chain auctions—bid anytime, no intermediaries.',
-            'Target right-fit AD boards without opaque control —engage with users that truly care.',
-            'Flex your board bids based on real-time market feedback and AD performance.',
+            'All advertising boards are in on-chain auctions—bid anytime, no intermediaries.',
+            'Target right-fit advertising boards without opaque control —engage with users that truly care.',
+            'Flex your board bids based on real-time market feedback and advertisement performance.',
           ]}
           to="/learn"
         />

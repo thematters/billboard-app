@@ -42,13 +42,14 @@ const Page = () => {
           </p>
           <p className={descCss}>
             Billboard is a decentralized protocol lets you turn your website’s
-            ad spaces into NFTs and place them in a continuous Harberger-tax
-            auction, giving your platform a predictable on-chain revenue stream
-            without relying on data-harvesting ad networks.
+            advertising spaces into NFTs and place them in a continuous
+            Harberger-tax auction, giving your platform a predictable on-chain
+            revenue stream without relying on data-harvesting advertising
+            networks.
           </p>
           <h1 className={titleCss}>
-            Build a sustainable profit-sharing ecosystem for your platform and
-            community
+            Build a Sustainable Profit-sharing Ecosystem for Your Platform and
+            Community
           </h1>
         </div>
       </section>
