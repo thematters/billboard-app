@@ -1,0 +1,21 @@
+{
+  "format": "standard-v1",
+  "tree": [
+    "0x091fa459f6eeceacf70b82304d6d2565d43c1a26c9857a3c94ebbd9356dd360a"
+  ],
+  "values": [
+    {
+      "value": [
+        "Qmd2aYEk1DFFcMd27Vqfarhrodb6dqf49gJBgbbTsdFqJg",
+        "0x992f0201ff7ee158a8baf638549d0ad1cbcc27ef",
+        10000
+      ],
+      "treeIndex": 0
+    }
+  ],
+  "leafEncoding": [
+    "string",
+    "address",
+    "uint256"
+  ]
+}
