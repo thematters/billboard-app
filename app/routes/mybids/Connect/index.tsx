@@ -1,27 +1,38 @@
-import BaseButton from '@component/Button/Base'
-import SvgWallet from '@svg/Wallet'
-import { publish, subscribe, unsubscribe } from '@util/event'
+import clsx from 'clsx'
 
-type Props = {
-  open: () => void
-}
+import GradButton from '@components/Button/Grad'
+import ConnectSvg from '@components/Svg/Connect'
+import useModal from '@hooks/useModal'
 
-const Connect = ({ open }: Props) => {
-  const baseCss = 'lg:pb-20 max-limit'
-  const contentCss = 't-14 md:t-20 text-center'
-  const svgCss = 'my-6 lg:my-10 mx-auto'
-  const btnCss = 'px-28 mx-auto t-18 font-normal'
+const Connect = () => {
+  const { open } = useModal()
+
+  const click = () => open('wallet')
+
+  const titleCss = clsx('section-title')
+  const descCss = clsx('mt-5 md:mt-10 md:w-1/2 mx-auto section-desc')
+  const imageMDCss = clsx('my-10 w-full hidden md:block')
+  const imageSMCss = clsx('my-8 mx-auto w-10/12 block md:hidden')
+  const buttonCss = clsx('py-3 w-full md:w-[280px]')
+  const buttonOuterCss = clsx('w-full md:w-fit mx-auto')
 
   return (
-    <section className={baseCss}>
-      <h1 className="section-title">MY BIDS</h1>
-      <p className={contentCss}>
-        To continue, you have to connect your wallet first.
+    <section>
+      <h1 className={titleCss}>Bids</h1>
+      <p className={descCss}>
+        You'll need to connect your wallet to use the management page.
       </p>
-      <SvgWallet css={svgCss} />
-      <BaseButton css={btnCss} color="dim" click={open}>
-        Connect
-      </BaseButton>
+      <ConnectSvg classes={imageMDCss} />
+      <ConnectSvg classes={imageSMCss} />
+      <GradButton
+        classes={buttonCss}
+        outerClasses={buttonOuterCss}
+        color="green"
+        type="button"
+        onClick={click}
+      >
+        Connect to Continue
+      </GradButton>
     </section>
   )
 }

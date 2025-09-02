@@ -1,21 +1,17 @@
-import About from './About'
-import Funds from './Funds'
+import Action from './Action'
+import Feature from './Feature'
 import Hero from './Hero'
-import Road from './Road'
-import What from './What'
 import Work from './Work'
 
-const Index = () => {
+const Page = () => {
   return (
     <>
       <Hero />
-      <What />
-      <Funds />
+      <Feature />
       <Work />
-      <Road />
-      <About />
+      <Action />
     </>
   )
 }
 
-export default Index
+export default Page

@@ -1,25 +1,19 @@
+import clsx from 'clsx'
 import { useEffect, useState } from 'react'
-import { isAddress } from 'viem'
 import { useAccount } from 'wagmi'
 
-import Crate from '@component/Crate'
-import useEnvs from '@hook/useEnvs'
-import { publish } from '@util/event'
+import Box from '@components/Box'
 
 import Bids from './Bids'
 import Connect from './Connect'
-import Retracted from './Retracted'
+import Success from './Success'
 
-const MyBids = () => {
-  const [step, setStep] = useState('mybids')
+const Page = () => {
+  const [step, setStep] = useState<MyBidsStepType>('bids')
   const { address, isConnected } = useAccount()
 
-  const isEstablished = isAddress(address || '') && isConnected
-
-  const openWalletModal = () => publish('wallet-open', {})
-
   useEffect(() => {
-    if (!isEstablished) {
+    if (!isConnected) {
       if (step !== 'connect') {
         setStep('connect')
       }
@@ -29,20 +23,15 @@ const MyBids = () => {
     setStep('bids')
   }, [address, isConnected])
 
-  const innerCss = 'py-10 lg:py-20'
-  const baseCss = 'lg:pb-20 max-limit'
+  const baseCss = clsx('main-min-max mx-auto py-10 md:py-20')
 
   return (
-    <Crate css="menu-spacing">
-      <Crate.Inner css={innerCss} hasDots hasXBorder>
-        {step === 'connect' && <Connect open={openWalletModal} />}
-        {step === 'bids' && <Bids setParentStep={setStep} />}
-        {step === 'retracted' && (
-          <Retracted address={address} setParentStep={setStep} />
-        )}
-      </Crate.Inner>
-    </Crate>
+    <Box classes={baseCss}>
+      {step === 'connect' && <Connect />}
+      {step === 'bids' && <Bids setStep={setStep} />}
+      {step === 'success' && <Success setStep={setStep} />}
+    </Box>
   )
 }
 
-export default MyBids
+export default Page
