@@ -1,0 +1,241 @@
+{
+  "format": "standard-v1",
+  "tree": [
+    "0x12c77e0049db2c0d962348a80b4464d0477b8e7e7875f9ac165895eb4c51f8da",
+    "0x031670c147f1929b2de686b3bca36b1998a00e0e7013276ec768a4c41ede2da5",
+    "0x63981bf288b19ddc25ee419ac45dc1af3e9cf82fc33d2515fe473ded4cf39e1b",
+    "0x1e9095d7b72b938afbcc71fc314a27a70cdd7bd57a258cdac52e84c2204f85b7",
+    "0xb7ce1234364e42598dbd837e19c0fe73be67cf3c8d4c96514ba1d682fe3b0b92",
+    "0x5cfda30cce368e7843111b50835f9632d771700f9c8b25c654765d5c04048626",
+    "0x38d75d0f88b736c76cb54d6d1a5d239175e98798b0bdfad8f33bd5fab364cc73",
+    "0x3a7fc4304a2029db3dfe896cb4a48e60bf685a7f1dfb18bc253598cb06bbeb04",
+    "0xa5df5b4ea0513a72ee54f295bacbfcc976f0b968a195754e04546d41905d8544",
+    "0x02e4c4fccacf065ef7960f6163d70e88efa6133e0d35286e578058b09b26528d",
+    "0xa3e28e740cc589f669d6051c4016d6fc2fb095463ac8ae1ed4c2b5e2f1e3c451",
+    "0x92bd3454bef10c0ea7709bd2b4a8c99e63482eda749180fca780b8c717500d6b",
+    "0x14d2e1c19845a4f858055e2bafc10c29f253290533ba8d54c64f11292e4a42fa",
+    "0xbc619dbdba344a31fe5746df92b1ae43e2741d14e1eaa007b32b24fc388248cc",
+    "0x06b0e25000562258f9da5650b16e1a810a3f27ba4f808714aa1941c82ca39ea2",
+    "0xcf16e5dab77454ba33613cf065d45c7be7a2dc6bce9dad74c4b272322088bb9c",
+    "0x30c5939899aae79fb57b5358078e57fdbc822d628b9d3f9f9dbd05a7ddab5039",
+    "0xdb1cfe507abc65ce07f6d4c7ec67fded260ac9d25d0bd215d3acfc2c8831478f",
+    "0xef3c60b154c49de4d0e4c3e86ca858f332720e56b98161e178e76cc9089a707a",
+    "0x8af74a2818046fc4b553bd6d9c719d2a4a0e19bf9deb3b805dde845935152fb2",
+    "0xc96f944878896b0e1492ae7f3e755a972e5f53f1f427a10094dc9db8301f2e8a",
+    "0xcd583357f9916f4c55bf5bed57332aac280aae9f65fbc4156f85adf3ad9b7096",
+    "0xffbab5c740c4371fc4cfec70f2f7e92c41c46d68739a424c496a8091b68d5704",
+    "0xeeb797c1ac6ee4976928c34b82faa78a980c5cdce2d486e0677a76625a64839e",
+    "0xe34098661bbf605d5e9df17b66dadd436299e291fb2b280a1c9245fd2b59be9e",
+    "0xe020f0f926cee3e19fea9adb4adcb49585074a9234bfa4eee2a05693a6f609b1",
+    "0xde70e8e830112d7c8ddb0a632d707a2130bb8e4f917c0a3b20e9b5be9777c100",
+    "0xd9a5911ea89b2e1c867bce5cf911917f1a03cebf5ccaa3baf42ba81ab77ebd80",
+    "0xd03be1ed78bee5e615a88a84d4301274a3bc087492debfbdd7d6d9180c40ed1d",
+    "0xc8c68fabe9ab206c3e9002c2745747cc613a5234460a7d4b97efb44f8c07e09f",
+    "0xae72c981f8d95a6105abff5c9d726d0d3e7745fe1a8ec90d8ca87ea8e41c01a1",
+    "0xacf1ec9c8512a6ea307d64b4f4d4ed20ecfc18d2e57b8315811b289d9f9dac86",
+    "0xa9cfc61d2941c85fd319f85435f42be8c0fb84ee223737bb92458b7ddc1608bc",
+    "0xa544673fb0a42e47008a0f0e6419ebfd4462162ce176a77fb77e5f79da24a665",
+    "0x934426a54ff00f62c386d975f7e6aba3ea7a36ad3a4a7ae284435f120c1ee629",
+    "0x8debff26c2c3f631bcef4481070c86d556f5c19eb6191ce0ce7cfa705e18c27f",
+    "0x8c15c8a51bfae3dcb51560c45ccdf4ea1a0332ce780fe0372bedfd1f04f13376",
+    "0x79fe4e6e43eb21bacf366c4cbc922d4430f4c9c01a2f48abb7d8dbaddda181ec",
+    "0x55cc97aa7e9d7edb356c29af1d17b4396e7e1c7078989a59edf7db0970123875",
+    "0x49f53a39909b4f4b22e5dc1031a91d27f01c070b24360dd972a6eb9bc5adea50",
+    "0x1e2a9b0b76fda9a612edfd04d9fc5d826e539504c2eb7adc95e401660d2071fb",
+    "0x11dcb28e6e2d6614f583fc101cd494428a403df67f328e9236a6b5fb81ef4a61",
+    "0x0d4ca3cf671f31a5396099d29be499360b5d57d8b35efd1cb54201c387594f40",
+    "0x0d3253a7dcdda75805a7861e9cd7e2751d3d23305204e3e04fade198a7e7c0a2",
+    "0x0640a03fe5e07a33eb273931e8b0de000fefaa64b7ce39c112e357f3cb61af7a"
+  ],
+  "values": [
+    {
+      "value": [
+        "bafybeiev7a7xbl6lqmeh5rqqbj4ay6b4yhppui2pm3jrma3qrohlzll4d4",
+        "0x709279f116db34e4916078123acdba57c3c1c3d9",
+        174
+      ],
+      "treeIndex": 43
+    },
+    {
+      "value": [
+        "bafybeigyf6iig3zfanhftucnpv6tq7vpytrtaprx5bj3x67z7ahdpehu7a",
+        "0xf779c62552cc91c110e7b7d376902c35090a4809",
+        174
+      ],
+      "treeIndex": 22
+    },
+    {
+      "value": [
+        "bafybeicgiy4wzsn6e6h5qdqrvqdazrpvqrwwk6ajbgtexpxquqne5rkvnq",
+        "0x1db1f22fe1522a023f3052757c71e66868b2da00",
+        174
+      ],
+      "treeIndex": 39
+    },
+    {
+      "value": [
+        "bafybeicjrrb3tobapfqjm2acqcwmkld6vujd5siz6kzmg5y5nq4aexjcga",
+        "0x4d10569714eb035f2d1e213881447afcd20f6042",
+        175
+      ],
+      "treeIndex": 36
+    },
+    {
+      "value": [
+        "bafybeiciefnz7nmrdoly5pwaarpk7fx3hed2thnzjm33hae5retykihdl4",
+        "0xb4d9ab4f84a196712dddce620d9d5f2182430c04",
+        175
+      ],
+      "treeIndex": 40
+    },
+    {
+      "value": [
+        "bafybeifbzqfqbnru6uyt2zz2f7huo6tw5el7tga3jhtsu6u72m25sd4brq",
+        "0x4d10569714eb035f2d1e213881447afcd20f6042",
+        175
+      ],
+      "treeIndex": 24
+    },
+    {
+      "value": [
+        "bafybeiekv37fyjwpzyksyl3ltmqmieqhig3eyxcw6ez22h72mkyxxle3y4",
+        "0x4d10569714eb035f2d1e213881447afcd20f6042",
+        175
+      ],
+      "treeIndex": 23
+    },
+    {
+      "value": [
+        "bafybeiezvfbepjd3uhylatoufp77ewpbymagg7ecz6i6yzncrgvn6tyizi",
+        "0xf779c62552cc91c110e7b7d376902c35090a4809",
+        175
+      ],
+      "treeIndex": 44
+    },
+    {
+      "value": [
+        "bafybeicf62m5cbshv6od3esdponjjb2ciyn62mqz7qf7bx6z7v54wy37by",
+        "0x5b228fcb60a95f7e749e00c4b88154fc17e706dd",
+        175
+      ],
+      "treeIndex": 26
+    },
+    {
+      "value": [
+        "bafybeieo5coetf6tjkdvuoflm4rbibu76prgymfjdq2mshd3votmkcmlvi",
+        "0xf779c62552cc91c110e7b7d376902c35090a4809",
+        175
+      ],
+      "treeIndex": 33
+    },
+    {
+      "value": [
+        "bafybeia2kmtly3hzevewoljvkb57mm2nma5s5hq2jp2txv6xgb6umdiaja",
+        "0xf779c62552cc91c110e7b7d376902c35090a4809",
+        175
+      ],
+      "treeIndex": 29
+    },
+    {
+      "value": [
+        "bafybeigb3rpreaok3e3nx4g4ofoniv7hz342k2zqdl4aidbuv6oc5z5qqq",
+        "0x4206eaaba41a0632310b9852d7e14ee669e2af74",
+        579
+      ],
+      "treeIndex": 31
+    },
+    {
+      "value": [
+        "bafybeiacrz4mefuto2tq5tsxrhqcrikgoylriywwfs523ghi5rbvcsfjwu",
+        "0x64afdd359e8fd595122c9473ac3362a96fd3e8c4",
+        1077
+      ],
+      "treeIndex": 25
+    },
+    {
+      "value": [
+        "bafybeibfe3mln7x5sjmewzfd7szwoqkhoiilykpsvll6etaummd3pjp3um",
+        "0x709279f116db34e4916078123acdba57c3c1c3d9",
+        676
+      ],
+      "treeIndex": 34
+    },
+    {
+      "value": [
+        "bafybeidgjyvkffownkbacxjvqouj67hurl2mwfz4ieiddo6sfjuw6rm7fi",
+        "0x64afdd359e8fd595122c9473ac3362a96fd3e8c4",
+        741
+      ],
+      "treeIndex": 37
+    },
+    {
+      "value": [
+        "bafybeihpf4vrvthzxooqnzjpr2zi6qrb2hudbbyfozftqqumvz2vo6m35i",
+        "0x4206eaaba41a0632310b9852d7e14ee669e2af74",
+        781
+      ],
+      "treeIndex": 41
+    },
+    {
+      "value": [
+        "bafybeidyw37byzkamphmwpabxywb6ox5gamxactkhxhl3ejyh3vbk2m2u4",
+        "0x1db1f22fe1522a023f3052757c71e66868b2da00",
+        552
+      ],
+      "treeIndex": 38
+    },
+    {
+      "value": [
+        "bafybeihnmec2wniaw35bqfst36wv4vfhtdzyocjlep3ovknhe3gwucjysi",
+        "0x992f0201ff7ee158a8baf638549d0ad1cbcc27ef",
+        1235
+      ],
+      "treeIndex": 28
+    },
+    {
+      "value": [
+        "bafybeidwjxkd3k6pweagzscvga7fkjdhhhxq5ilx7nu7b6hl3sdbwsgbcy",
+        "0x4206eaaba41a0632310b9852d7e14ee669e2af74",
+        579
+      ],
+      "treeIndex": 42
+    },
+    {
+      "value": [
+        "bafybeie2xshbptlqgx4f5z6vjmryazuwv22ghznh3txrkdsvgoy7i4rgmu",
+        "0x384a604cb8452e5d781614dee8bce02d561498a5",
+        552
+      ],
+      "treeIndex": 35
+    },
+    {
+      "value": [
+        "bafybeicwycf3gtybmxn4rgttj4ugatr5pe76nwmjt32wnycwp5smsseab4",
+        "0x4206eaaba41a0632310b9852d7e14ee669e2af74",
+        579
+      ],
+      "treeIndex": 27
+    },
+    {
+      "value": [
+        "bafybeifa5ppnd656unkki4q2vse3e5dbsi52hh3kmwndop3l4t4vz5gw5a",
+        "0x50706bc22b59e8e083fbaad2207d7ef943bb8e82",
+        552
+      ],
+      "treeIndex": 30
+    },
+    {
+      "value": [
+        "bafybeib2bv2q2wvizhz7fpwtfvwgtfal4semhhbwps3rbsrboyqjvdsrba",
+        "0xf779c62552cc91c110e7b7d376902c35090a4809",
+        175
+      ],
+      "treeIndex": 32
+    }
+  ],
+  "leafEncoding": [
+    "string",
+    "address",
+    "uint256"
+  ]
+}
