@@ -1,0 +1,91 @@
+{
+  "format": "standard-v1",
+  "tree": [
+    "0xbf6cfea660ad0fb33891a262361f126c7098fcb96356162d7656de9ed5609032",
+    "0x86defbabe00f26f291ae56b7b5eae3415d3f1a353d5179b3d3ebb83f5b085923",
+    "0x4bb2224ce018d7689be949d1c0e5963f7a83f2d6c68b52c161c59f9121d1d683",
+    "0x84f6a90c3179c72a395fb11c5cbf3f0a012de6903b6fd8fe0544a344e34380ce",
+    "0xb563602bbd51fb4b311b6cdd688c4da0cb517678aec01900a9b29771af5ebd90",
+    "0xac21262762dd538146590a97009900579932455347d86a2b6fd268d2f0ef30f4",
+    "0xa8e1f00b642ce099998fd2b37967ee3195151a8a930c8be8e467eaca320f197c",
+    "0xfad0da10883f853363ca6e565d79c4d5bb7d047b72ea7ff91e7b23808505158d",
+    "0xed6b4a4719d8420daeab8390b95a4c6e03f4b9dccacd782acac7f5961f2d09af",
+    "0xe53729a94c5c5d17ae8431037aff617b191199dc98c33b02001e49ea43b1c352",
+    "0xc0b37251d93642a61e42000b4f231886c07fe2e67284ed05ef9f473d4a657692",
+    "0xb9cf8b15284c4b57f86485a560e65bc84f911b4214e5babdf0da293d44c0211a",
+    "0x4f3e2c57de7738130a48b40f4a39e3814fc287c666e4d4188cc7977a1c7c953f",
+    "0x393664b9edc70d9212a1b4fca01a0f5ab58968aa82e89d8e7f2bffe67be442b3",
+    "0x1816a8414a8c7df1dc867a6a4ed49b1835460abfe089a4dc32aff7b1c5f52b4a"
+  ],
+  "values": [
+    {
+      "value": [
+        "bafybeibeomqm244kdfos7gvewaeipldnq2ka7ciha6vueqvo3mcgdn7mai",
+        "0x8e88e1d92e6deb2022e37ba3fb27965844f52482",
+        1170
+      ],
+      "treeIndex": 9
+    },
+    {
+      "value": [
+        "bafybeihrzrbnkyifullk5gzppovmler27hthsdle6v3s5qha6ix5ipzhda",
+        "0x1aa06ced552a87be28df71aaa02d88ffe46a5240",
+        1169
+      ],
+      "treeIndex": 8
+    },
+    {
+      "value": [
+        "bafybeie3rensi7ngedvnrz7pheiq6v3xakqyw64cfmbfpareooltcs5im4",
+        "0xad6a28369c0c8f85dacf8fb3809310e75db4bd2c",
+        1169
+      ],
+      "treeIndex": 7
+    },
+    {
+      "value": [
+        "bafybeiegatbghd5qx36nkqqmd5rhnycusaaopg5pibqbw344op6nt6qyei",
+        "0xad6a28369c0c8f85dacf8fb3809310e75db4bd2c",
+        1169
+      ],
+      "treeIndex": 14
+    },
+    {
+      "value": [
+        "bafybeiaoqolumssrjo76qeexi4u4m65vpa76znlhfepjx4tnu7itwmxvuq",
+        "0xac6d0de9f0834d532b102d1f37b44a84ef9cfb72",
+        370
+      ],
+      "treeIndex": 12
+    },
+    {
+      "value": [
+        "bafybeiay2ts76rbakkpknmxfhyf4qfqzycagt4as6wbzqepoguc6a6chty",
+        "0x001a9842d22ae5b254b966ff82a4226f88bee00e",
+        2615
+      ],
+      "treeIndex": 13
+    },
+    {
+      "value": [
+        "bafybeieeqidh3qxcknrqkdztwbqo5e5tfeucqt5jqrkwarb6mf25br2eia",
+        "0x4206eaaba41a0632310b9852d7e14ee669e2af74",
+        1169
+      ],
+      "treeIndex": 11
+    },
+    {
+      "value": [
+        "bafybeifrbk7hl67asbn2vse4hbhvd2irctb5h2i3nrmizxzzbnvg3tlkzy",
+        "0x001a9842d22ae5b254b966ff82a4226f88bee00e",
+        1169
+      ],
+      "treeIndex": 10
+    }
+  ],
+  "leafEncoding": [
+    "string",
+    "address",
+    "uint256"
+  ]
+}
