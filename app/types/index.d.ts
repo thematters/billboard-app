@@ -14,6 +14,7 @@ type AppEnvType = {
   tokenIdShowCase: string
   idWalletConnect: string
   urlOpExplorer: string
+  rampHostApiKey?: string
   urlContract: string
   gaId: string
 }
