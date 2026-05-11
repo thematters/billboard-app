@@ -12,6 +12,7 @@ type PropsType = {
 
 const RAMP_URL = 'https://app.ramp.network/'
 const RAMP_ASSET = 'OPTIMISM_USDT'
+const MIN_ONRAMP_AMOUNT = 10
 
 const ApplePayButton = ({ amount }: PropsType) => {
   const { address } = useAccount()
@@ -20,6 +21,9 @@ const ApplePayButton = ({ amount }: PropsType) => {
   if (!rampHostApiKey || !address || amount <= 0) {
     return null
   }
+
+  const onrampAmount = Math.max(amount, MIN_ONRAMP_AMOUNT)
+  const displayAmount = onrampAmount.toFixed(3)
 
   const openRamp = () => {
     const url = new URL(RAMP_URL)
@@ -33,7 +37,7 @@ const ApplePayButton = ({ amount }: PropsType) => {
     url.searchParams.set('enabledFlows', 'ONRAMP')
     url.searchParams.set('inAsset', 'USD')
     url.searchParams.set('outAsset', RAMP_ASSET)
-    url.searchParams.set('outAssetValue', toUSDT(amount, 0))
+    url.searchParams.set('outAssetValue', toUSDT(onrampAmount, 0))
     url.searchParams.set('paymentMethodType', 'APPLE_PAY')
     url.searchParams.set('userAddress', address)
     url.searchParams.set('successUrl', currentUrl)
@@ -50,8 +54,8 @@ const ApplePayButton = ({ amount }: PropsType) => {
   return (
     <section className={baseCss}>
       <p className={hintCss}>
-        Need more USDT? Buy Optimism USDT to your connected wallet, then return
-        to confirm the bid.
+        Need more USDT? Add about {displayAmount} Optimism USDT to your
+        connected wallet, then return to confirm the bid.
       </p>
       <GradButton
         classes={buttonCss}
@@ -61,7 +65,7 @@ const ApplePayButton = ({ amount }: PropsType) => {
         onClick={openRamp}
       >
         <WalletSvg />
-        Add USDT with Apple Pay
+        Add {displayAmount} USDT with Apple Pay
       </GradButton>
     </section>
   )
