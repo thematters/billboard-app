@@ -12,10 +12,10 @@ const WhitelistModal = () => {
   const buttonOuterCss = clsx('w-full')
 
   return (
-    <Base id="whitelist" title="Apply for Whitelist">
+    <Base id="whitelist" title="Approval Required">
       <p className={contentCss}>
-        The Billboard auction is currently whitelisted. If you have not yet
-        applied, click "Go Apply" to submit your application.
+        This Billboard still requires approval before bidding. If you have not
+        yet applied, click "Go Apply" to submit your application.
       </p>
 
       <GradButton

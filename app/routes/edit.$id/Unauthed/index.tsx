@@ -23,10 +23,10 @@ const Unauthed = () => {
 
   return (
     <section>
-      <h1 className={titleCss}>Apply for Whitelist</h1>
+      <h1 className={titleCss}>Approval Required</h1>
       <p className={descCss}>
-        The Billboard auction is currently whitelisted. If you have not yet
-        applied, click "Go Apply" to submit your application.
+        This Billboard still requires approval before editing. If you have not
+        yet applied, click "Go Apply" to submit your application.
       </p>
       <BidConnectMDSvg classes={imageMDCss} />
       <BidConnectSMSvg classes={imageSMCss} />
