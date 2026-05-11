@@ -18,6 +18,7 @@ export const readEnv = () => {
     idWalletConnect: env.ID_WALLET_CONNECT,
     urlOpExplorer: env.URL_OP_EXPLORER,
     urlCoinGecko: env.URL_COINGECKO,
+    rampHostApiKey: env.RAMP_HOST_API_KEY,
     urlContract,
     gaId: env.GA_ID,
   }
