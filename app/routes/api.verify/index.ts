@@ -15,11 +15,18 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     const id = BigInt(boardId)
     const { operator } = viemContext
 
-    const whitelisted = await operator.read.whitelist([
-      id,
-      address as `0x${string}`,
+    const [isWhitelistDisabled, whitelisted] = await Promise.all([
+      operator.read.isBoardWhitelistDisabled([id]),
+      operator.read.whitelist([id, address as `0x${string}`]),
     ])
-    return json({ state: DATA_STATE.successful, whitelisted })
+    const eligible = isWhitelistDisabled || whitelisted
+
+    return json({
+      state: DATA_STATE.successful,
+      eligible,
+      isWhitelistDisabled,
+      whitelisted,
+    })
   } catch (error) {
     return sendError(error)
   }
