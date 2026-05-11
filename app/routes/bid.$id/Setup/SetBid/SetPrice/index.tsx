@@ -55,6 +55,7 @@ const SetPrice = ({
   // condition
   const isSufficient = isNewBid ? balance >= totalAmount : balance >= totalDiff
   const requiredAmount = isNewBid ? totalAmount : totalDiff
+  const topUpAmount = Math.max(requiredAmount - balance, 0)
   const isUnderPrice =
     priceChanged && price != prevBidPrice && price <= highestBidPrice
   const canNext =
@@ -99,7 +100,7 @@ const SetPrice = ({
           totalAmount={totalAmount}
         />
         {balanceData && !isSufficient && (
-          <ApplePayButton amount={requiredAmount} />
+          <ApplePayButton amount={topUpAmount} />
         )}
       </section>
 
