@@ -56,7 +56,7 @@ const Hero = () => {
           </div>
           <p className={descCss}>
             Billboard is a protocol redefines advertising efficiency and
-            transparency, supporting creators with fair profit-sharing.
+            transparency, supporting creators with fair profit-sharing..
           </p>
           <h1 className={titleCss}>
             Amplify Your Reach,
