@@ -12,6 +12,7 @@ const MOONPAY_PAYMENT_METHOD = 'apple_pay'
 const MOONPAY_DEFAULT_BASE_CURRENCY = 'twd'
 const MOONPAY_PRODUCTION_URL = 'https://buy.moonpay.com/'
 const MOONPAY_SANDBOX_URL = 'https://buy-sandbox.moonpay.com/'
+const MOONPAY_MIN_QUOTE_CURRENCY_AMOUNT = 20
 
 const addressRegex = /^(0x)[0-9a-fA-F]{40}$/
 
@@ -24,7 +25,7 @@ const normalizeAmount = (value: string | null) => {
     })
   }
 
-  return Math.ceil(amount)
+  return Math.ceil(Math.max(amount, MOONPAY_MIN_QUOTE_CURRENCY_AMOUNT))
 }
 
 const getRedirectURL = (value: string | null, requestURL: URL) => {

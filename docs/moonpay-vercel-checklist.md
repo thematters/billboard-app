@@ -21,7 +21,12 @@ existing `Approve USDT` and `Confirm` transactions.
    `0x94b008aA00579c1307B0EF2c499aD98a8ce58e58`
 4. Confirm the launch geography. MoonPay's public currencies API currently
    marks `usdt_optimism` as unavailable in the US and Canada.
-5. Keep sandbox and production keys separate. Do not use test keys on the
+5. Confirm commercial terms before production approval:
+   - setup fee, if any
+   - monthly minimum, if any
+   - minimum volume commitment, if any
+   - whether any ecosystem or affiliate fee is enabled
+6. Keep sandbox and production keys separate. Do not use test keys on the
    production deployment.
 
 `MOONPAY_API_KEY` is included in the hosted MoonPay URL and can be treated as a
@@ -46,6 +51,20 @@ MOONPAY_WIDGET_URL=https://buy.moonpay.com/
 
 If `MOONPAY_WIDGET_URL` is unset, production uses `https://buy.moonpay.com/`
 and non-production uses `https://buy-sandbox.moonpay.com/`.
+
+## Cost policy
+
+The integration should launch without an added Matters ecosystem or affiliate
+fee. MoonPay's public pricing disclosure says checkout can include network fees,
+MoonPay fees, ecosystem fees if enabled, spreads, and bank/card provider fees.
+For partner-referred flows, the MoonPay fee can be up to 4.5% with a minimum
+fee for smaller transactions. MoonPay's partner FAQ also states that the usual
+minimum buy amount is 20 USD or a fiat-currency equivalent.
+
+The app therefore opens MoonPay with at least 20 USDT. Smaller top-ups can make
+the fixed minimum fee feel disproportionately expensive, so do not lower this
+minimum unless MoonPay confirms a better production fee schedule for the active
+key.
 
 Use the Vercel dashboard:
 
@@ -90,6 +109,9 @@ After redeploying production, verify the integration in this order.
    ```text
    Add <amount> USDT with Apple Pay
    ```
+
+   The amount should be at least 20 USDT, even if the wallet shortfall is
+   smaller.
 
 5. Click the button. MoonPay should open in a new tab with:
    - output asset: `usdt_optimism`

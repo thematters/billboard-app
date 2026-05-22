@@ -12,7 +12,7 @@ type PropsType = {
   amount: number
 }
 
-const MIN_ONRAMP_AMOUNT = 10
+const MIN_ONRAMP_AMOUNT = 20
 
 const ApplePayButton = ({ amount }: PropsType) => {
   const { address } = useAccount()
@@ -62,7 +62,8 @@ const ApplePayButton = ({ amount }: PropsType) => {
     <section className={baseCss}>
       <p className={hintCss}>
         Need more USDT? Add about {onrampAmount} Optimism USDT to your connected
-        wallet, then return to confirm the bid.
+        wallet, then return to confirm the bid. MoonPay shows fees before
+        payment.
       </p>
       <GradButton
         classes={buttonCss}
