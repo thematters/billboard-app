@@ -13,3 +13,7 @@
 
 - Install dependencies: `pnpm add .`
 - Setup environment variables: `cp .env.example .env`
+
+## Operations
+
+- MoonPay/Vercel setup and verification: [docs/moonpay-vercel-checklist.md](docs/moonpay-vercel-checklist.md)
