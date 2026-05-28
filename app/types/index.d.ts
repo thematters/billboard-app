@@ -14,6 +14,7 @@ type AppEnvType = {
   tokenIdShowCase: string
   idWalletConnect: string
   urlOpExplorer: string
+  moonPayReady?: boolean
   urlContract: string
   gaId: string
 }
