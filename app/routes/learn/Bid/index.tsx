@@ -1,12 +1,9 @@
-import { NavLink } from '@remix-run/react'
 import clsx from 'clsx'
 
 import Collapse from '@components/Collapse'
-import { FORM_LINK } from '@constants'
 
 const Bid = () => {
   const titleCss = clsx('mt-6 md:mt-0 mb-2 text-[28px] md:text-4xl text-white')
-  const linkCss = clsx('text-white')
   const noBorderCss = clsx('border-none')
 
   return (
@@ -26,12 +23,9 @@ const Bid = () => {
       </Collapse>
       <Collapse title="Who can participant Billboard auctions ?">
         <p>
-          The Billboard auction is currently whitelisted. If you have not yet
-          applied, click{' '}
-          <NavLink className={linkCss} to={FORM_LINK} target="_blank">
-            here
-          </NavLink>{' '}
-          to submit your application.
+          Billboard auctions are open to any connected wallet when the board is
+          configured for open bidding. Advertisement content must comply with
+          the User Agreement and platform policies.
         </p>
       </Collapse>
       <Collapse title="How is the total bid amount calculated？">

@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 import { useAccount, useBalance } from 'wagmi'
 
+import ApplePayButton from '@components/Ramp/ApplePayButton'
 import useAppEnv from '@hooks/useAppEnv'
 import {
   calTaxAsNumber,
@@ -53,6 +54,8 @@ const SetPrice = ({
 
   // condition
   const isSufficient = isNewBid ? balance >= totalAmount : balance >= totalDiff
+  const requiredAmount = isNewBid ? totalAmount : totalDiff
+  const topUpAmount = Math.max(requiredAmount - balance, 0)
   const isUnderPrice =
     priceChanged && price != prevBidPrice && price <= highestBidPrice
   const canNext =
@@ -96,6 +99,9 @@ const SetPrice = ({
           tax={tax}
           totalAmount={totalAmount}
         />
+        {balanceData && !isSufficient && (
+          <ApplePayButton amount={topUpAmount} />
+        )}
       </section>
 
       <Controls disabled={!canNext} updateSetBidStep={updateSetBidStep} />
