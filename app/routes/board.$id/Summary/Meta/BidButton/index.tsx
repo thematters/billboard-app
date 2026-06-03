@@ -15,7 +15,7 @@ const BidButton = ({ data }: PropsType) => {
   const navigate = useNavigate()
   const { open } = useModal()
   const { isConnected } = useAccount()
-  const { board, currBid, epoch, whitelisted } = data
+  const { board, currBid, whitelisted, epoch } = data
 
   const id = board.id
   const currPrice = toFloatUSDT(currBid?.price || 0, 2)
