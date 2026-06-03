@@ -15,7 +15,7 @@ const BidButton = ({ data }: PropsType) => {
   const navigate = useNavigate()
   const { open } = useModal()
   const { isConnected } = useAccount()
-  const { board, currBid, eligible, epoch } = data
+  const { board, currBid, whitelisted, epoch } = data
 
   const id = board.id
   const currPrice = toFloatUSDT(currBid?.price || 0, 2)
@@ -23,7 +23,7 @@ const BidButton = ({ data }: PropsType) => {
 
   const click = () => {
     if (isConnected) {
-      if (eligible) {
+      if (whitelisted) {
         const params = formatParams({ epoch, from: 'board' })
         navigate(`/bid/${id}?${params}`)
       } else {

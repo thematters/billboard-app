@@ -24,7 +24,7 @@ const Verify = ({ setStep }: PropsType) => {
       return
     }
 
-    if (data?.eligible === true) {
+    if (data?.whitelisted === true) {
       setStep('setup')
     } else {
       setStep('unauthed')

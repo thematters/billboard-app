@@ -62,14 +62,14 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
     // get current user's bid if user connected wallet
     const address = getAddress(request)
-    const [currBid, isWhitelistDisabled, whitelisted] = await Promise.all([
+    const [currBid, inWhitelist, whitelistDisabled] = await Promise.all([
       address
         ? operator.read.getBid([id, epoch, address as `0x${string}`])
         : null,
-      operator.read.isBoardWhitelistDisabled([id]),
       address ? operator.read.whitelist([id, address as `0x${string}`]) : false,
+      operator.read.isBoardWhitelistDisabled([id]),
     ])
-    const eligible = isWhitelistDisabled || whitelisted
+    const whitelisted = inWhitelist || whitelistDisabled
 
     // get current all bids
     const bids = []
@@ -129,8 +129,6 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
           }
         : null,
       bids,
-      eligible,
-      isWhitelistDisabled,
       whitelisted,
     })
   } catch (error) {
