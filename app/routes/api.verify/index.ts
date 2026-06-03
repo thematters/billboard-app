@@ -16,7 +16,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     const { operator } = viemContext
 
     const [inWhitelist, whitelistDisabled] = await Promise.all([
-      operator.read.whitelist([id, address as `0x${string}`]),
+      address ? operator.read.whitelist([id, address as `0x${string}`]) : false,
       operator.read.isBoardWhitelistDisabled([id]),
     ])
     const whitelisted = inWhitelist || whitelistDisabled
