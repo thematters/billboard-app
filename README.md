@@ -13,7 +13,3 @@
 
 - Install dependencies: `pnpm add .`
 - Setup environment variables: `cp .env.example .env`
-
-## Operations
-
-- Ramp/Vercel setup and verification: [docs/ramp-vercel-checklist.md](docs/ramp-vercel-checklist.md)
