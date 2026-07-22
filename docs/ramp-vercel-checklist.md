@@ -87,6 +87,33 @@ After redeploying production, verify the integration in this order.
    - `Approve USDT`, if allowance is insufficient
    - `Confirm`, to place or update the bid
 
+## Cross-system acceptance
+
+Open bidding and Ramp only change how advertisers enter the bid flow. Before
+launch sign-off, also verify the surfaces that consume Billboard outputs.
+
+1. Matters Web ad placement:
+   - Open a production Matters page that renders the Billboard placement.
+   - Confirm it still links to `https://billboard.matters-lab.io`.
+   - Confirm the winning ad image renders after the auction epoch changes.
+   - Confirm the production `NEXT_PUBLIC_BILLBOARD_IMAGE_URL` allows the S3
+     image host returned by Billboard uploads, currently:
+     `https://<AWS_S3_BUCKET>.s3.ap-southeast-1.amazonaws.com/<key>`.
+   - Confirm ad clicks still record and redirect through the existing Matters
+     Web Billboard component.
+2. QF matching:
+   - Do not rely on the Lambda handler's historical default pool amount for a
+     production round.
+   - Pass the reviewed `amountTotal` for the round explicitly when running the
+     QF calculator.
+   - Validate `rounds.json` and the distribution files before finalizing and
+     sending notifications.
+3. Observable matching dashboard:
+   - Verify the notebook still loads the current `rounds.json` and distribution
+     files after the next QF round.
+   - Treat notebook edits as blocked until the team has the notebook URL and
+     editor access.
+
 ## Troubleshooting
 
 - If the Apple Pay button does not appear, check that `RAMP_HOST_API_KEY` is set
