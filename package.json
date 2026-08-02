@@ -1,5 +1,6 @@
 {
   "name": "billboard-app",
+  "license": "MIT",
   "sideEffects": false,
   "type": "module",
   "engines": {
