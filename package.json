@@ -4,7 +4,7 @@
   "sideEffects": false,
   "type": "module",
   "engines": {
-    "node": ">=20.19.0"
+    "node": "24.x"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.821.0",
